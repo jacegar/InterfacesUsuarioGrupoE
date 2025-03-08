@@ -2,7 +2,7 @@
 Nombre del grupo: Grupo E
 Título del proyecto: UMA DeckRPG
 Integrantes y roles:
--CEO: Juan Acevedo García, juanacevedomalaga@uma.es
+-CEO: Juan Acevedo García, juanacevedomalaga@uma.es <br/>
 -COO: Eduardo Ariza Abad, eduardoariza@uma.es
 -CIO: Jose Luis Pastrana Gil, joseluispastranagil@uma.es
 -CTO: Jose Manuel Fernández Reyes, 0611096986@uma.es
