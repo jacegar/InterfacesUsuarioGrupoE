@@ -8,5 +8,5 @@ Integrantes y roles: <br/>
 -CTO: Jose Manuel Fernández Reyes, 0611096986@uma.es <br/>
 -CXO: Enrique Ibáñez Rico, enriqueir@uma.es <br/>
 
-Descripción del proyecto:
+Descripción del proyecto: <br/>
 Nuestro proyecto consiste en un rpg entre cartas (parecido a TCG Pocket) entre dos jugadores, en el que antes del combate se ofrece una selección de cartas a cada jugador con las que formarán sus mazos. Las cartas tendrían una temática variada, pudiendo ir desde un mago genérico a algún personaje famoso (por ejemplo Dwayne Johnson). El combate acaba cuando todas las cartas de un jugador son debilitadas.
