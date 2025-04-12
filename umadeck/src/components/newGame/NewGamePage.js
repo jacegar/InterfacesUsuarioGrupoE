@@ -1,7 +1,7 @@
 import GoBackArrow from "../common/GoBackArrow";
 
 //Desde esta pagina se deberia poder elegir las cartas para la nueva partida
-function NewGame(){
+function NewGamePage(){
     return (
         <div>
             <GoBackArrow/>
@@ -10,4 +10,4 @@ function NewGame(){
     );
 }
 
-export default NewGame;
+export default NewGamePage;
