@@ -6,7 +6,7 @@ function GoBackArrow(){
     return(
         <div className="go-back-arrow">
             <Link to="/">
-                <img src="/assets/arrow-back.svg" alt="Go Back" />
+                <img src="/assets/images/arrow-back.svg" alt="Go Back" />
             </Link>
         </div>
     )

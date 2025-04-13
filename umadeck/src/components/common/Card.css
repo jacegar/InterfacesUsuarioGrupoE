@@ -1,0 +1,85 @@
+.card{
+    background-color: #d3d3d3;
+    width: 200px;
+    height: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #333; /* Add a dark border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-health {
+    font-size: 0.9rem;
+    color: #555;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.card-name {
+    font-size: 1rem; /* Make the font size smaller */
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Slightly reduce letter spacing */
+    margin-left: 5px;
+}
+
+.card-body {
+    margin-left: 5px;
+}
+
+.attack, .passive {
+    margin-bottom: 10px;
+}
+
+.attack-name, .passive-name {
+    color: #333;
+    margin: 0;
+}
+
+.attack-details, .passive-details {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.passive-details strong {
+    font-weight: bold;
+    color: #000; /* Make the type stand out with a darker color */
+}
+
+.attack-details strong, .passive-details strong {
+    font-weight: bold;
+    color: #000; /* Highlight with a blue color */
+}
+
+.card-footer {
+    position: relative;
+    height: 40px; /* Adjust footer height as needed */
+}
+
+.card-footer img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px; /* Add some spacing from the edges */
+}
+
+.card-image {
+    padding: 3px; /* Remove any padding from the container */
+    margin: 3px; /* Remove any margin from the container */
+}
+
+.card-image img {
+    width: 100%; /* Ensure the image spans the full width */
+    height: auto;
+    margin: 0; /* Remove any margin from the image */
+    object-fit: cover;
+}

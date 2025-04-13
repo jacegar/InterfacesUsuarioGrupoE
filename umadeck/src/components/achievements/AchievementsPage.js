@@ -5,9 +5,9 @@ function AchievementsPage() {
     <div>
       <GoBackArrow/>  
       <h1>Achievements</h1>
-      <ol>
+      <ul>
         <li>{/*En cada li deberia ir un componente de la clase logro*/}</li>
-      </ol>
+      </ul>
     </div>
   );
 }
