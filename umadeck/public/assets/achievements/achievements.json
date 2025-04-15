@@ -1,0 +1,50 @@
+[
+    {
+      "title": "Desbloquea 1 carta",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/unlock1.png"
+    },
+    {
+      "title": "Desbloquea 5 cartas",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/unlock5.png"
+    },
+    {
+      "title": "Juega 1 partida",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/play1.png"
+    },
+    {
+      "title": "Juega 5 partidas",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/play5.png"
+    },
+    {
+      "title": "Gana 1 partida",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/win1.png"
+    },
+    {
+      "title": "Gana 5 partidas",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/win5.png"
+    },
+    {
+      "title": "Inflige 200 de daño en una sola partida",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/damage200.png"
+    },
+    {
+      "title": "Inflige 2000 de daño",
+      "unlocked": false,
+      "date": null,
+      "img": "/assets/achievements/img/damage2000.png"
+    }
+]

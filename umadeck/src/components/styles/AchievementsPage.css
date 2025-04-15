@@ -1,0 +1,28 @@
+.achievements-container {
+    padding: 20px;
+}
+
+.achievements-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.achievements-header h1 {
+    text-align: center;
+    flex: 1;
+    margin: 0;
+}
+
+.achievement-count {
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: 7.5px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 150px;
+    margin: 150px;
+}

@@ -1,0 +1,28 @@
+.achievement-card {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.achievement-card.unlocked {
+    background-color: #fff7e0;
+    box-shadow: 0 0 6px 2px rgba(255, 204, 0, 0.3);
+    opacity: 1;
+}
+
+.achievement-image {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.achievement-title {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+}
