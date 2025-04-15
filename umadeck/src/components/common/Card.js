@@ -1,10 +1,10 @@
 import "../styles/Card.css";
 
 function Card(props) {
-    const cardModel = props.cardModel;
+    const { cardModel, isSelected, onCardClick } = props;
 
     return (
-        <div className="card">
+        <div className={"card" + (isSelected ? " selected" : "")} onClick ={onCardClick}>
             <div className="card-header">
                 <h2 className="card-name">{cardModel.getName()}</h2>
                 <p className="card-health">Vida: {cardModel.getHealth()}</p>

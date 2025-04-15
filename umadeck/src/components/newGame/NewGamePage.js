@@ -9,21 +9,32 @@ function NewGamePage() {
     const [selectedCards, setCards] = useState([]);
     const [loadedCards, setLoadedCards] = useState([]);
 
-    useEffect(() => {
-        const generateRandomCards = () => {
-            const allCards = CardModel.getAllCards();
-            
-            // Shuffle the array
-            for (let i = allCards.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                let temp = allCards[i];
-                allCards[i] = allCards[j];
-                allCards[j] = temp;
-            }
-
-            return allCards.slice(0, 5);
+    const generateRandomCards = () => {
+        const allCards = CardModel.getAllCards();
+        
+        // Shuffle the array
+        for (let i = allCards.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = allCards[i];
+            allCards[i] = allCards[j];
+            allCards[j] = temp;
         }
 
+        return allCards.slice(0, 5);
+    }
+
+    const selectCard = (index) => {
+        if(selectedCards.includes(loadedCards[index])) {
+            setCards(selectedCards.filter(card => card !== loadedCards[index]));
+        }else if(selectedCards.length < 3) {
+            
+            setCards([...selectedCards, loadedCards[index]]);
+        }/*else{
+            mostrar de forma visual que no se pueden elegir mas cartas
+        }*/
+    }
+
+    useEffect(() => {   
         setLoadedCards(generateRandomCards());
     }, []);
     
@@ -37,10 +48,16 @@ function NewGamePage() {
             <ul className="cardList">
                 {loadedCards.map((card, index) => (
                     <li key={index}>
-                        <Card cardModel={card} />
+                        <Card cardModel={card}
+                              isSelected = {selectedCards.includes(card)}
+                              onCardClick={() => selectCard(index)}/>
                     </li>
                 ))}
             </ul>
+            <div>
+                {/*Aqui deberia crearse una pagina de partida, pasandole selectedCards como argumento*/}
+                <button className="startGameButton">Iniciar partida</button>
+            </div>
         </div>
     );
 }
