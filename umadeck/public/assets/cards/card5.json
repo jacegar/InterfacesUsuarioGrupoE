@@ -1,0 +1,12 @@
+{
+    "id": 5,
+    "name": "Pathe Ciss5",
+    "health": 50,
+    "imageUrl": "/assets/images/image1.jpg",
+    "attackName": "Gol del rayo",
+    "attackDamage": 50,
+    "passiveName": "Cambio",
+    "passiveQuantity": 10,
+    "passiveType": "curación",
+    "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+}

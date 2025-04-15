@@ -1,16 +1,12 @@
-class CardModel{
-    constructor(id, name, health, imageUrl, attackName, attackDamage, passiveName, passiveQuantity, passiveType, description) {
-        this.id = id; //id de la carta, lo usamos para leerla y guardarla desde un json
-        this.name = name;
-        this.health = health; //salud actual
-        this.maxHealth = health; //salud maxima
-        this.imageUrl = imageUrl;
-        this.attackName = attackName;
-        this.attackDamage = attackDamage;
-        this.passiveName = passiveName;
-        this.passiveQuantity = passiveQuantity; //cantidad de algo que hace la pasive (ej cura x de vida, hace menos de x de daño)
-        this.passiveType = passiveType; //tipo de pasiva(ej cura, le hacen menos daño, etc)
-        this.description = description; //descripcion de la carta en la parte de atras
+class CardModel {
+    constructor(id) {
+        this.id = id; // id of the card
+        const path = `../public/assets/cards/card${id}.json`; // Build the path string
+        
+        fetch(path).then((response) => response.json()).then((data) => {
+            this.fromJson(JSON.stringify(data));
+        })
+        .catch((error) => console.error("Error loading card data:", error));
     }
 
     fromJson(jsonString) {

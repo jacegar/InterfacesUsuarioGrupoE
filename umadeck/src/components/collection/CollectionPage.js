@@ -8,14 +8,7 @@ function CollectionPage() {
 
   //Aqui solo lee una carta, pero deberia leer todas las cartas de la coleccion y mostrarlas en la lista
   useEffect(() => {
-    fetch("/assets/cards/card1.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const cardModel = new CardModel();
-        cardModel.fromJson(JSON.stringify(data));
-        setCard(cardModel);
-      })
-      .catch((error) => console.error("Error loading card data:", error));
+    setCard(new CardModel(1)); // Cargar la carta con id 1
   }, []);
 
   return (
