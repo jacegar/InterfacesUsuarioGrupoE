@@ -2,7 +2,7 @@ import GoBackArrow from "../common/GoBackArrow";
 import { useState, useEffect } from "react"; // Add useEffect
 import Card from "../common/Card";
 import CardModel from "../../gamelogic/CardModel";
-import "./NewGamePage.css"; // Import the CSS file for styling
+import "../styles/NewGamePage.css"; // Import the CSS file for styling
 
 //Desde esta pagina se deberia poder elegir las cartas para la nueva partida
 function NewGamePage() {
