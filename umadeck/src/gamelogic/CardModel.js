@@ -1,12 +1,13 @@
+import cards from "../cards.json";
+
 class CardModel {
     constructor(id) {
         this.id = id; // id of the card
-        const path = `../public/assets/cards/card${id}.json`; // Build the path string
-        
-        fetch(path).then((response) => response.json()).then((data) => {
-            this.fromJson(JSON.stringify(data));
-        })
-        .catch((error) => console.error("Error loading card data:", error));
+        const jsonData = cards.find((card) => card.id === id); // Find the card by id
+        if (!jsonData) {
+            throw new Error(`Card data for id ${id} not found.`);
+        }
+        this.fromJson(JSON.stringify(jsonData))
     }
 
     fromJson(jsonString) {
@@ -77,6 +78,10 @@ class CardModel {
 
     setHealth(health) {
         this.health = health;
+    }
+
+    static getAllCards() { 
+        return cards.map(card => new CardModel(card.id));
     }
 }
 
