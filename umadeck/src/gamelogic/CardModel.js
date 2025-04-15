@@ -79,6 +79,10 @@ class CardModel {
     setHealth(health) {
         this.health = health;
     }
+
+    static getAllCards() { 
+        return cards.map(card => new CardModel(card.id));
+    }
 }
 
 export default CardModel;

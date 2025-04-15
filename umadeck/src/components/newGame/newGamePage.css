@@ -1,0 +1,19 @@
+.newGamePage {
+    align-items: center;
+    padding: 20px;
+}
+
+.cardList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Adds spacing between cards */
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.cardList li {
+    flex: 0 1 calc(20% - 15px); /* Adjusts card width, ensuring responsiveness */
+    box-sizing: border-box;
+}
