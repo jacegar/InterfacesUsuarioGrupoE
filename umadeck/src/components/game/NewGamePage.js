@@ -1,8 +1,9 @@
 import GoBackArrow from "../common/GoBackArrow";
-import { useState, useEffect } from "react"; // Add useEffect
+import { useState, useEffect } from "react";
 import Card from "../common/Card";
 import CardModel from "../../gamelogic/CardModel";
-import "../styles/NewGamePage.css"; // Import the CSS file for styling
+import "../styles/NewGamePage.css";
+import { Link } from "react-router-dom";
 
 //Desde esta pagina se deberia poder elegir las cartas para la nueva partida
 function NewGamePage() {
@@ -19,7 +20,6 @@ function NewGamePage() {
             allCards[i] = allCards[j];
             allCards[j] = temp;
         }
-
         return allCards.slice(0, 5);
     }
 
@@ -27,7 +27,6 @@ function NewGamePage() {
         if(selectedCards.includes(loadedCards[index])) {
             setCards(selectedCards.filter(card => card !== loadedCards[index]));
         }else if(selectedCards.length < 3) {
-            
             setCards([...selectedCards, loadedCards[index]]);
         }/*else{
             mostrar de forma visual que no se pueden elegir mas cartas
@@ -55,8 +54,9 @@ function NewGamePage() {
                 ))}
             </ul>
             <div>
-                {/*Aqui deberia crearse una pagina de partida, pasandole selectedCards como argumento*/}
-                <button className="startGameButton">Iniciar partida</button>
+                <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
+                    <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
+                </Link>
             </div>
         </div>
     );

@@ -5,7 +5,8 @@ import StartPage from "./components/mainmenu/StartPage";
 import ErrorPage from "./components/error/ErrorPage";
 import AchievementsPage from "./components/achievements/AchievementsPage";  
 import CollectionPage from "./components/collection/CollectionPage";
-import NewGamePage from "./components/newGame/NewGamePage";
+import NewGamePage from "./components/game/NewGamePage";
+import GamePage from "./components/game/GamePage";
 
 function App(){
     return(
@@ -16,6 +17,7 @@ function App(){
             <Route path="/achievements" element={<AchievementsPage/>}/>
             <Route path="/collection" element={<CollectionPage/>}/>
             <Route path="/new-game" element={<NewGamePage/>}/>
+            <Route path="/game" element={<GamePage/>}/>
         </Routes>
     </BrowserRouter>
     );
