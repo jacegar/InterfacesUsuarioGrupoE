@@ -19,10 +19,10 @@
 
 .profile-display.player p {
     position: relative;
-    bottom: 4rem;
+    bottom: 3rem;
 }
 
 .profile-display.player img {
     position: relative;
-    bottom: -2rem;
+    bottom: -1rem;
 }

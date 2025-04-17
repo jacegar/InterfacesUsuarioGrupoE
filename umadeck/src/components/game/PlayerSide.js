@@ -2,6 +2,7 @@ import CardMini from "../common/CardMini";
 import Card from "../common/Card";
 import "../styles/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
+import ProfileDisplay from "./ProfileDisplay";
 
 function PlayerSide(props){
     const { cards, points } = props;
@@ -14,6 +15,7 @@ function PlayerSide(props){
                 <CardMini cardModel={cards[2]} onCardClick={() => {}}/>
             </div>
             <PointsDisplay classname="points-container"points={points}/>
+            <ProfileDisplay side={0}/>
         </div>
     );
 }
