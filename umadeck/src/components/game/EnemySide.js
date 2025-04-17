@@ -2,6 +2,7 @@ import CardMini from "../common/CardMini";
 import Card from "../common/Card";
 import "../styles/EnemySide.css";
 import PointsDisplay from "./PointsDisplay";
+import ProfileDisplay from "./ProfileDisplay";
 
 function EnemySide(props){
     const { cards, points } = props;
@@ -14,6 +15,7 @@ function EnemySide(props){
                 <CardMini cardModel={cards[2]} onCardClick={() => {}}/>
             </div>
             <PointsDisplay points={points} side={1}/>
+            <ProfileDisplay side={1}/>
         </div>
     );
 }
