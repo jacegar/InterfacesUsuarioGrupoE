@@ -4,15 +4,15 @@ function Card(props) {
     const { cardModel, isSelected, onCardClick } = props;
 
     return (
-        <div className={"card" + (isSelected ? " selected" : "")} onClick ={onCardClick}>
-            <div className="card-header">
-                <h2 className="card-name">{cardModel.getName()}</h2>
-                <p className="card-health">Vida: {cardModel.getHealth()}</p>
+        <div className={"custom-card" + (isSelected ? " selected" : "")} onClick={onCardClick}>
+            <div className="custom-card-header">
+                <h2 className="custom-card-name">{cardModel.getName()}</h2>
+                <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
             </div>
-            <div className="card-image">
+            <div className="custom-card-image">
                 <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
             </div>
-            <div className="card-body">
+            <div className="custom-card-body">
                 <div className="attack">
                     <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
                     <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
@@ -24,8 +24,8 @@ function Card(props) {
                     </p>
                 </div>
             </div>
-            <div className="card-footer">
-                <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta"/>
+            <div className="custom-card-footer">
+                <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
             </div>
         </div>
     );
