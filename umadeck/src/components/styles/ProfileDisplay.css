@@ -1,0 +1,28 @@
+.profile-display {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-left: 2.5rem;
+}
+
+.profile-display.player {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.profile-display.enemy {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.profile-display.player p {
+    position: relative;
+    bottom: 4rem;
+}
+
+.profile-display.player img {
+    position: relative;
+    bottom: -2rem;
+}

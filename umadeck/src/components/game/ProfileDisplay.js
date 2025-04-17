@@ -1,0 +1,15 @@
+import React from 'react';
+import "../styles/ProfileDisplay.css";
+
+function ProfileDisplay(props) {
+    const { side } = props;
+
+    return (
+        <div className={"profile-display " + (side === 0 ? "player" : "enemy")}>
+            <img src="" alt="PFP"></img>
+            <p>Username</p>
+        </div>
+    );
+}
+
+export default ProfileDisplay;
