@@ -41,10 +41,10 @@
 }
 
 .card-name {
-    font-size: 1rem; /* Make the font size smaller */
+    font-size: 1rem;
     color: #333;
     text-transform: uppercase;
-    letter-spacing: 0.5px; /* Slightly reduce letter spacing */
+    letter-spacing: 0.5px;
     margin-left: 5px;
 }
 
@@ -70,34 +70,34 @@
 
 .passive-details strong {
     font-weight: bold;
-    color: #000; /* Make the type stand out with a darker color */
+    color: #000;
 }
 
 .attack-details strong, .passive-details strong {
     font-weight: bold;
-    color: #000; /* Highlight with a blue color */
+    color: #000;
 }
 
 .card-footer {
     position: relative;
-    height: 40px; /* Adjust footer height as needed */
+    height: 40px;
 }
 
 .card-footer img {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 5px; /* Add some spacing from the edges */
+    margin: 5px;
 }
 
 .card-image {
-    padding: 3px; /* Remove any padding from the container */
-    margin: 3px; /* Remove any margin from the container */
+    padding: 3px;
+    margin: 3px;
 }
 
 .card-image img {
-    width: 100%; /* Ensure the image spans the full width */
+    width: 100%;
     height: auto;
-    margin: 0; /* Remove any margin from the image */
+    margin: 0;
     object-fit: cover;
 }

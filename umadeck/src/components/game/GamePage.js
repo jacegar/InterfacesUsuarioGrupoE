@@ -4,6 +4,9 @@ import Card from '../common/Card';
 import {useState} from 'react';
 import GameModel from '../../gamelogic/GameModel';
 import CardModel from '../../gamelogic/CardModel';
+import EnemySide from './EnemySide';
+import PlayerSide from './PlayerSide';
+import "../styles/GamePage.css";
 
 function GamePage(props){
     const location = useLocation();
@@ -24,17 +27,9 @@ function GamePage(props){
 
     return (
         <div className="game-page">
-            <div className="enemy-cards">
-                {enemyCards.map((card, index) => (
-                    <Card key={index} cardModel={card} isSelected={false} onCardClick={() => {}}/>
-                ))}
-            </div>
-            <div className="player-cards">
-                {playerCards.map((card, index) => (
-                    <Card key={index} cardModel={card} isSelected={false} onCardClick={() => {}}/>
-                ))}
-            </div>
-
+            <EnemySide cards={enemyCards} points={3-playerCards.length}/>
+            <hr/>
+            <PlayerSide cards={playerCards} points={3-enemyCards.length}/>
         </div>
     )
 }

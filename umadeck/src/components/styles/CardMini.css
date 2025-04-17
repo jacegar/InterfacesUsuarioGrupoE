@@ -1,0 +1,90 @@
+.card-mini {
+    background-color: #d3d3d3;
+    width: 140px;
+    height: 224px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+.card-mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-mini-health {
+    font-size: 0.6rem; /* Keep smaller font size */
+    color: #555;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.card-mini-name {
+    font-size: 0.7rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-left: 5px;
+}
+
+.card-mini-body {
+    font-size: 0.7rem;
+    margin: 2px;
+    margin-left: 5px;
+}
+
+.card-mini-attack, .card-mini-passive {
+    margin-bottom: 5px;
+}
+
+.card-mini-attack-name, .card-mini-passive-name {
+    font-size: 0.7rem;
+    color: #333;
+    margin: 0;
+}
+
+.card-mini-attack-details, .card-mini-passive-details {
+    font-size: 0.6rem;
+    color: #555;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.card-mini-passive-details strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.card-mini-attack-details strong, .card-mini-passive-details strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.card-mini-footer {
+    position: relative;
+    height: 25px;
+}
+
+.card-mini-footer img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
+
+.card-mini-image {
+    padding: 3px;
+    margin: 3px;
+}
+
+.card-mini-image img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    object-fit: cover;
+}
