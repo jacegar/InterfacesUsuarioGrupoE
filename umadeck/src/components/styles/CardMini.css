@@ -6,7 +6,132 @@
     overflow: hidden;
     border: 3px solid #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+}
+
+.card-mini.enlarged {
+    position: relative; /* Changed from fixed to relative to keep original position */
+    transform: scale(1.8); /* Only scale without translating */
+    z-index: 1000;
+    width: 140px; /* Fixed width for all enlarged cards */
+    height: 224px; /* Fixed height for all enlarged cards */
+}
+
+/* Clon ampliado con dimensiones fijas para asegurar consistencia */
+.mini-card-enlarged-clone {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    /* Aumentando ligeramente las dimensiones */
+    width: 330px; /* Antes 300px */
+    height: 520px; /* Antes 480px */
+    background-color: #d3d3d3;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustar elementos internos para que se vean bien con el nuevo tamaño */
+.mini-card-enlarged-clone .card-mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.mini-card-enlarged-clone .card-mini-name {
+    font-size: 1.5rem;
+    margin: 5px;
+    flex-grow: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mini-card-enlarged-clone .card-mini-health {
+    font-size: 1.3rem;
+    margin: 5px;
+    padding: 3px 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.mini-card-enlarged-clone .card-mini-image {
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+}
+
+.mini-card-enlarged-clone .card-mini-image img {
+    max-width: 90%;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.mini-card-enlarged-clone .card-mini-body {
+    padding: 15px;
+    margin-top: 5px;
+    flex-grow: 1;
+}
+
+.mini-card-enlarged-clone .card-mini-attack,
+.mini-card-enlarged-clone .card-mini-passive {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.mini-card-enlarged-clone .card-mini-attack-name, 
+.mini-card-enlarged-clone .card-mini-passive-name {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.mini-card-enlarged-clone .card-mini-attack-details, 
+.mini-card-enlarged-clone .card-mini-passive-details {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.mini-card-enlarged-clone .card-mini-footer {
+    height: 50px;
+    position: relative;
+}
+
+.mini-card-enlarged-clone .card-mini-footer img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.mini-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.mini-overlay.active {
+    display: block;
 }
 
 .card-mini-header {

@@ -6,12 +6,120 @@
     overflow: hidden;
     border: 3px solid #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: border-color 0.3s ease; /* Smooth transition for border color */
+    transition: all 0.3s ease; /* Modified to affect all properties */
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
 }
 
 .custom-card.selected {
     border-color: gold; /* Change border to gold */
     animation: border-glow 0.5s linear; /* Trigger the animation */
+}
+
+.custom-card.enlarged {
+    position: relative; /* Changed from fixed to relative to keep original position */
+    transform: scale(1.5); /* Only scale without translating */
+    z-index: 1000;
+    width: 200px; /* Fixed width for all enlarged cards */
+    height: 320px; /* Fixed height for all enlarged cards */
+}
+
+/* Clon ampliado con dimensiones fijas para asegurar consistencia */
+.card-enlarged-clone {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    /* Aumentando ligeramente las dimensiones */
+    width: 330px; /* Antes 300px */
+    height: 520px; /* Antes 480px */
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustar elementos internos para que se vean bien con el nuevo tamaño */
+.card-enlarged-clone .custom-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.card-enlarged-clone .custom-card-name {
+    font-size: 1.5rem;
+    margin: 5px;
+    flex-grow: 1;
+}
+
+.card-enlarged-clone .custom-card-health {
+    font-size: 1.3rem;
+    margin: 5px;
+    padding: 3px 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.card-enlarged-clone .custom-card-image {
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+}
+
+.card-enlarged-clone .custom-card-image img {
+    max-width: 90%;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.card-enlarged-clone .custom-card-body {
+    padding: 15px;
+    margin-top: 5px;
+    flex-grow: 1;
+}
+
+.card-enlarged-clone .attack,
+.card-enlarged-clone .passive {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-enlarged-clone .attack-name, 
+.card-enlarged-clone .passive-name {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.card-enlarged-clone .attack-details, 
+.card-enlarged-clone .passive-details {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.card-enlarged-clone .custom-card-footer {
+    height: 50px;
+    position: relative;
+}
+
+.card-enlarged-clone .custom-card-footer img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
 }
 
 @keyframes border-glow {
@@ -24,6 +132,21 @@
     100% {
         box-shadow: 0 0 5px gold;
     }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
 }
 
 .custom-card-header {
