@@ -5,7 +5,7 @@ import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 
 function PlayerSide(props){
-    const { cards, points } = props;
+    const { cards, points, onEndTurn, currentTurn } = props;
 
     return (
         <div className="player-side">
@@ -14,6 +14,14 @@ function PlayerSide(props){
                 <Card cardModel={cards[0]} onCardClick={() => {}}/>
                 <CardMini cardModel={cards[2]} onCardClick={() => {}}/>
             </div>
+            <button className="end-turn-button" 
+                onClick={onEndTurn} 
+                disabled={currentTurn !== 0}>
+                Terminar turno
+            </button>
+            <button className="give-up-button">
+                Rendirse
+            </button>
             <PointsDisplay classname="points-container"points={points}/>
             <ProfileDisplay side={0}/>
         </div>

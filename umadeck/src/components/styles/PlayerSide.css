@@ -9,3 +9,25 @@
     gap: 10rem;
     margin-top: 1rem;
 }
+
+.end-turn-button, .give-up-button {
+    position: absolute;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.end-turn-button {
+    bottom: 0;
+    right: 10%;
+}
+
+.give-up-button {
+    bottom: 0;
+    left: 15%;
+}
