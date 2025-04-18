@@ -15,6 +15,12 @@ function Card(props) {
 
     // Clean up timer if component unmounts
     useEffect(() => {
+        if (props.attachRef) {
+            props.attachRef({
+                animateAttack
+            });
+        }
+
         return () => {
             if (timerRef.current) clearTimeout(timerRef.current);
         };
@@ -64,14 +70,6 @@ function Card(props) {
             e.stopPropagation();
         }
     };
-
-    useEffect(() => {
-        if (props.attachRef) {
-            props.attachRef({
-                animateAttack
-            });
-        }
-    }, []);
 
     return (
         <>
