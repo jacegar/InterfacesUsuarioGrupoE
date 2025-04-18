@@ -9,3 +9,16 @@
     gap: 10rem;
     margin-top: 1rem;
 }
+
+.card-placeholder {
+    width: 140px;
+    height: 224px;
+    visibility: hidden;
+}
+
+/* Este a lo mejor se puede quitar, depende de cómo lo hagamos */
+.card-placeholder.main {
+    width: 200px;
+    height: 320px;
+    visibility: hidden;
+}

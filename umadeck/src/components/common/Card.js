@@ -5,8 +5,14 @@ function Card(props) {
     const { cardModel, isSelected, onCardClick } = props;
     const [showEnlarged, setShowEnlarged] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    const [isAttacking, setIsAttacking] = useState(false);
     const timerRef = useRef(null);
     
+    const animateAttack = () => {
+        setIsAttacking(true);
+        setTimeout(() => setIsAttacking(false), 700); // Duración de la animación
+    };
+
     // Clean up timer if component unmounts
     useEffect(() => {
         return () => {
@@ -59,13 +65,21 @@ function Card(props) {
         }
     };
 
+    useEffect(() => {
+        if (props.attachRef) {
+            props.attachRef({
+                animateAttack
+            });
+        }
+    }, []);
+
     return (
         <>
             {showOverlay && <div className="overlay active" onClick={handleOverlayClick}></div>}
             
             {/* Original card stays in place */}
             <div 
-                className={`custom-card${isSelected ? " selected" : ""}`}
+                className={`custom-card${isSelected ? " selected" : ""}${isAttacking ? " attacking" : ""}`}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}

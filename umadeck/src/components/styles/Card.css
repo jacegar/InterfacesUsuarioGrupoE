@@ -226,3 +226,26 @@
     display: block; /* Necesario para que margin: auto funcione */
     object-fit: contain; /* Muestra la imagen completa respetando su proporción */
 }
+
+@keyframes attack-animation {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(-2deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+}
+
+.custom-card.attacking {
+    animation: attack-animation 0.7s ease-in-out;
+    z-index: 100; /* Asegura que la carta aparezca por encima de otras durante la animación */
+}
