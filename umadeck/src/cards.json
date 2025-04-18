@@ -13,50 +13,50 @@
     },
     {
         "id": 2,
-        "name": "Pathe Ciss2",
+        "name": "Edari 12",
         "health": 50,
-        "imageUrl": "/assets/images/image1.jpg",
-        "attackName": "Gol del rayo",
-        "attackDamage": 50,
+        "imageUrl": "/assets/images/image2.png",
+        "attackName": "Siesta",
+        "attackDamage": 30,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "curación",
-        "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+        "passiveType": "Curacion",
+        "description": "Tipico andaluz."
     },
     {
         "id": 3,
-        "name": "Pathe Ciss3",
+        "name": "Terror del karaoke",
         "health": 50,
-        "imageUrl": "/assets/images/image1.jpg",
-        "attackName": "Gol del rayo",
-        "attackDamage": 50,
+        "imageUrl": "/assets/images/image3.png",
+        "attackName": "Chirrido",
+        "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "curación",
-        "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+        "passiveType": "Fuerza",
+        "description": "Cantante de karaoke, conocido por su poco movimiento de mandibula."
     },
     {
         "id": 4,
-        "name": "Pathe Ciss4",
+        "name": "Tanque",
         "health": 50,
-        "imageUrl": "/assets/images/image1.jpg",
-        "attackName": "Gol del rayo",
-        "attackDamage": 50,
+        "imageUrl": "/assets/images/image4.png",
+        "attackName": "Mazazo",
+        "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "curación",
-        "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+        "passiveType": "Resistencia",
+        "description": "Como buen tanque, siempre esta dispuesto a recibir todo el daño."
     },
     {
         "id": 5,
-        "name": "Pathe Ciss5",
-        "health": 50,
-        "imageUrl": "/assets/images/image1.jpg",
-        "attackName": "Gol del rayo",
+        "name": "Rogue",
+        "health": 20,
+        "imageUrl": "/assets/images/image5.png",
+        "attackName": "Instakill",
         "attackDamage": 50,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
         "passiveType": "curación",
-        "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+        "description": "Un golpe, una muerte."
     }
 ]

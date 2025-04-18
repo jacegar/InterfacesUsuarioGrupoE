@@ -97,6 +97,9 @@
 .custom-card-image img {
     width: 100%;
     height: auto;
-    margin: 0;
-    object-fit: cover;
+    max-width: 175px; 
+    max-height: 100px;
+    margin: auto; /* Centra la imagen horizontalmente */
+    display: block; /* Necesario para que margin: auto funcione */
+    object-fit: contain; /* Muestra la imagen completa respetando su proporción */
 }
