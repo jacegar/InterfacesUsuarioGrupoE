@@ -5,7 +5,7 @@
         "health": 50,
         "imageUrl": "/assets/images/image1.jpg",
         "attackName": "Gol del rayo",
-        "attackDamage": 50,
+        "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
         "passiveType": "curación",
@@ -13,19 +13,19 @@
     },
     {
         "id": 2,
-        "name": "Edari 12",
+        "name": "España",
         "health": 50,
         "imageUrl": "/assets/images/image2.png",
-        "attackName": "Siesta",
+        "attackName": "Viva España",
         "attackDamage": 30,
         "passiveName": "Cambio",
-        "passiveQuantity": 10,
-        "passiveType": "Curacion",
-        "description": "Tipico andaluz."
+        "passiveQuantity": 0,
+        "passiveType": "Nada",
+        "description": "España, ni un palo al agua."
     },
     {
         "id": 3,
-        "name": "Terror del karaoke",
+        "name": "Cantunflas",
         "health": 50,
         "imageUrl": "/assets/images/image3.png",
         "attackName": "Chirrido",
@@ -44,19 +44,19 @@
         "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "Resistencia",
+        "passiveType": "Defensa",
         "description": "Como buen tanque, siempre esta dispuesto a recibir todo el daño."
     },
     {
         "id": 5,
-        "name": "Rogue",
+        "name": "La muerte",
         "health": 20,
         "imageUrl": "/assets/images/image5.png",
         "attackName": "Instakill",
         "attackDamage": 50,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "curación",
+        "passiveType": "Fuerza",
         "description": "Un golpe, una muerte."
     }
 ]
