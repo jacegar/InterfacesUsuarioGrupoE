@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/GameOverLost.css";
+import "../styles/GameOverWonPage.css";
 
-function GameOverLostPage() {
+function GameOverWonPage() {
     const navigate = useNavigate();
 
     const handleContinue = () => {
@@ -10,8 +10,8 @@ function GameOverLostPage() {
     };
 
     return (
-        <div className="game-over-lost-page">
-            <h1>Has perdido</h1>
+        <div className="game-over-won-page">
+            <h1>¡Has ganado!</h1>
             <button className="continue-button" onClick={handleContinue}>
                 Regresar al menú principal
             </button>
@@ -19,4 +19,4 @@ function GameOverLostPage() {
     );
 }
 
-export default GameOverLostPage;
+export default GameOverWonPage;

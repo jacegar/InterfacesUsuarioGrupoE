@@ -1,0 +1,30 @@
+.game-over-won-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.game-over-won-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.continue-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.continue-button:hover {
+    background-color: #218838; /* Verde más oscuro */
+}

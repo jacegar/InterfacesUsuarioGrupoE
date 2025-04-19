@@ -8,6 +8,7 @@ import CollectionPage from "./components/collection/CollectionPage";
 import NewGamePage from "./components/game/NewGamePage";
 import GamePage from "./components/game/GamePage";
 import GameOverLostPage from "./components/game/GameOverLostPage";
+import GameOverWonPage from "./components/game/GameOverWonPage";
 
 function App(){
     return(
@@ -20,6 +21,7 @@ function App(){
             <Route path="/new-game" element={<NewGamePage/>}/>
             <Route path="/game" element={<GamePage/>}/>
             <Route path="/game-over-lost" element={<GameOverLostPage/>}/>
+            <Route path="/game-over-won" element={<GameOverWonPage/>}/>
         </Routes>
     </BrowserRouter>
     );
