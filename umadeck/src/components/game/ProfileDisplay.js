@@ -6,7 +6,7 @@ function ProfileDisplay(props) {
 
     return (
         <div className={"profile-display " + (side === 0 ? "player" : "enemy")}>
-            <img src="" alt="PFP"></img>
+            <img src="/assets/images/image6.png" alt="PFP"></img>
             <p>Username</p>
         </div>
     );

@@ -5,12 +5,15 @@ import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 import {useState} from 'react';
 import CardMenu from "./CardMenu";
+import {useNavigate} from 'react-router-dom';
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage } = props;
     const [isCardSelected, setIsCardSelected] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [cardRef, setCardRef] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const navigate = useNavigate();
 
     const handleCardClick = () => {
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
@@ -56,6 +59,18 @@ function PlayerSide(props){
         // Implementar lógica de cambio
         setShowMenu(false);
         setIsCardSelected(false);
+    };
+
+    const handleGiveUp = () => {
+        setShowConfirmation(true); // Muestra el cuadro de confirmación
+    };
+
+    const confirmGiveUp = () => {
+        navigate('/game-over-lost'); // Redirige a la página de "Has perdido"
+    };
+
+    const cancelGiveUp = () => {
+        setShowConfirmation(false); // Oculta el cuadro de confirmación
     };
 
     return (
@@ -108,9 +123,21 @@ function PlayerSide(props){
                 disabled={currentTurn !== 0}>
                 Terminar turno
             </button>
-            <button className="give-up-button">
+            <button className="give-up-button"
+                onClick={handleGiveUp}>
                 Rendirse
             </button>
+            {showConfirmation && (
+                <div className="confirmation-dialog">
+                    <p>¿Estás seguro de que quieres rendirte?</p>
+                    <button className="confirm-button" onClick={confirmGiveUp}>
+                        Sí
+                    </button>
+                    <button className="cancel-button" onClick={cancelGiveUp}>
+                        No
+                    </button>
+                </div>
+            )}
             <PointsDisplay classname="points-container" points={points}/>
             <ProfileDisplay side={0}/>
         </div>

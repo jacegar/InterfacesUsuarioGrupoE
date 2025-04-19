@@ -7,6 +7,7 @@ import AchievementsPage from "./components/achievements/AchievementsPage";
 import CollectionPage from "./components/collection/CollectionPage";
 import NewGamePage from "./components/game/NewGamePage";
 import GamePage from "./components/game/GamePage";
+import GameOverLostPage from "./components/game/GameOverLostPage";
 
 function App(){
     return(
@@ -18,6 +19,7 @@ function App(){
             <Route path="/collection" element={<CollectionPage/>}/>
             <Route path="/new-game" element={<NewGamePage/>}/>
             <Route path="/game" element={<GamePage/>}/>
+            <Route path="/game-over-lost" element={<GameOverLostPage/>}/>
         </Routes>
     </BrowserRouter>
     );
