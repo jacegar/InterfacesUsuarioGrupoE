@@ -22,7 +22,21 @@
 
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 150px;
-    margin: 150px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin: 50px;
+    justify-items: center;
+}
+
+/* Para asegurar que la cuadrícula se vea bien en pantallas más pequeñas */
+@media (max-width: 1200px) {
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
 }
