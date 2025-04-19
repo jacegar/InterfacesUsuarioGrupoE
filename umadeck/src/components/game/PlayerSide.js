@@ -68,6 +68,7 @@ function PlayerSide(props){
             const [activeCard] = updatedCards.splice(0, 1); // Extrae la carta activa
             updatedCards.push(activeCard); // Añade la carta activa al final del array
             setLocalCards(updatedCards); // Actualiza el estado con las cartas modificadas
+            props.onPlayerCardsChange(updatedCards); // Notifica al padre sobre el cambio
         }
         setShowMenu(false);
         setIsCardSelected(false);

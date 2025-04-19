@@ -38,6 +38,10 @@ function GamePage(props){
         }
     }
 
+    const handlePlayerCardsChange = (updatedCards) => {
+        setPlayerCards(updatedCards);
+    }
+
     const handleEnemyDamage = (damage) => {
         // Crea una copia y actualiza el estado correctamente
         const updatedEnemyCards = [...enemyCards];
@@ -86,24 +90,30 @@ function GamePage(props){
 
     return (
         <div className="game-page">
-            <EnemySide cards={enemyCards} points={3-playerCards.length} attachCardRef={setEnemyCardRef}/>
+            <EnemySide 
+                cards={enemyCards} 
+                points={3 - playerCards.length} 
+                attachCardRef={setEnemyCardRef} 
+            />
             <div className="turn-section">
                 <div className="turn-counter">
                     Turno: {gameState.turn}
                 </div>
-                <hr/>
+                <hr />
                 <div className="turn-indicator">
                     {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
                 </div>
             </div>
-            <PlayerSide cards={playerCards} 
-                        points={3-enemyCards.length}
-                        onEndTurn={useTurn} 
-                        currentTurn={gameState.currentTurn}
-                        onEnemyDamage={handleEnemyDamage}
+            <PlayerSide 
+                cards={playerCards} 
+                points={3 - enemyCards.length} 
+                onEndTurn={useTurn} 
+                currentTurn={gameState.currentTurn} 
+                onEnemyDamage={handleEnemyDamage} 
+                onPlayerCardsChange={handlePlayerCardsChange} // Nueva prop añadida
             />
         </div>
-    )
+    );
 }
 
 export default GamePage;
