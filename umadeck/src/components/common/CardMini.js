@@ -90,7 +90,7 @@ function CardMini(props) {
                         <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
                     </div>
                     <div className="card-mini-passive">
-                        <p className="card-mini-passive-name"><strong>Pasiva:</strong> {cardModel.getPassiveName()}</p>
+                        <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
                         <p className="card-mini-passive-details">
                             Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
                         </p>
@@ -123,7 +123,7 @@ function CardMini(props) {
                             <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
                         </div>
                         <div className="card-mini-passive">
-                            <p className="card-mini-passive-name"><strong>Pasiva:</strong> {cardModel.getPassiveName()}</p>
+                            <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
                             <p className="card-mini-passive-details">
                                 Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
                             </p>

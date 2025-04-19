@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "name": "Pathe Ciss",
+        "name": "Spike",
         "health": 50,
-        "imageUrl": "/assets/images/image1.jpg",
-        "attackName": "Gol del rayo",
+        "imageUrl": "/assets/images/image1.png",
+        "attackName": "Golpe punzante",
         "attackDamage": 20,
-        "passiveName": "Lesionarse",
+        "passiveName": "Curación",
         "passiveQuantity": 10,
         "passiveType": "Cura",
         "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
@@ -25,7 +25,7 @@
     },
     {
         "id": 3,
-        "name": "Cantunflas",
+        "name": "Jigglypuff",
         "health": 50,
         "imageUrl": "/assets/images/image3.png",
         "attackName": "Chirrido",
@@ -40,9 +40,9 @@
         "name": "Link",
         "health": 50,
         "imageUrl": "/assets/images/image4.png",
-        "attackName": "Corte",
+        "attackName": "Flechazo",
         "attackDamage": 20,
-        "passiveName": "Heroe del tiempo",
+        "passiveName": "Escudo",
         "passiveQuantity": 10,
         "passiveType": "Defensa",
         "description": "Como buen tanque, siempre esta dispuesto a recibir todo el daño."
@@ -54,7 +54,7 @@
         "imageUrl": "/assets/images/image5.png",
         "attackName": "Instakill",
         "attackDamage": 50,
-        "passiveName": "Negro",
+        "passiveName": "Filo",
         "passiveQuantity": 10,
         "passiveType": "Fuerza",
         "description": "Un golpe, una muerte."

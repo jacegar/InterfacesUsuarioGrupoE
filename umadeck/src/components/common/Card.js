@@ -102,7 +102,7 @@ function Card(props) {
                         <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
                     </div>
                     <div className="passive">
-                        <p className="passive-name"><strong>Pasiva:</strong> {cardModel.getPassiveName()}</p>
+                        <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
                         <p className="passive-details">
                             Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
                         </p>
@@ -135,7 +135,7 @@ function Card(props) {
                             <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
                         </div>
                         <div className="passive">
-                            <p className="passive-name"><strong>Pasiva:</strong> {cardModel.getPassiveName()}</p>
+                            <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
                             <p className="passive-details">
                                 Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
                             </p>
