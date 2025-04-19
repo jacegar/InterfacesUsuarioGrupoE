@@ -1,13 +1,17 @@
 .player-side{
     position: relative;
+    margin-top: 0; /* Eliminado completamente el margen superior */
+    margin-bottom: 0; /* Eliminado completamente el margen inferior */
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .player-cards {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
-    margin-top: 1rem;
+    gap: 6rem; /* Reducido de 8rem a 6rem */
+    margin-top: 0; /* Eliminado margen superior */
 }
 
 .end-turn-button, .give-up-button {
@@ -20,16 +24,17 @@
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
+    margin-top: 20px; /* Añadido margen superior */
 }
 
 .end-turn-button {
-    bottom: 0;
-    right: 10%;
+    bottom: 0; /* Ajustado para subir más el botón */
+    left: 80%;
 }
 
 .give-up-button {
-    bottom: 0;
-    left: 15%;
+    bottom: 0; /* Ajustado para subir más el botón */
+    left: 20%;
 }
 
 .card-placeholder {

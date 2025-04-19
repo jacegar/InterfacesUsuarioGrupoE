@@ -89,12 +89,14 @@ function GamePage(props){
     return (
         <div className="game-page">
             <EnemySide cards={enemyCards} points={3-playerCards.length} attachCardRef={setEnemyCardRef}/>
-            <div className="turn-counter">
-                Turno: {gameState.turn}
-            </div>
-            <hr/>
-            <div className="turn-indicator">
-                {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
+            <div className="turn-section">
+                <div className="turn-counter">
+                    Turno: {gameState.turn}
+                </div>
+                <hr/>
+                <div className="turn-indicator">
+                    {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
+                </div>
             </div>
             <PlayerSide cards={playerCards} 
                         points={3-enemyCards.length}

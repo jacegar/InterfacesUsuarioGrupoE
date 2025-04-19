@@ -1,16 +1,21 @@
-.enemy-side{
-    position: relative
+.enemy-side {
+    position: relative;
+    margin-top: 0; /* Eliminado completamente el margen superior */
+    margin-bottom: 0; /* Eliminado completamente el margen inferior */
+    padding-top: 10;
+    padding-bottom: 0;
 }
 
 .enemy-cards {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
-    margin-top: 1rem;
+    gap: 6rem; /* Reducido de 8rem a 6rem */
+    margin-bottom: 0; /* Eliminado margen inferior */
 }
 
 .card-placeholder {
+    margin-top: 100; 
     width: 140px;
     height: 224px;
     visibility: hidden;

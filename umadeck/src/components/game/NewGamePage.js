@@ -45,8 +45,6 @@ function NewGamePage() {
                 <h2 class="especialh2">{selectedCards.length} de 3</h2>
             </div>
 
-
-
             <div className="cardList-zoom">
                 <ul className="cardList">
                     {loadedCards.map((card, index) => (
@@ -59,8 +57,6 @@ function NewGamePage() {
                 </ul>
             </div>
             
-
-
             <div>
                 <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>

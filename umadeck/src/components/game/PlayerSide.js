@@ -60,6 +60,7 @@ function PlayerSide(props){
 
     return (
         <div className="player-side">
+    
             <div className="player-cards">
                 {/* Esto habrá que cambiarlo para que el jugador pueda elegir 
                     la carta que quiere usar cuando le derrotan la activa */}
@@ -98,7 +99,10 @@ function PlayerSide(props){
                         <div className="card-placeholder"></div>
                     }
                 </div>
+                
             </div>
+            
+            
             <button className="end-turn-button" 
                 onClick={onEndTurn} 
                 disabled={currentTurn !== 0}>

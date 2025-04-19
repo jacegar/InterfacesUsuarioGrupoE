@@ -1,22 +1,85 @@
 .game-page {
-    width: 100%;
-    max-width: 1400px; /* Aumentar el ancho máximo para toda la página */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    min-height: 100vh;
     margin: 0 auto;
-    padding: 20px;
-    transform: scale(1.05); /* Escalar ligeramente todo el contenido */
+    padding: 5px; /* Reducido de 10px a 5px */
+    transform: scale(1);
     transform-origin: top center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: auto; /* Asegura que el scroll horizontal aparezca cuando sea necesario */
+    overflow-y: auto;
+    min-width: 900px; /* Aumentado de 600px a 900px para asegurar que todo el contenido sea accesible */
+    box-sizing: border-box;
 }
 
 .game-page hr {
     width: 100%;
-    margin: 30px;
+    margin: 5px 0; /* Reducido de 10px a 5px */
     border: 1px solid #ccc;
 }
 
 .turn-counter, .turn-indicator {
     text-align: center;
-    font-size: 1.5em;
-    margin: 10px 5px;
+    font-size: 1.3em; /* Reducido de 1.5em a 1.3em */
+    margin: 2px 0; /* Reducido de 3px a 2px */
     font-weight: bold;
-    padding: 10px;
+    padding: 2px; /* Reducido de 3px a 2px */
+}
+
+/* Ajustar el espacio entre secciones para optimizar el espacio vertical */
+.player-side, .enemy-side {
+    flex: 0.5; /* Reducido de 1 a 0.5 para que ocupen menos espacio vertical */
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    min-width: 900px; /* Asegura que las secciones de jugador y enemigo mantengan un ancho mínimo */
+}
+
+/* Asegurarnos que el contenido central (turno, hr) no tome más espacio del necesario */
+.turn-section {
+    flex: 0 0 auto;
+    padding: 0;
+    margin: 0;
+}
+
+/* Asegurar que los elementos no desborden el ancho disponible */
+.player-side, .enemy-side, .turn-section {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible; /* Permite que el contenido sea visible fuera de los límites */
+}
+
+/* Asegurarnos que las cartas y otros elementos se ajustan correctamente */
+.card-container, .game-controls, .player-info {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.card-container {
+    min-width: 850px; /* Asegura que el contenedor de cartas tenga un ancho mínimo adecuado */
+}
+
+/* Ajustar configuración global para asegurar que las barras de desplazamiento aparezcan cuando sea necesario */
+html, body {
+    overflow-x: auto !important; /* Fuerza que el scroll horizontal aparezca cuando sea necesario */
+    overflow-y: auto !important;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+body #root {
+    width: auto;
+    min-width: 900px; /* Asegura que el contenedor raíz también tenga un ancho mínimo */
+    overflow-x: auto;
 }
