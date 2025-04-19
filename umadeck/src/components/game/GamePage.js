@@ -44,6 +44,8 @@ function GamePage(props){
         setPlayerCards(updatedCards);
     }
 
+    const audio = new Audio("/assets/sounds/sound4.mp3");
+    audio.volume = 0.4;
     const handlePlayerDamage = (damage) => {
         const updatedPlayerCards = [...playerCards];
         if(updatedPlayerCards[0].isDefending) {
@@ -52,6 +54,7 @@ function GamePage(props){
         else updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage);
         updatedPlayerCards[0].resetDefense(); // Reinicia la defensa después de recibir daño
         if (updatedPlayerCards[0].getHealth() <= 0) {
+            audio.play();
             updatedPlayerCards.shift(); // Elimina la carta si su salud es 0 o menos
         }
         setPlayerCards(updatedPlayerCards);
@@ -66,6 +69,7 @@ function GamePage(props){
         const updatedEnemyCards = [...enemyCards];
         updatedEnemyCards[0].setHealth(updatedEnemyCards[0].getHealth() - damage);
         if (updatedEnemyCards[0].getHealth() <= 0) {
+            audio.play();
             updatedEnemyCards.shift(); // Elimina la carta si su salud es 0 o menos
         }
         setEnemyCards(updatedEnemyCards);

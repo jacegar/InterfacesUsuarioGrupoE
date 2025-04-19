@@ -139,8 +139,12 @@
 }
 
 .card-enlarged-clone .custom-card-footer {
-    height: 50px;
-    position: relative;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .card-enlarged-clone .custom-card-footer img {
@@ -231,8 +235,12 @@
 }
 
 .custom-card-footer {
-    position: relative;
-    height: 40px;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .custom-card-footer img {
