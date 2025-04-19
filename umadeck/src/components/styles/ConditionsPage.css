@@ -1,4 +1,4 @@
-.condiciones-page {
+.conditions-page {
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
@@ -9,45 +9,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.condiciones-page h1 {
-    font-size: 28px;
+.conditions-page h1 {
+    font-size: 40px;
     margin-bottom: 16px;
     color: #444;
 }
 
-.condiciones-page p {
-    font-size: 18px;
+.conditions-page p {
+    font-size: 24px;
     line-height: 1.8;
     margin-bottom: 12px;
 }
 
-.condiciones-page ul {
+.conditions-page ul {
     list-style-type: disc;
     margin-left: 20px;
 }
 
-.condiciones-page ul li {
-    font-size: 18px;
+.conditions-page ul li {
+    font-size: 22px;
     margin-bottom: 8px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .condiciones-page h1 {
-        font-size: 24px;
-    }
-
-    .condiciones-page p, .condiciones-page ul li {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .condiciones-page h1 {
-        font-size: 20px;
-    }
-
-    .condiciones-page p, .condiciones-page ul li {
-        font-size: 14px;
-    }
 }
