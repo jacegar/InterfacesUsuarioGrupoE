@@ -9,18 +9,20 @@ function CollectionPage() {
   const allCards = CardModel.getAllCards();
   const player = new Player();
   const unlockedCards = player.getUnlockedCards();
+  const unlockedCount = unlockedCards.length;
 
   return (
-    <div className="collection-page container-fluid">
-      <GoBackArrow/>  
-      <h1>Collection Page</h1>
-      <div className="card-count"></div>
-      <div>
-        <div className="row">
+    <div className="collection-page">
+      <div className="collection-header">
+        <GoBackArrow />
+        <h1>Collection Page</h1>
+        <div className="card-count">{unlockedCount}/{allCards.length}</div>
+      </div>
+        <div className="cards-grid">
           {allCards.map((card) => {
             const isUnlocked = unlockedCards.includes(card.id);
             return (
-              <div className="col-2" key={card.id}>
+              <div key={card.id}>
                 {isUnlocked ? (
                   <Card cardModel={card} />
                 ) : (
@@ -30,7 +32,6 @@ function CollectionPage() {
             );
           })}
         </div>
-      </div>
     </div>
   );
 }

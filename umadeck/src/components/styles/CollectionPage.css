@@ -1,0 +1,42 @@
+.collection-page {
+    padding: 20px;
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collection-header h1 {
+    text-align: center;
+    flex: 1;
+    margin: 0;
+}
+
+.card-count {
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: 7.5px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;  /* Reduced from 40px to 20px */
+    margin: 30px;  /* Reduced from 50px to 30px for overall container margin */
+    justify-items: center;
+}
+
+/* Para asegurar que la cuadrícula se vea bien en pantallas más pequeñas */
+@media (max-width: 1200px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
