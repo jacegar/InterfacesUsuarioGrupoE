@@ -1,4 +1,5 @@
 import CardModel from "./CardModel.js";
+import Player from "./Player.js";
 
 class GameModel{
     constructor(playerCards, enemyCards) {
@@ -20,6 +21,14 @@ class GameModel{
         }else{
             this.currentTurn = 1; //turno del enemigo
         }
+
+        //Desbloqueamos las cartas del jugador
+        this.player = new Player();
+        this.playerCards.forEach(card => {
+            if (!this.player.getUnlockedCards().includes(card.getId())) {
+                this.player.unlockCard(card.getId());
+            }
+        });
     }
 
     //Getters

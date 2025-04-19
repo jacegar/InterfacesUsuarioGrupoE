@@ -1,0 +1,15 @@
+.blank-card{
+    background-color: #d3d3d3;
+    width: 200px;
+    height: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
