@@ -1,0 +1,33 @@
+.error-page {
+    text-align: center;
+    margin: 9% auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+    max-width: 90%;
+    box-sizing: border-box;
+}
+
+.error-page h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.error-page p {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.error-button {
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.error-button:hover {
+    background-color: #0056b3;
+}
