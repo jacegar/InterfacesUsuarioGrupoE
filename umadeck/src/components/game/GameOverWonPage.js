@@ -5,6 +5,10 @@ import "../styles/GameOverWonPage.css";
 function GameOverWonPage() {
     const navigate = useNavigate();
 
+    const audio = new Audio("/assets/sounds/sound2.mp3");
+        audio.volume = 0.5;
+        audio.play(); // Reproducir el sonido
+
     const handleContinue = () => {
         navigate('/'); // Redirige al menú principal
     };

@@ -9,7 +9,7 @@
         "passiveName": "Curación",
         "passiveQuantity": 10,
         "passiveType": "Cura",
-        "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
+        "description": "El popular brawler Spike dispara cáctuses, ¿serán parte de su cuerpo?."
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@
         "passiveName": "¡Jamón!",
         "passiveQuantity": 0,
         "passiveType": "Nada",
-        "description": "España, ni un palo al agua."
+        "description": "España, paella, toros y siesta."
     },
     {
         "id": 3,
@@ -30,10 +30,10 @@
         "imageUrl": "/assets/images/image3.png",
         "attackName": "Chirrido",
         "attackDamage": 20,
-        "passiveName": "Nota musical",
+        "passiveName": "Ritmo",
         "passiveQuantity": 10,
         "passiveType": "Fuerza",
-        "description": "Cantante de karaoke, conocido por su poco movimiento de mandibula."
+        "description": "Jigglypuff usa la habilidad que tiene para cantar con la longitud de onda necesaria para adormecer a su rival."
     },
     {
         "id": 4,
@@ -42,10 +42,10 @@
         "imageUrl": "/assets/images/image4.png",
         "attackName": "Flechazo",
         "attackDamage": 20,
-        "passiveName": "Escudo",
+        "passiveName": "Hey, listen!",
         "passiveQuantity": 10,
         "passiveType": "Defensa",
-        "description": "Como buen tanque, siempre esta dispuesto a recibir todo el daño."
+        "description": "Hyliano dispuesto a salvar a Zelda cuantas veces haga falta."
     },
     {
         "id": 5,
