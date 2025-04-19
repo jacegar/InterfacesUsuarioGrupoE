@@ -15,7 +15,7 @@ class CardModel {
         this.id = data.id;
         this.name = data.name;
         this.health = data.health;
-        this.maxHealth = data.maxHealth; //salud maxima
+        this.maxHealth = data.health; //salud maxima
         this.imageUrl = data.imageUrl;
         this.attackName = data.attackName;
         this.attackDamage = data.attackDamage;

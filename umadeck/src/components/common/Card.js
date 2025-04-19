@@ -94,7 +94,24 @@ function Card(props) {
             >
                 <div className="custom-card-header">
                     <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                    <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                    <div className="health-box">
+                        <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                        <div className="health-bar-border">
+                            <div 
+                                className={
+                                    "health-bar " +
+                                    (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                        ? "green"
+                                        : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                        ? "yellow"
+                                        : "red")
+                                }
+                                style={{
+                                    width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                }}
+                            ></div>
+                        </div>
+                    </div>
                 </div>
                 <div className="custom-card-image">
                     <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
@@ -127,7 +144,24 @@ function Card(props) {
                 <div className="card-enlarged-clone" onClick={handleEnlargedCardClick}>
                     <div className="custom-card-header">
                         <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                        <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                        <div className="health-box">
+                            <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                            <div className="health-bar-border">
+                                <div 
+                                    className={
+                                        "health-bar " +
+                                        (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                            ? "green"
+                                            : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                            ? "yellow"
+                                            : "red")
+                                    }
+                                    style={{
+                                        width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                    }}
+                                ></div>
+                            </div>
+                        </div>
                     </div>
                     <div className="custom-card-image">
                         <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
