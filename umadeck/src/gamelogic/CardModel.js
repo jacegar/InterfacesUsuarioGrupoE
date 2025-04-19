@@ -8,6 +8,12 @@ class CardModel {
             throw new Error(`Card data for id ${id} not found.`);
         }
         this.fromJson(JSON.stringify(jsonData))
+        this.abilityUsed = false;
+        this.defense = 0;
+        this.isDefending = false;
+        if(this.passiveType=="Defensa") {
+            this.defense = this.passiveQuantity;
+        }
     }
 
     fromJson(jsonString) {
@@ -27,6 +33,35 @@ class CardModel {
 
     //Metodos de partida (aqui deberian implementarse metodos para ejecutar las pasivas, los ataques, etc en una partida)
 
+    useAbility(targetCard) {
+        if(this.abilityUsed) {
+            throw new Error("La habilidad ya ha sido utilizada.");
+        }
+        switch (this.passiveType) {
+            case "Cura":
+                this.health += this.passiveQuantity;
+                break;
+            case "Defensa":
+                this.isDefending = true;
+                break;
+            case "Fuerza":
+                if(targetCard) {
+                    targetCard.setHealth(targetCard.getHealth() - this.passiveQuantity);
+                } else {
+                    throw new Error(targetCard + "Se requiere una carta objetivo para usar la habilidad de ataque.");
+                }
+                break;
+            case "Nada":
+                break;
+        }
+        this.abilityUsed = true; // Marca la habilidad como utilizada
+    }
+
+    resetDefense() {
+        this.isDefending = false; // Resetea la defensa al final del turno
+        this.defense = 0;
+    }
+
     // Getters and Setters
     getId() {
         return this.id;
@@ -36,14 +71,20 @@ class CardModel {
         this.id = id;
     }
 
+    setHealth(health) {
+        this.health = health;
+    }
+
     getName() {
         return this.name;
     }
-
+    
     getHealth() {
         return this.health;
     }
-
+    getDefense() {
+        return this.defense;
+    }
     getMaxHealth() {
         return this.maxHealth;
     }

@@ -9,12 +9,13 @@ import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
 
 function PlayerSide(props){
-    const { cards, points, onEndTurn, currentTurn, onEnemyDamage } = props;
+    const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards} = props;
     const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [cardRef, setCardRef] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [defense, setDefense] = useState(0);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -56,18 +57,33 @@ function PlayerSide(props){
     };
 
     const handleAbility = () => {
-        console.log("Usar habilidad de carta");
-        // Implementar lógica de habilidad
-        setShowMenu(false);
-        setIsCardSelected(false);
+       try {
+            const activeCard = localCards[0]; // La carta activa es la primera en el array
+            activeCard.useAbility(enemyCards[0]);
+            console.log("Habilidad usada:", activeCard.getPassiveName());
+            const updatedEnemyCards = [...enemyCards];
+            setEnemyCards(updatedEnemyCards);
+       } catch (error) {
+            alert(error.message);
+       }
+       setShowMenu(false); 
+       setIsCardSelected(false); 
     };
 
     const handleChange = () => {
         console.log("Cambiar carta");
+        const def = localCards[0].isDefending; // Verifica si la carta activa está defendiendo
+        const defValue = localCards[0].defense;
         if (localCards.length > 1) {
             const updatedCards = [...localCards];
             const [activeCard] = updatedCards.splice(0, 1); // Extrae la carta activa
+            if(def) {
+                updatedCards[0].isDefending = true;
+                updatedCards[0].defense = defValue; // Asigna la defensa a la carta activa
+                activeCard.resetDefense();
+            }
             updatedCards.push(activeCard); // Añade la carta activa al final del array
+
             setLocalCards(updatedCards); // Actualiza el estado con las cartas modificadas
             props.onPlayerCardsChange(updatedCards); // Notifica al padre sobre el cambio
         }

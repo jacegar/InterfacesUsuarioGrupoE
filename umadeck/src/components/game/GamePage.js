@@ -46,7 +46,11 @@ function GamePage(props){
 
     const handlePlayerDamage = (damage) => {
         const updatedPlayerCards = [...playerCards];
-        updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage);
+        if(updatedPlayerCards[0].isDefending) {
+            updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage + updatedPlayerCards[0].getDefense());
+        }
+        else updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage);
+        updatedPlayerCards[0].resetDefense(); // Reinicia la defensa después de recibir daño
         if (updatedPlayerCards[0].getHealth() <= 0) {
             updatedPlayerCards.shift(); // Elimina la carta si su salud es 0 o menos
         }
@@ -122,6 +126,8 @@ function GamePage(props){
             onEnemyDamage={handleEnemyDamage} 
             onPlayerCardsChange={handlePlayerCardsChange} 
             version={playerCardsVersion} // Nueva prop
+            enemyCards={enemyCards}
+            setEnemyCards={setEnemyCards}
         />
     </div>
     );
