@@ -46,7 +46,7 @@ function MainMenu(){
                             Privacidad
                         </button>
                     </Link>
-                    <Link to="/terms" className="menu-link-small">
+                    <Link to="/conditions" className="menu-link-small">
                         <button 
                             className={`menu-button-small ${hovered === 'terms' ? 'hovered' : ''}`}
                             onMouseEnter={() => setHovered('terms')}

@@ -9,6 +9,8 @@ import NewGamePage from "./components/game/NewGamePage";
 import GamePage from "./components/game/GamePage";
 import GameOverLostPage from "./components/game/GameOverLostPage";
 import GameOverWonPage from "./components/game/GameOverWonPage";
+import PrivacyPage from "./components/mainmenu/PrivacyPage";
+import ConditionsPage from "./components/mainmenu/ConditionsPage";
 
 function App(){
     return(
@@ -22,6 +24,8 @@ function App(){
             <Route path="/game" element={<GamePage/>}/>
             <Route path="/game-over-lost" element={<GameOverLostPage/>}/>
             <Route path="/game-over-won" element={<GameOverWonPage/>}/>
+            <Route path="/privacy" element={<PrivacyPage/>}/>
+            <Route path="/conditions" element={<ConditionsPage/>}/>
         </Routes>
     </BrowserRouter>
     );

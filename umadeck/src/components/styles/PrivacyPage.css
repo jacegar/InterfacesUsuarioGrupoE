@@ -1,0 +1,53 @@
+.privacidad-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.privacidad-page h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: #444;
+}
+
+.privacidad-page p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.privacidad-page ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.privacidad-page ul li {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .privacidad-page h1 {
+        font-size: 24px;
+    }
+
+    .privacidad-page p, .privacidad-page ul li {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .privacidad-page h1 {
+        font-size: 20px;
+    }
+
+    .privacidad-page p, .privacidad-page ul li {
+        font-size: 14px;
+    }
+}

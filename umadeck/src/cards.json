@@ -6,7 +6,7 @@
         "imageUrl": "/assets/images/image1.jpg",
         "attackName": "Gol del rayo",
         "attackDamage": 20,
-        "passiveName": "Cambio",
+        "passiveName": "Lesionarse",
         "passiveQuantity": 10,
         "passiveType": "Cura",
         "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
@@ -18,7 +18,7 @@
         "imageUrl": "/assets/images/image2.png",
         "attackName": "Viva España",
         "attackDamage": 30,
-        "passiveName": "Cambio",
+        "passiveName": "¡Jamón!",
         "passiveQuantity": 0,
         "passiveType": "Nada",
         "description": "España, ni un palo al agua."
@@ -30,7 +30,7 @@
         "imageUrl": "/assets/images/image3.png",
         "attackName": "Chirrido",
         "attackDamage": 20,
-        "passiveName": "Cambio",
+        "passiveName": "Nota musical",
         "passiveQuantity": 10,
         "passiveType": "Fuerza",
         "description": "Cantante de karaoke, conocido por su poco movimiento de mandibula."
@@ -42,7 +42,7 @@
         "imageUrl": "/assets/images/image4.png",
         "attackName": "Corte",
         "attackDamage": 20,
-        "passiveName": "Cambio",
+        "passiveName": "Heroe del tiempo",
         "passiveQuantity": 10,
         "passiveType": "Defensa",
         "description": "Como buen tanque, siempre esta dispuesto a recibir todo el daño."
@@ -54,7 +54,7 @@
         "imageUrl": "/assets/images/image5.png",
         "attackName": "Instakill",
         "attackDamage": 50,
-        "passiveName": "Cambio",
+        "passiveName": "Negro",
         "passiveQuantity": 10,
         "passiveType": "Fuerza",
         "description": "Un golpe, una muerte."
