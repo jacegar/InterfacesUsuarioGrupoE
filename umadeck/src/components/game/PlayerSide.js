@@ -86,7 +86,9 @@ function PlayerSide(props){
     const cancelGiveUp = () => {
         setShowConfirmation(false); // Oculta el cuadro de confirmación
     };
-
+    useEffect(() => {
+        setLocalCards(cards); // Sincroniza localCards con las cartas del padre
+    }, [cards]);
     return (
         <div className="player-side">
     
@@ -101,16 +103,17 @@ function PlayerSide(props){
                 }
                 </div>
 
-            <div className="main-card-container">
-                {localCards[0] ? 
+                <div className="main-card-container">
+                {localCards[0] ? (
                     <Card 
                         cardModel={localCards[0]} 
                         isSelected={isCardSelected}
                         onCardClick={handleCardClick}
                         attachRef={setCardRef}
-                    /> : 
-                    <div className="card-placeholder main"></div>
-                }
+                    />
+                ) : (
+                    <div className="card-placeholder main"></div> // Muestra un marcador si no hay carta
+                )}
                 {isCardSelected && showMenu && (
                     <CardMenu
                         isActive={true}
@@ -119,8 +122,7 @@ function PlayerSide(props){
                         onChange={handleChange}
                     />
                 )}
-            </div>
-
+                </div>
             <div className="card-slot right">
                 {localCards[2] ? 
                     <CardMini cardModel={localCards[2]} onCardClick={() => {}}/> : 

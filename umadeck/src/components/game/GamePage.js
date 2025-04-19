@@ -15,7 +15,9 @@ function GamePage(props){
     //Estado de las cartas del jugador y del enemigo
     const [playerCards, setPlayerCards] = useState(gameModel.getPlayerCards());
     const [enemyCards, setEnemyCards] = useState(gameModel.getEnemyCards());
-    
+    const [playerCardsVersion, setPlayerCardsVersion] = useState(0);
+    const [enemyCardsVersion, setEnemyCardsVersion] = useState(0);
+
     //Estado visible de la partida
     const [gameState, setGameState] = useState({
         startingTurn: gameModel.getCurrentTurn(),
@@ -42,26 +44,33 @@ function GamePage(props){
         setPlayerCards(updatedCards);
     }
 
-    const handleEnemyDamage = (damage) => {
-        // Crea una copia y actualiza el estado correctamente
-        const updatedEnemyCards = [...enemyCards];
-        updatedEnemyCards[0].setHealth(updatedEnemyCards[0].getHealth() - damage);
-        if (updatedEnemyCards[0].getHealth() <= 0) {
-            updatedEnemyCards.shift(); // Elimina la carta si su salud es 0 o menos
-        }
-        setEnemyCards(updatedEnemyCards);
-    };
-
     const handlePlayerDamage = (damage) => {
-        // Crea una copia y actualiza el estado correctamente
         const updatedPlayerCards = [...playerCards];
         updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage);
         if (updatedPlayerCards[0].getHealth() <= 0) {
             updatedPlayerCards.shift(); // Elimina la carta si su salud es 0 o menos
         }
         setPlayerCards(updatedPlayerCards);
-    }
-
+        setPlayerCardsVersion(playerCardsVersion + 1); // Forzar re-renderizado
+        setGameState({
+            ...gameState,
+            enemyPoints: 3 - updatedPlayerCards.length, // Actualiza los puntos del enemigo
+        });
+    };
+    
+    const handleEnemyDamage = (damage) => {
+        const updatedEnemyCards = [...enemyCards];
+        updatedEnemyCards[0].setHealth(updatedEnemyCards[0].getHealth() - damage);
+        if (updatedEnemyCards[0].getHealth() <= 0) {
+            updatedEnemyCards.shift(); // Elimina la carta si su salud es 0 o menos
+        }
+        setEnemyCards(updatedEnemyCards);
+        setEnemyCardsVersion(enemyCardsVersion + 1); // Forzar re-renderizado
+        setGameState({
+            ...gameState,
+            playerPoints: 3 - updatedEnemyCards.length, // Actualiza los puntos del jugador
+        });
+    };
     useEffect(() => {
         // Si es el turno del enemigo (turno 1)
         if (gameState.currentTurn === 1) {
@@ -89,30 +98,32 @@ function GamePage(props){
     }, [gameState.currentTurn, enemyCardRef]);
 
     return (
-        <div className="game-page">
-            <EnemySide 
-                cards={enemyCards} 
-                points={3 - playerCards.length} 
-                attachCardRef={setEnemyCardRef} 
-            />
-            <div className="turn-section">
-                <div className="turn-counter">
-                    Turno: {gameState.turn}
-                </div>
-                <hr />
-                <div className="turn-indicator">
-                    {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
-                </div>
+    <div className="game-page">
+        <EnemySide 
+            cards={enemyCards} 
+            points={3 - playerCards.length} 
+            attachCardRef={setEnemyCardRef} 
+            version={enemyCardsVersion} // Nueva prop
+        />
+        <div className="turn-section">
+            <div className="turn-counter">
+                Turno: {gameState.turn}
             </div>
-            <PlayerSide 
-                cards={playerCards} 
-                points={3 - enemyCards.length} 
-                onEndTurn={useTurn} 
-                currentTurn={gameState.currentTurn} 
-                onEnemyDamage={handleEnemyDamage} 
-                onPlayerCardsChange={handlePlayerCardsChange} // Nueva prop añadida
-            />
+            <hr />
+            <div className="turn-indicator">
+                {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
+            </div>
         </div>
+        <PlayerSide 
+            cards={playerCards} 
+            points={3 - enemyCards.length} 
+            onEndTurn={useTurn} 
+            currentTurn={gameState.currentTurn} 
+            onEnemyDamage={handleEnemyDamage} 
+            onPlayerCardsChange={handlePlayerCardsChange} 
+            version={playerCardsVersion} // Nueva prop
+        />
+    </div>
     );
 }
 
