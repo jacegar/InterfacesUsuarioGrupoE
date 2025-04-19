@@ -15,7 +15,7 @@ function CollectionPage() {
     <div className="collection-page">
       <div className="collection-header">
         <GoBackArrow />
-        <h1>Collection Page</h1>
+        <h1>Colección</h1>
         <div className="card-count">{unlockedCount}/{allCards.length}</div>
       </div>
         <div className="cards-grid">
