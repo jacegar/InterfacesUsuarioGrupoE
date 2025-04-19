@@ -212,6 +212,15 @@
     margin: 5px;
 }
 
+.custom-card-footer img.magnify-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+}
+
 .custom-card-image {
     padding: 3px;
     margin: 3px;

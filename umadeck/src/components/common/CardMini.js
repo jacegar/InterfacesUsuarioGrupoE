@@ -59,6 +59,11 @@ function CardMini(props) {
         }
     };
 
+    const handleMagnifyClick = () => {
+        setShowEnlarged(true);
+        setShowOverlay(true);
+    };
+
     return (
         <>
             {showOverlay && <div className="mini-overlay active" onClick={handleOverlayClick}></div>}
@@ -93,6 +98,12 @@ function CardMini(props) {
                 </div>
                 <div className="card-mini-footer">
                     <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                    <img 
+                        className="magnify-icon" 
+                        src="/assets/images/image7.png" 
+                        alt="Ampliar carta" 
+                        onClick={handleMagnifyClick} 
+                    />
                 </div>
             </div>
             
@@ -120,6 +131,12 @@ function CardMini(props) {
                     </div>
                     <div className="card-mini-footer">
                         <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                        <img 
+                            className="magnify-icon" 
+                            src="/assets/images/image7.png" 
+                            alt="Ampliar carta" 
+                            onClick={handleOverlayClick} 
+                        />
                     </div>
                 </div>
             )}

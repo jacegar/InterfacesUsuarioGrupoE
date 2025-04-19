@@ -1,9 +1,7 @@
 import {useLocation} from 'react-router-dom';
 import {useEffect} from 'react';
-import Card from '../common/Card';
 import {useState} from 'react';
 import GameModel from '../../gamelogic/GameModel';
-import CardModel from '../../gamelogic/CardModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
 import "../styles/GamePage.css";

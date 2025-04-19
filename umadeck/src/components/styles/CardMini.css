@@ -202,6 +202,12 @@
     margin: 5px;
 }
 
+.card-mini-footer img.magnify-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .card-mini-image {
     padding: 3px;
     margin: 3px;

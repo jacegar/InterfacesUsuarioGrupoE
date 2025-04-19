@@ -71,6 +71,11 @@ function Card(props) {
         }
     };
 
+    const handleMagnifyClick = () => {
+        setShowEnlarged(true);
+        setShowOverlay(true);
+    };
+
     return (
         <>
             {showOverlay && <div className="overlay active" onClick={handleOverlayClick}></div>}
@@ -105,6 +110,12 @@ function Card(props) {
                 </div>
                 <div className="custom-card-footer">
                     <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                    <img 
+                        className="magnify-icon" 
+                        src="/assets/images/image7.png" 
+                        alt="Ampliar carta" 
+                        onClick={handleMagnifyClick} 
+                    />
                 </div>
             </div>
             
@@ -132,6 +143,12 @@ function Card(props) {
                     </div>
                     <div className="custom-card-footer">
                         <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                        <img 
+                            className="magnify-icon" 
+                            src="/assets/images/image7.png" 
+                            alt="Ampliar carta" 
+                            onClick={handleOverlayClick} 
+                        />
                     </div>
                 </div>
             )}
