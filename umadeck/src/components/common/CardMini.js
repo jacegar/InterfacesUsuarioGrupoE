@@ -5,6 +5,7 @@ function CardMini(props) {
     const { cardModel, onCardClick } = props;
     const [showEnlarged, setShowEnlarged] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    const [showBack, setShowBack] = useState(false);
     const timerRef = useRef(null);
     
     // Clean up timer if component unmounts
@@ -38,6 +39,10 @@ function CardMini(props) {
         }
     };
     
+    const handleFlip = () => {
+        setShowBack(!showBack);
+    };
+
     const handleMouseLeave = () => {
         // Only clear the timer if mouse leaves before enlargement
         if (timerRef.current) {
@@ -77,44 +82,59 @@ function CardMini(props) {
                 onTouchStart={handleMouseDown}
                 onTouchEnd={handleMouseUp}
             >
-                <div className="card-mini-header">
-                    <h2 className="card-mini-name">{cardModel.getName()}</h2>
-                    <div className="health-box">
-                        <p className="card-mini-health">Vida: {cardModel.getHealth()}</p>
-                        <div className="health-bar-border">
-                            <div 
-                                className={
-                                    "health-bar " +
-                                    (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                        ? "green"
-                                        : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                        ? "yellow"
-                                        : "red")
-                                }
-                                style={{
-                                    width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                }}
-                            ></div>
+                {!showBack ? (
+                    <>
+                        <div className="card-mini-header">
+                            <h2 className="card-mini-name">{cardModel.getName()}</h2>
+                            <div className="health-box">
+                                <p className="card-mini-health">Vida: {cardModel.getHealth()}</p>
+                                <div className="health-bar-border">
+                                    <div 
+                                        className={
+                                            "health-bar " +
+                                            (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                                ? "green"
+                                                : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                                ? "yellow"
+                                                : "red")
+                                        }
+                                        style={{
+                                            width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                        }}
+                                    ></div>
+                                </div>
                             </div>
                         </div>
-                </div>
-                <div className="card-mini-image">
-                    <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                </div>
-                <div className="card-mini-body">
-                    <div className="card-mini-attack">
-                        <p className="card-mini-attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                        <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                        <div className="card-mini-image">
+                            <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
+                        </div>
+                        <div className="card-mini-body">
+                            <div className="card-mini-attack">
+                                <p className="card-mini-attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
+                                <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                            </div>
+                            <div className="card-mini-passive">
+                                <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
+                                <p className="card-mini-passive-details">
+                                    Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className="card-mini-back">
+                        <div className="card-mini-description">
+                            <p>{cardModel.getDescription()}</p>
+                        </div>
                     </div>
-                    <div className="card-mini-passive">
-                        <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                        <p className="card-mini-passive-details">
-                            Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                        </p>
-                    </div>
-                </div>
+                )}
                 <div className="card-mini-footer">
-                    <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                    <img 
+                        src="/assets/images/curved-arrow.svg" 
+                        alt="Da la vuelta a la carta" 
+                        className="flip-icon" 
+                        onClick={handleFlip} // Llama a la función para voltear la carta
+                    />
                     <img 
                         className="magnify-icon" 
                         src="/assets/images/image7.png" 
@@ -127,44 +147,59 @@ function CardMini(props) {
             {/* Enlarged clone that appears in the center */}
             {showEnlarged && (
                 <div className="mini-card-enlarged-clone" onClick={handleEnlargedCardClick}>
-                    <div className="card-mini-header">
-                        <h2 className="card-mini-name">{cardModel.getName()}</h2>
-                        <div className="health-box">
-                            <p className="card-mini-health">Vida: {cardModel.getHealth()}</p>
-                            <div className="health-bar-border">
-                                <div 
-                                    className={
-                                        "health-bar " +
-                                        (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                            ? "green"
-                                            : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                            ? "yellow"
-                                            : "red")
-                                    }
-                                    style={{
-                                        width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                    }}
-                                ></div>
+                    {!showBack ? (
+                        <>
+                            <div className="card-mini-header">
+                                <h2 className="card-mini-name">{cardModel.getName()}</h2>
+                                <div className="health-box">
+                                    <p className="card-mini-health">Vida: {cardModel.getHealth()}</p>
+                                    <div className="health-bar-border">
+                                        <div 
+                                            className={
+                                                "health-bar " +
+                                                (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                                    ? "green"
+                                                    : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                                    ? "yellow"
+                                                    : "red")
+                                            }
+                                            style={{
+                                                width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                            }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card-mini-image">
+                                <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
+                            </div>
+                            <div className="card-mini-body">
+                                <div className="card-mini-attack">
+                                    <p className="card-mini-attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
+                                    <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                                </div>
+                                <div className="card-mini-passive">
+                                    <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
+                                    <p className="card-mini-passive-details">
+                                        Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="card-mini-back">
+                            <div className="card-mini-description">
+                                <p>{cardModel.getDescription()}</p>
                             </div>
                         </div>
-                    </div>
-                    <div className="card-mini-image">
-                        <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                    </div>
-                    <div className="card-mini-body">
-                        <div className="card-mini-attack">
-                            <p className="card-mini-attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                            <p className="card-mini-attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
-                        </div>
-                        <div className="card-mini-passive">
-                            <p className="card-mini-passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                            <p className="card-mini-passive-details">
-                                Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                            </p>
-                        </div>
-                    </div>
+                    )}
                     <div className="card-mini-footer">
-                        <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                        <img 
+                            src="/assets/images/curved-arrow.svg" 
+                            alt="Da la vuelta a la carta" 
+                            className="flip-icon" 
+                            onClick={handleFlip} 
+                        />
                         <img 
                             className="magnify-icon" 
                             src="/assets/images/image7.png" 

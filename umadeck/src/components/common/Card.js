@@ -2,10 +2,12 @@ import "../styles/Card.css";
 import { useState, useRef, useEffect } from "react";
 
 function Card(props) {
-    const { cardModel, isSelected, onCardClick } = props;
+    const { cardModel, isSelected, onCardClick, attachRef } = props;
     const [showEnlarged, setShowEnlarged] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
     const [isAttacking, setIsAttacking] = useState(false);
+    const [showBack, setShowBack] = useState(false);
+    const cardRef = useRef(null);
     const timerRef = useRef(null);
     
     const animateAttack = () => {
@@ -79,6 +81,11 @@ function Card(props) {
         setShowOverlay(true);
     };
 
+    const handleFlip = () => {
+        setShowBack(!showBack);
+
+    }
+
     return (
         <>
             {showOverlay && <div className="overlay active" onClick={handleOverlayClick}></div>}
@@ -92,44 +99,59 @@ function Card(props) {
                 onTouchStart={handleMouseDown}
                 onTouchEnd={handleMouseUp}
             >
-                <div className="custom-card-header">
-                    <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                    <div className="health-box">
-                        <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
-                        <div className="health-bar-border">
-                            <div 
-                                className={
-                                    "health-bar " +
-                                    (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                        ? "green"
-                                        : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                        ? "yellow"
-                                        : "red")
-                                }
-                                style={{
-                                    width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                }}
-                            ></div>
+                {!showBack ? (
+                    <div className="card-front">
+                        <div className="custom-card-header">
+                            <h2 className="custom-card-name">{cardModel.getName()}</h2>
+                            <div className="health-box">
+                                <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                                <div className="health-bar-border">
+                                    <div 
+                                        className={
+                                            "health-bar " +
+                                            (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                                ? "green"
+                                                : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                                ? "yellow"
+                                                : "red")
+                                        }
+                                        style={{
+                                            width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                        }}
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="custom-card-image">
+                            <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
+                        </div>
+                        <div className="custom-card-body">
+                            <div className="attack">
+                                <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
+                                <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                            </div>
+                            <div className="passive">
+                                <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
+                                <p className="passive-details">
+                                    Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="custom-card-image">
-                    <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                </div>
-                <div className="custom-card-body">
-                    <div className="attack">
-                        <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                        <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                ) : (
+                    <div className="card-back">
+                        <div className="custom-card-description">
+                            <p>{cardModel.getDescription()}</p>
+                        </div>
                     </div>
-                    <div className="passive">
-                        <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                        <p className="passive-details">
-                            Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                        </p>
-                    </div>
-                </div>
+                )}
                 <div className="custom-card-footer">
-                    <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                    <img 
+                        src="/assets/images/curved-arrow.svg" 
+                        alt="Da la vuelta a la carta" 
+                        className="flip-icon" 
+                        onClick={handleFlip} 
+                    />
                     <img 
                         className="magnify-icon" 
                         src="/assets/images/image7.png" 
@@ -142,44 +164,59 @@ function Card(props) {
             {/* Enlarged clone that appears in the center */}
             {showEnlarged && (
                 <div className="card-enlarged-clone" onClick={handleEnlargedCardClick}>
-                    <div className="custom-card-header">
-                        <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                        <div className="health-box">
-                            <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
-                            <div className="health-bar-border">
-                                <div 
-                                    className={
-                                        "health-bar " +
-                                        (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                            ? "green"
-                                            : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                            ? "yellow"
-                                            : "red")
-                                    }
-                                    style={{
-                                        width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                    }}
-                                ></div>
+                    {!showBack ? (
+                        <div className="card-front">
+                            <div className="custom-card-header">
+                                <h2 className="custom-card-name">{cardModel.getName()}</h2>
+                                <div className="health-box">
+                                    <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
+                                    <div className="health-bar-border">
+                                        <div 
+                                            className={
+                                                "health-bar " +
+                                                (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
+                                                    ? "green"
+                                                    : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
+                                                    ? "yellow"
+                                                    : "red")
+                                            }
+                                            style={{
+                                                width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
+                                            }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="custom-card-image">
+                                <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
+                            </div>
+                            <div className="custom-card-body">
+                                <div className="attack">
+                                    <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
+                                    <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                                </div>
+                                <div className="passive">
+                                    <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
+                                    <p className="passive-details">
+                                        Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="custom-card-image">
-                        <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                    </div>
-                    <div className="custom-card-body">
-                        <div className="attack">
-                            <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                            <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
+                    ) : (
+                        <div className="card-back">
+                            <div className="custom-card-description">
+                                <p>{cardModel.getDescription()}</p>
+                            </div>
                         </div>
-                        <div className="passive">
-                            <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                            <p className="passive-details">
-                                Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                            </p>
-                        </div>
-                    </div>
+                    )}
                     <div className="custom-card-footer">
-                        <img src="/assets/images/curved-arrow.svg" alt="Da la vuelta a la carta" />
+                        <img 
+                            src="/assets/images/curved-arrow.svg" 
+                            alt="Da la vuelta a la carta" 
+                            className="flip-icon" 
+                            onClick={handleFlip} 
+                        />
                         <img 
                             className="magnify-icon" 
                             src="/assets/images/image7.png" 

@@ -20,6 +20,37 @@
     height: 224px; /* Fixed height for all enlarged cards */
 }
 
+.card-mini-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 88%;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.card-mini-back .flip-icon {
+    position: absolute;
+    top: 5px; /* Mueve el botón más cerca del borde superior */
+    right: 5px; /* Alinea el botón más cerca del borde derecho */
+    width: 20px; /* Ajusta el tamaño del botón */
+    height: 20px;
+    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+    cursor: pointer;
+}
+
+.card-mini-description {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: #555;
+}
+
 /* Clon ampliado con dimensiones fijas para asegurar consistencia */
 .mini-card-enlarged-clone {
     position: fixed;
