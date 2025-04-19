@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CardMini from "../common/CardMini";
 import Card from "../common/Card";
 import "../styles/EnemySide.css";
@@ -6,6 +8,13 @@ import ProfileDisplay from "./ProfileDisplay";
 
 function EnemySide(props){
     const { cards, points, attachCardRef } = props;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (points >= 3) {
+            navigate('/game-over-lost'); // Redirige a la pantalla de derrota
+        }
+    }, [points, navigate]);
 
     return (
 

@@ -3,7 +3,7 @@ import Card from "../common/Card";
 import "../styles/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 
@@ -14,6 +14,12 @@ function PlayerSide(props){
     const [cardRef, setCardRef] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (points >= 3) {
+            navigate('/game-over-won'); // Redirige a la pantalla de victoria
+        }
+    }, [points, navigate]);
 
     const handleCardClick = () => {
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
