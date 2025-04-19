@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 function NewGamePage() {
     const [selectedCards, setCards] = useState([]);
     const [loadedCards, setLoadedCards] = useState([]);
+    const [recommendedCardIndex, setRecommendedCardIndex] = useState(null);
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -34,21 +35,24 @@ function NewGamePage() {
     }
 
     useEffect(() => {   
-        setLoadedCards(generateRandomCards());
+        const cards = generateRandomCards();
+        setLoadedCards(cards);
+        setRecommendedCardIndex(Math.floor(Math.random() * cards.length)); // Randomly recommend one card
     }, []);
     
     return (
         <div className="newGamePage">
             <GoBackArrow />
             <div>
-                <h1 class="especialh1">Elige las cartas del equipo:</h1>
-                <h2 class="especialh2">{selectedCards.length} de 3</h2>
+                <h1 className="especialh1">Elige las cartas del equipo:</h1>
+                <h2 className="especialh2">{selectedCards.length} de 3</h2>
             </div>
 
             <div className="cardList-zoom">
                 <ul className="cardList">
                     {loadedCards.map((card, index) => (
-                        <li key={index}>
+                        <li key={index} className={index === recommendedCardIndex ? "recommended-card" : ""}>
+                            {index === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                             <Card cardModel={card}
                                 isSelected = {selectedCards.includes(card)}
                                 onCardClick={() => selectCard(index)}/>

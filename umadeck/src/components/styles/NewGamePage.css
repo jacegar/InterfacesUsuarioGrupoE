@@ -10,7 +10,6 @@
     box-sizing: border-box;
 }
 
-/* Estilos específicos para los textos del encabezado en NewGamePage */
 .newGamePage h1.especialh1 {
     color: #007bff;
     text-align: center;
@@ -30,7 +29,6 @@
     font-size: 3rem;
 }
 
-/* Reposicionando la flecha para que esté en la esquina superior izquierda */
 .newGamePage .go-back-arrow {
     position: absolute;
     top: 20px;
@@ -42,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px; /* Aumentado aún más el espacio entre cartas */
+    gap: 50px;
     list-style: none;
     padding: 0;
     margin: 50px;
@@ -78,7 +76,7 @@
     letter-spacing: 1.5px;
     font-weight: bold;
     min-width: min(300px, 80%);
-    margin-top: 3rem; /* Añadido margen superior para mover el botón más abajo */
+    margin-top: 3rem;
 }
 
 .startGameButton:hover:not(:disabled) {
@@ -98,13 +96,36 @@
     cursor: not-allowed;
 }
 
+.recommended-card {
+    position: relative;
+    border: 3px solid #ffae00;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 0 10px #ffae00;
+}
+
+.recommended-label {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffae00;
+    color: #333;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
 @media (max-width: 768px) {
     .cardList {
-        gap: 3.5rem; /* Aumentado también para pantallas medianas */
+        gap: 3.5rem;
     }
     
     .cardList li {
-        transform: scale(1.3); /* Aumentado de 1.2 a 1.3 */
+        transform: scale(1.3);
     }
 }
 
@@ -119,7 +140,7 @@
     
     .cardList li {
         margin: 0.5rem;
-        transform: scale(1.2); /* Aumentado de 1.1 a 1.2 */
+        transform: scale(1.2);
     }
     
     .cardList li:hover {
