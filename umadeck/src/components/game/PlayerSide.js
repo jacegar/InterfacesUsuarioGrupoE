@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router-dom';
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage } = props;
+    const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [cardRef, setCardRef] = useState(null);
@@ -62,7 +63,12 @@ function PlayerSide(props){
 
     const handleChange = () => {
         console.log("Cambiar carta");
-        // Implementar lógica de cambio
+        if (localCards.length > 1) {
+            const updatedCards = [...localCards];
+            const [activeCard] = updatedCards.splice(0, 1); // Extrae la carta activa
+            updatedCards.push(activeCard); // Añade la carta activa al final del array
+            setLocalCards(updatedCards); // Actualiza el estado con las cartas modificadas
+        }
         setShowMenu(false);
         setIsCardSelected(false);
     };
@@ -87,39 +93,38 @@ function PlayerSide(props){
                     la carta que quiere usar cuando le derrotan la activa */}
                 
                 <div className="card-slot left">
-                    {cards[1] ? 
-                        <CardMini cardModel={cards[1]} onCardClick={() => {}}/> : 
-                        <div className="card-placeholder"></div>
-                    }
+                {localCards[1] ? 
+                    <CardMini cardModel={localCards[1]} onCardClick={() => {}}/> : 
+                    <div className="card-placeholder"></div>
+                }
                 </div>
-                
-                <div className="main-card-container">
-                    
-                    {cards[0] ? 
-                        <Card 
-                            cardModel={cards[0]} 
-                            isSelected={isCardSelected}
-                            onCardClick={handleCardClick}
-                            attachRef={setCardRef}
-                        /> : 
-                        <div className="card-placeholder main"></div>
-                    }
-                    {isCardSelected && showMenu && (
-                        <CardMenu
-                            isActive={true}
-                            onAttack={handleAttack}
-                            onAbility={handleAbility}
-                            onChange={handleChange}
-                        />
-                    )}
-                </div>
-                
-                <div className="card-slot right">
-                    {cards[2] ? 
-                        <CardMini cardModel={cards[2]} onCardClick={() => {}}/> : 
-                        <div className="card-placeholder"></div>
-                    }
-                </div>
+
+            <div className="main-card-container">
+                {localCards[0] ? 
+                    <Card 
+                        cardModel={localCards[0]} 
+                        isSelected={isCardSelected}
+                        onCardClick={handleCardClick}
+                        attachRef={setCardRef}
+                    /> : 
+                    <div className="card-placeholder main"></div>
+                }
+                {isCardSelected && showMenu && (
+                    <CardMenu
+                        isActive={true}
+                        onAttack={handleAttack}
+                        onAbility={handleAbility}
+                        onChange={handleChange}
+                    />
+                )}
+            </div>
+
+            <div className="card-slot right">
+                {localCards[2] ? 
+                    <CardMini cardModel={localCards[2]} onCardClick={() => {}}/> : 
+                    <div className="card-placeholder"></div>
+                }
+            </div>
                 
             </div>
             
