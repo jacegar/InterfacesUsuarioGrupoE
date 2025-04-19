@@ -8,7 +8,7 @@ import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
 import "../styles/GamePage.css";
 
-function GamePage(props){
+function GamePage(props){    
     const location = useLocation();
 
     //Modelo de la partida

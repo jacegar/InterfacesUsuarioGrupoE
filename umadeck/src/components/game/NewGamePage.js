@@ -41,18 +41,26 @@ function NewGamePage() {
         <div className="newGamePage">
             <GoBackArrow />
             <div>
-                <h1>Elige las cartas del equipo:</h1>
-                <h1>{selectedCards.length} de 3</h1>
+                <h1 class="especialh1">Elige las cartas del equipo:</h1>
+                <h2 class="especialh2">{selectedCards.length} de 3</h2>
             </div>
-            <ul className="cardList">
-                {loadedCards.map((card, index) => (
-                    <li key={index}>
-                        <Card cardModel={card}
-                              isSelected = {selectedCards.includes(card)}
-                              onCardClick={() => selectCard(index)}/>
-                    </li>
-                ))}
-            </ul>
+
+
+
+            <div className="cardList-zoom">
+                <ul className="cardList">
+                    {loadedCards.map((card, index) => (
+                        <li key={index}>
+                            <Card cardModel={card}
+                                isSelected = {selectedCards.includes(card)}
+                                onCardClick={() => selectCard(index)}/>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            
+
+
             <div>
                 <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>

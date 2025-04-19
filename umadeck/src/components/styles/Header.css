@@ -1,0 +1,47 @@
+.main-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(1.75rem, 3.5vw, 2.6rem) 0;
+    position: relative;
+    width: 100%;
+    border-bottom: 3.5px solid #0056b3;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+}
+
+.game-title {
+    font-size: clamp(3.15rem, 8.75vw, 4.4rem);
+    text-align: center;
+    color: #007bff;
+    margin: 0;
+    letter-spacing: clamp(1.75px, 0.9vw, 3.5px);
+    text-transform: uppercase;
+    text-shadow: 3.5px 3.5px 7px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.options-icon {
+    position: absolute;
+    left: clamp(0.9rem, 3.5vw, 1.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.options-icon img {
+    width: clamp(42px, 7vw, 52px);
+    height: clamp(42px, 7vw, 52px);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.options-icon img:hover {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 0.8rem 0;
+    }
+}

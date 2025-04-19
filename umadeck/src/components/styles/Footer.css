@@ -1,0 +1,35 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.3rem, 1vw, 0.5rem) 0;
+    width: 100%;
+    margin-top: clamp(0.3rem, 1vw, 0.5rem); /* Reducido para acercar a los botones de arriba */
+    box-sizing: border-box;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    flex-wrap: wrap;
+    padding: 0 1.75rem;
+}
+
+.social-icon {
+    width: clamp(60px, 10vw, 80px); /* Aumentado el tamaño de los iconos */
+    height: clamp(60px, 10vw, 80px);
+    opacity: 0.8;
+    margin-bottom: 30px; /* Añadido margen inferior */
+}
+
+.social-icon:hover {
+    transform: translateY(-9px);
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .social-icons {
+        gap: clamp(0.8rem, 2vw, 1.5rem);
+    }
+}

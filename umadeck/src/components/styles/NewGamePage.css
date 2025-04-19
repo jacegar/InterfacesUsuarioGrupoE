@@ -1,19 +1,128 @@
 .newGamePage {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 20px;
+    min-height: 90vh;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos específicos para los textos del encabezado en NewGamePage */
+.newGamePage h1.especialh1 {
+    color: #007bff;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.75px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    font-size: 4.2rem;
+}
+
+.newGamePage h2.especialh2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+/* Reposicionando la flecha para que esté en la esquina superior izquierda */
+.newGamePage .go-back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
 }
 
 .cardList {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px; /* Adds spacing between cards */
+    align-items: center;
+    gap: 50px; /* Aumentado aún más el espacio entre cartas */
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 50px;
+    margin-top: 70px;
+    width: 200%;
+    max-width: 1200px;
+    overflow-x: visible;
 }
 
-.cardList li {
-    flex: 0 1 calc(20% - 15px); /* Adjusts card width, ensuring responsiveness */
-    box-sizing: border-box;
+.cardList-zoom {
+    margin: 20;
+    transform: scale(1.3);
+}
+
+.start-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(7rem, 12vw, 10rem);
+    width: 100%;
+}
+
+.startGameButton {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    padding: clamp(1rem, 2vw, 1.4rem) clamp(2.5rem, 4vw, 3.5rem);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    min-width: min(300px, 80%);
+    margin-top: 3rem; /* Añadido margen superior para mover el botón más abajo */
+}
+
+.startGameButton:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.startGameButton:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.startGameButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .cardList {
+        gap: 3.5rem; /* Aumentado también para pantallas medianas */
+    }
+    
+    .cardList li {
+        transform: scale(1.3); /* Aumentado de 1.2 a 1.3 */
+    }
+}
+
+@media (max-width: 480px) {
+    .game-header h1 {
+        font-size: 2rem;
+    }
+    
+    .game-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cardList li {
+        margin: 0.5rem;
+        transform: scale(1.2); /* Aumentado de 1.1 a 1.2 */
+    }
+    
+    .cardList li:hover {
+        transform: none;
+    }
 }

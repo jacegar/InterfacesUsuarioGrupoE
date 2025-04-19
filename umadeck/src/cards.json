@@ -8,7 +8,7 @@
         "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
-        "passiveType": "Curación",
+        "passiveType": "Cura",
         "description": "Pathe Ciss es un jugador del Rayo Vallecano, conocido por su gran talento futbolístico."
     },
     {
@@ -37,10 +37,10 @@
     },
     {
         "id": 4,
-        "name": "Tanque",
+        "name": "Link",
         "health": 50,
         "imageUrl": "/assets/images/image4.png",
-        "attackName": "Mazazo",
+        "attackName": "Corte",
         "attackDamage": 20,
         "passiveName": "Cambio",
         "passiveQuantity": 10,
