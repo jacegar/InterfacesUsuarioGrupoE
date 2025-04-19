@@ -6,6 +6,7 @@ import ProfileDisplay from "./ProfileDisplay";
 import {useState, useEffect} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
+import ConfirmationMenu from "../common/ConfirmationMenu";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage } = props;
@@ -15,7 +16,7 @@ function PlayerSide(props){
     const [cardRef, setCardRef] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         if (points >= 3) {
             navigate('/game-over-won'); // Redirige a la pantalla de victoria
@@ -140,15 +141,7 @@ function PlayerSide(props){
                 Rendirse
             </button>
             {showConfirmation && (
-                <div className="confirmation-dialog">
-                    <p>¿Estás seguro de que quieres rendirte?</p>
-                    <button className="confirm-button" onClick={confirmGiveUp}>
-                        Sí
-                    </button>
-                    <button className="cancel-button" onClick={cancelGiveUp}>
-                        No
-                    </button>
-                </div>
+                <ConfirmationMenu onConfirm={confirmGiveUp} onCancel={cancelGiveUp} text={"¿Estás seguro de que quieres rendirte?"}/>
             )}
             <PointsDisplay classname="points-container" points={points}/>
             <ProfileDisplay side={0}/>
