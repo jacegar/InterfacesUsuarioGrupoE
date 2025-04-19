@@ -6,7 +6,7 @@ function GameOverWonPage() {
     const navigate = useNavigate();
 
     const audio = new Audio("/assets/sounds/sound2.mp3");
-        audio.volume = 0.2;
+        audio.volume = 0.05;
         audio.play(); // Reproducir el sonido
 
     const handleContinue = () => {
