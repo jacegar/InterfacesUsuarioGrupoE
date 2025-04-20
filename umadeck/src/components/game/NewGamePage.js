@@ -10,6 +10,7 @@ function NewGamePage() {
     const [selectedCards, setCards] = useState([]);
     const [loadedCards, setLoadedCards] = useState([]);
     const [recommendedCardIndex, setRecommendedCardIndex] = useState(null);
+    const [usedRecommendation, setUsedRecommendation] = useState(false);
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -37,9 +38,26 @@ function NewGamePage() {
     useEffect(() => {   
         const cards = generateRandomCards();
         setLoadedCards(cards);
-        setRecommendedCardIndex(Math.floor(Math.random() * cards.length)); // Randomly recommend one card
     }, []);
     
+    const obtenerRecomendacion = () => {
+        if(!usedRecommendation){
+            const strongCards = CardModel.getStrongCards();
+            const randomIndex = Math.floor(Math.random() * strongCards.length);
+            const recommendedCard = strongCards[randomIndex];
+            
+            //Si la carta recomendada esta en las cartas cargadas, se selecciona su indice
+            //Si no, se elige una carta aleatoria de las cartas cargadas
+            if(loadedCards.filter(card => card.id === recommendedCard.id).length > 0){
+                setRecommendedCardIndex(loadedCards.findIndex(card => card.id === recommendedCard.id));
+            }else{
+                setRecommendedCardIndex(Math.floor(Math.random() * loadedCards.length));
+            }
+
+            setUsedRecommendation(true);
+        }
+    }
+
     return (
         <div className="newGamePage">
             <GoBackArrow />
@@ -51,7 +69,7 @@ function NewGamePage() {
             <div className="cardList-zoom">
                 <ul className="cardList">
                     {loadedCards.map((card, index) => (
-                        <li key={index} className={index === recommendedCardIndex ? "recommended-card" : ""}>
+                        <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
                             {index === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                             <Card cardModel={card}
                                 isSelected = {selectedCards.includes(card)}
@@ -62,6 +80,9 @@ function NewGamePage() {
             </div>
             
             <div>
+                <button className = "recommendation-button" onClick = {obtenerRecomendacion} >
+                    Recomendación
+                </button>
                 <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
                 </Link>
