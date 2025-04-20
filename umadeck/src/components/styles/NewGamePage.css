@@ -143,11 +143,18 @@ body.reading-mode .newGamePage h2.especialh2 {
     padding: 5px;
 }
 
+.contenedor-del-boton {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Mantiene el botón en la parte inferior */
+    align-items: center;
+    height: 100%; /* Asegúrate de que el contenedor ocupe toda la altura */
+}
+
 .recommendation-button {
-    position: absolute;
-    left: 46%;
-    bottom: 25px;
+    position: static; /* Elimina la posición absoluta */
     background-color: #007bff;
+    margin-top: 10px;
     color: white;
     border: none;
     border-radius: 10px;
@@ -164,13 +171,23 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .recommendation-button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px); /* Reduced hover effect */
+    transform: translateY(-2px); /* Only apply vertical translation */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
 }
 
 .recommendation-button:active {
-    transform: translateY(1px);
+    transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-button-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
