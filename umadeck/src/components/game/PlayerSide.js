@@ -65,7 +65,7 @@ function PlayerSide(props){
                 if (activeCard.passiveType === "Cura" || activeCard.passiveType === "Defensa" || activeCard.passiveType === "Nada") {
                     if (activeCard.passiveName === "Hey, listen!") {
                         setAbilityEffect({ type: "heylisten", target: "player" });
-                    } else if (activeCard.passiveName === "¡Jamón!'") {
+                    } else if (activeCard.passiveName === "¡Jamón!") {
                         setAbilityEffect({ type: "jamon", target: "player" });
                     } else {
                         setAbilityEffect({ type: activeCard.passiveName, target: "player" });
@@ -77,7 +77,7 @@ function PlayerSide(props){
                 let sound = null;
                 if (activeCard.passiveName === "Hey, listen!") {
                     sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
-                } else if (activeCard.passiveName === "¡Jamón!'") {
+                } else if (activeCard.passiveName === "¡Jamón!") {
                     sound = new Audio(`/assets/sounds/${"jamon"}.mp3`);
                 } else {
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
