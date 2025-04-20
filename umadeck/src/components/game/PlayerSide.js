@@ -81,6 +81,7 @@ function PlayerSide(props){
                     sound = new Audio(`/assets/sounds/${"jamon"}.mp3`);
                 } else {
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
+                    sound.volume = 0.5;
                 }
     
                 // Espera a que el audio cargue completamente

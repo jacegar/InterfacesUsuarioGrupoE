@@ -6,7 +6,7 @@
     overflow: hidden;
     border: 3px solid #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease; /* Modified to affect all properties */
+    transition: all 0.3s ease;
     transform-origin: center;
     position: relative;
     z-index: 1;
@@ -29,11 +29,11 @@
 
 .card-back .flip-icon {
     position: absolute;
-    top: 5px; /* Mueve el botón más cerca del borde superior */
-    right: 5px; /* Alinea el botón más cerca del borde derecho */
-    width: 35px; /* Ajusta el tamaño del botón si es necesario */
+    top: 5px;
+    right: 5px;
+    width: 35px;
     height: 35px;
-    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+    z-index: 10;
     cursor: pointer;
 }
 
@@ -44,16 +44,16 @@
 }
 
 .custom-card.selected {
-    border-color: gold; /* Change border to gold */
-    animation: border-glow 0.5s linear; /* Trigger the animation */
+    border-color: gold;
+    animation: border-glow 0.5s linear;
 }
 
 .custom-card.enlarged {
-    position: relative; /* Changed from fixed to relative to keep original position */
-    transform: scale(1.5); /* Only scale without translating */
+    position: relative;
+    transform: scale(1.5);
     z-index: 1000;
-    width: 200px; /* Fixed width for all enlarged cards */
-    height: 320px; /* Fixed height for all enlarged cards */
+    width: 200px;
+    height: 320px;
 }
 
 /* Clon ampliado con dimensiones fijas para asegurar consistencia */
@@ -64,8 +64,8 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
     /* Aumentando ligeramente las dimensiones */
-    width: 330px; /* Antes 300px */
-    height: 520px; /* Antes 480px */
+    width: 330px;
+    height: 520px;
     background-color: #d3d3d3;
     border-radius: 10px;
     overflow: hidden;
@@ -174,7 +174,6 @@
     left: 0;
     right: 0;
     bottom: 0;
- /* background-color: rgba(0, 0, 0, 0.5); Color de fondo al aumentar el tamaño de una carta*/
     z-index: 999;
     display: none;
 }
@@ -269,9 +268,9 @@
     height: auto;
     max-width: 175px; 
     max-height: 100px;
-    margin: auto; /* Centra la imagen horizontalmente */
-    display: block; /* Necesario para que margin: auto funcione */
-    object-fit: contain; /* Muestra la imagen completa respetando su proporción */
+    margin: auto;
+    display: block;
+    object-fit: contain;
 }
 
 @keyframes attack-animation {
@@ -294,7 +293,7 @@
 
 .custom-card.attacking {
     animation: attack-animation 0.7s ease-in-out;
-    z-index: 100; /* Asegura que la carta aparezca por encima de otras durante la animación */
+    z-index: 100;
 }
 
 .health-box{
@@ -314,7 +313,7 @@
 .health-bar{
     height: 100%;
     border-radius: 5px;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; /*Transiciones de anchura y color*/
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .health-bar.red{

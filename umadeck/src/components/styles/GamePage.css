@@ -4,71 +4,66 @@
     height: auto;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 5px; /* Reducido de 10px a 5px */
+    padding: 5px;
     transform: scale(1);
     transform-origin: top center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-x: auto; /* Asegura que el scroll horizontal aparezca cuando sea necesario */
+    overflow-x: auto;
     overflow-y: auto;
-    min-width: 900px; /* Aumentado de 600px a 900px para asegurar que todo el contenido sea accesible */
+    min-width: 900px;
     box-sizing: border-box;
 }
 
 .game-page hr {
     width: 100%;
-    margin: 5px 0; /* Reducido de 10px a 5px */
+    margin: 5px 0;
     border: 1px solid #ccc;
 }
 
 .turn-counter, .turn-indicator {
     text-align: center;
-    font-size: 1.3em; /* Reducido de 1.5em a 1.3em */
-    margin: 2px 0; /* Reducido de 3px a 2px */
+    font-size: 1.3em;
+    margin: 2px 0;
     font-weight: bold;
-    padding: 2px; /* Reducido de 3px a 2px */
+    padding: 2px;
 }
 
-/* Ajustar el espacio entre secciones para optimizar el espacio vertical */
 .player-side, .enemy-side {
-    flex: 0.5; /* Reducido de 1 a 0.5 para que ocupen menos espacio vertical */
+    flex: 0.5;
     min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0;
     margin: 0;
-    min-width: 900px; /* Asegura que las secciones de jugador y enemigo mantengan un ancho mínimo */
+    min-width: 900px;
 }
 
-/* Asegurarnos que el contenido central (turno, hr) no tome más espacio del necesario */
 .turn-section {
     flex: 0 0 auto;
     padding: 0;
     margin: 0;
 }
 
-/* Asegurar que los elementos no desborden el ancho disponible */
 .player-side, .enemy-side, .turn-section {
     width: 100%;
     max-width: 100%;
-    overflow: visible; /* Permite que el contenido sea visible fuera de los límites */
+    overflow: visible;
 }
 
-/* Asegurarnos que las cartas y otros elementos se ajustan correctamente */
 .card-container, .game-controls, .player-info {
     max-width: 100%;
     box-sizing: border-box;
 }
 
 .card-container {
-    min-width: 850px; /* Asegura que el contenedor de cartas tenga un ancho mínimo adecuado */
+    min-width: 850px;
 }
 
-/* Ajustar configuración global para asegurar que las barras de desplazamiento aparezcan cuando sea necesario */
 html, body {
-    overflow-x: auto !important; /* Fuerza que el scroll horizontal aparezca cuando sea necesario */
+    overflow-x: auto !important;
     overflow-y: auto !important;
     min-width: 100%;
     min-height: 100%;
@@ -80,6 +75,73 @@ html, body {
 
 body #root {
     width: auto;
-    min-width: 900px; /* Asegura que el contenedor raíz también tenga un ancho mínimo */
+    min-width: 900px;
     overflow-x: auto;
+}
+
+.music-controls {
+    position: absolute;
+    bottom: 35px;
+    left: 150px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.volume-slider {
+    display: none;
+    position: relative;
+    top: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90px;
+    height: 8px;
+    background: linear-gradient(to right, #adb5bd, #6c757d);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.music-controls:hover .volume-slider {
+    display: block;
+}
+
+.music-toggle {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ced4da;
+    border: 2px solid #6c757d;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background: #131414;
+    transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #ced4da;
+    border: 2px solid #6c757d;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+    background: #141516;
+    transform: scale(1.2);
 }

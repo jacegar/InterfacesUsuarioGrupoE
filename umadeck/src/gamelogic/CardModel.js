@@ -5,13 +5,14 @@ class CardModel {
         this.id = id; // id of the card
         const jsonData = cards.find((card) => card.id === id); // Find the card by id
         if (!jsonData) {
-            throw new Error(`Card data for id ${id} not found.`);
+            this.showStyledAlert(`Card data for id ${id} not found.`);
+            return;
         }
-        this.fromJson(JSON.stringify(jsonData))
+        this.fromJson(JSON.stringify(jsonData));
         this.abilityUsed = false;
         this.defense = 0;
         this.isDefending = false;
-        if(this.passiveType=="Defensa") {
+        if (this.passiveType == "Defensa") {
             this.defense = this.passiveQuantity;
         }
     }
@@ -34,31 +35,55 @@ class CardModel {
     //Metodos de partida (aqui deberian implementarse metodos para ejecutar las pasivas, los ataques, etc en una partida)
 
     useAbility(targetCard) {
-        if(this.abilityUsed) {
-            throw new Error("La habilidad ya ha sido utilizada.");
+        if (this.abilityUsed) {
+            this.showStyledAlert("La habilidad ya ha sido utilizada");
+            return
         }
-        const maxHealthCumplido = false;
+const maxHealthCumplido = false;
         switch (this.passiveType) {
             case "Cura":
-                if(this.health + this.passiveQuantity > this.maxHealth) { 
-                    throw new Error("No se puede curar teniendo toda la vida");
+                if (this.health + this.passiveQuantity > this.maxHealth) {
+                    this.showStyledAlert("No se puede curar teniendo toda la vida");
+                    return;
+                } else {
+                    this.health += this.passiveQuantity;
                 }
-                else this.health += this.passiveQuantity;
                 break;
             case "Defensa":
                 this.isDefending = true;
                 break;
             case "Fuerza":
-                if(targetCard) {
+                if (targetCard) {
                     targetCard.setHealth(targetCard.getHealth() - this.passiveQuantity);
                 } else {
-                    throw new Error(targetCard + "Se requiere una carta objetivo para usar la habilidad de ataque.");
+                    this.showStyledAlert(targetCard + "Se requiere una carta objetivo para usar la habilidad de ataque.");
                 }
                 break;
             case "Nada":
                 break;
         }
         this.abilityUsed = true; // Marca la habilidad como utilizada
+    }
+
+    showStyledAlert(message) {
+        const alertDiv = document.createElement("div");
+        alertDiv.textContent = message;
+        alertDiv.style.position = "fixed";
+        alertDiv.style.top = "20px";
+        alertDiv.style.left = "50%";
+        alertDiv.style.transform = "translateX(-50%)";
+        alertDiv.style.backgroundColor = "#f8d7da";
+        alertDiv.style.color = "#721c24";
+        alertDiv.style.padding = "10px 20px";
+        alertDiv.style.border = "1px solid #f5c6cb";
+        alertDiv.style.borderRadius = "5px";
+        alertDiv.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        alertDiv.style.zIndex = "1000";
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 3000); // Remove the alert after 3 seconds
     }
 
     resetDefense() {

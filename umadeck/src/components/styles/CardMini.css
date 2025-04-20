@@ -13,11 +13,11 @@
 }
 
 .card-mini.enlarged {
-    position: relative; /* Changed from fixed to relative to keep original position */
-    transform: scale(1.8); /* Only scale without translating */
+    position: relative;
+    transform: scale(1.8);
     z-index: 1000;
-    width: 140px; /* Fixed width for all enlarged cards */
-    height: 224px; /* Fixed height for all enlarged cards */
+    width: 140px;
+    height: 224px;
 }
 
 .card-mini-back {
@@ -37,11 +37,11 @@
 
 .card-mini-back .flip-icon {
     position: absolute;
-    top: 5px; /* Mueve el botón más cerca del borde superior */
-    right: 5px; /* Alinea el botón más cerca del borde derecho */
-    width: 20px; /* Ajusta el tamaño del botón */
+    top: 5px;
+    right: 5px;
+    width: 20px;
     height: 20px;
-    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+    z-index: 10;
     cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    /* Aumentando ligeramente las dimensiones */
+/* Aumentando ligeramente las dimensiones */
     width: 330px; /* Antes 300px */
     height: 520px; /* Antes 480px */
     background-color: #d3d3d3;
@@ -70,7 +70,6 @@
     flex-direction: column;
 }
 
-/* Ajustar elementos internos para que se vean bien con el nuevo tamaño */
 .mini-card-enlarged-clone .card-mini-header {
     display: flex;
     justify-content: space-between;
@@ -160,7 +159,6 @@
     left: 0;
     right: 0;
     bottom: 0;
- /* background-color: rgba(0, 0, 0, 0.5); */
     z-index: 999;
     display: none;
 }
@@ -176,7 +174,7 @@
 }
 
 .card-mini-health {
-    font-size: 0.6rem; /* Keep smaller font size */
+    font-size: 0.6rem;
     color: #555;
     margin-left: 3px;
     margin-right: 3px;
@@ -260,12 +258,11 @@
     object-fit: cover;
 }
 
-
-.card-mini-header .health-box{
+.card-mini-header .health-box {
     margin-right: 3px;
 }
 
-.card-mini .health-bar-border{
+.card-mini .health-bar-border {
     border: 2px solid #333;
     background-color: darkgray;
     border-radius: 5px;
@@ -275,24 +272,24 @@
     bottom: 10px;
 }
 
-.card-mini-header .health-bar{
+.card-mini-header .health-bar {
     height: 100%;
     border-radius: 5px;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; /*Transiciones de anchura y color*/
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.health-bar.red{
+.health-bar.red {
     background-color: red;
 }
 
-.health-bar.green{
+.health-bar.green {
     background-color: green;
 }
 
-.health-bar.yellow{
+.health-bar.yellow {
     background-color: yellow;
 }
 
-.mini-card-enlarged-clone .health-bar-border{
+.mini-card-enlarged-clone .health-bar-border {
     bottom: 2px;
 }

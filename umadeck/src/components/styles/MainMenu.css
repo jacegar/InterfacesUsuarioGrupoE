@@ -54,7 +54,7 @@
     justify-content: center;
     gap: clamp(0.9rem, 2.6vw, 1.75rem);
     width: 100%;
-    margin-top: clamp(0.8rem, 1.5vw, 1.2rem); /* Reducido para acercarlo más a Colección */
+    margin-top: clamp(0.8rem, 1.5vw, 1.2rem);
     flex-wrap: wrap;
 }
 
@@ -64,8 +64,8 @@
 }
 
 .menu-button-small {
-    padding: clamp(0.9rem, 1.8vw, 1.2rem) clamp(1.4rem, 2.8vw, 2rem); /* Aumentado el padding */
-    font-size: clamp(1.5rem, 2.8vw, 1.8rem); /* Aumentado el tamaño de fuente */
+    padding: clamp(0.9rem, 1.8vw, 1.2rem) clamp(1.4rem, 2.8vw, 2rem);
+    font-size: clamp(1.5rem, 2.8vw, 1.8rem);
     font-weight: normal;
     background-color: #6c757d;
     color: white;

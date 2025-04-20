@@ -1,7 +1,7 @@
 .player-side{
     position: relative;
-    margin-top: 0; /* Eliminado completamente el margen superior */
-    margin-bottom: 0; /* Eliminado completamente el margen inferior */
+    margin-top: 0;
+    margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -10,8 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6rem; /* Reducido de 8rem a 6rem */
-    margin-top: 0; /* Eliminado margen superior */
+    gap: 6rem;
+    margin-top: 0;
 }
 
 .end-turn-button, .give-up-button {
@@ -24,26 +24,26 @@
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px; /* Añadido margen superior */
+    margin-top: 20px;
 }
 
 .ability-effect {
     position: absolute;
     z-index: 50;
     animation: fade-in-out 1s ease-in-out;
-    width: 80px; /* Ajusta el tamaño del PNG */
+    width: 80px;
     height: 80px;
 }
 
 .player-effect {
-    top: 50%; /* Centrado verticalmente respecto a la carta */
-    left: 45.5%; /* Ajusta la posición horizontal al lado izquierdo de la carta */
+    top: 50%;
+    left: 45.5%;
     transform: translate(-100%, -50%);
 }
 
 .enemy-effect {
-    top: -20%; /* Centrado verticalmente respecto a la carta */
-    left: 48.5%; /* Ajusta la posición horizontal al lado derecho de la carta */
+    top: -20%;
+    left: 48.5%;
     transform: translate(0, -50%);
 }
 
@@ -61,12 +61,12 @@
 }
 
 .end-turn-button {
-    bottom: 0; /* Ajustado para subir más el botón */
+    bottom: 0;
     left: 80%;
 }
 
 .give-up-button {
-    bottom: 0; /* Ajustado para subir más el botón */
+    bottom: 0;
     left: 20%;
 }
 

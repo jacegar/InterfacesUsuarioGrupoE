@@ -5,7 +5,7 @@ import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
 import "../styles/GamePage.css";
 
-function GamePage(props) {
+function GamePage(props){
     const location = useLocation();
 
     // Modelo de la partida
@@ -30,6 +30,38 @@ function GamePage(props) {
     });
 
     const [enemyCardRef, setEnemyCardRef] = useState(null);
+
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+    const [volume, setVolume] = useState(0.1);
+
+    const toggleMusic = () => {
+        const backgroundMusic = backgroundMusicRef.current;
+        if (isMusicPlaying) {
+            backgroundMusic.volume = 0; // Mute the music
+            setVolume(0); // Set the slider to 0
+        } else {
+            backgroundMusic.volume = 0.1; // Restore default volume
+            setVolume(0.1); // Update the slider to match the volume
+        }
+        setIsMusicPlaying(!isMusicPlaying);
+    };
+
+    const handleVolumeChange = (event) => {
+        const newVolume = parseFloat(event.target.value);
+        setVolume(newVolume);
+        const backgroundMusic = backgroundMusicRef.current;
+
+        if (newVolume > 0) {
+            setIsMusicPlaying(true); // Unmute if volume is increased
+            backgroundMusic.volume = newVolume;
+            backgroundMusic.play().catch((error) => {
+                console.error("Error al reproducir la música de fondo:", error);
+            });
+        } else {
+            setIsMusicPlaying(false); // Mute if volume is set to 0
+            backgroundMusic.volume = 0;
+        }
+    };
 
     const useTurn = () => {
         // Cambia el turno entre el jugador y el enemigo
@@ -87,7 +119,7 @@ function GamePage(props) {
     useEffect(() => {
         const backgroundMusic = backgroundMusicRef.current;
         backgroundMusic.loop = true;
-        backgroundMusic.volume = 0.1;
+        backgroundMusic.volume = volume;
         backgroundMusic.play().catch((error) => {
             console.error("Error al reproducir la música de fondo:", error);
         });
@@ -126,6 +158,23 @@ function GamePage(props) {
 
     return (
         <div className="game-page">
+            <div className="music-controls">
+                <img
+                    src={isMusicPlaying ? "/assets/images/image8.png" : "/assets/images/image9.png"}
+                    alt="Toggle Music"
+                    className="music-toggle"
+                    onClick={toggleMusic}
+                />
+                <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={volume}
+                    onChange={handleVolumeChange}
+                    className="volume-slider"
+                />
+            </div>
             <EnemySide
                 cards={enemyCards}
                 points={3 - playerCards.length}

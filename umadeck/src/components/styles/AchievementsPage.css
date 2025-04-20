@@ -1,6 +1,6 @@
 .achievements-container {
     padding: 20px;
-    padding-top: 70px; /* Espacio para el header fijo */
+    padding-top: 70px;
 }
 
 .achievements-header {
@@ -14,7 +14,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /*Header por encima de otros elementos*/
+    z-index: 1000;
     padding: 10px;
 }
 
