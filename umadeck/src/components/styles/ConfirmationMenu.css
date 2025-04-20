@@ -1,4 +1,3 @@
-
 .confirmation-dialog {
     position: fixed;
     top: 50%;
@@ -39,4 +38,9 @@
 
 .cancel-button:hover {
     background-color: #d32f2f;
+}
+
+/* Add dark mode styles for the confirmation dialog */
+body.dark-mode .confirmation-dialog p {
+    color: #000; /* Change text color to black in dark mode */
 }

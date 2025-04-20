@@ -145,3 +145,8 @@ body #root {
     background: #141516;
     transform: scale(1.2);
 }
+
+/* Update styles for music toggle icon in dark mode */
+body.dark-mode .music-toggle {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+}
