@@ -8,6 +8,7 @@ import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
 import MusicControl from "./MusicControl";
+import HelpMenu from "../common/HelpMenu";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards} = props;
@@ -202,7 +203,7 @@ function PlayerSide(props){
                 <ProfileDisplay side={0}/>
                 <MusicControl/>
             </div>
-
+            <HelpMenu title = {"lorem ipsum"} text = {"lorem ipsum"}/>
             <div className="player-cards">
                 <div className="card-slot left">
                 {localCards[1] ? 
