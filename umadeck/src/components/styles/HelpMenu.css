@@ -57,6 +57,17 @@
     background-color: #0056b3;
 }
 
+.help-menu-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.help-menu-text {
+    text-align: left;
+    line-height: 1.5;
+}
+
 /* Dark Mode Styles */
 body.dark-mode .help-title h1 {
     color: #eee;

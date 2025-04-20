@@ -190,6 +190,17 @@ body.reading-mode .newGamePage h2.especialh2 {
     align-items: center;
 }
 
+.help-menu-position {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    position: absolute;
+    top: 18%;
+    right: 44%;
+}
+
 @media (max-width: 768px) {
     .cardList {
         gap: 3.5rem;

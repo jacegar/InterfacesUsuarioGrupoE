@@ -214,6 +214,8 @@ function PlayerSide(props){
                         <div className="help-menu-text">
                             <p><strong>Botones disponibles:</strong></p>
                             <ul>
+                                <li> <strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
+                                <li> <strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
                                 <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
                                 <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
                                 <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
