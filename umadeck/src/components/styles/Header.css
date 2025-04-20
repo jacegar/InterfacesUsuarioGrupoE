@@ -55,7 +55,7 @@ body.reading-mode .options-icon img {
 .options-dropdown {
     position: absolute;
     left: 100%;
-    top: -13px; /* Move the dropdown 20px higher, was previously at 0 */
+    top: -13px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;

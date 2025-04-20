@@ -41,6 +41,23 @@
 }
 
 /* Add dark mode styles for the confirmation dialog */
+body.dark-mode .confirmation-dialog {
+    background-color: #333;
+    border-color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
 body.dark-mode .confirmation-dialog p {
-    color: #000; /* Change text color to black in dark mode */
+    color: #eee;
+}
+
+/* Add reading mode styles for the confirmation dialog */
+body.reading-mode .confirmation-dialog {
+    background-color: #f8f1e3;
+    border-color: #d0c8b8;
+    box-shadow: 0 4px 8px rgba(94, 75, 60, 0.2);
+}
+
+body.reading-mode .confirmation-dialog p {
+    color: #5e4b3c;
 }

@@ -61,19 +61,22 @@ body.reading-mode .game-title {
 }
 
 body.reading-mode .menu-button {
-  background-color: #8b7d6b;
+  background-color: #007bff;
+  color: white;
 }
 
-body.reading-mode .menu-button:hover, body.reading-mode .menu-button.hovered {
-  background-color: #6e6353;
+body.reading-mode .menu-button:hover, 
+body.reading-mode .menu-button.hovered {
+  background-color: #0056b3;
 }
 
 body.reading-mode .menu-button-small {
-  background-color: #a09587;
+  background-color: #6c757d;
 }
 
-body.reading-mode .menu-button-small:hover, body.reading-mode .menu-button-small.hovered {
-  background-color: #8c8275;
+body.reading-mode .menu-button-small:hover, 
+body.reading-mode .menu-button-small.hovered {
+  background-color: #5a6268;
 }
 
 code {

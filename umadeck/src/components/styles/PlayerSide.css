@@ -70,6 +70,25 @@
     left: 20%;
 }
 
+.auto-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.auto-button:hover {
+    background-color: #0056b3;
+}
+
 .card-placeholder {
     width: 140px;
     height: 224px;

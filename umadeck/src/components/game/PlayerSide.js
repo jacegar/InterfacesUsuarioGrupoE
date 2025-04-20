@@ -17,6 +17,7 @@ function PlayerSide(props){
     const [cardRef, setCardRef] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [defense, setDefense] = useState(0);
+    const [isAutoMode, setIsAutoMode] = useState(false);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -24,6 +25,12 @@ function PlayerSide(props){
             navigate('/game-over-won'); // Redirige a la pantalla de victoria
         }
     }, [points, navigate]);
+
+    useEffect(() => {
+        if (isAutoMode && currentTurn === 0) {
+            handleAttack();
+        }
+    }, [isAutoMode, currentTurn]);
 
     const handleCardClick = () => {
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
@@ -40,6 +47,10 @@ function PlayerSide(props){
 
     const handleAttack = () => {
         console.log("Atacar con carta");
+        if (cards.length === 0) {
+            console.warn("No hay cartas disponibles para atacar.");
+            return;
+        }
         // Primero anima la carta
         if (cardRef) {
             cardRef.animateAttack();
@@ -144,6 +155,11 @@ function PlayerSide(props){
     const cancelGiveUp = () => {
         setShowConfirmation(false); // Oculta el cuadro de confirmación
     };
+
+    const toggleAutoMode = () => {
+        setIsAutoMode(!isAutoMode);
+    };
+
     useEffect(() => {
         setLocalCards(cards); // Sincroniza localCards con las cartas del padre
     }, [cards]);
@@ -210,6 +226,10 @@ function PlayerSide(props){
             <button className="give-up-button"
                 onClick={handleGiveUp}>
                 Rendirse
+            </button>
+            <button className="auto-button"
+                onClick={toggleAutoMode}>
+                {isAutoMode ? "Desactivar Auto" : "Auto"}
             </button>
             {showConfirmation && (
                 <ConfirmationMenu onConfirm={confirmGiveUp} onCancel={cancelGiveUp} text={"¿Estás seguro de que quieres rendirte?"}/>
