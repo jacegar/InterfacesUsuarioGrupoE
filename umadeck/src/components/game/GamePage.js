@@ -4,6 +4,7 @@ import GameModel from '../../gamelogic/GameModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
 import "../styles/GamePage.css";
+import Player from '../../gamelogic/Player';
 
 function GamePage(props){
     const location = useLocation();
@@ -76,6 +77,11 @@ function GamePage(props){
     const handleEnemyDamage = (damage) => {
         const updatedEnemyCards = [...enemyCards];
         updatedEnemyCards[0].setHealth(updatedEnemyCards[0].getHealth() - damage);
+        
+        // Registrar el daño para los logros
+        const player = new Player();
+        player.recordDamage(damage);
+        
         if (updatedEnemyCards[0].getHealth() <= 0) {
             audio.play();
             updatedEnemyCards.shift(); // Elimina la carta si su salud es 0 o menos
@@ -112,6 +118,14 @@ function GamePage(props){
             return () => clearTimeout(timer);
         }
     }, [gameState.currentTurn, enemyCardRef]);
+
+    // Al iniciar una partida
+    useEffect(() => {
+        const player = new Player();
+        player.resetCurrentGameDamage();
+        player.updateAchievementProgress('play1', 100);
+        player.updateAchievementProgress('play5', 20);
+    }, []);
 
     return (
         <div className="game-page">
