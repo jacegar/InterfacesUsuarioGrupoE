@@ -7,11 +7,11 @@
     opacity: 0.6;
     transition: all 0.3s ease;
     width: 250px;
-    height: 250px;
+    height: 320px; /* Aumentado para dar espacio a la barra de progreso */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Distribuye el espacio uniformemente */
 }
 
 .achievement-card.unlocked {
@@ -21,17 +21,49 @@
 }
 
 .achievement-image {
-    width: 180px;
-    height: 180px;
-    margin-bottom: 15px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
     object-fit: contain;
 }
 
 .achievement-title {
-    font-size: 20px;
-    margin: 0;
+    font-size: 18px;
+    margin: 0 0 15px 0; /* Añadido margen inferior */
     color: #333;
     font-weight: bold;
+}
+
+/* Barra de progreso */
+.achievement-progress-container {
+    width: 90%;
+    height: 14px;
+    background-color: #e0e0e0;
+    border-radius: 7px;
+    margin: 5px 0 15px 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.achievement-progress-bar {
+    height: 100%;
+    background-color: #ffd700;
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+.achievement-progress-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+}
+
+.achievement-date {
+    font-size: 15px;
+    color: #777;
+    margin-top: 5px;
 }
 
 /* Dark Mode Styles */
@@ -49,6 +81,19 @@ body.dark-mode .achievement-title {
     color: #eee;
 }
 
+body.dark-mode .achievement-progress-container {
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-mode .achievement-progress-text {
+    color: #bbb;
+}
+
+body.dark-mode .achievement-date {
+    color: #999;
+}
+
 /* Reading Mode Styles */
 body.reading-mode .achievement-card {
     background-color: #efe7d9;
@@ -62,6 +107,17 @@ body.reading-mode .achievement-card.unlocked {
 
 body.reading-mode .achievement-title {
     color: #5e4b3c;
-    /* Remove the custom font family */
-    /* font-family: Georgia, Times, serif; */
+}
+
+body.reading-mode .achievement-progress-container {
+    background-color: #d8d0c0;
+    border-color: #b5a99a;
+}
+
+body.reading-mode .achievement-progress-text {
+    color: #5e4b3c;
+}
+
+body.reading-mode .achievement-date {
+    color: #7a6959;
 }
