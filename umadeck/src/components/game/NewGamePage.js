@@ -41,16 +41,16 @@ function NewGamePage() {
     }, []);
     
     const obtenerRecomendacion = () => {
-        if(!usedRecommendation){
+        if (recommendedCardIndex !== null) {
+            setRecommendedCardIndex(null);
+            setUsedRecommendation(false);
+        } else if (!usedRecommendation) {
             const strongCards = CardModel.getStrongCards();
             const randomIndex = Math.floor(Math.random() * strongCards.length);
             const recommendedCard = strongCards[randomIndex];
-            
-            //Si la carta recomendada esta en las cartas cargadas, se selecciona su indice
-            //Si no, se elige una carta aleatoria de las cartas cargadas
-            if(loadedCards.filter(card => card.id === recommendedCard.id).length > 0){
+            if (loadedCards.filter(card => card.id === recommendedCard.id).length > 0) {
                 setRecommendedCardIndex(loadedCards.findIndex(card => card.id === recommendedCard.id));
-            }else{
+            } else {
                 setRecommendedCardIndex(Math.floor(Math.random() * loadedCards.length));
             }
 
@@ -69,9 +69,6 @@ function NewGamePage() {
                 
             </div>
             <div className="cardList-zoom">
-                <button className = "recommendation-button" onClick = {obtenerRecomendacion} >
-                    Recomendación
-                </button>  
                 <ul className="cardList">
                     {loadedCards.map((card, index) => (
                         <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
@@ -89,6 +86,9 @@ function NewGamePage() {
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
                 </Link>
             </div>
+            <button className = "recommendation-button" onClick = {obtenerRecomendacion} >
+                Recomendación
+            </button> 
         </div>
     );
 }
