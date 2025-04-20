@@ -207,7 +207,23 @@ function PlayerSide(props){
             </div>
             <div className="player-display">
                 <ProfileDisplay side={0}/>
-                <HelpMenu title = {"lorem ipsum"} text = {"lorem ipsum"}/>
+                <HelpMenu
+                    className="help-menu"
+                    title="Ayuda del Juego" 
+                    text={
+                        <>
+                            Botones disponibles:<br />
+                            - Auto: Activa el modo automático para que el juego ataque automáticamente.<br />
+                            - Terminar turno: Finaliza tu turno sin atacar.<br />
+                            - Rendirse: Abandona la partida actual.<br />
+                            - Altavoz: Activa, desactiva o ajusta el volumen de la música del juego.<br />
+                            <br />
+                            Funcionamiento básico:<br />
+                            - Pincha en una carta para atacar, usar habilidades o cambiarla.<br />
+                            - Derrota las 3 cartas del enemigo para ganar.<br />
+                        </>
+                    }
+                />
                 <MusicControl/>
             </div>
             <div className="player-cards">
