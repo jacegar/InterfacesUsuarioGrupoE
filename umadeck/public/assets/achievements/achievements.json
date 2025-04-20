@@ -1,50 +1,42 @@
 [
     {
+      "id": "unlock1",
       "title": "Desbloquea 1 carta",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/unlock1.png"
     },
     {
+      "id": "unlock5",
       "title": "Desbloquea 5 cartas",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/unlock5.png"
     },
     {
+      "id": "play1",
       "title": "Juega 1 partida",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/play1.png"
     },
     {
+      "id": "play5",
       "title": "Juega 5 partidas",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/play5.png"
     },
     {
+      "id": "win1",
       "title": "Gana 1 partida",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/win1.png"
     },
     {
+      "id": "win5",
       "title": "Gana 5 partidas",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/win5.png"
     },
     {
-      "title": "Inflige 200 de daño en una sola partida",
-      "unlocked": false,
-      "date": null,
-      "img": "/assets/achievements/img/damage200.png"
+      "id": "damage150",
+      "title": "Inflige 150 de daño en una sola partida",
+      "img": "/assets/achievements/img/damage150.png"
     },
     {
+      "id": "damage2000",
       "title": "Inflige 2000 de daño",
-      "unlocked": false,
-      "date": null,
       "img": "/assets/achievements/img/damage2000.png"
     }
 ]
