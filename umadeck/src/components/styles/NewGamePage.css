@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 90vh;
+    min-height: 100vh;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -145,8 +145,8 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .recommendation-button {
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 46%;
+    bottom: 25px;
     background-color: #007bff;
     color: white;
     border: none;
