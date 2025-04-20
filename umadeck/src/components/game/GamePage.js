@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import GameModel from '../../gamelogic/GameModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
@@ -10,9 +10,6 @@ function GamePage(props){
 
     // Modelo de la partida
     const gameModel = new GameModel(location.state.playerCards, location.state.enemyCards);
-
-    // Referencia para la música de fondo
-    const backgroundMusicRef = useRef(new Audio("/assets/sounds/background.mp3"));
 
     // Estado de las cartas del jugador y del enemigo
     const [playerCards, setPlayerCards] = useState(gameModel.getPlayerCards());
@@ -30,38 +27,6 @@ function GamePage(props){
     });
 
     const [enemyCardRef, setEnemyCardRef] = useState(null);
-
-    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
-    const [volume, setVolume] = useState(0.1);
-
-    const toggleMusic = () => {
-        const backgroundMusic = backgroundMusicRef.current;
-        if (isMusicPlaying) {
-            backgroundMusic.volume = 0; // Mute the music
-            setVolume(0); // Set the slider to 0
-        } else {
-            backgroundMusic.volume = 0.1; // Restore default volume
-            setVolume(0.1); // Update the slider to match the volume
-        }
-        setIsMusicPlaying(!isMusicPlaying);
-    };
-
-    const handleVolumeChange = (event) => {
-        const newVolume = parseFloat(event.target.value);
-        setVolume(newVolume);
-        const backgroundMusic = backgroundMusicRef.current;
-
-        if (newVolume > 0) {
-            setIsMusicPlaying(true); // Unmute if volume is increased
-            backgroundMusic.volume = newVolume;
-            backgroundMusic.play().catch((error) => {
-                console.error("Error al reproducir la música de fondo:", error);
-            });
-        } else {
-            setIsMusicPlaying(false); // Mute if volume is set to 0
-            backgroundMusic.volume = 0;
-        }
-    };
 
     const useTurn = () => {
         // Cambia el turno entre el jugador y el enemigo
@@ -123,21 +88,6 @@ function GamePage(props){
     };
 
     useEffect(() => {
-        const backgroundMusic = backgroundMusicRef.current;
-        backgroundMusic.loop = true;
-        backgroundMusic.volume = volume;
-        backgroundMusic.play().catch((error) => {
-            console.error("Error al reproducir la música de fondo:", error);
-        });
-
-        // Detén la música cuando el componente se desmonte
-        return () => {
-            backgroundMusic.pause();
-            backgroundMusic.currentTime = 0; // Reinicia la música
-        };
-    }, []); // Solo se ejecuta una vez al montar el componente
-
-    useEffect(() => {
         if (gameState.currentTurn === 1) {
             const timer = setTimeout(() => {
                 // Anima la carta enemiga primero
@@ -164,23 +114,6 @@ function GamePage(props){
 
     return (
         <div className="game-page">
-            <div className="music-controls">
-                <img
-                    src={isMusicPlaying ? "/assets/images/image8.png" : "/assets/images/image9.png"}
-                    alt="Toggle Music"
-                    className="music-toggle"
-                    onClick={toggleMusic}
-                />
-                <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    className="volume-slider"
-                />
-            </div>
             <EnemySide
                 cards={enemyCards}
                 points={3 - playerCards.length}

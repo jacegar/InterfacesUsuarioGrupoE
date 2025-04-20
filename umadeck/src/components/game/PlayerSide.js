@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
+import MusicControl from "./MusicControl";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards} = props;
@@ -181,12 +182,28 @@ function PlayerSide(props){
         setLocalCards(cards); // Sincroniza localCards con las cartas del padre
     }, [cards]);
     return (
-        <div className="player-side">
-    
+        <div className="player-side"> 
+            <div className="action-menu">
+                <button className="action-button"
+                    onClick={toggleAutoMode}>
+                    {isAutoMode ? "Desactivar Auto" : "Auto"}
+                </button>
+                <button className="action-button" 
+                    onClick={onEndTurn} 
+                    disabled={currentTurn !== 0}>
+                    Terminar turno
+                </button>
+                <button className="action-button give-up"
+                    onClick={handleGiveUp}>
+                    Rendirse
+                </button>
+            </div>
+            <div className="player-display">
+                <ProfileDisplay side={0}/>
+                <MusicControl/>
+            </div>
+
             <div className="player-cards">
-                {/* Esto habrá que cambiarlo para que el jugador pueda elegir 
-                    la carta que quiere usar cuando le derrotan la activa */}
-                
                 <div className="card-slot left">
                 {localCards[1] ? 
                     <CardMini cardModel={localCards[1]} onCardClick={() => {}}/> : 
@@ -233,26 +250,14 @@ function PlayerSide(props){
                     alt={abilityEffect.type}
                 />
             </div>
-        )}
-            
-            <button className="end-turn-button" 
-                onClick={onEndTurn} 
-                disabled={currentTurn !== 0}>
-                Terminar turno
-            </button>
-            <button className="give-up-button"
-                onClick={handleGiveUp}>
-                Rendirse
-            </button>
-            <button className="auto-button"
-                onClick={toggleAutoMode}>
-                {isAutoMode ? "Desactivar Auto" : "Auto"}
-            </button>
+            )}
             {showConfirmation && (
                 <ConfirmationMenu onConfirm={confirmGiveUp} onCancel={cancelGiveUp} text={"¿Estás seguro de que quieres rendirte?"}/>
             )}
-            <PointsDisplay classname="points-container" points={points}/>
-            <ProfileDisplay side={0}/>
+
+            <div className="points-container">
+                <PointsDisplay points={points}/>
+            </div>
         </div>
     );
 }

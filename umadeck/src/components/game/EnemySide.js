@@ -19,7 +19,9 @@ function EnemySide(props){
     return (
 
         <div className="enemy-side">
-            
+            <div className="enemy-display">
+                <ProfileDisplay side={1}/>
+            </div>
             <div className="enemy-cards">
                 <div className="card-slot left">
                     {cards[1] ? 
@@ -46,9 +48,9 @@ function EnemySide(props){
                     }
                 </div>
             </div>
-            
-            <PointsDisplay points={points} side={1}/>
-            <ProfileDisplay side={1}/>
+            <div className="points-container">
+                <PointsDisplay points={points} side={1}/>
+            </div>
         </div>
 
     );

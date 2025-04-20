@@ -21,9 +21,21 @@
     visibility: hidden;
 }
 
+.enemy-display{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* Este a lo mejor se puede quitar, depende de cómo lo hagamos */
 .card-placeholder.main {
     width: 200px;
     height: 320px;
     visibility: hidden;
+}
+
+.points-container{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

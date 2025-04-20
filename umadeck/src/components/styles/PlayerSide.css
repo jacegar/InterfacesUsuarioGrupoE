@@ -14,9 +14,24 @@
     margin-top: 0;
 }
 
-.end-turn-button, .give-up-button {
+.action-menu{
     position: absolute;
-    transform: translateX(-50%);
+    top: 20%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: 2.5rem;
+}
+
+.player-display{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.action-button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -25,6 +40,20 @@
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
+    width: 11rem;
+    text-align: center;
+}
+
+.action-button.give-up {
+    background-color: #dc3545; /* Red color for the give-up button */
+}
+
+.action-button.give-up:hover {
+    background-color: #a71d2a; /* Darker red on hover */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
 }
 
 .ability-effect {
@@ -60,39 +89,18 @@
     }
 }
 
-.end-turn-button {
-    bottom: 0;
-    left: 80%;
-}
-
-.give-up-button {
-    bottom: 0;
-    left: 20%;
-}
-
-.auto-button {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.auto-button:hover {
-    background-color: #0056b3;
-}
-
 .card-placeholder {
     width: 140px;
     height: 224px;
     visibility: hidden;
+}
+
+.profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 /* Este a lo mejor se puede quitar, depende de cómo lo hagamos */
@@ -100,4 +108,10 @@
     width: 200px;
     height: 320px;
     visibility: hidden;
+}
+
+.points-container{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
