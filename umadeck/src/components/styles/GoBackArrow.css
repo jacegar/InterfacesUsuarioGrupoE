@@ -4,3 +4,13 @@ img{
     margin-left: 5px;
     margin-top: 5px;
 }
+
+/* Add styles for back arrow icon in dark mode */
+body.dark-mode .go-back-arrow img {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+}
+
+/* Add styles for back arrow icon in reading mode */
+body.reading-mode .go-back-arrow img {
+    filter: drop-shadow(0 0 3px rgba(94, 75, 60, 0.4));
+}

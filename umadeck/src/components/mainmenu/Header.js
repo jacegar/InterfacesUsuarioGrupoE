@@ -44,7 +44,7 @@ function Header(){
         <div className="main-header">
             <div className="options-icon" ref={dropdownRef}>
                 <img 
-                    src="/assets/images/opciones.png" 
+                    src="/assets/images/theme.png" 
                     alt="Opciones"
                     onClick={toggleOptions}
                 />
