@@ -207,9 +207,9 @@ function PlayerSide(props){
             </div>
             <div className="player-display">
                 <ProfileDisplay side={0}/>
+                <HelpMenu title = {"lorem ipsum"} text = {"lorem ipsum"}/>
                 <MusicControl/>
             </div>
-            <HelpMenu title = {"lorem ipsum"} text = {"lorem ipsum"}/>
             <div className="player-cards">
                 <div className="card-slot left">
                 {localCards[1] ? 

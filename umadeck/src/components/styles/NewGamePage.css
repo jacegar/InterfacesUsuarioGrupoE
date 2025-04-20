@@ -144,25 +144,28 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .recommendation-button {
+    position: absolute;
+    right: 0;
+    top: 0;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 14px;
-    padding: clamp(1rem, 2vw, 1.4rem) clamp(2.5rem, 4vw, 3.5rem);
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    border-radius: 10px;
+    padding: 0.4rem 0.8rem;
     font-weight: bold;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    min-width: min(300px, 80%);
-    margin-right: 3rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 100px;
+    z-index: 10;
 }
 
 .recommendation-button:hover {
     background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Reduced hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
 }
 
 .recommendation-button:active {
