@@ -8,6 +8,72 @@ body {
   overflow-x: auto; /* Permitir desplazamiento horizontal cuando sea necesario */
   overflow-y: auto; /* Permitir desplazamiento vertical cuando sea necesario */
   min-width: 320px; /* Establecer un ancho mínimo para evitar contenido demasiado estrecho */
+  /* Remove the transition that's causing the delay */
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark-mode .main-header {
+  background-color: #333;
+  border-bottom-color: #444;
+}
+
+body.dark-mode .game-title {
+  color: #4da8ff;
+}
+
+body.dark-mode .menu-button {
+  background-color: #1a6cbf;
+}
+
+body.dark-mode .menu-button:hover, body.dark-mode .menu-button.hovered {
+  background-color: #135399;
+}
+
+body.dark-mode .menu-button-small {
+  background-color: #555;
+}
+
+body.dark-mode .menu-button-small:hover, body.dark-mode .menu-button-small.hovered {
+  background-color: #444;
+}
+
+/* Reading mode styles */
+body.reading-mode {
+  background-color: #f8f1e3; /* Warm beige background */
+  color: #333;
+  /* Remove the custom font family */
+  /* font-family: Georgia, Times, serif; */
+}
+
+body.reading-mode .main-header {
+  background-color: #e8e0d0;
+  border-bottom-color: #d0c8b8;
+}
+
+body.reading-mode .game-title {
+  color: #5e4b3c;
+}
+
+body.reading-mode .menu-button {
+  background-color: #8b7d6b;
+}
+
+body.reading-mode .menu-button:hover, body.reading-mode .menu-button.hovered {
+  background-color: #6e6353;
+}
+
+body.reading-mode .menu-button-small {
+  background-color: #a09587;
+}
+
+body.reading-mode .menu-button-small:hover, body.reading-mode .menu-button-small.hovered {
+  background-color: #8c8275;
 }
 
 code {

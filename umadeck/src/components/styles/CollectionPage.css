@@ -38,6 +38,37 @@
     justify-items: center;
 }
 
+/* Dark Mode Styles */
+body.dark-mode .collection-header {
+    background-color: #333;
+    border-bottom-color: #555;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .collection-header h1 {
+    color: #eee;
+}
+
+body.dark-mode .card-count {
+    color: #eee;
+}
+
+/* Reading Mode Styles */
+body.reading-mode .collection-header {
+    background-color: #e8e0d0;
+    border-bottom-color: #d0c8b8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.reading-mode .collection-header h1 {
+    color: #5e4b3c;
+}
+
+body.reading-mode .card-count {
+    color: #5e4b3c;
+}
+
+/* Para asegurar que la cuadrícula se vea bien en pantallas más pequeñas */
 @media (max-width: 1200px) {
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);

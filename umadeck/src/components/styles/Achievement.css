@@ -33,3 +33,35 @@
     color: #333;
     font-weight: bold;
 }
+
+/* Dark Mode Styles */
+body.dark-mode .achievement-card {
+    background-color: #444;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .achievement-card.unlocked {
+    background-color: #4d4a30;
+    box-shadow: 0 0 10px 4px rgba(255, 204, 0, 0.25);
+}
+
+body.dark-mode .achievement-title {
+    color: #eee;
+}
+
+/* Reading Mode Styles */
+body.reading-mode .achievement-card {
+    background-color: #efe7d9;
+    box-shadow: 0 0 6px rgba(94, 75, 60, 0.2);
+}
+
+body.reading-mode .achievement-card.unlocked {
+    background-color: #f5edd8;
+    box-shadow: 0 0 10px 4px rgba(185, 157, 96, 0.25);
+}
+
+body.reading-mode .achievement-title {
+    color: #5e4b3c;
+    /* Remove the custom font family */
+    /* font-family: Georgia, Times, serif; */
+}

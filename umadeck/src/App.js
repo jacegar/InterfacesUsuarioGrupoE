@@ -11,23 +11,26 @@ import GameOverLostPage from "./components/game/GameOverLostPage";
 import GameOverWonPage from "./components/game/GameOverWonPage";
 import PrivacyPage from "./components/mainmenu/PrivacyPage";
 import ConditionsPage from "./components/mainmenu/ConditionsPage";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App(){
     return(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<StartPage/>}/>
-            <Route path="*" element={<ErrorPage/>}/>
-            <Route path="/achievements" element={<AchievementsPage/>}/>
-            <Route path="/collection" element={<CollectionPage/>}/>
-            <Route path="/new-game" element={<NewGamePage/>}/>
-            <Route path="/game" element={<GamePage/>}/>
-            <Route path="/game-over-lost" element={<GameOverLostPage/>}/>
-            <Route path="/game-over-won" element={<GameOverWonPage/>}/>
-            <Route path="/privacy" element={<PrivacyPage/>}/>
-            <Route path="/conditions" element={<ConditionsPage/>}/>
-        </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<StartPage/>}/>
+                <Route path="*" element={<ErrorPage/>}/>
+                <Route path="/achievements" element={<AchievementsPage/>}/>
+                <Route path="/collection" element={<CollectionPage/>}/>
+                <Route path="/new-game" element={<NewGamePage/>}/>
+                <Route path="/game" element={<GamePage/>}/>
+                <Route path="/game-over-lost" element={<GameOverLostPage/>}/>
+                <Route path="/game-over-won" element={<GameOverWonPage/>}/>
+                <Route path="/privacy" element={<PrivacyPage/>}/>
+                <Route path="/conditions" element={<ConditionsPage/>}/>
+            </Routes>
+        </BrowserRouter>
+    </ThemeProvider>
     );
 }
 

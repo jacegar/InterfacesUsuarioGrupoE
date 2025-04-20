@@ -27,6 +27,7 @@
     left: clamp(0.9rem, 3.5vw, 1.75rem);
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1010; /* Ensure the dropdown appears above other elements */
 }
 
 .options-icon img {
@@ -39,6 +40,63 @@
 
 .options-icon img:hover {
     opacity: 1;
+}
+
+.options-dropdown {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-width: 200px; 
+    z-index: 1000;
+}
+
+.options-dropdown button {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.options-dropdown button:hover {
+    background-color: #f5f5f5;
+}
+
+/* Dark mode styles for the dropdown */
+body.dark-mode .options-dropdown {
+    background-color: #333;
+    border-color: #555;
+}
+
+body.dark-mode .options-dropdown button {
+    color: #fff;
+}
+
+body.dark-mode .options-dropdown button:hover {
+    background-color: #444;
+}
+
+/* Reading mode styles for the dropdown */
+body.reading-mode .options-dropdown {
+    background-color: #e8e0d0;
+    border-color: #d0c8b8;
+}
+
+body.reading-mode .options-dropdown button {
+    color: #000000;
+    /* Remove the custom font family */
+    /* font-family: Georgia, Times, serif; */
+}
+
+body.reading-mode .options-dropdown button:hover {
+    background-color: #d8cfc0;
 }
 
 @media (max-width: 480px) {

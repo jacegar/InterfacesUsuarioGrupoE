@@ -27,6 +27,23 @@
     color: #333;
     margin-bottom: 1rem;
     font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Add dark mode style for the counter */
+body.dark-mode .newGamePage h2.especialh2 {
+    color: #eee;
+}
+
+/* Add reading mode style for the counter */
+body.reading-mode .newGamePage h1.especialh1 {
+    color: #5e4b3c;
+}
+
+body.reading-mode .newGamePage h2.especialh2 {
+    color: #5e4b3c;
+    /* Remove the custom font family */
+    /* font-family: Georgia, Times, serif; */
 }
 
 .newGamePage .go-back-arrow {
