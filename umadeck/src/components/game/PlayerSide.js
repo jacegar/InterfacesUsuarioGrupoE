@@ -69,9 +69,10 @@ function PlayerSide(props){
     };
 
     const handleAbility = () => {
-       try {
+        try {
             const activeCard = localCards[0]; // La carta activa es la primera en el array
             const targetEnemyCard = enemyCards[0];
+    
             if (!activeCard.abilityUsed && !(activeCard.passiveType === "Cura" && activeCard.health === activeCard.maxHealth)) {
                 if (activeCard.passiveType === "Cura" || activeCard.passiveType === "Defensa" || activeCard.passiveType === "Nada") {
                     if (activeCard.passiveName === "Hey, listen!") {
@@ -80,6 +81,13 @@ function PlayerSide(props){
                         setAbilityEffect({ type: "jamon", target: "player" });
                     } else {
                         setAbilityEffect({ type: activeCard.passiveName, target: "player" });
+                    }
+    
+                    // Manejo especial para la habilidad de defensa
+                    if (activeCard.passiveType === "Defensa") {
+                        const currentDefense = activeCard.defense || 0; // Obtén la defensa actual (si existe)
+                        activeCard.defense = currentDefense + activeCard.passiveQuantity; // Acumula la defensa
+                        activeCard.isDefending = true; // Marca la carta como defendiendo
                     }
                 } else {
                     setAbilityEffect({ type: activeCard.passiveName, target: "enemy" });
@@ -92,13 +100,12 @@ function PlayerSide(props){
                     sound = new Audio(`/assets/sounds/${"jamon"}.mp3`);
                 } else {
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
-                    sound.volume = 0.5;
                 }
     
                 // Espera a que el audio cargue completamente
                 sound.addEventListener("loadedmetadata", () => {
                     const soundlength = sound.duration * 1000; // Duración del audio en milisegundos
-
+    
                     // Reproduce el sonido
                     sound.play().catch((error) => {
                         console.error("Error al reproducir el sonido:", error);
@@ -110,17 +117,23 @@ function PlayerSide(props){
                     }, soundlength);
                 });
             }
-            
-            
-            activeCard.useAbility(enemyCards[0]);
+    
+            // Usa la habilidad
+            activeCard.useAbility(targetEnemyCard);
+    
+            // Verifica si la carta enemiga debe ser eliminada
+            if (targetEnemyCard.getHealth() <= 0) {
+                const updatedEnemyCards = [...enemyCards];
+                updatedEnemyCards.shift(); // Elimina la carta enemiga activa
+                setEnemyCards(updatedEnemyCards); // Actualiza el estado
+            }
+    
             console.log("Habilidad usada:", activeCard.getPassiveName());
-            const updatedEnemyCards = [...enemyCards];
-            setEnemyCards(updatedEnemyCards);
-       } catch (error) {
+        } catch (error) {
             alert(error.message);
-       }
-       setShowMenu(false); 
-       setIsCardSelected(false); 
+        }
+        setShowMenu(false);
+        setIsCardSelected(false);
     };
 
     const handleChange = () => {
