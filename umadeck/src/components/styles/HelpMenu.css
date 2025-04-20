@@ -56,3 +56,33 @@
 .help-close:hover {
     background-color: #0056b3;
 }
+
+/* Dark Mode Styles */
+body.dark-mode .help-title h1 {
+    color: #eee;
+}
+
+body.dark-mode .help-text {
+    color: #ddd;
+}
+
+body.dark-mode .help-box {
+    background-color: #333;
+    color: #eee;
+    border-color: #444;
+}
+
+/* Reading Mode Styles */
+body.reading-mode .help-title h1 {
+    color: #5e4b3c;
+}
+
+body.reading-mode .help-text {
+    color: #5e4b3c;
+}
+
+body.reading-mode .help-box {
+    background-color: #f8f1e3;
+    color: #5e4b3c;
+    border-color: #d0c8b8;
+}
