@@ -209,19 +209,22 @@ function PlayerSide(props){
                 <ProfileDisplay side={0}/>
                 <HelpMenu
                     className="help-menu"
-                    title="Ayuda del Juego" 
+                    title={<span className="help-menu-title">Ayuda del Juego</span>}
                     text={
-                        <>
-                            Botones disponibles:<br />
-                            - Auto: Activa el modo automático para que el juego ataque automáticamente.<br />
-                            - Terminar turno: Finaliza tu turno sin atacar.<br />
-                            - Rendirse: Abandona la partida actual.<br />
-                            - Altavoz: Activa, desactiva o ajusta el volumen de la música del juego.<br />
-                            <br />
-                            Funcionamiento básico:<br />
-                            - Pincha en una carta para atacar, usar habilidades o cambiarla.<br />
-                            - Derrota las 3 cartas del enemigo para ganar.<br />
-                        </>
+                        <div className="help-menu-text">
+                            <p><strong>Botones disponibles:</strong></p>
+                            <ul>
+                                <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
+                                <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
+                                <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
+                                <li> <strong>Altavoz:</strong> Activa, desactiva o ajusta el volumen de la música del juego.</li>
+                            </ul>
+                            <p><strong>Funcionamiento básico:</strong></p>
+                            <ul>
+                                <li>Pincha en una carta para atacar, usar habilidades o cambiarla.</li>
+                                <li>Derrota las 3 cartas del enemigo para ganar.</li>
+                            </ul>
+                        </div>
                     }
                 />
                 <MusicControl/>
