@@ -19,6 +19,10 @@ function GamePage(props){
     const [enemyCards, setEnemyCards] = useState(gameModel.getEnemyCards());
     const [playerCardsVersion, setPlayerCardsVersion] = useState(0);
     const [enemyCardsVersion, setEnemyCardsVersion] = useState(0);
+    
+    // New state for attack speed (2 seconds by default, 1 second when in fast mode)
+    const [fastMode, setFastMode] = useState(false);
+    const attackDelay = fastMode ? 1000 : 2000;
 
     // Estado visible de la partida
     const [gameState, setGameState] = useState({
@@ -96,6 +100,11 @@ function GamePage(props){
         });
     };
 
+    // Toggle function for the fast mode button
+    const toggleFastMode = () => {
+        setFastMode(!fastMode);
+    };
+
     useEffect(() => {
         if (gameState.currentTurn === 1) {
             const timer = setTimeout(() => {
@@ -105,7 +114,7 @@ function GamePage(props){
 
                     // Después aplica el daño
                     setTimeout(() => {
-                        // El enemigo ataca siempre cada 2 segundos
+                        // El enemigo ataca siempre con el delay configurado
                         handlePlayerDamage(enemyCards[0].getAttackDamage());
                         // Usar una función en setGameState para asegurar el estado actual
                         setGameState({
@@ -115,11 +124,11 @@ function GamePage(props){
                         });
                     }, 500);
                 }
-            }, 2000);
+            }, attackDelay); // Use the configurable delay
 
             return () => clearTimeout(timer);
         }
-    }, [gameState.currentTurn, enemyCardRef]);
+    }, [gameState.currentTurn, enemyCardRef, attackDelay]); // Add attackDelay as dependency
 
     // Al iniciar una partida
     useEffect(() => {
@@ -158,6 +167,9 @@ function GamePage(props){
                 version={playerCardsVersion}
                 enemyCards={enemyCards}
                 setEnemyCards={setEnemyCards}
+                attackDelay={attackDelay}
+                fastMode={fastMode}
+                toggleFastMode={toggleFastMode}
             />
         </div>
     );

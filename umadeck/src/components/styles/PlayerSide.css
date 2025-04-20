@@ -129,3 +129,45 @@
     text-align: left; /* Align the rest of the text to the left */
     line-height: 1.5;
 }
+
+.speed-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: -50px;
+    top: 26px;
+    transition: all 0.3s ease;
+}
+
+.speed-button:hover {
+    background-color: #007bff;
+}
+
+.speed-button.active {
+    background-color: #28a745;
+}
+
+/* Dark mode styles */
+body.dark-mode .speed-button {
+    background-color: #007bff;
+}
+
+body.dark-mode .speed-button.active {
+    background-color: #28a745;
+}
+
+/* Reading mode styles */
+body.reading-mode .speed-button {
+    background-color: #007bff;
+    color: #f5f5dc;
+}
+
+body.reading-mode .speed-button.active {
+    background-color: #28a745;
+}

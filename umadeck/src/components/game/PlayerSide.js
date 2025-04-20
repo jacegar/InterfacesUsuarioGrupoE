@@ -11,7 +11,7 @@ import MusicControl from "./MusicControl";
 import HelpMenu from "../common/HelpMenu";
 
 function PlayerSide(props){
-    const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards} = props;
+    const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards, attackDelay, fastMode, toggleFastMode } = props;
     const [abilityEffect, setAbilityEffect] = useState(null);
     const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
@@ -30,9 +30,15 @@ function PlayerSide(props){
 
     useEffect(() => {
         if (isAutoMode && currentTurn === 0) {
-            handleAttack();
+            // Use the configurable attack delay
+            const autoAttackTimer = setTimeout(() => {
+                handleAttack();
+            }, attackDelay || 2000); // Default to 2000 if attackDelay is not provided
+            
+            // Clean up the timer if component unmounts or dependencies change
+            return () => clearTimeout(autoAttackTimer);
         }
-    }, [isAutoMode, currentTurn]);
+    }, [isAutoMode, currentTurn, attackDelay]); // Add attackDelay as dependency
 
     const handleCardClick = () => {
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
@@ -195,6 +201,13 @@ function PlayerSide(props){
                     onClick={toggleAutoMode}>
                     {isAutoMode ? "Desactivar Auto" : "Auto"}
                 </button>
+                <button 
+                    className={`speed-button ${fastMode ? 'active' : ''}`}
+                    onClick={toggleFastMode}
+                    title={fastMode ? "Velocidad normal" : "Velocidad x2"}
+                >
+                    {fastMode ? "2x" : "1x"}
+                </button>
                 <button className="action-button" 
                     onClick={onEndTurn} 
                     disabled={currentTurn !== 0}>
@@ -220,6 +233,7 @@ function PlayerSide(props){
                                 <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
                                 <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
                                 <li> <strong>Altavoz:</strong> Activa, desactiva o ajusta el volumen de la música del juego.</li>
+                                <li> <strong>1x-2x:</strong> Ajusta la velocidad de ataque del enemigo y del modo automático.</li>
                             </ul>
                             <p><strong>Funcionamiento básico:</strong></p>
                             <ul>
