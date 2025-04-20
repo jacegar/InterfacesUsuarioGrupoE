@@ -65,6 +65,7 @@ function GamePage(props){
     
         // Si la salud de la carta llega a 0 o menos, elimínala
         if (activeCard.getHealth() <= 0) {
+            audio.play();
             updatedPlayerCards.shift(); // Elimina la carta activa
         }
     
