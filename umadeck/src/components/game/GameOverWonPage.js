@@ -6,6 +6,7 @@ import Player from '../../gamelogic/Player';
 
 function GameOverWonPage() {
     const navigate = useNavigate();
+    const executedRef = React.useRef(false);
 
     const audio = new Audio("/assets/sounds/sound2.mp3");
         audio.volume = 0.05;
@@ -16,6 +17,8 @@ function GameOverWonPage() {
     };
 
     useEffect(() => {
+        if (executedRef.current) return; // Evitar múltiples ejecuciones
+        executedRef.current = true;
         const player = new Player();
         player.updateAchievementProgress('win1', 100);
         player.updateAchievementProgress('win5', 20);

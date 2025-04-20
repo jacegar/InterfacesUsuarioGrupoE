@@ -46,7 +46,7 @@ class Player {
         // Si el logro no existe o no está inicializado, lo inicializamos
         if (!this.achievements[achievementId]) {
             this.achievements[achievementId] = {
-                progress: 0,
+                progress: 0.0,
                 unlocked: false,
                 date: null
             };

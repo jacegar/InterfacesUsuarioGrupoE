@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import GameModel from '../../gamelogic/GameModel';
@@ -8,6 +9,7 @@ import Player from '../../gamelogic/Player';
 
 function GamePage(props){
     const location = useLocation();
+    const executedRef = React.useRef(false);
 
     // Modelo de la partida
     const gameModel = new GameModel(location.state.playerCards, location.state.enemyCards);
@@ -121,10 +123,12 @@ function GamePage(props){
 
     // Al iniciar una partida
     useEffect(() => {
+        if (executedRef.current) return; // Evitar múltiples ejecuciones
+        executedRef.current = true;
         const player = new Player();
         player.resetCurrentGameDamage();
         player.updateAchievementProgress('play1', 100);
-        player.updateAchievementProgress('play5', 20);
+        player.updateAchievementProgress('play5', 20); 
     }, []);
 
     return (
