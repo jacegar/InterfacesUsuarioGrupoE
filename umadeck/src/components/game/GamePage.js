@@ -82,23 +82,29 @@ function GamePage(props){
     audio.volume = 0.4;
 
     const handlePlayerDamage = (damage) => {
-        const updatedPlayerCards = [...playerCards];
-        if (updatedPlayerCards[0].isDefending) {
-            updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage + updatedPlayerCards[0].getDefense());
+        const updatedPlayerCards = [...playerCards]; // Copia las cartas locales
+        const activeCard = updatedPlayerCards[0]; // La carta activa es la primera
+    
+        if (activeCard.isDefending) {
+            // Reduce el daño en función del valor de defensa acumulado
+            const reducedDamage = Math.max(0, damage - activeCard.defense);
+            activeCard.setHealth(activeCard.getHealth() - reducedDamage);
+            console.log(`Daño reducido: ${damage} -> ${reducedDamage}`);
         } else {
-            updatedPlayerCards[0].setHealth(updatedPlayerCards[0].getHealth() - damage);
+            // Aplica el daño completo si no está defendiendo
+            activeCard.setHealth(activeCard.getHealth() - damage);
         }
-        updatedPlayerCards[0].resetDefense(); // Reinicia la defensa después de recibir daño
-        if (updatedPlayerCards[0].getHealth() <= 0) {
-            audio.play();
-            updatedPlayerCards.shift(); // Elimina la carta si su salud es 0 o menos
+    
+        // Reinicia la defensa después de recibir daño
+        activeCard.resetDefense();
+    
+        // Si la salud de la carta llega a 0 o menos, elimínala
+        if (activeCard.getHealth() <= 0) {
+            updatedPlayerCards.shift(); // Elimina la carta activa
         }
+    
+        // Actualiza las cartas locales y notifica al padre
         setPlayerCards(updatedPlayerCards);
-        setPlayerCardsVersion(playerCardsVersion + 1); // Forzar re-renderizado
-        setGameState({
-            ...gameState,
-            enemyPoints: 3 - updatedPlayerCards.length, // Actualiza los puntos del enemigo
-        });
     };
 
     const handleEnemyDamage = (damage) => {

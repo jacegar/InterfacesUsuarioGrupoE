@@ -39,7 +39,6 @@ class CardModel {
             this.showStyledAlert("La habilidad ya ha sido utilizada");
             return
         }
-const maxHealthCumplido = false;
         switch (this.passiveType) {
             case "Cura":
                 if (this.health + this.passiveQuantity > this.maxHealth) {

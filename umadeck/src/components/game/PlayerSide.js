@@ -85,9 +85,13 @@ function PlayerSide(props){
     
                     // Manejo especial para la habilidad de defensa
                     if (activeCard.passiveType === "Defensa") {
-                        const currentDefense = activeCard.defense || 0; // Obtén la defensa actual (si existe)
-                        activeCard.defense = currentDefense + activeCard.passiveQuantity; // Acumula la defensa
-                        activeCard.isDefending = true; // Marca la carta como defendiendo
+                        if (!activeCard.isDefending) {
+                            // Solo aplica la defensa si no está activa
+                            activeCard.defense = activeCard.passiveQuantity; // Establece la defensa
+                            activeCard.isDefending = true; // Marca la carta como defendiendo
+                        } else {
+                            console.warn("La defensa ya está activa y no se acumula.");
+                        }
                     }
                 } else {
                     setAbilityEffect({ type: activeCard.passiveName, target: "enemy" });
