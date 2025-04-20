@@ -37,9 +37,13 @@ class CardModel {
         if(this.abilityUsed) {
             throw new Error("La habilidad ya ha sido utilizada.");
         }
+        const maxHealthCumplido = false;
         switch (this.passiveType) {
             case "Cura":
-                this.health += this.passiveQuantity;
+                if(this.health + this.passiveQuantity > this.maxHealth) { 
+                    throw new Error("No se puede curar teniendo toda la vida");
+                }
+                else this.health += this.passiveQuantity;
                 break;
             case "Defensa":
                 this.isDefending = true;

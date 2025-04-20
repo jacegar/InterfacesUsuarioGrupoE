@@ -10,6 +10,7 @@ import ConfirmationMenu from "../common/ConfirmationMenu";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards} = props;
+    const [abilityEffect, setAbilityEffect] = useState(null);
     const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -59,6 +60,46 @@ function PlayerSide(props){
     const handleAbility = () => {
        try {
             const activeCard = localCards[0]; // La carta activa es la primera en el array
+            const targetEnemyCard = enemyCards[0];
+            if (!activeCard.abilityUsed && !(activeCard.passiveType === "Cura" && activeCard.health === activeCard.maxHealth)) {
+                if (activeCard.passiveType === "Cura" || activeCard.passiveType === "Defensa" || activeCard.passiveType === "Nada") {
+                    if (activeCard.passiveName === "Hey, listen!") {
+                        setAbilityEffect({ type: "heylisten", target: "player" });
+                    } else if (activeCard.passiveName === "¡Jamón!'") {
+                        setAbilityEffect({ type: "jamon", target: "player" });
+                    } else {
+                        setAbilityEffect({ type: activeCard.passiveName, target: "player" });
+                    }
+                } else {
+                    setAbilityEffect({ type: activeCard.passiveName, target: "enemy" });
+                }
+    
+                let sound = null;
+                if (activeCard.passiveName === "Hey, listen!") {
+                    sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
+                } else if (activeCard.passiveName === "¡Jamón!'") {
+                    sound = new Audio(`/assets/sounds/${"jamon"}.mp3`);
+                } else {
+                    sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
+                }
+    
+                // Espera a que el audio cargue completamente
+                sound.addEventListener("loadedmetadata", () => {
+                    const soundlength = sound.duration * 1000; // Duración del audio en milisegundos
+
+                    // Reproduce el sonido
+                    sound.play().catch((error) => {
+                        console.error("Error al reproducir el sonido:", error);
+                    });
+    
+                    // Oculta la imagen después de que termine el audio
+                    setTimeout(() => {
+                        setAbilityEffect(null);
+                    }, soundlength);
+                });
+            }
+            
+            
             activeCard.useAbility(enemyCards[0]);
             console.log("Habilidad usada:", activeCard.getPassiveName());
             const updatedEnemyCards = [...enemyCards];
@@ -147,7 +188,18 @@ function PlayerSide(props){
             </div>
                 
             </div>
-            
+            {abilityEffect && (
+            <div
+                className={`ability-effect ${
+                    abilityEffect.target === "player" ? "player-effect" : "enemy-effect"
+                }`}
+            >
+                <img
+                    src={`/assets/images/${abilityEffect.type}.png`}
+                    alt={abilityEffect.type}
+                />
+            </div>
+        )}
             
             <button className="end-turn-button" 
                 onClick={onEndTurn} 

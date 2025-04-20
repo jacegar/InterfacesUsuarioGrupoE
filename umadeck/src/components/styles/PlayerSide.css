@@ -27,6 +27,39 @@
     margin-top: 20px; /* Añadido margen superior */
 }
 
+.ability-effect {
+    position: absolute;
+    z-index: 50;
+    animation: fade-in-out 1s ease-in-out;
+    width: 80px; /* Ajusta el tamaño del PNG */
+    height: 80px;
+}
+
+.player-effect {
+    top: 50%; /* Centrado verticalmente respecto a la carta */
+    left: 45.5%; /* Ajusta la posición horizontal al lado izquierdo de la carta */
+    transform: translate(-100%, -50%);
+}
+
+.enemy-effect {
+    top: -20%; /* Centrado verticalmente respecto a la carta */
+    left: 48.5%; /* Ajusta la posición horizontal al lado derecho de la carta */
+    transform: translate(0, -50%);
+}
+
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .end-turn-button {
     bottom: 0; /* Ajustado para subir más el botón */
     left: 80%;
