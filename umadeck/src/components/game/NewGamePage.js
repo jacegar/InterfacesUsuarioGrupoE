@@ -60,13 +60,18 @@ function NewGamePage() {
 
     return (
         <div className="newGamePage">
-            <GoBackArrow />
-            <div>
+            <header>
+                <GoBackArrow />
                 <h1 className="especialh1">Elige las cartas del equipo:</h1>
                 <h2 className="especialh2">{selectedCards.length} de 3</h2>
+            </header>
+            <div className="recommendation-container">
+                
             </div>
-
             <div className="cardList-zoom">
+                <button className = "recommendation-button" onClick = {obtenerRecomendacion} >
+                    Recomendación
+                </button>  
                 <ul className="cardList">
                     {loadedCards.map((card, index) => (
                         <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
@@ -80,9 +85,6 @@ function NewGamePage() {
             </div>
             
             <div>
-                <button className = "recommendation-button" onClick = {obtenerRecomendacion} >
-                    Recomendación
-                </button>
                 <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
                 </Link>

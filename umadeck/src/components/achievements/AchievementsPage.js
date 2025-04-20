@@ -17,11 +17,11 @@ function AchievementsPage() {
 
   return (
     <div className="achievements-container">
-      <div className="achievements-header">
+      <header className="achievements-header">
         <GoBackArrow />
         <h1>Logros</h1>
         <div className="achievement-count">{unlockedCount}/{achievements.length}</div>
-      </div>
+      </header>
 
       <div className="achievements-grid">
         {achievements.map((achievement, index) => (

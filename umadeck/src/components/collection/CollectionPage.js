@@ -13,11 +13,11 @@ function CollectionPage() {
 
   return (
     <div className="collection-page">
-      <div className="collection-header">
+      <header className="collection-header">
         <GoBackArrow />
         <h1>Colección</h1>
         <div className="card-count">{unlockedCount}/{allCards.length}</div>
-      </div>
+      </header>
         <div className="cards-grid">
           {allCards.map((card) => {
             const isUnlocked = unlockedCards.includes(card.id);
