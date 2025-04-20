@@ -124,15 +124,21 @@ function PlayerSide(props){
                 });
             }
     
-            // Usa la habilidad
+           
+        if (!activeCard.abilityUsed) {
             activeCard.useAbility(targetEnemyCard);
-    
+
             // Verifica si la carta enemiga debe ser eliminada
             if (targetEnemyCard.getHealth() <= 0) {
                 const updatedEnemyCards = [...enemyCards];
                 updatedEnemyCards.shift(); // Elimina la carta enemiga activa
                 setEnemyCards(updatedEnemyCards); // Actualiza el estado
+            } else {
+                // Si la carta enemiga no es eliminada, actualiza su estado
+                const updatedEnemyCards = [...enemyCards];
+                setEnemyCards(updatedEnemyCards); // Actualiza el estado
             }
+        }
     
             console.log("Habilidad usada:", activeCard.getPassiveName());
         } catch (error) {
