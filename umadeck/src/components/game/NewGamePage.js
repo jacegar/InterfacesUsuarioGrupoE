@@ -98,6 +98,14 @@ function NewGamePage() {
                                 <li><strong>Flecha atrás:</strong> Vuelve a la página anterior.</li>
                                 <li><strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
                                 <li><strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
+                                <li><strong>Iniciar Partida:</strong> Comienza la partida con las 3 cartas seleccionadas.</li>
+                                <li><strong>Recomendación:</strong> Recomienda una carta poderosa. </li>
+                            </ul>
+                            <p><strong>Funcionamiento básico:</strong></p>
+                            <ul>
+                                <li> Pincha en una carta para seleccionarla o deseleccionarla.</li>
+                                <li> Conforma tu equipo con 3 cartas.</li>
+                                <li> Usa las recomendaciones si no sabes qué elegir.</li>
                             </ul>
                         </div>
                     }
