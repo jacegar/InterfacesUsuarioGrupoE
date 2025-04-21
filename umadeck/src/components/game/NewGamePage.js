@@ -83,10 +83,13 @@ function NewGamePage() {
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
                 </Link>
             </div>
-            <div className="buttons-container">
+            <div className="contenedor-del-boton">
                 <button className="recommendation-button" onClick={obtenerRecomendacion}>
                     Recomendación
                 </button>
+            </div>
+
+            <div className="help-menu-position">
                 <HelpMenu
                     className="help-menu"
                     title={<span className="help-menu-title">Ayuda del Juego</span>}
@@ -102,6 +105,7 @@ function NewGamePage() {
                     }
                 />
             </div>
+
         </div>
     );
 }
