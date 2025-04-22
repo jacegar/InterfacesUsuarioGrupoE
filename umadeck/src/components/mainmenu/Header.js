@@ -41,7 +41,7 @@ function Header(){
     };
 
     return(
-        <div className="main-header">
+        <header className="main-header">
             <div className="options-icon" ref={dropdownRef}>
                 <img 
                     src="/assets/images/theme.png" 
@@ -60,7 +60,7 @@ function Header(){
                 )}
             </div>
             <h1 className="game-title">UMA DeckRpg</h1>
-        </div>
+        </header>
     );
 }
 
