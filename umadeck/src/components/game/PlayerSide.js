@@ -20,6 +20,7 @@ function PlayerSide(props){
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [defense, setDefense] = useState(0);
     const [isAutoMode, setIsAutoMode] = useState(false);
+    const [exchangeMode, setExchangeMode] = useState(false); // Nuevo estado para el modo de intercambio
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -38,8 +39,13 @@ function PlayerSide(props){
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
         
         if (isCardSelected) {
-            // Si ya está seleccionada, muestra/oculta el menú
+            // Si ya está seleccionada, muestra/oculta el menú y deselecciona la carta
+            setIsCardSelected(false);
             setShowMenu(!showMenu);
+        } else if (exchangeMode) { // Cancelar cambiar carta seleccionando la activa
+            setIsCardSelected(false);
+            setShowMenu(false);
+            setExchangeMode(false);
         } else {
             // Selecciona la carta y muestra el menú
             setIsCardSelected(true);
@@ -149,24 +155,40 @@ function PlayerSide(props){
     };
 
     const handleChange = () => {
-        console.log("Cambiar carta");
-        const def = localCards[0].isDefending; // Verifica si la carta activa está defendiendo
-        const defValue = localCards[0].defense;
+        console.log("Activando modo de intercambio");
         if (localCards.length > 1) {
-            const updatedCards = [...localCards];
-            const [activeCard] = updatedCards.splice(0, 1); // Extrae la carta activa
-            if(def) {
-                updatedCards[0].isDefending = true;
-                updatedCards[0].defense = defValue; // Asigna la defensa a la carta activa
-                activeCard.resetDefense();
-            }
-            updatedCards.push(activeCard); // Añade la carta activa al final del array
-
-            setLocalCards(updatedCards); // Actualiza el estado con las cartas modificadas
-            props.onPlayerCardsChange(updatedCards); // Notifica al padre sobre el cambio
+            setExchangeMode(true);
+            setShowMenu(false);
+            setIsCardSelected(false);
         }
-        setShowMenu(false);
-        setIsCardSelected(false);
+    };
+
+    const handleDirectExchange = (index) => {
+        if (!exchangeMode) return;
+        
+        console.log(`Intercambiando carta activa con carta en posición ${index}`);
+        const updatedCards = [...localCards];
+        
+        // Guarda el estado de defensa antes del intercambio
+        const activeCardDefending = updatedCards[0].isDefending;
+        const activeCardDefenseValue = updatedCards[0].defense;
+        
+        // Intercambia las cartas
+        [updatedCards[0], updatedCards[index]] = [updatedCards[index], updatedCards[0]];
+        
+        // Transfiere el estado de defensa si es necesario
+        if (activeCardDefending) {
+            updatedCards[0].isDefending = true;
+            updatedCards[0].defense = activeCardDefenseValue;
+            updatedCards[index].resetDefense();
+        }
+        
+        // Actualiza el estado
+        setLocalCards(updatedCards);
+        props.onPlayerCardsChange(updatedCards);
+        
+        // Desactiva el modo de intercambio
+        setExchangeMode(false);
     };
 
     const handleGiveUp = () => {
@@ -232,7 +254,11 @@ function PlayerSide(props){
             <div className="player-cards">
                 <div className="card-slot left">
                 {localCards[1] ? 
-                    <CardMini cardModel={localCards[1]} onCardClick={() => {}}/> : 
+                    <CardMini 
+                        cardModel={localCards[1]} 
+                        onCardClick={() => exchangeMode ? handleDirectExchange(1) : {}}
+                        isHighlighted={exchangeMode}
+                    /> : 
                     <div className="card-placeholder"></div>
                 }
                 </div>
@@ -248,7 +274,7 @@ function PlayerSide(props){
                 ) : (
                     <div className="card-placeholder main"></div> // Muestra un marcador si no hay carta
                 )}
-                {isCardSelected && showMenu && (
+                {isCardSelected && showMenu && !exchangeMode && (
                     <CardMenu
                         isActive={true}
                         onAttack={handleAttack}
@@ -256,10 +282,19 @@ function PlayerSide(props){
                         onChange={handleChange}
                     />
                 )}
+                {exchangeMode && (
+                    <div className="exchange-mode-indicator">
+                        Selecciona una carta para intercambiar
+                    </div>
+                )}
                 </div>
             <div className="card-slot right">
                 {localCards[2] ? 
-                    <CardMini cardModel={localCards[2]} onCardClick={() => {}}/> : 
+                    <CardMini 
+                        cardModel={localCards[2]} 
+                        onCardClick={() => exchangeMode ? handleDirectExchange(2) : {}}
+                        isHighlighted={exchangeMode}
+                    /> : 
                     <div className="card-placeholder"></div>
                 }
             </div>

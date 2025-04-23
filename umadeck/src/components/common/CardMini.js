@@ -2,7 +2,7 @@ import "../styles/CardMini.css";
 import { useState, useRef, useEffect } from "react";
 
 function CardMini(props) {
-    const { cardModel, onCardClick } = props;
+    const { cardModel, onCardClick, isHighlighted } = props;
     const [showEnlarged, setShowEnlarged] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
     const [showBack, setShowBack] = useState(false);
@@ -75,7 +75,7 @@ function CardMini(props) {
             
             {/* Original card stays in place */}
             <div 
-                className="card-mini"
+                className={`card-mini ${isHighlighted ? 'highlighted' : ''}`}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}

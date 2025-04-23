@@ -293,3 +293,28 @@
 .mini-card-enlarged-clone .health-bar-border {
     bottom: 2px;
 }
+
+.card-mini.highlighted {
+    box-shadow: 0 0 20px 5px #ffcc00;
+    animation: parpadeo 1.5s infinite;
+    cursor: pointer;
+}
+
+@keyframes parpadeo {
+    0% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
+    50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 1); }
+    100% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
+}
+
+.exchange-mode-indicator {
+    position: absolute;
+    bottom: 353px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    z-index: 100;
+}
