@@ -141,7 +141,7 @@ function GamePage(props){
     }, []);
 
     return (
-        <div className="game-page">
+        <main className="game-page">
             <EnemySide
                 cards={enemyCards}
                 points={3 - playerCards.length}
@@ -171,7 +171,7 @@ function GamePage(props){
                 fastMode={fastMode}
                 toggleFastMode={toggleFastMode}
             />
-        </div>
+        </main>
     );
 }
 

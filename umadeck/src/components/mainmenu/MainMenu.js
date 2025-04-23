@@ -6,7 +6,7 @@ function MainMenu(){
     const [hovered, setHovered] = useState(null);
 
     return (
-        <div className="main-menu-container">
+        <main className="main-menu-container">
             <div className="menu-options">
                 <Link to="/new-game" className="menu-link">
                     <button 
@@ -57,7 +57,7 @@ function MainMenu(){
                     </Link>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 

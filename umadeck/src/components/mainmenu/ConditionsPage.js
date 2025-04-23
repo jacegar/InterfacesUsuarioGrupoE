@@ -4,7 +4,7 @@ import GoBackArrow from "../common/GoBackArrow";
 
 function ConditionsPage() {
     return (
-        <>
+        <main>
             <GoBackArrow/>
             <div className="conditions-page">
                 <h1>Términos y Condiciones</h1>
@@ -17,7 +17,7 @@ function ConditionsPage() {
                 </ul>
                 <p>Gracias por jugar y respetar nuestras reglas.</p>
             </div>
-        </>
+        </main>
     );
 }
 

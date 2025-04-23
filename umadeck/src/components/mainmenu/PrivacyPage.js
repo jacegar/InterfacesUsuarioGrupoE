@@ -4,7 +4,7 @@ import GoBackArrow from "../common/GoBackArrow";
 
 function PrivacyPage() {
     return (
-        <>
+        <main>
             <GoBackArrow/>
             <div className="privacy-page">
                 <h1>Política de Privacidad</h1>
@@ -16,7 +16,7 @@ function PrivacyPage() {
                 </ul>
                 <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
             </div>
-        </>
+        </main>
     );
 }
 
