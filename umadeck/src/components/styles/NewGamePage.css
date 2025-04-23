@@ -145,10 +145,11 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .contenedor-del-boton {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Mantiene el botón en la parte inferior */
+    flex-direction: row;
+    justify-content: center; /* Center horizontally */
     align-items: center;
-    height: 100%; /* Asegúrate de que el contenedor ocupe toda la altura */
+    gap: 15px; /* Add spacing between buttons */
+    margin-top: 20px;
 }
 
 .recommendation-button {
@@ -189,6 +190,9 @@ body.reading-mode .newGamePage h2.especialh2 {
     justify-content: center;
     align-items: center;
 }
+
+/* We can remove the help-menu-position class since we'll be placing the help menu
+   directly in the contenedor-del-boton container */
 
 @media (max-width: 768px) {
     .cardList {

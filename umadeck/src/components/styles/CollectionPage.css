@@ -38,6 +38,16 @@
     justify-items: center;
 }
 
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.help-menu {
+    margin-left: auto;
+}
+
 /* Dark Mode Styles */
 body.dark-mode .collection-header {
     background-color: #333;
