@@ -31,6 +31,10 @@ function NewGamePage() {
             setCards(selectedCards.filter(card => card !== loadedCards[index]));
         }else if(selectedCards.length < 3) {
             setCards([...selectedCards, loadedCards[index]]);
+            if (index === recommendedCardIndex) {
+                setRecommendedCardIndex(null);
+                setUsedRecommendation(false);
+            }
         }/*else{
             mostrar de forma visual que no se pueden elegir mas cartas
         }*/
@@ -46,16 +50,18 @@ function NewGamePage() {
             setRecommendedCardIndex(null);
             setUsedRecommendation(false);
         } else if (!usedRecommendation) {
-            const strongCards = CardModel.getStrongCards();
-            const randomIndex = Math.floor(Math.random() * strongCards.length);
-            const recommendedCard = strongCards[randomIndex];
-            if (loadedCards.filter(card => card.id === recommendedCard.id).length > 0) {
+            const recommendedCards = CardModel.getRecommendedCards();
+            const availableCards = recommendedCards.filter(card => 
+                loadedCards.some(loadedCard => loadedCard.id === card.id && !selectedCards.includes(loadedCard))
+            );
+            
+            if (availableCards.length > 0) {
+                const recommendedCard = availableCards[0]; // Always recommend the first available card in the specified order
                 setRecommendedCardIndex(loadedCards.findIndex(card => card.id === recommendedCard.id));
+                setUsedRecommendation(true);
             } else {
-                setRecommendedCardIndex(Math.floor(Math.random() * loadedCards.length));
+                setRecommendedCardIndex(null); // No cards available to recommend
             }
-
-            setUsedRecommendation(true);
         }
     }
 

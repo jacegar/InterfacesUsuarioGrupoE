@@ -153,9 +153,10 @@ class CardModel {
         return cards.map(card => new CardModel(card.id));
     }
 
-    //Devuelve cartas que sean fuertes, usado en el botón de recomendación
-    static getStrongCards(){
-        return cards.filter(card => card.id === 2 || card.id === 5);
+    // Devuelve las cartas en el orden recomendado
+    static getRecommendedCards() {
+        const recommendationOrder = [2, 5, 4, 1, 3];
+        return recommendationOrder.map(id => cards.find(card => card.id === id));
     }
 }
 
