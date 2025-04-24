@@ -1,6 +1,6 @@
 import { useState, useContext, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "../styles/Header.css";
+import "../styles/mainmenu/Header.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
 function Header(){

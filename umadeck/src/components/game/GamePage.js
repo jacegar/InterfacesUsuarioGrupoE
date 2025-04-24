@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import GameModel from '../../gamelogic/GameModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
-import "../styles/GamePage.css";
+import "../styles/game/GamePage.css";
 import Player from '../../gamelogic/Player';
 
 function GamePage(props){

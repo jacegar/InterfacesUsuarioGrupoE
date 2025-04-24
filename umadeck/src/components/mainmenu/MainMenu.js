@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "../styles/MainMenu.css";
+import "../styles/mainmenu/MainMenu.css";
 
 function MainMenu(){
     const [hovered, setHovered] = useState(null);

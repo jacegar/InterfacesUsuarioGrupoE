@@ -1,4 +1,4 @@
-import "../styles/HelpMenu.css";
+import "../styles/common/HelpMenu.css";
 import { useState } from "react";
 
 function HelpMenu(props){

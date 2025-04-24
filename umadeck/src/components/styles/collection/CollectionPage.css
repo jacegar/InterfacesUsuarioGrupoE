@@ -3,6 +3,10 @@
     padding-top: 70px;
 }
 
+.collection-page .custom-card:hover {
+    cursor: default;
+}
+
 .collection-header {
     display: flex;
     justify-content: space-between;

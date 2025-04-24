@@ -1,4 +1,4 @@
-import "../styles/BlankCard.css";
+import "../styles/common/BlankCard.css";
 
 //Carta vacia
 function BlankCard(){

@@ -31,3 +31,8 @@
 .error-button:hover {
     background-color: #0056b3;
 }
+
+/*Letras modo oscuro*/
+body.dark-mode .error-page{
+    color: #eee;
+}

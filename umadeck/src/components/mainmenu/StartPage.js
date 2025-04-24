@@ -2,7 +2,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import MainMenu from "./MainMenu";
 import React from "react";
-import "../styles/StartPage.css";
+import "../styles/mainmenu/StartPage.css";
 
 function StartPage(){
     return (

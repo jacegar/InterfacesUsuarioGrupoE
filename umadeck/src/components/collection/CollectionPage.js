@@ -1,7 +1,7 @@
 import GoBackArrow from "../common/GoBackArrow";
 import Card from "../common/Card";
 import CardModel from "../../gamelogic/CardModel";
-import "../styles/CollectionPage.css";
+import "../styles/collection/CollectionPage.css";
 import Player from "../../gamelogic/Player";
 import BlankCard from "../common/BlankCard";
 import HelpMenu from "../common/HelpMenu";

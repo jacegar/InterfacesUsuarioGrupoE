@@ -1,4 +1,4 @@
-import "../styles/MusicControl.css";
+import "../styles/game/MusicControl.css";
 import { useState, useRef, useEffect } from "react";
 
 function MusicControl(){

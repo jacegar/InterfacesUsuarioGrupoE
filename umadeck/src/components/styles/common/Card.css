@@ -12,6 +12,10 @@
     z-index: 1;
 }
 
+.custom-card:hover {
+    cursor: pointer;
+}
+
 .card-back {
     display: flex;
     justify-content: center;
@@ -54,6 +58,14 @@
     z-index: 1000;
     width: 200px;
     height: 320px;
+}
+
+.flip-icon:hover{
+    cursor: pointer;
+}
+
+.magnify-icon:hover{
+    cursor: pointer;
 }
 
 /* Clon ampliado con dimensiones fijas para asegurar consistencia */

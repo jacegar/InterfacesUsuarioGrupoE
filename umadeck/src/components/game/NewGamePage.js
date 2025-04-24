@@ -2,7 +2,7 @@ import GoBackArrow from "../common/GoBackArrow";
 import { useState, useEffect } from "react";
 import Card from "../common/Card";
 import CardModel from "../../gamelogic/CardModel";
-import "../styles/NewGamePage.css";
+import "../styles/game/NewGamePage.css";
 import { Link } from "react-router-dom";
 import HelpMenu from "../common/HelpMenu";
 

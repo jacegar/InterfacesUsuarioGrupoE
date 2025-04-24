@@ -1,4 +1,4 @@
-import "../styles/CardMini.css";
+import "../styles/common/CardMini.css";
 import { useState, useRef, useEffect } from "react";
 
 function CardMini(props) {

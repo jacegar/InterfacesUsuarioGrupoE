@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/GameOverWonPage.css";
+import "../styles/game/GameOverWonPage.css";
 import { useEffect } from 'react';
 import Player from '../../gamelogic/Player';
 

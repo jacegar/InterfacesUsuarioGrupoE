@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/CardMenu.css';
+import '../styles/game/CardMenu.css';
 
 function CardMenu({ onAttack, onAbility, onChange, isActive }) {
     if (!isActive) return null;

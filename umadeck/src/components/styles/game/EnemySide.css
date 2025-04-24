@@ -6,6 +6,10 @@
     padding-bottom: 0;
 }
 
+.enemy-side .custom-card:hover{
+    cursor: default;
+}
+
 .enemy-cards {
     display: flex;
     justify-content: center;

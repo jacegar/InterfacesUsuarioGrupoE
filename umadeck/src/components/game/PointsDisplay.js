@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/PointsDisplay.css";
+import "../styles/game/PointsDisplay.css";
 
 function PointsDisplay(props) {
     const { points, side } = props;

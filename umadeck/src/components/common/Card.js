@@ -1,4 +1,4 @@
-import "../styles/Card.css";
+import "../styles/common/Card.css";
 import { useState, useRef, useEffect } from "react";
 
 function Card(props) {
@@ -217,10 +217,10 @@ function Card(props) {
                             className="flip-icon" 
                             onClick={handleFlip} 
                         />
-                        <img 
-                            className="magnify-icon" 
+                        <img  
                             src="/assets/images/image7.png" 
-                            alt="Ampliar carta" 
+                            alt="Ampliar carta"
+                            className="magnify-icon"
                             onClick={handleOverlayClick} 
                         />
                     </div>

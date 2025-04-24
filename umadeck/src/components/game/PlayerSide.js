@@ -1,6 +1,6 @@
 import CardMini from "../common/CardMini";
 import Card from "../common/Card";
-import "../styles/PlayerSide.css";
+import "../styles/game/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 import {useState, useEffect} from 'react';

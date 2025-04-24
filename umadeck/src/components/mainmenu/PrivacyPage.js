@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/PrivacyPage.css";
+import "../styles/mainmenu/PrivacyPage.css";
 import GoBackArrow from "../common/GoBackArrow";
 
 function PrivacyPage() {

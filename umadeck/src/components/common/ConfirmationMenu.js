@@ -1,4 +1,4 @@
-import "../styles/ConfirmationMenu.css";
+import "../styles/common/ConfirmationMenu.css";
 
 function ConfirmationMenu(props){
     const{onConfirm, onCancel, text} = props;

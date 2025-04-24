@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/GameOverLost.css";
+import "../styles/game/GameOverLost.css";
 
 function GameOverLostPage() {
     const navigate = useNavigate();

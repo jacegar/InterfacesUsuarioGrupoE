@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import "../styles/GoBackArrow.css";
+import "../styles/common/GoBackArrow.css";
 
 //Esta flecha es un componente que se utiliza para volver al inicio
 function GoBackArrow(){

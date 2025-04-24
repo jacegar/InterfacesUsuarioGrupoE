@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardMini from "../common/CardMini";
 import Card from "../common/Card";
-import "../styles/EnemySide.css";
+import "../styles/game/EnemySide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 

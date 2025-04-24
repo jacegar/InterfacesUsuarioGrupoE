@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/ProfileDisplay.css";
+import "../styles/game/ProfileDisplay.css";
 
 function ProfileDisplay(props) {
     const { side } = props;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import GoBackArrow from "../common/GoBackArrow";
 import Achievement from "../common/Achievement";
-import "../styles/AchievementsPage.css";
+import "../styles/achievements/AchievementsPage.css";
 import Player from "../../gamelogic/Player";
 
 function AchievementsPage() {

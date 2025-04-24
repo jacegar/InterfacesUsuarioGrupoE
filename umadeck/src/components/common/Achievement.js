@@ -1,4 +1,4 @@
-import "../styles/Achievement.css";
+import "../styles/common/Achievement.css";
 
 function Achievement({ id, title, progress, unlocked, date, img }) {
   // Asegurarnos de que progress es un número

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/ConditionsPage.css";
+import "../styles/mainmenu/ConditionsPage.css";
 import GoBackArrow from "../common/GoBackArrow";
 
 function ConditionsPage() {
