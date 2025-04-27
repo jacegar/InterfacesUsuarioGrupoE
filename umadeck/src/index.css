@@ -7,9 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: auto; /* Permitir desplazamiento horizontal cuando sea necesario */
   overflow-y: auto; /* Permitir desplazamiento vertical cuando sea necesario */
-  min-width: 320px; /* Establecer un ancho mínimo para evitar contenido demasiado estrecho */
-  /* Remove the transition that's causing the delay */
-  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 /* Dark mode styles */

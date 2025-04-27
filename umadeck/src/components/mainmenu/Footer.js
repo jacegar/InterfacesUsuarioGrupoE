@@ -2,7 +2,7 @@ import "../styles/mainmenu/Footer.css";
 
 function Footer(){
     return(
-        <footer className="footer-container">
+        <footer className="footer">
             <div className="social-icons">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                     <img src="/assets/images/instagram.png" alt="Instagram" className="social-icon" />

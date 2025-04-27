@@ -4,7 +4,6 @@
     align-items: center;
     padding: clamp(1.75rem, 3.5vw, 2.6rem) 0;
     position: relative;
-    width: 100%;
     border-bottom: 3.5px solid #0056b3;
     background-color: #f5f5f5;
     box-sizing: border-box;
@@ -12,11 +11,11 @@
 }
 
 .game-title {
-    font-size: clamp(3.15rem, 8.75vw, 4.4rem);
+    font-size: clamp(2.15rem, 8.75vw, 4.4rem);
     text-align: center;
     color: #007bff;
     margin: 0;
-    letter-spacing: clamp(1.75px, 0.9vw, 3.5px);
+    letter-spacing: clamp(1px, 0.5vw, 3.5px);
     text-transform: uppercase;
     text-shadow: 3.5px 3.5px 7px rgba(0, 0, 0, 0.1);
     font-weight: bold;
@@ -24,10 +23,10 @@
 
 .options-icon {
     position: absolute;
-    left: clamp(0.9rem, 3.5vw, 1.75rem);
+    left: clamp(0.5rem, 3.5vw, 1.75rem);
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1010; /* Ensure the dropdown appears above other elements */
+    z-index: 1010; /* Ensure the dropdown appears above other elements */;
 }
 
 .options-icon img {
