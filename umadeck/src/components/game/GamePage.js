@@ -153,7 +153,7 @@ function GamePage(props){
                     Turno: {gameState.turn}
                 </div>
                 <hr />
-                <div className="turn-indicator">
+                <div className={`turn-indicator ${gameState.currentTurn === 0 ? "player-turn" : "enemy-turn"}`}>
                     {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
                 </div>
             </div>
