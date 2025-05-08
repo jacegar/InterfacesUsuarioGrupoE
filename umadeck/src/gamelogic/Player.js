@@ -1,5 +1,13 @@
 class Player {
     constructor() {
+        // Patrón singleton para asegurar que solo haya una instancia de Player
+        if (Player.instance) {
+            return Player.instance;
+        }
+        Player.instance = this;
+        
+        console.log('Player instance created');
+
         const savedData = JSON.parse(localStorage.getItem('playerData')) || {};
         this.unlockedCards = savedData.unlockedCards || [];
         this.achievements = savedData.achievements || {};

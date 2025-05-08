@@ -259,6 +259,8 @@
     bottom: 0;
     right: 0;
     margin: 5px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    border-radius: 5px;
 }
 
 .custom-card-footer img.magnify-icon {
