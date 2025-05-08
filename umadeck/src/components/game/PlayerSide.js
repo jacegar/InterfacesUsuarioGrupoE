@@ -136,8 +136,6 @@ function PlayerSide(props){
                 });
             }
     
-           
-        if (!activeCard.abilityUsed) {
             activeCard.useAbility(targetEnemyCard);
 
             // Verifica si la carta enemiga debe ser eliminada
@@ -150,7 +148,6 @@ function PlayerSide(props){
                 const updatedEnemyCards = [...enemyCards];
                 setEnemyCards(updatedEnemyCards); // Actualiza el estado
             }
-        }
     
             console.log("Habilidad usada:", activeCard.getPassiveName());
         } catch (error) {
