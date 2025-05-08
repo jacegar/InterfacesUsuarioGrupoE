@@ -16,156 +16,9 @@
     cursor: pointer;
 }
 
-.card-back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 81%;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1rem;
-    color: #333;
-}
-
-.card-back .flip-icon {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 35px;
-    height: 35px;
-    z-index: 10;
-    cursor: pointer;
-}
-
-.custom-card-description {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    color: #555;
-}
-
 .custom-card.selected {
     border-color: gold;
     animation: border-glow 0.5s linear;
-}
-
-.custom-card.enlarged {
-    position: relative;
-    transform: scale(1.5);
-    z-index: 1000;
-    width: 200px;
-    height: 320px;
-}
-
-.flip-icon:hover{
-    cursor: pointer;
-}
-
-.magnify-icon:hover{
-    cursor: pointer;
-}
-
-/* Clon ampliado con dimensiones fijas para asegurar consistencia */
-.card-enlarged-clone {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    /* Aumentando ligeramente las dimensiones */
-    width: 330px;
-    height: 520px;
-    background-color: #d3d3d3;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 3px solid #333;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-}
-
-/* Ajustar elementos internos para que se vean bien con el nuevo tamaño */
-.card-enlarged-clone .custom-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card-enlarged-clone .custom-card-name {
-    font-size: 1.5rem;
-    margin: 5px;
-    flex-grow: 1;
-}
-
-.card-enlarged-clone .custom-card-health {
-    font-size: 1.3rem;
-    margin: 5px;
-    padding: 3px 8px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-}
-
-.card-enlarged-clone .custom-card-image {
-    padding: 5px;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 160px;
-}
-
-.card-enlarged-clone .custom-card-image img {
-    max-width: 90%;
-    max-height: 150px;
-    object-fit: contain;
-}
-
-.card-enlarged-clone .custom-card-body {
-    padding: 15px;
-    margin-top: 5px;
-    flex-grow: 1;
-}
-
-.card-enlarged-clone .attack,
-.card-enlarged-clone .passive {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.card-enlarged-clone .attack-name, 
-.card-enlarged-clone .passive-name {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.card-enlarged-clone .attack-details, 
-.card-enlarged-clone .passive-details {
-    font-size: 1.2rem;
-    margin-top: 5px;
-}
-
-.card-enlarged-clone .custom-card-footer {
-    position: absolute;
-    bottom: 5px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-
-.card-enlarged-clone .custom-card-footer img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
 }
 
 @keyframes border-glow {
@@ -194,99 +47,6 @@
     display: block;
 }
 
-.custom-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.custom-card-health {
-    font-size: 0.9rem;
-    color: #555;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.custom-card-name {
-    font-size: 1rem;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-left: 5px;
-}
-
-.custom-card-body {
-    margin-left: 5px;
-}
-
-.attack, .passive {
-    margin-bottom: 10px;
-}
-
-.attack-name, .passive-name {
-    color: #333;
-    margin: 0;
-}
-
-.attack-details, .passive-details {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0;
-    margin-top: 2px;
-}
-
-.passive-details strong {
-    font-weight: bold;
-    color: #000;
-}
-
-.attack-details strong, .passive-details strong {
-    font-weight: bold;
-    color: #000;
-}
-
-.custom-card-footer {
-    position: absolute;
-    bottom: 5px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-
-.custom-card-footer img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 5px;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0);
-    border-radius: 5px;
-}
-
-.custom-card-footer img.magnify-icon {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 5px;
-    width: 40px;
-    height: 40px;
-}
-
-.custom-card-image {
-    padding: 3px;
-    margin: 3px;
-}
-
-.custom-card-image img {
-    width: 100%;
-    height: auto;
-    max-width: 175px; 
-    max-height: 100px;
-    margin: auto;
-    display: block;
-    object-fit: contain;
-}
-
 @keyframes attack-animation {
     0% {
         transform: translateY(0);
@@ -310,38 +70,14 @@
     z-index: 100;
 }
 
-.health-box{
-    margin-right: 3px;
+.highlighted {
+    box-shadow: 0 0 20px 5px #ffcc00;
+    animation: parpadeo 1.5s infinite;
+    cursor: pointer;
 }
 
-.health-bar-border{
-    border: 2px solid #333;
-    background-color: darkgray;
-    border-radius: 5px;
-    width: 100%;
-    height: 8px;
-    position: relative;
-    bottom: 10px;
-}
-
-.health-bar{
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-.health-bar.red{
-    background-color: red;
-}
-
-.health-bar.green{
-    background-color: green;
-}
-
-.health-bar.yellow{
-    background-color: yellow;
-}
-
-.card-enlarged-clone .health-bar-border {
-    bottom: 2px;
+@keyframes parpadeo {
+    0% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
+    50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 1); }
+    100% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
 }

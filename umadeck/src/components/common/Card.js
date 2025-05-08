@@ -1,8 +1,12 @@
 import "../styles/common/Card.css";
 import { useState, useRef, useEffect } from "react";
+import CardFront from "./CardFront";
+import CardBack from "./CardBack";
+import CardFooter from "./CardFooter";
+import CardEnlarged from "./CardEnlarged";
 
 function Card(props) {
-    const { cardModel, isSelected, onCardClick, attachRef } = props;
+    const { cardModel, isSelected, onCardClick, attachRef, isHighlighted} = props;
     const [showEnlarged, setShowEnlarged] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
     const [isAttacking, setIsAttacking] = useState(false);
@@ -90,9 +94,8 @@ function Card(props) {
         <>
             {showOverlay && <div className="overlay active" onClick={handleOverlayClick}></div>}
             
-            {/* Original card stays in place */}
             <div 
-                className={`custom-card${isSelected ? " selected" : ""}${isAttacking ? " attacking" : ""}`}
+                className={`custom-card${isSelected ? " selected" : ""}${isAttacking ? " attacking" : ""}${isHighlighted ? " highlighted" : ""}`}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
@@ -100,131 +103,21 @@ function Card(props) {
                 onTouchEnd={handleMouseUp}
             >
                 {!showBack ? (
-                    <div className="card-front">
-                        <div className="custom-card-header">
-                            <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                            <div className="health-box">
-                                <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
-                                <div className="health-bar-border">
-                                    <div 
-                                        className={
-                                            "health-bar " +
-                                            (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                                ? "green"
-                                                : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                                ? "yellow"
-                                                : "red")
-                                        }
-                                        style={{
-                                            width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                        }}
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="custom-card-image">
-                            <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                        </div>
-                        <div className="custom-card-body">
-                            <div className="attack">
-                                <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                                <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
-                            </div>
-                            <div className="passive">
-                                <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                                <p className="passive-details">
-                                    Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <CardFront cardModel={cardModel} />
                 ) : (
-                    <div className="card-back">
-                        <div className="custom-card-description">
-                            <p>{cardModel.getDescription()}</p>
-                        </div>
-                    </div>
+                    <CardBack description={cardModel.getDescription()} />
                 )}
-                <div className="custom-card-footer">
-                    <img 
-                        src="/assets/images/curved-arrow.svg" 
-                        alt="Da la vuelta a la carta" 
-                        className="flip-icon" 
-                        onClick={handleFlip} 
-                    />
-                    <img 
-                        className="magnify-icon" 
-                        src="/assets/images/image7.png" 
-                        alt="Ampliar carta" 
-                        onClick={handleMagnifyClick} 
-                    />
-                </div>
+                <CardFooter handleFlip={handleFlip} handleMagnify={handleMagnifyClick}/>
             </div>
             
-            {/* Enlarged clone that appears in the center */}
             {showEnlarged && (
-                <div className="card-enlarged-clone" onClick={handleEnlargedCardClick}>
-                    {!showBack ? (
-                        <div className="card-front">
-                            <div className="custom-card-header">
-                                <h2 className="custom-card-name">{cardModel.getName()}</h2>
-                                <div className="health-box">
-                                    <p className="custom-card-health">Vida: {cardModel.getHealth()}</p>
-                                    <div className="health-bar-border">
-                                        <div 
-                                            className={
-                                                "health-bar " +
-                                                (cardModel.getHealth() / cardModel.getMaxHealth() > 0.7
-                                                    ? "green"
-                                                    : cardModel.getHealth() / cardModel.getMaxHealth() > 0.3
-                                                    ? "yellow"
-                                                    : "red")
-                                            }
-                                            style={{
-                                                width: (cardModel.getHealth() / cardModel.getMaxHealth()) * 100 + "%"
-                                            }}
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="custom-card-image">
-                                <img src={cardModel.getImageUrl()} alt={`Imagen de ${cardModel.getName()}`} />
-                            </div>
-                            <div className="custom-card-body">
-                                <div className="attack">
-                                    <p className="attack-name"><strong>Ataque:</strong> {cardModel.getAttackName()}</p>
-                                    <p className="attack-details">Daño: <strong>{cardModel.getAttackDamage()}</strong></p>
-                                </div>
-                                <div className="passive">
-                                    <p className="passive-name"><strong>Habilidad:</strong> {cardModel.getPassiveName()}</p>
-                                    <p className="passive-details">
-                                        Tipo: <strong>{cardModel.getPassiveType()}</strong> - Cantidad: <strong>{cardModel.getPassiveQuantity()}</strong>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="card-back">
-                            <div className="custom-card-description">
-                                <p>{cardModel.getDescription()}</p>
-                            </div>
-                        </div>
-                    )}
-                    <div className="custom-card-footer">
-                        <img 
-                            src="/assets/images/curved-arrow.svg" 
-                            alt="Da la vuelta a la carta" 
-                            className="flip-icon" 
-                            onClick={handleFlip} 
-                        />
-                        <img  
-                            src="/assets/images/image7.png" 
-                            alt="Ampliar carta"
-                            className="magnify-icon"
-                            onClick={handleOverlayClick} 
-                        />
-                    </div>
-                </div>
+                <CardEnlarged 
+                    cardModel={cardModel}
+                    showBack={showBack}
+                    handleEnlargedCardClick={handleEnlargedCardClick}
+                    handleFlip={handleFlip}
+                    handleMagnify={handleOverlayClick}
+                />
             )}
         </>
     );

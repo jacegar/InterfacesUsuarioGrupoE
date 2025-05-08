@@ -1,0 +1,97 @@
+.custom-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-card-name {
+    font-size: 1rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 5px;
+}
+
+.health-box{
+    margin-right: 3px;
+}
+
+.custom-card-health {
+    font-size: 0.9rem;
+    color: #555;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.health-bar-border{
+    border: 2px solid #333;
+    background-color: darkgray;
+    border-radius: 5px;
+    width: 100%;
+    height: 8px;
+    position: relative;
+    bottom: 10px;
+}
+
+.health-bar{
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.custom-card-image {
+    padding: 3px;
+    margin: 3px;
+}
+
+.custom-card-image img {
+    width: 100%;
+    height: auto;
+    max-width: 175px; 
+    max-height: 100px;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.custom-card-body {
+    margin-left: 5px;
+}
+
+.attack, .passive {
+    margin-bottom: 10px;
+}
+
+.attack-name, .passive-name {
+    color: #333;
+    margin: 0;
+}
+
+.attack-details, .passive-details {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    margin-top: 2px;
+}
+
+.passive-details strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.attack-details strong, .passive-details strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.health-bar.red{
+    background-color: red;
+}
+
+.health-bar.green{
+    background-color: green;
+}
+
+.health-bar.yellow{
+    background-color: yellow;
+}

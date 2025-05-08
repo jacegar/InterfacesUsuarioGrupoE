@@ -8,10 +8,20 @@
 
 .player-cards {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 6rem;
     margin-top: 0;
+}
+
+/*Reserva espacio para que, cuando una carta muera, no se desajuste el cuadrante*/
+.card-slot{
+    width: 140px;
+    height: 224px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .action-menu{
@@ -170,4 +180,17 @@ body.reading-mode .speed-button {
 
 body.reading-mode .speed-button.active {
     background-color: #28a745;
+}
+
+.exchange-mode-indicator {
+    position: absolute;
+    bottom: 353px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    z-index: 100;
 }

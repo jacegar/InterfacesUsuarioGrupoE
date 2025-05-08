@@ -269,51 +269,52 @@ function PlayerSide(props){
             </div>
             <div className="player-cards">
                 <div className="card-slot left">
-                {localCards[1] ? 
-                    <CardMini 
-                        cardModel={localCards[1]} 
-                        onCardClick={() => exchangeMode ? handleDirectExchange(1) : {}}
-                        isHighlighted={exchangeMode}
-                    /> : 
-                    <div className="card-placeholder"></div>
-                }
+                    {localCards[1] ? 
+                        <CardMini 
+                            cardModel={localCards[1]} 
+                            onCardClick={() => exchangeMode ? handleDirectExchange(1) : {}}
+                            isHighlighted={exchangeMode}
+                        /> : 
+                        <div className="card-placeholder"></div>
+                    }
                 </div>
 
                 <div className="main-card-container">
-                {localCards[0] ? (
-                    <Card 
-                        cardModel={localCards[0]} 
-                        isSelected={isCardSelected}
-                        onCardClick={handleCardClick}
-                        attachRef={setCardRef}
-                    />
-                ) : (
-                    <div className="card-placeholder main"></div> // Muestra un marcador si no hay carta
-                )}
-                {isCardSelected && showMenu && !exchangeMode && (
-                    <CardMenu
-                        isActive={true}
-                        onAttack={handleAttack}
-                        onAbility={handleAbility}
-                        onChange={handleChange}
-                    />
-                )}
-                {exchangeMode && (
-                    <div className="exchange-mode-indicator">
-                        Selecciona una carta para intercambiar
-                    </div>
-                )}
+                    {localCards[0] ? (
+                        <Card 
+                            cardModel={localCards[0]} 
+                            isSelected={isCardSelected}
+                            onCardClick={handleCardClick}
+                            attachRef={setCardRef}
+                        />
+                    ) : (
+                        <div className="card-placeholder main"></div> // Muestra un marcador si no hay carta
+                    )}
+                    {isCardSelected && showMenu && !exchangeMode && (
+                        <CardMenu
+                            isActive={true}
+                            onAttack={handleAttack}
+                            onAbility={handleAbility}
+                            onChange={handleChange}
+                        />
+                    )}
+                    {exchangeMode && (
+                        <div className="exchange-mode-indicator">
+                            Selecciona una carta para intercambiar
+                        </div>
+                    )}
                 </div>
-            <div className="card-slot right">
-                {localCards[2] ? 
-                    <CardMini 
-                        cardModel={localCards[2]} 
-                        onCardClick={() => exchangeMode ? handleDirectExchange(2) : {}}
-                        isHighlighted={exchangeMode}
-                    /> : 
-                    <div className="card-placeholder"></div>
-                }
-            </div>
+                
+                <div className="card-slot right">
+                    {localCards[2] ? 
+                        <CardMini 
+                            cardModel={localCards[2]} 
+                            onCardClick={() => exchangeMode ? handleDirectExchange(2) : {}}
+                            isHighlighted={exchangeMode}
+                        /> : 
+                        <div className="card-placeholder"></div>
+                    }
+                </div>
                 
             </div>
             {abilityEffect && (
