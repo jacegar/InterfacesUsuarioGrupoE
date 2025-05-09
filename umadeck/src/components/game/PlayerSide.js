@@ -21,6 +21,7 @@ function PlayerSide(props){
     const [defense, setDefense] = useState(0);
     const [isAutoMode, setIsAutoMode] = useState(false);
     const [exchangeMode, setExchangeMode] = useState(false); // Nuevo estado para el modo de intercambio
+    const [canAttack, setCanAttack] = useState(true); // Nuevo estado para controlar si se puede atacar
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -41,6 +42,12 @@ function PlayerSide(props){
         }
     }, [isAutoMode, currentTurn, attackDelay]); // Add attackDelay as dependency
 
+    useEffect(() => {
+        if (currentTurn === 0) {
+            setCanAttack(true); // Permitir atacar al inicio del turno del jugador
+        }
+    }, [currentTurn]);
+
     const handleCardClick = () => {
         if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
         
@@ -60,6 +67,10 @@ function PlayerSide(props){
     };
 
     const handleAttack = () => {
+        if (!canAttack) {
+            console.warn("Ya has atacado en este turno.");
+            return;
+        }
         console.log("Atacar con carta");
         if (cards.length === 0) {
             console.warn("No hay cartas disponibles para atacar.");
@@ -68,6 +79,7 @@ function PlayerSide(props){
         // Primero anima la carta
         if (cardRef) {
             cardRef.animateAttack();
+            setCanAttack(false); // Bloquear ataques adicionales en este turno
 
             // Después de un pequeño retraso, aplica el daño
             setTimeout(() => {
