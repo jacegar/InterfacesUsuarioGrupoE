@@ -5,12 +5,17 @@ import "../styles/collection/CollectionPage.css";
 import Player from "../../gamelogic/Player";
 import BlankCard from "../common/BlankCard";
 import HelpMenu from "../common/HelpMenu";
+import { showStyledAlert } from "../common/StyledAlert";
 
 function CollectionPage() {
   const allCards = CardModel.getAllCards();
   const player = new Player();
   const unlockedCards = player.getUnlockedCards();
   const unlockedCount = unlockedCards.length;
+
+  const handleLockedCardClick = () => {
+    showStyledAlert("Desbloquea esta carta para poder verla");
+  };
 
   return (
     <div className="collection-page">
@@ -39,7 +44,7 @@ function CollectionPage() {
         {allCards.map((card) => {
           const isUnlocked = unlockedCards.includes(card.id);
           return (
-            <div key={card.id}>
+            <div key={card.id} onClick={!isUnlocked ? handleLockedCardClick : undefined}>
               {isUnlocked ? (
                 <Card cardModel={card} />
               ) : (

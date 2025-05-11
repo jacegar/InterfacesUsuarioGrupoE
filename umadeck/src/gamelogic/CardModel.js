@@ -1,11 +1,12 @@
 import cards from "../cards.json";
+import { showStyledAlert } from "../components/common/StyledAlert";
 
 class CardModel {
     constructor(id) {
         this.id = id; // id of the card
         const jsonData = cards.find((card) => card.id === id); // Find the card by id
         if (!jsonData) {
-            this.showStyledAlert(`Card data for id ${id} not found.`);
+            showStyledAlert(`Card data for id ${id} not found.`);
             return;
         }
         this.fromJson(JSON.stringify(jsonData));
@@ -36,13 +37,13 @@ class CardModel {
 
     useAbility(targetCard) {
         if (this.abilityUsed) {
-            this.showStyledAlert("La habilidad ya ha sido utilizada");
+            showStyledAlert("La habilidad ya ha sido utilizada");
             return;
         }
         switch (this.passiveType) {
             case "Cura":
                 if (this.health + this.passiveQuantity > this.maxHealth) {
-                    this.showStyledAlert("No se puede curar teniendo toda la vida");
+                    showStyledAlert("No se puede curar teniendo toda la vida");
                     return;
                 } else {
                     this.health += this.passiveQuantity;
@@ -55,35 +56,13 @@ class CardModel {
                 if (targetCard) {
                     targetCard.setHealth(targetCard.getHealth() - this.passiveQuantity);
                 } else {
-                    this.showStyledAlert(targetCard + "Se requiere una carta objetivo para usar la habilidad de ataque.");
+                    showStyledAlert(targetCard + "Se requiere una carta objetivo para usar la habilidad de ataque.");
                 }
                 break;
             case "Nada":
                 break;
         }
         this.abilityUsed = true; // Marca la habilidad como utilizada
-    }
-
-    showStyledAlert(message) {
-        const alertDiv = document.createElement("div");
-        alertDiv.textContent = message;
-        alertDiv.style.position = "fixed";
-        alertDiv.style.top = "20px";
-        alertDiv.style.left = "50%";
-        alertDiv.style.transform = "translateX(-50%)";
-        alertDiv.style.backgroundColor = "#f8d7da";
-        alertDiv.style.color = "#721c24";
-        alertDiv.style.padding = "10px 20px";
-        alertDiv.style.border = "1px solid #f5c6cb";
-        alertDiv.style.borderRadius = "5px";
-        alertDiv.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-        alertDiv.style.zIndex = "1000";
-        alertDiv.style.fontSize = "25px";
-        document.body.appendChild(alertDiv);
-
-        setTimeout(() => {
-            alertDiv.remove();
-        }, 3000); // Remove the alert after 3 seconds
     }
 
     resetDefense() {
