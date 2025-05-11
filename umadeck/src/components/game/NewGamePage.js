@@ -12,6 +12,8 @@ function NewGamePage() {
     const [loadedCards, setLoadedCards] = useState([]);
     const [recommendedCardIndex, setRecommendedCardIndex] = useState(null);
     const [usedRecommendation, setUsedRecommendation] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -27,22 +29,28 @@ function NewGamePage() {
     }
 
     const selectCard = (index) => {
-        if(selectedCards.includes(loadedCards[index])) {
-            setCards(selectedCards.filter(card => card !== loadedCards[index]));
-        }else if(selectedCards.length < 3) {
-            setCards([...selectedCards, loadedCards[index]]);
+        const card = loadedCards[index];
+        if (selectedCards.includes(card)) {
+            setCards(selectedCards.filter(selectedCard => selectedCard !== card));
+        } else if (selectedCards.length < 3) {
+            setCards([...selectedCards, card]);
             if (index === recommendedCardIndex) {
                 setRecommendedCardIndex(null);
                 setUsedRecommendation(false);
             }
-        }/*else{
-            mostrar de forma visual que no se pueden elegir mas cartas
-        }*/
+        }
     }
 
     useEffect(() => {   
         const cards = generateRandomCards();
         setLoadedCards(cards);
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
     
     const obtenerRecomendacion = () => {
@@ -65,6 +73,14 @@ function NewGamePage() {
         }
     }
 
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % loadedCards.length);
+    };
+
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + loadedCards.length) % loadedCards.length);
+    };
+
     return (
         <div className="newGamePage">
             <header>
@@ -72,18 +88,38 @@ function NewGamePage() {
                 <h1 className="especialh1">Elige las cartas del equipo:</h1>
                 <h2 className="especialh2">{selectedCards.length} de 3</h2>
             </header>
-            <div className="cardList-zoom">
-                <ul className="cardList">
-                    {loadedCards.map((card, index) => (
-                        <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
-                            {index === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
-                            <Card cardModel={card}
-                                isSelected = {selectedCards.includes(card)}
-                                onCardClick={() => selectCard(index)}/>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {isMobile ? (
+                <div className="card-carousel">
+                    <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                    <div className="carousel-card" onClick={() => selectCard(currentIndex)}>
+                        {loadedCards.length > 0 && (
+                            <div className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
+                                {currentIndex === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
+                                <Card
+                                    cardModel={loadedCards[currentIndex]}
+                                    isSelected={selectedCards.includes(loadedCards[currentIndex])}
+                                />
+                            </div>
+                        )}
+                    </div>
+                    <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                </div>
+            ) : (
+                <div className="cardList-zoom">
+                    <ul className="cardList">
+                        {loadedCards.map((card, index) => (
+                            <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
+                                {index === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
+                                <Card
+                                    cardModel={card}
+                                    isSelected={selectedCards.includes(card)}
+                                    onCardClick={() => selectCard(index)}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
             <div>
                 <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
                     <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
