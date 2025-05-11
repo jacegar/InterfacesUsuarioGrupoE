@@ -14,6 +14,7 @@ function NewGamePage() {
     const [usedRecommendation, setUsedRecommendation] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const [touchStartX, setTouchStartX] = useState(null); // Track the starting X position of a touch
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -81,6 +82,25 @@ function NewGamePage() {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + loadedCards.length) % loadedCards.length);
     };
 
+    const handleTouchStart = (e) => {
+        setTouchStartX(e.touches[0].clientX); // Record the starting X position
+    };
+
+    const handleTouchMove = (e) => {
+        if (!touchStartX) return;
+
+        const touchEndX = e.touches[0].clientX;
+        const deltaX = touchStartX - touchEndX;
+
+        if (deltaX > 50) {
+            handleNext(); // Swipe left to move to the next card
+            setTouchStartX(null); // Reset touch start
+        } else if (deltaX < -50) {
+            handlePrev(); // Swipe right to move to the previous card
+            setTouchStartX(null); // Reset touch start
+        }
+    };
+
     return (
         <div className="newGamePage">
             <header>
@@ -89,7 +109,11 @@ function NewGamePage() {
                 <h2 className="especialh2">{selectedCards.length} de 3</h2>
             </header>
             {isMobile ? (
-                <div className="card-carousel">
+                <div
+                    className="card-carousel"
+                    onTouchStart={handleTouchStart} // Add touch start handler
+                    onTouchMove={handleTouchMove}  // Add touch move handler
+                >
                     <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
                     <div className="carousel-card" onClick={() => selectCard(currentIndex)}>
                         {loadedCards.length > 0 && (
