@@ -58,11 +58,12 @@
 }
 
 .action-button.give-up {
-    background-color: #dc3545; /* Red color for the give-up button */
+    background-color: #dc3545; 
+    margin-top: 2.5rem;
 }
 
 .action-button.give-up:hover {
-    background-color: #a71d2a; /* Darker red on hover */
+    background-color: #a71d2a;
 }
 
 .action-button:hover {
