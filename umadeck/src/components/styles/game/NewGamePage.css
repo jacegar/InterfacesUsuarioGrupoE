@@ -201,7 +201,8 @@ body.reading-mode .newGamePage h2.especialh2 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin: 20px 0;
+    margin: 10px 0; /* Reduce vertical margin to move the carousel higher */
+    position: relative; /* Ensure relative positioning for arrow placement */
 }
 
 .carousel-card {
@@ -222,10 +223,17 @@ body.reading-mode .newGamePage h2.especialh2 {
     font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    position: absolute; /* Position arrows absolutely within the carousel */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
 }
 
-.carousel-button:hover {
-    background-color: #0056b3;
+.carousel-button.prev {
+    left: -50px; /* Position the left arrow */
+}
+
+.carousel-button.next {
+    right: -50px; /* Position the right arrow */
 }
 
 @media (max-width: 768px) {
@@ -242,13 +250,33 @@ body.reading-mode .newGamePage h2.especialh2 {
         left: 5px;
     }
 
+    .newGamePage h2.especialh2 {
+        margin-bottom: 1.5rem; /* Reduce spacing below the header */
+    }
+
     .card-carousel {
-        flex-direction: column;
+        margin-top: -3.0rem; /* Move the carousel closer to the header */
+    }
+
+    .contenedor-del-boton {
+        margin-top: 5px; /* Adjust buttons to stay close to the carousel */
+    }
+
+    .startGameButton {
+        margin-top: 5px; /* Reduce spacing above the "Iniciar partida" button */
     }
 
     .carousel-button {
         font-size: 1.2rem;
         padding: 5px 15px;
+    }
+
+    .carousel-button.prev {
+        left: -30px; /* Adjust for smaller screens */
+    }
+
+    .carousel-button.next {
+        right: -30px; /* Adjust for smaller screens */
     }
 }
 
