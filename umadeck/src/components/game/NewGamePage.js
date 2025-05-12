@@ -140,12 +140,13 @@ function NewGamePage() {
             ) : (
                 <div className="cardList-zoom">
                     <div className="card-carousel desktop">
-                        <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                        {/* Solo mostrar flechas si cardsToShow < 5 */}
+                        {cardsToShow < 5 && (
+                            <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                        )}
                         <ul className="cardList" style={{margin: 0}}>
                             {loadedCards.length > 0 &&
-                                // Mostrar cardsToShow cartas centradas en currentIndex
                                 [...Array(cardsToShow)].map((_, i) => {
-                                    // Centra el carrusel respecto a currentIndex
                                     const offset = Math.floor(cardsToShow / 2);
                                     const idx = (currentIndex - offset + i + loadedCards.length) % loadedCards.length;
                                     const card = loadedCards[idx];
@@ -162,7 +163,9 @@ function NewGamePage() {
                                 })
                             }
                         </ul>
-                        <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                        {cardsToShow < 5 && (
+                            <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                        )}
                     </div>
                 </div>
             )}
