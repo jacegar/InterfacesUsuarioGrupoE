@@ -15,6 +15,7 @@ function NewGamePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [touchStartX, setTouchStartX] = useState(null); // Track the starting X position of a touch
+    const [cardsToShow, setCardsToShow] = useState(5);
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -48,6 +49,14 @@ function NewGamePage() {
 
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
+            // Cambia la cantidad de cartas mostradas según el ancho de pantalla
+            if (window.innerWidth > 1300) { // antes 1200, ahora el umbral es menor
+                setCardsToShow(5);
+            } else if (window.innerWidth > 800) {
+                setCardsToShow(3);
+            } else {
+                setCardsToShow(1);
+            }
         };
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -130,18 +139,31 @@ function NewGamePage() {
                 </div>
             ) : (
                 <div className="cardList-zoom">
-                    <ul className="cardList">
-                        {loadedCards.map((card, index) => (
-                            <li key={index} className={index === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
-                                {index === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
-                                <Card
-                                    cardModel={card}
-                                    isSelected={selectedCards.includes(card)}
-                                    onCardClick={() => selectCard(index)}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="card-carousel desktop">
+                        <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                        <ul className="cardList" style={{margin: 0}}>
+                            {loadedCards.length > 0 &&
+                                // Mostrar cardsToShow cartas centradas en currentIndex
+                                [...Array(cardsToShow)].map((_, i) => {
+                                    // Centra el carrusel respecto a currentIndex
+                                    const offset = Math.floor(cardsToShow / 2);
+                                    const idx = (currentIndex - offset + i + loadedCards.length) % loadedCards.length;
+                                    const card = loadedCards[idx];
+                                    return (
+                                        <li key={idx} className={idx === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
+                                            {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
+                                            <Card
+                                                cardModel={card}
+                                                isSelected={selectedCards.includes(card)}
+                                                onCardClick={() => selectCard(idx)}
+                                            />
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                        <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                    </div>
                 </div>
             )}
             <div>
