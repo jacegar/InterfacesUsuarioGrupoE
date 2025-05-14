@@ -12,7 +12,7 @@ export function showStyledAlert(message) {
         alertDiv.style.borderRadius = "5px";
         alertDiv.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
         alertDiv.style.zIndex = "1000";
-        alertDiv.style.fontSize = "25px";
+        alertDiv.style.fontSize = "23px";
         document.body.appendChild(alertDiv);
 
         setTimeout(() => {

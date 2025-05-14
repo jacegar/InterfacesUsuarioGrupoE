@@ -5,6 +5,7 @@ import CardModel from "../../gamelogic/CardModel";
 import "../styles/game/NewGamePage.css";
 import { Link } from "react-router-dom";
 import HelpMenu from "../common/HelpMenu";
+import { showStyledAlert } from "../common/StyledAlert";
 
 //Desde esta pagina se deberia poder elegir las cartas para la nueva partida
 function NewGamePage() {
@@ -40,6 +41,8 @@ function NewGamePage() {
                 setRecommendedCardIndex(null);
                 setUsedRecommendation(false);
             }
+        }else{
+            showStyledAlert("Deselecciona una carta para elegir otra.");
         }
     }
 
