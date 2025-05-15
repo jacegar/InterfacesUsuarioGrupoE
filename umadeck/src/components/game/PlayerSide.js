@@ -225,6 +225,7 @@ function PlayerSide(props){
     useEffect(() => {
         setLocalCards(cards); // Sincroniza localCards con las cartas del padre
     }, [cards]);
+    
     return (
         <div className="player-side"> 
             <div className="action-menu">

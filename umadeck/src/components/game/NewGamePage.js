@@ -127,9 +127,10 @@ function NewGamePage() {
                     onTouchMove={handleTouchMove}  // Add touch move handler
                 >
                     <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
-                    <div className="carousel-card" onClick={() => selectCard(currentIndex)}>
+                    <div className="carousel-card">
                         {loadedCards.length > 0 && (
-                            <div className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
+                            <div className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
+                                onClick={() => selectCard(currentIndex)}>
                                 {currentIndex === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                                 <Card
                                     cardModel={loadedCards[currentIndex]}

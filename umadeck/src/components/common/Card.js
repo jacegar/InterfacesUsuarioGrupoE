@@ -35,9 +35,9 @@ function Card(props) {
         };
     }, []);
     
-    const handleMouseDown = () => {
-        // Don't start timer if already showing enlarged
-        if (showEnlarged) return;
+    const handleMouseDown = (event) => {
+        //Prevenimos que se activen a la vez el click en la carta y los clicks en los botones inferiores
+        if (showEnlarged || event.target.closest(".custom-card-footer")) return;
         
         // Start a timer to show enlarged after 1 second
         timerRef.current = setTimeout(() => {
@@ -46,7 +46,10 @@ function Card(props) {
         }, 1000);
     };
     
-    const handleMouseUp = () => {
+    const handleMouseUp = (event) => {
+        //Prevenimos que se activen a la vez el click en la carta y los clicks en los botones inferiores
+        if (event.target.closest(".custom-card-footer")) return;
+
         // Clear the timer if mouse is released before 2 seconds
         if (timerRef.current) {
             clearTimeout(timerRef.current);
