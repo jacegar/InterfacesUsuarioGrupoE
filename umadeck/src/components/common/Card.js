@@ -71,7 +71,10 @@ function Card(props) {
     };
     
     // Handle overlay click to close the enlarged card
-    const handleOverlayClick = () => {
+    const handleOverlayClick = (event) => {
+        if(event !== undefined){
+            event.stopPropagation();
+        }
         setShowEnlarged(false);
         setShowOverlay(false);
     };
