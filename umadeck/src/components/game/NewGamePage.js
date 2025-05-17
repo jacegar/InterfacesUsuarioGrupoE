@@ -86,6 +86,24 @@ function NewGamePage() {
         }
     }
 
+    //Usado en movil para marcar los botones del carousel, 0 -> no aplica, 1 -> izquierda, 2 -> derecha
+    const cercaniaRecomendacion = () => {
+        let cercania = 0;
+        if (recommendedCardIndex !== null && currentIndex !== recommendedCardIndex) {
+            const total = loadedCards.length;
+            const derecha = (recommendedCardIndex - currentIndex + total) % total;
+            const izquierda = (currentIndex - recommendedCardIndex + total) % total;
+            
+            if (izquierda < derecha) {
+                cercania = 1; // izquierda
+            } else {
+                cercania = 2; // derecha
+            }
+        }
+    
+        return cercania;
+    }
+
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % loadedCards.length);
     };
@@ -123,10 +141,12 @@ function NewGamePage() {
             {isMobile ? (
                 <div
                     className="card-carousel"
-                    onTouchStart={handleTouchStart} // Add touch start handler
-                    onTouchMove={handleTouchMove}  // Add touch move handler
+                    onTouchStart={handleTouchStart} // Desplazamiento táctil
+                    onTouchMove={handleTouchMove}  // Desplazamiento táctil
                 >
-                    <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                    <button className={`carousel-button prev ${cercaniaRecomendacion() === 1 ? "recommended" : ""}`}
+                            onClick={handlePrev}>{"<"}
+                    </button>
                     <div className="carousel-card">
                         {loadedCards.length > 0 && (
                             <div className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
@@ -139,7 +159,9 @@ function NewGamePage() {
                             </div>
                         )}
                     </div>
-                    <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                    <button className={`carousel-button next ${cercaniaRecomendacion() === 2 ? "recommended" : ""}`}
+                            onClick={handleNext}>{">"}
+                    </button>
                 </div>
             ) : (
                 <div className="cardList-zoom">

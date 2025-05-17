@@ -82,7 +82,7 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .startGameButton {
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
     padding: clamp(1rem, 2vw, 1.4rem) clamp(2.5rem, 4vw, 3.5rem);
     background-color: #007bff;
     color: white;
@@ -123,9 +123,17 @@ body.reading-mode .newGamePage h2.especialh2 {
     box-shadow: 0 0 10px #ffae00;
     transition: border 0.3s linear, box-shadow 0.3s linear;
     margin-top: 40px; /* añade margen superior para separar del texto 0 de 3 */
-    /* Soluciona el desplazamiento vertical de las cartas al recomendar */
-    min-height: 0; /* elimina cualquier altura mínima inesperada */
-    /* Asegura que todas las cartas tengan la misma altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.not-recommended-card {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -145,20 +153,6 @@ body.reading-mode .newGamePage h2.especialh2 {
     font-size: 0.9rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    /* Evita que la etiqueta empuje la carta hacia abajo */
-    pointer-events: none;
-}
-
-.not-recommended-card {
-    border: 3px solid transparent;
-    border-radius: 10px;
-    padding: 5px;
-    /* Asegura alineación con recommended-card */
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
 }
 
 .contenedor-del-boton {
@@ -250,6 +244,10 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .carousel-button.next {
     right: -50px; /* Position the right arrow */
+}
+
+.carousel-button.recommended{
+    box-shadow: 0 0 12px 3px #ffae00, 0 0 4px 2px #ffd700;
 }
 
 @media (max-width: 768px) {
