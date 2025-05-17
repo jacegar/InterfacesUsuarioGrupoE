@@ -134,6 +134,7 @@ body.reading-mode .newGamePage h2.especialh2 {
     border: 3px solid transparent;
     border-radius: 10px;
     padding: 5px;
+    margin-top: 40px; /* añade margen superior para separar del texto 0 de 3 */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
