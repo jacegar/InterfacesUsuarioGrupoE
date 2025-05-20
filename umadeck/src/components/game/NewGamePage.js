@@ -215,6 +215,7 @@ function NewGamePage() {
                     </div>
                 </div>
             )}
+            
             <div>
                 <button className="startGameButton" disabled={selectedCards.length !== 3}
                     onClick={() => navigate("/game", { state: {playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}})}
@@ -222,6 +223,7 @@ function NewGamePage() {
                     Iniciar partida
                 </button>
             </div>
+
             <div className="contenedor-del-boton">
                 <button className="recommendation-button" onClick={obtenerRecomendacion}>
                     Recomendación
