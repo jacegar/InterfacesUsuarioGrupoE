@@ -274,6 +274,7 @@ function PlayerSide(props){
                             </ul>
                         </div>
                     }
+                    gameStarted={true}
                 />
                 <MusicControl/>
             </div>
@@ -282,7 +283,7 @@ function PlayerSide(props){
                     className="card-slot left"
                     tabIndex={exchangeMode ? "0" : undefined}
                     onKeyDown={(e) => {
-                        if (exchangeMode && e.key === 'Enter' || e.key === ' ') {
+                        if (exchangeMode && (e.key === 'Enter' || e.key === ' ')) {
                             e.preventDefault();
                             handleDirectExchange(1);
                         }
@@ -337,7 +338,7 @@ function PlayerSide(props){
                     className="card-slot right"
                     tabIndex={exchangeMode ? "0" : undefined}
                     onKeyDown={(e) => {
-                        if (exchangeMode && e.key === 'Enter' || e.key === ' ') {
+                        if (exchangeMode && (e.key === 'Enter' || e.key === ' ')) {
                             e.preventDefault();
                             handleDirectExchange(2);
                         }

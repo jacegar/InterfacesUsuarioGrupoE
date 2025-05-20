@@ -1,9 +1,16 @@
 import "../styles/common/HelpMenu.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function HelpMenu(props){
     const [showHelp, setShowHelp] = useState(false);
-    const {title, text} = props;
+    const {title, text, gameStarted} = props;
+
+    useEffect(() => {
+        if (gameStarted) {
+            setShowHelp(true);
+        }
+    }, [gameStarted]);
+
     return (
         <>
             <div>

@@ -245,6 +245,7 @@ function NewGamePage() {
                             </ul>
                         </div>
                     }
+                    gameStarted={false}
                 />
             </div>
 
