@@ -149,8 +149,17 @@ function NewGamePage() {
                     </button>
                     <div className="carousel-card">
                         {loadedCards.length > 0 && (
-                            <div className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
-                                onClick={() => selectCard(currentIndex)}>
+                            <div 
+                                className={currentIndex === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
+                                onClick={() => selectCard(currentIndex)}
+                                tabIndex="0"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        selectCard(currentIndex);
+                                    }
+                                }}
+                            >
                                 {currentIndex === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                                 <Card
                                     cardModel={loadedCards[currentIndex]}
@@ -177,7 +186,17 @@ function NewGamePage() {
                                     const idx = (currentIndex - offset + i + loadedCards.length) % loadedCards.length;
                                     const card = loadedCards[idx];
                                     return (
-                                        <li key={idx} className={idx === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}>
+                                        <li 
+                                            key={idx} 
+                                            className={idx === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
+                                            tabIndex="0"
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                    e.preventDefault();
+                                                    selectCard(idx);
+                                                }
+                                            }}
+                                        >
                                             {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                                             <Card
                                                 cardModel={card}

@@ -278,7 +278,16 @@ function PlayerSide(props){
                 <MusicControl/>
             </div>
             <div className="player-cards">
-                <div className="card-slot left">
+                <div 
+                    className="card-slot left"
+                    tabIndex={exchangeMode ? "0" : undefined}
+                    onKeyDown={(e) => {
+                        if (exchangeMode && e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleDirectExchange(1);
+                        }
+                    }}
+                >
                     {localCards[1] ? 
                         <CardMini 
                             cardModel={localCards[1]} 
@@ -289,7 +298,16 @@ function PlayerSide(props){
                     }
                 </div>
 
-                <div className="main-card-container">
+                <div 
+                    className="main-card-container" 
+                    tabIndex="0"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleCardClick();
+                        }
+                    }}
+                >
                     {localCards[0] ? (
                         <Card 
                             cardModel={localCards[0]} 
@@ -315,7 +333,16 @@ function PlayerSide(props){
                     )}
                 </div>
                 
-                <div className="card-slot right">
+                <div 
+                    className="card-slot right"
+                    tabIndex={exchangeMode ? "0" : undefined}
+                    onKeyDown={(e) => {
+                        if (exchangeMode && e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleDirectExchange(2);
+                        }
+                    }}
+                >
                     {localCards[2] ? 
                         <CardMini 
                             cardModel={localCards[2]} 
