@@ -1,37 +1,38 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/mainmenu/MainMenu.css";
 
 function MainMenu(){
+    const navigate = useNavigate();
+
     return (
         <main className="main-menu">
             <div className="menu-options">
-                <Link to="/new-game" className="menu-link">
-                    <button className="menu-button">
+                <div className="menu-link">
+                    <button className="menu-button" onClick={() => navigate("/new-game")}>
                         Partida Nueva
                     </button>
-                </Link>
-                <Link to="/achievements" className="menu-link">
-                    <button className="menu-button">
+                </div>
+                <div className="menu-link">
+                    <button className="menu-button" onClick={() => navigate("/achievements")}>
                         Logros
                     </button>
-                </Link>
-                <Link to="/collection" className="menu-link">
-                    <button className="menu-button">
+                </div>
+                <div className="menu-link">
+                    <button className="menu-button" onClick={() => navigate("/collection")}>
                         Colección
                     </button>
-                </Link>
-                
+                </div>
                 <div className="small-buttons-container">
-                    <Link to="/privacy" className="menu-link-small">
-                        <button className="menu-button-small">
+                    <div className="menu-link-small">
+                        <button className="menu-button-small" onClick={() => navigate("/privacy")}>
                             Privacidad
                         </button>
-                    </Link>
-                    <Link to="/conditions" className="menu-link-small">
-                        <button className="menu-button-small">
+                    </div>
+                    <div className="menu-link-small">
+                        <button className="menu-button-small" onClick={() => navigate("/conditions")}>
                             Condiciones
                         </button>
-                    </Link>
+                    </div>
                 </div>
             </div>
         </main>
