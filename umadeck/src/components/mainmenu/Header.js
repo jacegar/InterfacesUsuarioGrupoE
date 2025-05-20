@@ -43,11 +43,12 @@ function Header(){
     return(
         <header className="main-header">
             <div className="options-icon" ref={dropdownRef}>
-                <img 
-                    src="/assets/images/theme.png" 
-                    alt="Opciones"
-                    onClick={toggleOptions}
-                />
+                <button className = "mode-button" onClick={toggleOptions}>
+                    <img 
+                        src="/assets/images/theme.png" 
+                        alt="Opciones"
+                    />
+                </button>
                 {showOptions && isMainMenu && (
                     <div className="options-dropdown">
                         <button onClick={handleToggleDarkMode}>

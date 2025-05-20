@@ -7,24 +7,28 @@ function CardFooter(props) {
 
     return (
         <div className="custom-card-footer" onClick={handleClick}>
-            <img 
-                src="/assets/images/curved-arrow.svg" 
-                alt="Da la vuelta a la carta" 
-                className="flip-icon" 
-                onClick={(e) => {
-                    e.stopPropagation();
-                    props.handleFlip();
-                }} 
-            />
-            <img 
-                className="magnify-icon" 
-                src="/assets/images/image7.png" 
-                alt="Ampliar carta" 
-                onClick={(e) => {
-                    e.stopPropagation();
-                    props.handleMagnify();
-                }} 
-            />
+            <button onClick={(e) => {
+                        e.stopPropagation();
+                        props.handleFlip();
+                    }}
+                    className="flip-button">
+                <img 
+                    src="/assets/images/curved-arrow.svg" 
+                    alt="Da la vuelta a la carta" 
+                    className="flip-icon" 
+                />
+            </button>
+            <button onClick={(e) => {
+                        e.stopPropagation();
+                        props.handleMagnify();
+                    }}
+                    className="magnify-button">
+                <img 
+                    className="magnify-icon" 
+                    src="/assets/images/image7.png" 
+                    alt="Ampliar carta"  
+                />
+            </button>
         </div>
     );
 }

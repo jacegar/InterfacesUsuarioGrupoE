@@ -7,12 +7,13 @@ function HelpMenu(props){
     return (
         <>
             <div>
-                <img 
-                    src="/assets/images/help-button.svg" 
-                    alt="Menu de ayuda" 
-                    className="help-image"
-                    onClick={() => setShowHelp(!showHelp)}
-                />
+                <button className="help-button" onClick={() => setShowHelp(!showHelp)}>
+                    <img 
+                        src="/assets/images/help-button.svg" 
+                        alt="Menu de ayuda" 
+                        className="help-image"
+                    />
+                </button>
             </div>
             {showHelp && (
                 <div className="help-overlay" onClick={() => setShowHelp(false)}>

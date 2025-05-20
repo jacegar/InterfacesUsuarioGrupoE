@@ -108,6 +108,14 @@ body.reading-mode .options-dropdown button:hover {
     background-color: #d8cfc0;
 }
 
+.mode-button{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
 @media (max-width: 480px) {
     .main-header {
         padding: 0.8rem 0;

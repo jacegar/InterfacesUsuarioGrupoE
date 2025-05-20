@@ -145,7 +145,7 @@ function NewGamePage() {
                     onTouchMove={handleTouchMove}  // Desplazamiento táctil
                 >
                     <button className={`carousel-button prev ${cercaniaRecomendacion() === 1 ? "recommended" : ""}`}
-                            onClick={handlePrev}>{"<"}
+                            onClick={handlePrev}>←
                     </button>
                     <div className="carousel-card">
                         {loadedCards.length > 0 && (
@@ -160,7 +160,7 @@ function NewGamePage() {
                         )}
                     </div>
                     <button className={`carousel-button next ${cercaniaRecomendacion() === 2 ? "recommended" : ""}`}
-                            onClick={handleNext}>{">"}
+                            onClick={handleNext}>→
                     </button>
                 </div>
             ) : (
