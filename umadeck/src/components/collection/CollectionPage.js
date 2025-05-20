@@ -36,6 +36,7 @@ function CollectionPage() {
                 </ul>
               </div>
             }
+            gameStarted={false}
           />
         </div>
         <div className="card-count">{unlockedCount}/{allCards.length}</div>
