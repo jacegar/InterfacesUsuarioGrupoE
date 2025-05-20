@@ -13,7 +13,7 @@ class Player {
         this.achievements = savedData.achievements || {};
         this.stats = savedData.stats || {
             totalDamage: 0,
-            currentGameDamage: 0,
+            currentGameDamage: 0
         };
         this.hasSeenTutorial = savedData.hasSeenTutorial || false;
 
