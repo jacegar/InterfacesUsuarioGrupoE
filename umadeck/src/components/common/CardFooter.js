@@ -9,24 +9,40 @@ function CardFooter(props) {
         <div className="custom-card-footer" onClick={handleClick}>
             <button onClick={(e) => {
                         e.stopPropagation();
-                        props.handleFlip();
-                    }}
-                    className="flip-button">
-                <img 
-                    src="/assets/images/curved-arrow.svg" 
-                    alt="Da la vuelta a la carta" 
-                    className="flip-icon" 
-                />
-            </button>
-            <button onClick={(e) => {
-                        e.stopPropagation();
                         props.handleMagnify();
+                    }}
+                    tabIndex="0"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            props.handleMagnify();
+                        }
                     }}
                     className="magnify-button">
                 <img 
                     className="magnify-icon" 
                     src="/assets/images/image7.png" 
                     alt="Ampliar carta"  
+                />
+            </button>
+            <button onClick={(e) => {
+                        e.stopPropagation();
+                        props.handleFlip();
+                    }}
+                    tabIndex="0"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            props.handleFlip();
+                        }
+                    }}
+                    className="flip-button">
+                <img 
+                    src="/assets/images/curved-arrow.svg" 
+                    alt="Da la vuelta a la carta" 
+                    className="flip-icon" 
                 />
             </button>
         </div>

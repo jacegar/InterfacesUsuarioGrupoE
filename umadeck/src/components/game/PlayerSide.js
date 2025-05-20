@@ -288,7 +288,7 @@ function PlayerSide(props){
             <div className="player-cards">
                 <div 
                     className="card-slot left"
-                    tabIndex={exchangeMode ? "0" : undefined}
+                    tabIndex={localCards[1] && exchangeMode ? "0" : undefined}
                     onKeyDown={(e) => {
                         if (exchangeMode && (e.key === 'Enter' || e.key === ' ')) {
                             e.preventDefault();
@@ -343,7 +343,7 @@ function PlayerSide(props){
                 
                 <div 
                     className="card-slot right"
-                    tabIndex={exchangeMode ? "0" : undefined}
+                    tabIndex={localCards[2] && exchangeMode ? "0" : undefined}
                     onKeyDown={(e) => {
                         if (exchangeMode && (e.key === 'Enter' || e.key === ' ')) {
                             e.preventDefault();
