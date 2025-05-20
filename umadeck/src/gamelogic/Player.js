@@ -13,8 +13,9 @@ class Player {
         this.achievements = savedData.achievements || {};
         this.stats = savedData.stats || {
             totalDamage: 0,
-            currentGameDamage: 0
+            currentGameDamage: 0,
         };
+        this.hasSeenTutorial = savedData.hasSeenTutorial || false;
 
         // Verificar y actualizar logros basados en las cartas ya desbloqueadas
         const unlockedCount = this.unlockedCards.length;
@@ -109,12 +110,22 @@ class Player {
         this.stats.currentGameDamage = 0;
         this.save();
     }
+
+    hasSeenTutorial() {
+        return this.hasSeenTutorial;
+    }
+
+    setSeenTutorial() {
+        this.hasSeenTutorial = true;
+        this.save();
+    }
     
     save() {
         const data = {
             unlockedCards: this.unlockedCards,
             achievements: this.achievements,
-            stats: this.stats
+            stats: this.stats,
+            hasSeenTutorial: this.hasSeenTutorial
         };
         localStorage.setItem('playerData', JSON.stringify(data));
     }

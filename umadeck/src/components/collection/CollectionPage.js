@@ -36,7 +36,7 @@ function CollectionPage() {
                 </ul>
               </div>
             }
-            gameStarted={false}
+            hasSeenTutorial={true}
           />
         </div>
         <div className="card-count">{unlockedCount}/{allCards.length}</div>

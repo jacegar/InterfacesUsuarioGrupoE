@@ -245,7 +245,7 @@ function NewGamePage() {
                             </ul>
                         </div>
                     }
-                    gameStarted={false}
+                    hasSeenTutorial={true}
                 />
             </div>
 

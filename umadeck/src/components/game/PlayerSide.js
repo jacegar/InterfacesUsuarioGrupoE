@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
 import MusicControl from "./MusicControl";
 import HelpMenu from "../common/HelpMenu";
+import Player from "../../gamelogic/Player";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards, attackDelay, fastMode, toggleFastMode } = props;
@@ -22,6 +23,8 @@ function PlayerSide(props){
     const [isAutoMode, setIsAutoMode] = useState(false);
     const [exchangeMode, setExchangeMode] = useState(false); // Nuevo estado para el modo de intercambio
     const [canAttack, setCanAttack] = useState(true); // Nuevo estado para controlar si se puede atacar
+    const player = new Player();
+    const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -257,16 +260,19 @@ function PlayerSide(props){
                     title={<span className="help-menu-title">Ayuda del Juego</span>}
                     text={
                         <div className="help-menu-text">
-                            <p><strong>Botones disponibles:</strong></p>
-                            <ul>
-                                <li> <strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
-                                <li> <strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
-                                <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
-                                <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
-                                <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
-                                <li> <strong>Altavoz:</strong> Activa, desactiva o ajusta el volumen de la música del juego.</li>
-                                <li> <strong>1x-2x:</strong> Ajusta la velocidad de ataque del enemigo y del modo automático.</li>
-                            </ul>
+                            {tutorialSeen &&
+                             <>
+                                <p><strong>Botones disponibles:</strong></p><ul>
+                                    <li> <strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
+                                    <li> <strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
+                                    <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
+                                    <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
+                                    <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
+                                    <li> <strong>Altavoz:</strong> Activa, desactiva o ajusta el volumen de la música del juego.</li>
+                                    <li> <strong>1x-2x:</strong> Ajusta la velocidad de ataque del enemigo y del modo automático.</li>
+                                </ul>
+                             </>
+                            }
                             <p><strong>Funcionamiento básico:</strong></p>
                             <ul>
                                 <li>Pincha en una carta para atacar, usar habilidades o cambiarla.</li>
@@ -274,7 +280,8 @@ function PlayerSide(props){
                             </ul>
                         </div>
                     }
-                    gameStarted={true}
+                    hasSeenTutorial={tutorialSeen}
+                    onTutorialSeen={() => setTutorialSeen(true)}
                 />
                 <MusicControl/>
             </div>
