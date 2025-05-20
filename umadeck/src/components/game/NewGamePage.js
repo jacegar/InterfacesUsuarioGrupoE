@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Card from "../common/Card";
 import CardModel from "../../gamelogic/CardModel";
 import "../styles/game/NewGamePage.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HelpMenu from "../common/HelpMenu";
 import { showStyledAlert } from "../common/StyledAlert";
 
@@ -17,6 +17,7 @@ function NewGamePage() {
     const [isMobile, setIsMobile] = useState(false);
     const [touchStartX, setTouchStartX] = useState(null); // Track the starting X position of a touch
     const [cardsToShow, setCardsToShow] = useState(5);
+    const navigate = useNavigate();
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
@@ -215,9 +216,11 @@ function NewGamePage() {
                 </div>
             )}
             <div>
-                <Link to="/game" state={{ playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}}>
-                    <button className="startGameButton" disabled={selectedCards.length !== 3}>Iniciar partida</button>
-                </Link>
+                <button className="startGameButton" disabled={selectedCards.length !== 3}
+                    onClick={() => navigate("/game", { state: {playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}})}
+                >
+                    Iniciar partida
+                </button>
             </div>
             <div className="contenedor-del-boton">
                 <button className="recommendation-button" onClick={obtenerRecomendacion}>
