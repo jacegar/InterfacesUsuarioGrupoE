@@ -195,3 +195,130 @@ body.reading-mode .speed-button.active {
     font-weight: bold;
     z-index: 100;
 }
+
+
+@media screen and (max-width: 511px) {
+    .player-side {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    .player-cards {
+        width: 100%;
+        gap: 6rem;
+        margin: 5px 0;
+        justify-content: center;
+    }
+
+    .card-slot {
+        width: 90px;
+        height: 144px;
+    }
+
+    .action-menu {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 5px auto;
+        gap: 5px;
+        padding: 0 5px;
+    }
+
+    .action-button {
+        width: auto;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        margin: 2px;
+    }
+
+    .action-button.give-up {
+        margin-top: 2px;
+    }
+
+    .speed-button {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin: 2px;
+    }
+
+    .player-display {
+        position: relative;
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0;
+        bottom: auto;
+        gap: 0.5rem;
+    }
+
+    .profile-container {
+        gap: 0.5rem;
+    }
+
+    .points-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 5px 0;
+        top: auto;
+        right: auto;
+    }
+
+    .card-placeholder {
+        width: 90px;
+        height: 144px;
+    }
+
+    .card-placeholder.main {
+        width: 110px;
+        height: 176px;
+    }
+
+    .exchange-mode-indicator {
+        bottom: auto;
+        top: 50%;
+        width: 90%;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .ability-effect {
+        width: 60px;
+        height: 60px;
+    }
+
+    .player-effect {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .enemy-effect {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Ajustes para el menú de ayuda */
+    .help-menu {
+        max-width: 90%;
+        font-size: 0.9rem;
+    }
+
+    .help-menu-title {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    .help-menu-text {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+}
