@@ -6,7 +6,7 @@ function PointsDisplay(props) {
 
     return (
         <div className={"points-display " + (side === 0 ? "player" : "enemy")}>
-            <p>{points} / 3</p>
+            <h1 className="points-counter">{points} / 3</h1>
             <div className="circles-container">
                 {[...Array(3)].map((_, index) => (
                     <div

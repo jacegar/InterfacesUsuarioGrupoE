@@ -18,15 +18,15 @@
     letter-spacing: 1.75px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: clamp(0.5rem, 0.5vw, 1rem);
-    font-size: clamp(1.8rem, 3.3vw, 4rem);
+    margin-top: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(1.8rem, 4.8vw, 4rem);
 }
 
 .newGamePage h2.especialh2 {
     text-align: center;
     color: #333;
     margin-bottom: 1rem;
-    font-size: clamp(1.7rem, 2.5vw, 3.5rem);
+    font-size: clamp(1.7rem, 4vw, 3rem);
     font-weight: bold;
 }
 
@@ -82,8 +82,8 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .startGameButton {
-    font-size: clamp(1.6rem, 2.2vw, 2.4rem);
-    padding: clamp(1rem, 1.5vw, 1.4rem) clamp(2.5rem, 2vw, 3.5rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    padding: clamp(1rem, 2vw, 1.4rem) clamp(2.5rem, 4vw, 3.5rem);
     background-color: #007bff;
     color: white;
     border: none;
@@ -95,7 +95,7 @@ body.reading-mode .newGamePage h2.especialh2 {
     letter-spacing: 1.5px;
     font-weight: bold;
     min-width: min(300px, 80%);
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .startGameButton:hover:not(:disabled) {
@@ -122,16 +122,10 @@ body.reading-mode .newGamePage h2.especialh2 {
     padding: 5px;
     box-shadow: 0 0 10px #ffae00;
     transition: border 0.3s linear, box-shadow 0.3s linear;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.not-recommended-card {
-    border: 3px solid transparent;
-    border-radius: 10px;
-    padding: 5px;
+    margin-top: 40px; /* añade margen superior para separar del texto 0 de 3 */
+    /* Soluciona el desplazamiento vertical de las cartas al recomendar */
+    min-height: 0; /* elimina cualquier altura mínima inesperada */
+    /* Asegura que todas las cartas tengan la misma altura */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -151,6 +145,20 @@ body.reading-mode .newGamePage h2.especialh2 {
     font-size: 0.9rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    /* Evita que la etiqueta empuje la carta hacia abajo */
+    pointer-events: none;
+}
+
+.not-recommended-card {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    /* Asegura alineación con recommended-card */
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .contenedor-del-boton {
@@ -159,19 +167,18 @@ body.reading-mode .newGamePage h2.especialh2 {
     justify-content: center; /* Center horizontally */
     align-items: center;
     gap: 15px; /* Add spacing between buttons */
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .recommendation-button {
-    position: static; /* Elimina la posición absoluta */
-    background-color: #007bff;
-    margin-top: 10px;
-    color: white;
+    position: static;
+    background-color: #0050a8; /* azul más oscuro que #007bff, mejor contraste */
+    color: #fff;
     border: none;
     border-radius: 10px;
     padding: 0.4rem 0.8rem;
     font-weight: bold;
-    font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+    font-size: 1.3rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -181,9 +188,9 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .recommendation-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Only apply vertical translation */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+    background-color: #003d80; /* azul aún más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .recommendation-button:active {
@@ -223,7 +230,7 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .carousel-button {
-    background-color: #007bff;
+    background-color: #0050a8;
     color: white;
     border: none;
     border-radius: 5px;
@@ -242,10 +249,6 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .carousel-button.next {
     right: -50px; /* Position the right arrow */
-}
-
-.carousel-button.recommended{
-    box-shadow: 0 0 12px 3px #ffae00, 0 0 4px 2px #ffd700;
 }
 
 @media (max-width: 768px) {
@@ -289,10 +292,6 @@ body.reading-mode .newGamePage h2.especialh2 {
 
     .carousel-button.next {
         right: -30px; /* Adjust for smaller screens */
-    }
-
-    .recommended-card, .not-recommended-card{
-        margin-top: 40px;
     }
 }
 

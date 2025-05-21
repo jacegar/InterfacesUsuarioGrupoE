@@ -15,7 +15,7 @@ function ConditionsPage() {
                     <li>El uso indebido de la aplicación puede resultar en la suspensión de tu cuenta.</li>
                     <li>Al jugar a este juego aceptas que tu alma sea propiedad de la UMA.</li>
                 </ul>
-                <p>Gracias por jugar y respetar nuestras reglas.</p>
+                <h2>Gracias por jugar y respetar nuestras reglas.</h2>
             </div>
         </main>
     );

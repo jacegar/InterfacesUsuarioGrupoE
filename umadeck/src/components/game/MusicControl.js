@@ -69,6 +69,7 @@ function MusicControl(){
                 value={volume}
                 onChange={handleVolumeChange}
                 className="volume-slider"
+                aria-label="Volumen"
             />
         </div>
     );
