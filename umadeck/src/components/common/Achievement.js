@@ -6,8 +6,8 @@ function Achievement({ id, title, progress, unlocked, date, img }) {
   
   return (
     <div className={`achievement-card ${unlocked ? "unlocked" : "locked"}`}>
-      <img src={img} alt={title} className="achievement-image" />
-      <p className="achievement-title">{title}</p>
+      <img src={img} alt={"Foto de " + title} className="achievement-image" />
+      <h1 className="achievement-title">{title}</h1>
       
       {/* Mostrar barra de progreso solo si no está desbloqueado */}
       {!unlocked && (

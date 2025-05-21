@@ -14,7 +14,7 @@ function PrivacyPage() {
                     <li>Los datos recopilados se utilizan únicamente para mejorar tu experiencia en el juego.</li>
                     <li>Puedes solicitar la eliminación de tus datos en cualquier momento.</li>
                 </ul>
-                <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+                <h2>Si tienes alguna pregunta, no dudes en contactarnos.</h2>
             </div>
         </main>
     );

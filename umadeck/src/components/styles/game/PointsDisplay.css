@@ -5,6 +5,11 @@
     margin-right: 5rem;
 }
 
+.points-counter {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
 .circles-container {
     display: flex;
     gap: 10px;
