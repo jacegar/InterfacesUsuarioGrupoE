@@ -244,7 +244,11 @@ function PlayerSide(props){
                     {fastMode ? "2x" : "1x"}
                 </button>
                 <button className="action-button" 
-                    onClick={onEndTurn} 
+                    onClick={() => {
+                        setShowMenu(false);
+                        setIsCardSelected(false);
+                        onEndTurn();
+                    }} 
                     disabled={currentTurn !== 0}>
                     Terminar turno
                 </button>
