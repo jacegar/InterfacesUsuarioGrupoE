@@ -88,34 +88,3 @@
     50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 1); }
     100% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
 }
-
-@media screen and (max-width: 511px) {
-    .custom-card {
-        font-size: 0.8rem;
-    }
-
-    .custom-card .card-title {
-        font-size: 0.9rem;
-    }
-
-    .custom-card .card-text {
-        font-size: 0.75rem;
-    }
-
-    .custom-card .card-stats {
-        font-size: 0.8rem;
-    }
-
-    .custom-card .card-description {
-        font-size: 0.7rem;
-        line-height: 1.2;
-    }
-
-    .custom-card .card-ability {
-        font-size: 0.75rem;
-    }
-
-    .custom-card .card-type {
-        font-size: 0.7rem;
-    }
-}
