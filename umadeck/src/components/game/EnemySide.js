@@ -49,7 +49,7 @@ function EnemySide(props){
                 </div>
             </div>
             <div className="points-container">
-                <PointsDisplay points={points} side={1}/>
+                <PointsDisplay points={points}/>
             </div>
         </div>
 

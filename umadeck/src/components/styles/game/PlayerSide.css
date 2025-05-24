@@ -1,9 +1,10 @@
 .player-side{
     position: relative;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .player-cards {
@@ -41,6 +42,7 @@
     flex-direction: row;
     align-items: center;
     bottom: 0;
+    left: 0;
     gap: 1rem;
 }
 
@@ -124,21 +126,23 @@
     visibility: hidden;
 }
 
-.points-container{
+.player-side .points-container{
     position: absolute;
     top: 0;
     right: 0;
+    margin-right: 5rem;
 }
 
 .help-menu-title {
-    text-align: center; /* Center the headings */
+    text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .help-menu-text {
-    text-align: left; /* Align the rest of the text to the left */
+    text-align: left;
     line-height: 1.5;
+    z-index: 1001;
 }
 
 .speed-button {
@@ -193,28 +197,13 @@ body.reading-mode .speed-button.active {
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: bold;
-    z-index: 100;
+    z-index: 1001;
 }
 
 
-@media screen and (max-width: 511px) {
-    .player-side {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        position: relative;
-    }
-
+@media (max-width: 768px) {
     .player-cards {
-        width: 100%;
-        gap: 6rem;
-        margin: 5px 0;
-        justify-content: center;
-    }
-
-    .card-slot {
-        width: 90px;
-        height: 144px;
+        gap: 4rem;
     }
 
     .action-menu {
@@ -240,6 +229,7 @@ body.reading-mode .speed-button.active {
 
     .action-button.give-up {
         margin-top: 2px;
+        margin-left: 20px;
     }
 
     .speed-button {
@@ -250,45 +240,16 @@ body.reading-mode .speed-button.active {
     }
 
     .player-display {
-        position: relative;
-        width: 100%;
-        justify-content: center;
-        margin: 5px 0;
+        top: 0;
         bottom: auto;
-        gap: 0.5rem;
     }
 
     .profile-container {
         gap: 0.5rem;
     }
 
-    .points-container {
-        position: relative;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 5px 0;
-        top: auto;
-        right: auto;
-    }
-
-    .card-placeholder {
-        width: 90px;
-        height: 144px;
-    }
-
-    .card-placeholder.main {
-        width: 110px;
-        height: 176px;
-    }
-
-    .exchange-mode-indicator {
-        bottom: auto;
-        top: 50%;
-        width: 90%;
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 6px 12px;
+    .player-side .points-container {
+        margin-right: 0rem;
     }
 
     .ability-effect {

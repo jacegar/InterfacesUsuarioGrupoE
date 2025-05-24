@@ -1,19 +1,7 @@
 .game-page {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    min-height: 100vh;
-    margin: 0 auto;
     padding: 5px;
-    transform: scale(1);
-    transform-origin: top center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow-x: auto;
-    overflow-y: auto;
-    min-width: 900px;
-    box-sizing: border-box;
 }
 
 .game-page hr {
@@ -44,17 +32,6 @@
     border-radius: 5px;
 }
 
-.player-side, .enemy-side {
-    flex: 0.5;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    min-width: 900px;
-}
-
 .turn-section {
     flex: 0 0 auto;
     padding: 0;
@@ -70,8 +47,4 @@
 .card-container, .game-controls, .player-info {
     max-width: 100%;
     box-sizing: border-box;
-}
-
-.card-container {
-    min-width: 850px;
 }

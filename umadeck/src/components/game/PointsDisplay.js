@@ -2,10 +2,10 @@ import React from 'react';
 import "../styles/game/PointsDisplay.css";
 
 function PointsDisplay(props) {
-    const { points, side } = props;
+    const { points} = props;
 
     return (
-        <div className={"points-display " + (side === 0 ? "player" : "enemy")}>
+        <div className={"points-display "}>
             <h1 className="points-counter">{points} / 3</h1>
             <div className="circles-container">
                 {[...Array(3)].map((_, index) => (

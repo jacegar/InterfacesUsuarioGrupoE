@@ -1,9 +1,10 @@
 .enemy-side {
     position: relative;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 10;
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .enemy-side .custom-card:hover{
@@ -39,8 +40,19 @@
     visibility: hidden;
 }
 
-.points-container{
+.enemy-side .points-container {
+    margin-right: 5rem;
     position: absolute;
     top: 0;
     right: 0;
+}
+
+@media (max-width: 768px) {
+    .enemy-cards {
+        gap: 4rem;
+    }
+
+    .enemy-side .points-container {
+        margin-right: 0rem;
+    }
 }

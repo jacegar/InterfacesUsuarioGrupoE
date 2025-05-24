@@ -1,8 +1,6 @@
-
 .music-controls {
     display: flex;
     align-items: center;
-    z-index: 1000;
 }
 
 .volume-slider {
@@ -17,7 +15,7 @@
     border-radius: 5px;
     outline: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .music-controls:hover .volume-slider {
@@ -41,7 +39,7 @@
     border: 2px solid #6c757d;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: 0.3s ease, transform 0.2s ease;
 }
 
 .volume-slider::-webkit-slider-thumb:hover {
@@ -56,7 +54,7 @@
     border: 2px solid #6c757d;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: 0.3s ease, transform 0.2s ease;
 }
 
 .volume-slider::-moz-range-thumb:hover {
