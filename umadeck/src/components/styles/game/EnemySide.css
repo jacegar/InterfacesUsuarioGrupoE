@@ -50,9 +50,27 @@
 @media (max-width: 768px) {
     .enemy-cards {
         gap: 4rem;
+        flex-wrap: wrap;
+        & > *:nth-child(2) {
+            order: 2;
+        }
+        & > *:first-child, & > *:last-child {
+            order: 1;
+        }
     }
 
     .enemy-side .points-container {
         margin-right: 0rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .enemy-cards {
+        gap: 2.5rem;
+    }
+    
+    .card-placeholder {
+        width: 100px;
+        height: 180px;
     }
 }

@@ -48,3 +48,17 @@
     max-width: 100%;
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    
+    .turn-counter, .turn-indicator {
+        font-size: 1.1em;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .turn-counter, .turn-indicator {
+        font-size: 0.9em;
+    }
+}
