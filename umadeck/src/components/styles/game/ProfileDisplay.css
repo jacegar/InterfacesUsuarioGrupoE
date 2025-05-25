@@ -31,4 +31,11 @@
 .profile-enlarged {
     width: 500px;
     height: 500px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .profile-display {
+        transform: scale(0.8);
+    }
 }

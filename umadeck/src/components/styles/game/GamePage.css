@@ -35,7 +35,8 @@
 .turn-section {
     flex: 0 0 auto;
     padding: 0;
-    margin: 0;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .player-side, .enemy-side, .turn-section {
@@ -47,4 +48,12 @@
 .card-container, .game-controls, .player-info {
     max-width: 100%;
     box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .turn-section {
+        transform: scale(0.9);
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
 }
