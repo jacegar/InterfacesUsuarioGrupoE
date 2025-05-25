@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .enemy-side .custom-card:hover{
@@ -55,9 +55,12 @@
         margin-bottom: -2rem;
     }
 
+    .enemy-side{
+        margin-top: 0rem;
+    }
 
     .enemy-side .points-container {
         margin-top: 0rem;
-        margin-right: 0rem;
+        margin-right: 1rem;
     }
 }

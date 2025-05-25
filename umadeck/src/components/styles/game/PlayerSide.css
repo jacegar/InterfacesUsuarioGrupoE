@@ -251,7 +251,7 @@ body.reading-mode .speed-button.active {
     }
 
     .player-side .points-container {
-        margin-right: 0rem;
+        margin-right: 1rem;
     }
 
     .ability-effect {
