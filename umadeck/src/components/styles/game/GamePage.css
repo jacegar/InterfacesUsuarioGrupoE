@@ -50,6 +50,9 @@
 }
 
 @media (max-width: 768px) {
+    .game-page {
+        padding: 3px;
+    }
     
     .turn-counter, .turn-indicator {
         font-size: 1.1em;
