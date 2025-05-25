@@ -63,14 +63,3 @@
         margin-right: 0rem;
     }
 }
-
-@media (max-width: 480px) {
-    .enemy-cards {
-        gap: 2.5rem;
-    }
-    
-    .card-placeholder {
-        width: 100px;
-        height: 180px;
-    }
-}
