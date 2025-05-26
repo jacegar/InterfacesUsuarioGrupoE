@@ -58,18 +58,11 @@ body.reading-mode .newGamePage h2.especialh2 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: clamp(10px, 3.5vw, 50px);
     list-style: none;
     padding: 0;
     margin: 50px;
-    width: 200%;
-    max-width: 1200px;
     overflow-x: visible;
-}
-
-.cardList-zoom {
-    margin: 10px;
-    margin-top: 10px;
 }
 
 .start-button-container {
@@ -209,6 +202,8 @@ body.reading-mode .newGamePage h2.especialh2 {
     justify-content: center;
     gap: 10px;
     position: relative; /* Posicion relativa para colocar las flechas*/
+    margin: 10px;
+    margin-top: 10px;
 }
 
 .carousel-card {
@@ -240,6 +235,12 @@ body.reading-mode .newGamePage h2.especialh2 {
 
 .carousel-button.next {
     right: -50px; /* Flecha derecha */
+}
+
+@media (max-width: 1300px) {
+    .cardList {
+        gap: 5px;
+    }
 }
 
 @media (max-width: 768px) {

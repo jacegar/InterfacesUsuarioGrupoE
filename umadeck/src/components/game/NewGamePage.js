@@ -54,7 +54,7 @@ function NewGamePage() {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
             // Cambia la cantidad de cartas mostradas según el ancho de pantalla
-            if (window.innerWidth > 1300) { // antes 1200, ahora el umbral es menor
+            if (window.innerWidth > 1200) {
                 setCardsToShow(5);
             } else if (window.innerWidth > 800) {
                 setCardsToShow(3);
@@ -174,45 +174,43 @@ function NewGamePage() {
                     </button>
                 </div>
             ) : (
-                <div className="cardList-zoom">
-                    <div className="card-carousel desktop">
-                        {/* Solo mostrar flechas si cardsToShow < 5 */}
-                        {cardsToShow < 5 && (
-                            <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
-                        )}
-                        <ul className="cardList" style={{margin: 0}}>
-                            {loadedCards.length > 0 &&
-                                [...Array(cardsToShow)].map((_, i) => {
-                                    const offset = Math.floor(cardsToShow / 2);
-                                    const idx = (currentIndex - offset + i + loadedCards.length) % loadedCards.length;
-                                    const card = loadedCards[idx];
-                                    return (
-                                        <li 
-                                            key={idx} 
-                                            className={idx === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
-                                            tabIndex="0"
-                                            onKeyDown={(e) => {
-                                                if (e.key === 'Enter' || e.key === ' ') {
-                                                    e.preventDefault();
-                                                    selectCard(idx);
-                                                }
-                                            }}
-                                        >
-                                            {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
-                                            <Card
-                                                cardModel={card}
-                                                isSelected={selectedCards.includes(card)}
-                                                onCardClick={() => selectCard(idx)}
-                                            />
-                                        </li>
-                                    );
-                                })
-                            }
-                        </ul>
-                        {cardsToShow < 5 && (
-                            <button className="carousel-button next" onClick={handleNext}>{">"}</button>
-                        )}
-                    </div>
+                <div className="card-carousel desktop">
+                    {/* Solo mostrar flechas si cardsToShow < 5 */}
+                    {cardsToShow < 5 && (
+                        <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
+                    )}
+                    <ul className="cardList" style={{margin: 0}}>
+                        {loadedCards.length > 0 &&
+                            [...Array(cardsToShow)].map((_, i) => {
+                                const offset = Math.floor(cardsToShow / 2);
+                                const idx = (currentIndex - offset + i + loadedCards.length) % loadedCards.length;
+                                const card = loadedCards[idx];
+                                return (
+                                    <li 
+                                        key={idx} 
+                                        className={idx === recommendedCardIndex ? "recommended-card" : "not-recommended-card"}
+                                        tabIndex="0"
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                e.preventDefault();
+                                                selectCard(idx);
+                                            }
+                                        }}
+                                    >
+                                        {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
+                                        <Card
+                                            cardModel={card}
+                                            isSelected={selectedCards.includes(card)}
+                                            onCardClick={() => selectCard(idx)}
+                                        />
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                    {cardsToShow < 5 && (
+                        <button className="carousel-button next" onClick={handleNext}>{">"}</button>
+                    )}
                 </div>
             )}
             

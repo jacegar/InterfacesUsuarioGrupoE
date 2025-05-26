@@ -107,7 +107,7 @@
 }
 
 .game-page .custom-card .custom-card-image img {
-    max-width: clamp(108px, 10vw, 175px); 
+    max-width: clamp(108px, 10vw, 175px);
     max-height: clamp(62px, 6vw, 100px);
 }
 
@@ -147,5 +147,20 @@
         height: 100%;
         border-radius: 5px;
         transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 1300px) {
+    .game-page .custom-card .custom-card-name {
+        font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    }
+
+    .game-page .custom-card .custom-card-health {
+        font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+    }
+
+    .game-page .custom-card .attack,
+    .game-page .custom-card .passive {
+        margin-bottom: 3px;
     }
 }

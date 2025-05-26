@@ -111,9 +111,3 @@ body.reading-mode .help-box {
     color: #5e4b3c;
     border-color: #d0c8b8;
 }
-
-@media (max-width: 768px) {
-    .help-button {
-        transform: scale(0.8);
-    }
-}
