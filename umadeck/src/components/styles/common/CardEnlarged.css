@@ -4,7 +4,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    /* Aumentando ligeramente las dimensiones */
     width: 330px;
     height: 520px;
     background-color: #d3d3d3;
@@ -16,7 +15,6 @@
     flex-direction: column;
 }
 
-/*Estilos para CardFront en grande*/
 .card-enlarged-clone .custom-card-header {
     display: flex;
     justify-content: space-between;
@@ -83,7 +81,6 @@
     bottom: 2px;
 }
 
-/*Estilos para CardFooter en grande*/
 .card-enlarged-clone .custom-card-footer {
     position: absolute;
     bottom: 5px;

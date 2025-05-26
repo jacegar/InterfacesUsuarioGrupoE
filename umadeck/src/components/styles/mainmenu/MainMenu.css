@@ -26,7 +26,7 @@
     padding: clamp(1.4rem, 1.7vw, 1.75rem) clamp(2.8rem, 2vw, 3.5rem);
     font-size: clamp(1.75rem, 3.5vw, 2.1rem);
     font-weight: bold;
-    background-color: #007bff;
+    background-color: #0050a8;
     color: white;
     border: none;
     border-radius: 14px;
@@ -38,7 +38,7 @@
 }
 
 .menu-button:hover{
-    background-color: #0056b3;
+    background-color: #0861c0;
     transform: translateY(-3px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }

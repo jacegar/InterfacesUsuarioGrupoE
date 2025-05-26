@@ -16,7 +16,6 @@
     margin-top: 0;
 }
 
-/*Reserva espacio para que, cuando una carta muera, no se desajuste el cuadrante*/
 .card-slot{
     width: clamp(99.2px, 10vw, 160px);
     height: clamp(158.4px, 16vw, 256px);
@@ -69,7 +68,7 @@
 }
 
 .action-button:hover {
-    background-color: #0056b3;
+    background-color: #0861c0;
 }
 
 .ability-effect {
@@ -119,7 +118,6 @@
     gap: 1rem;
 }
 
-/* Este a lo mejor se puede quitar, depende de cómo lo hagamos */
 .card-placeholder.main {
     width: 200px;
     height: 320px;
@@ -161,29 +159,10 @@
 }
 
 .speed-button:hover {
-    background-color: #0050a8;
+    background-color: #0861c0;
 }
 
 .speed-button.active {
-    background-color: #28a745;
-}
-
-/* Dark mode styles */
-body.dark-mode .speed-button {
-    background-color: #0050a8;
-}
-
-body.dark-mode .speed-button.active {
-    background-color: #28a745;
-}
-
-/* Reading mode styles */
-body.reading-mode .speed-button {
-    background-color: #0050a8;
-    color: #f5f5dc;
-}
-
-body.reading-mode .speed-button.active {
     background-color: #28a745;
 }
 

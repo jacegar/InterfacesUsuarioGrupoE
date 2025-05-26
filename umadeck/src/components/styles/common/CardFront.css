@@ -97,7 +97,6 @@
     background-color: yellow;
 }
 
-/*Estilos para cartas dentro de partida*/
 .game-page .custom-card .custom-card-name {
     font-size: clamp(0.6rem, 1.5vw, 1rem);
 }

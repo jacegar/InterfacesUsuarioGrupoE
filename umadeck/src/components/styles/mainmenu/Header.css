@@ -4,7 +4,7 @@
     align-items: center;
     padding: clamp(1rem, 1.25vw, 2.6rem) 0;
     position: relative;
-    border-bottom: 3.5px solid #0056b3;
+    border-bottom: 3.5px solid #0050a8;
     background-color: #f5f5f5;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -13,7 +13,7 @@
 .game-title {
     font-size: clamp(2.15rem, 4.3vw, 4.4rem);
     text-align: center;
-    color: #007bff;
+    color: #0050a8;
     margin: 0;
     letter-spacing: clamp(1px, 0.5vw, 3.5px);
     text-transform: uppercase;
@@ -26,7 +26,7 @@
     left: clamp(0.5rem, 3.5vw, 1.75rem);
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1010; /* Ensure the dropdown appears above other elements */;
+    z-index: 1010;
 }
 
 .options-icon img {
@@ -41,12 +41,10 @@
     opacity: 1;
 }
 
-/* Add styles for theme icon in dark mode */
 body.dark-mode .options-icon img {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
 }
 
-/* Add styles for theme icon in reading mode */
 body.reading-mode .options-icon img {
     filter: drop-shadow(0 0 3px rgba(94, 75, 60, 0.4));
 }
@@ -78,7 +76,6 @@ body.reading-mode .options-icon img {
     background-color: #f5f5f5;
 }
 
-/* Dark mode styles for the dropdown */
 body.dark-mode .options-dropdown {
     background-color: #333;
     border-color: #555;
@@ -92,7 +89,6 @@ body.dark-mode .options-dropdown button:hover {
     background-color: #444;
 }
 
-/* Reading mode styles for the dropdown */
 body.reading-mode .options-dropdown {
     background-color: #e8e0d0;
     border-color: #d0c8b8;
@@ -100,8 +96,6 @@ body.reading-mode .options-dropdown {
 
 body.reading-mode .options-dropdown button {
     color: #000000;
-    /* Remove the custom font family */
-    /* font-family: Georgia, Times, serif; */
 }
 
 body.reading-mode .options-dropdown button:hover {

@@ -31,7 +31,6 @@
     margin-bottom: 8px;
 }
 
-/* Dark Mode Styles */
 body.dark-mode .conditions-page {
     background-color: #222;
     color: #eee;
@@ -48,7 +47,6 @@ body.dark-mode .conditions-page ul li {
     color: #ddd;
 }
 
-/* Reading Mode Styles */
 body.reading-mode .conditions-page {
     background-color: #f8f1e3;
     color: #5e4b3c;

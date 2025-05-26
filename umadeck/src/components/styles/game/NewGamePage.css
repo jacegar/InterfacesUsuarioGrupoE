@@ -30,20 +30,16 @@
     font-weight: bold;
 }
 
-/* Add dark mode style for the counter */
 body.dark-mode .newGamePage h2.especialh2 {
     color: #eee;
 }
 
-/* Add reading mode style for the counter */
 body.reading-mode .newGamePage h1.especialh1 {
     color: #5e4b3c;
 }
 
 body.reading-mode .newGamePage h2.especialh2 {
     color: #5e4b3c;
-    /* Remove the custom font family */
-    /* font-family: Georgia, Times, serif; */
 }
 
 .newGamePage .go-back-arrow {
@@ -75,7 +71,7 @@ body.reading-mode .newGamePage h2.especialh2 {
 .startGameButton {
     font-size: clamp(1.6rem, 2.2vw, 2.4rem);
     padding: clamp(1rem, 1.5vw, 1.4rem) clamp(2.5rem, 2vw, 3.5rem);
-    background-color: #007bff;
+    background-color: #0050a8;
     color: white;
     border: none;
     border-radius: 14px;
@@ -90,7 +86,7 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .startGameButton:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #0861c0;
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
 }
@@ -113,8 +109,8 @@ body.reading-mode .newGamePage h2.especialh2 {
     padding: 5px;
     box-shadow: 0 0 10px #ffae00;
     transition: border 0.3s linear, box-shadow 0.3s linear;
-    margin-top: 20px; /* añade margen superior para separar del texto 0 de 3 */
-    min-height: 0; /* elimina cualquier altura mínima inesperada */
+    margin-top: 20px;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -151,15 +147,15 @@ body.reading-mode .newGamePage h2.especialh2 {
 .contenedor-del-boton {
     display: flex;
     flex-direction: row;
-    justify-content: center; /* Center horizontally */
+    justify-content: center;
     align-items: center;
-    gap: 15px; /* Add spacing between buttons */
+    gap: 15px;
     margin-top: 10px;
 }
 
 .recommendation-button {
     position: static;
-    background-color: #0050a8; /* azul más oscuro que #007bff, mejor contraste */
+    background-color: #0050a8;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -175,7 +171,7 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 .recommendation-button:hover {
-    background-color: #003d80; /* azul aún más oscuro al pasar el ratón */
+    background-color: #0861c0;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -201,7 +197,7 @@ body.reading-mode .newGamePage h2.especialh2 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    position: relative; /* Posicion relativa para colocar las flechas*/
+    position: relative;
     margin: 10px;
     margin-top: 10px;
 }
@@ -225,16 +221,16 @@ body.reading-mode .newGamePage h2.especialh2 {
     cursor: pointer;
     transition: background-color 0.3s ease;
     position: absolute;
-    top: 50%; /* Centrado verticalmente */
+    top: 50%;
     transform: translateY(-50%);
 }
 
 .carousel-button.prev {
-    left: -50px; /* Flecha izquierda */
+    left: -50px;
 }
 
 .carousel-button.next {
-    right: -50px; /* Flecha derecha */
+    right: -50px;
 }
 
 @media (max-width: 1300px) {
@@ -258,19 +254,19 @@ body.reading-mode .newGamePage h2.especialh2 {
     }
 
     .newGamePage h2.especialh2 {
-        margin-bottom: 1.5rem; /* Reduce spacing below the header */
+        margin-bottom: 1.5rem;
     }
 
     .card-carousel {
-        margin-top: -3.0rem; /* Move the carousel closer to the header */
+        margin-top: -3.0rem;
     }
 
     .contenedor-del-boton {
-        margin-top: 5px; /* Adjust buttons to stay close to the carousel */
+        margin-top: 5px;
     }
 
     .startGameButton {
-        margin-top: 5px; /* Reduce spacing above the "Iniciar partida" button */
+        margin-top: 5px;
     }
 
     .carousel-button {
@@ -283,11 +279,11 @@ body.reading-mode .newGamePage h2.especialh2 {
     }
 
     .carousel-button.prev {
-        left: -30px; /* Adjust for smaller screens */
+        left: -30px;
     }
 
     .carousel-button.next {
-        right: -30px; /* Adjust for smaller screens */
+        right: -30px;
     }
 
     .recommended-card, .not-recommended-card{

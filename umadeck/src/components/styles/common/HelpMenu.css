@@ -27,7 +27,7 @@
     width: 90%;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    font-size: 1rem; /* Adjust font size for responsiveness */
+    font-size: 1rem;
 }
 
 .help-title {
@@ -52,7 +52,7 @@
 }
 
 .help-close:hover {
-    background-color: #0056b3;
+    background-color: #0861c0;
 }
 
 .help-menu-title {
@@ -74,7 +74,6 @@
 	cursor: pointer;
 }
 
-/*Estilo de help menu para partida en movil*/
 @media (max-width: 768px) {
     .game-page .help-image {
         width: 30px;
@@ -82,7 +81,6 @@
     }
 }
 
-/* Dark Mode Styles */
 body.dark-mode .help-title h1 {
     color: #eee;
 }
@@ -97,7 +95,6 @@ body.dark-mode .help-box {
     border-color: #444;
 }
 
-/* Reading Mode Styles */
 body.reading-mode .help-title h1 {
     color: #5e4b3c;
 }

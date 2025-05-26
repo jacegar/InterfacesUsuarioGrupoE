@@ -38,7 +38,6 @@
     justify-items: center;
 }
 
-/* Dark Mode Styles */
 body.dark-mode .achievements-header {
     background-color: #333;
     border-bottom-color: #555;
@@ -53,7 +52,6 @@ body.dark-mode .achievement-count {
     color: #eee;
 }
 
-/* Reading Mode Styles */
 body.reading-mode .achievements-header {
     background-color: #e8e0d0;
     border-bottom-color: #d0c8b8;

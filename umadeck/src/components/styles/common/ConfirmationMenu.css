@@ -18,7 +18,7 @@
 }
 
 .confirm-button, .cancel-button {
-    background-color: #007bff;
+    background-color: #0050a8;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -29,18 +29,17 @@
 }
 
 .confirm-button:hover {
-    background-color: #0056b3;
+    background-color: #0861c0;
 }
 
 .cancel-button {
-    background-color: #f44336;
+    background-color: #dc3545;
 }
 
 .cancel-button:hover {
-    background-color: #d32f2f;
+    background-color: #a71d2a;
 }
 
-/* Add dark mode styles for the confirmation dialog */
 body.dark-mode .confirmation-dialog {
     background-color: #333;
     border-color: #555;
@@ -51,7 +50,6 @@ body.dark-mode .confirmation-dialog p {
     color: #eee;
 }
 
-/* Add reading mode styles for the confirmation dialog */
 body.reading-mode .confirmation-dialog {
     background-color: #f8f1e3;
     border-color: #d0c8b8;

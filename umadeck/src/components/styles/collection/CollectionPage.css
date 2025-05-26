@@ -52,7 +52,6 @@
     margin-left: auto;
 }
 
-/* Dark Mode Styles */
 body.dark-mode .collection-header {
     background-color: #333;
     border-bottom-color: #555;
@@ -67,7 +66,6 @@ body.dark-mode .card-count {
     color: #eee;
 }
 
-/* Reading Mode Styles */
 body.reading-mode .collection-header {
     background-color: #e8e0d0;
     border-bottom-color: #d0c8b8;
@@ -82,7 +80,6 @@ body.reading-mode .card-count {
     color: #5e4b3c;
 }
 
-/* Para asegurar que la cuadrícula se vea bien en pantallas más pequeñas */
 @media (max-width: 1200px) {
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);

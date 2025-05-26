@@ -12,12 +12,10 @@ body {
     line-height: 1.5;
 }
 
-/* Reglas generales de responsividad */
 * {
     box-sizing: border-box;
 }
 
-/* Ajustes para evitar desbordamientos horizontales */
 img {
     max-width: 100%;
     height: auto;
