@@ -60,6 +60,13 @@ function MusicControl(){
                 alt="Toggle Music"
                 className="music-toggle"
                 onClick={toggleMusic}
+                tabIndex="0"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleMusic();
+                    }
+                }}
             />
             <input
                 type="range"
