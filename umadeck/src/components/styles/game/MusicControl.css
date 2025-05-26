@@ -26,8 +26,6 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    min-width: 40px;
-    min-height: 40px;
 }
 
 .volume-slider::-webkit-slider-thumb {
@@ -67,7 +65,13 @@
 }
 
 @media (max-width: 768px) {
-    .music-toggle {
-        transform: scale(0.8);
+    .music-toggle{
+        width: 30px;
+        height: 30px;
+    }
+
+    .volume-slider {
+        width: 70px;
+        height: 6px;
     }
 }

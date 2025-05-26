@@ -88,3 +88,9 @@
     50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 1); }
     100% { box-shadow: 0 0 20px 5px rgba(255, 204, 0, 0.8); }
 }
+
+/*Estilos para cartas dentro de partida*/
+.game-page .custom-card {
+    width: clamp(124px, 12.5vw, 200px);
+    height: clamp(198px, 20vw, 320px);
+}

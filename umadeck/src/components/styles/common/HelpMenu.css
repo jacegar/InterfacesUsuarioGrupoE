@@ -2,8 +2,6 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    min-width: 40px;
-    min-height: 40px;
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
 }
 
@@ -74,6 +72,14 @@
 	border: none;
 	padding: 0;
 	cursor: pointer;
+}
+
+/*Estilo de help menu para partida en movil*/
+@media (max-width: 768px) {
+    .game-page .help-image {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* Dark Mode Styles */

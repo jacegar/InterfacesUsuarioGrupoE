@@ -18,3 +18,7 @@
     line-height: 1.5;
     color: #555;
 }
+
+.game-page .custom-card .custom-card-description {
+    font-size: clamp(0.7rem, 1vw, 1.2rem);
+}

@@ -36,6 +36,18 @@
 
 @media (max-width: 768px) {
     .profile-display {
-        transform: scale(0.8);
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        margin-left: 0rem;
+    }
+
+    .profile-display.player p {
+        position: relative;
+        bottom: 2rem;
+    }
+
+    .profile-photo{
+        width: 30px;
+        height: 30px;
     }
 }
