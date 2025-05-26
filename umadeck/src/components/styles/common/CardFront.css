@@ -1,5 +1,6 @@
 .custom-card-header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -94,4 +95,57 @@
 
 .health-bar.yellow{
     background-color: yellow;
+}
+
+/*Estilos para cartas dentro de partida*/
+.game-page .custom-card .custom-card-name {
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.game-page .custom-card .custom-card-health {
+    font-size: clamp(0.6rem, 1.2vw, 0.9rem);
+}
+
+.game-page .custom-card .custom-card-image img {
+    max-width: clamp(108px, 10vw, 175px); 
+    max-height: clamp(62px, 6vw, 100px);
+}
+
+.game-page .custom-card .attack-name,
+.game-page .custom-card .passive-name {
+    font-size: clamp(0.6rem, 1vw, 1rem);
+}
+
+.game-page .custom-card .attack-details,
+.game-page .custom-card .passive-details {
+    font-size: clamp(0.5rem, 0.9vw, 0.9rem);
+    margin-top: clamp(0px, 0.3vw, 3px);
+}
+
+.game-page .custom-card .attack,
+.game-page .custom-card .passive {
+    margin-bottom: clamp(3px, 0.5vw, 10px);
+}
+
+.game-page .custom-card .custom-card-image {
+    padding: clamp(1px, 0.3vw, 3px);
+    margin: clamp(1px, 0.3vw, 3px);
+}
+
+@media (max-width: 768px) {
+    .game-page .custom-card .health-bar-border{
+        border: 2px solid #333;
+        background-color: darkgray;
+        border-radius: 5px;
+        width: 100%;
+        height: 6px;
+        position: relative;
+        bottom: 12px;
+    }
+
+    .game-page .custom-card .health-bar{
+        height: 100%;
+        border-radius: 5px;
+        transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
 }

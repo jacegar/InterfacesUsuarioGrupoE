@@ -40,9 +40,9 @@ function CardFooter(props) {
                     }}
                     className="flip-button">
                 <img 
+                    className="flip-icon"
                     src="/assets/images/curved-arrow.svg" 
-                    alt="Da la vuelta a la carta" 
-                    className="flip-icon" 
+                    alt="Da la vuelta a la carta"  
                 />
             </button>
         </div>

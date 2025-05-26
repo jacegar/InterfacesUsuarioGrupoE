@@ -1,6 +1,4 @@
 .custom-card-footer {
-    position: absolute;
-    bottom: 5px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -20,24 +18,26 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    margin: 5px;
+    margin: clamp(3px, 0.3vw, 5px);
     width: 40px;
     height: 40px;
+    margin-top: 2px;
 }
 
-.custom-card-footer img.magnify-icon {
+.magnify-icon {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 40px;
     height: 40px;
+    margin-top: 2px;
 }
 
 .magnify-button{
     position: absolute;
     bottom: 0;
     left: 0;
-    margin: 5px;
+    margin: clamp(1px, 0.3vw, 5px);
     width: 40px;
     height: 40px;
 }
@@ -48,4 +48,34 @@
 	border: none;
 	padding: 0;
 	cursor: pointer;
+}
+
+.game-page .custom-card .flip-icon {
+    width: clamp(24px, 2.5vw, 40px);
+    height: clamp(24px, 2.5vw, 40px);
+}
+
+.game-page .custom-card .magnify-icon {
+    width: clamp(24px, 2.5vw, 40px);
+    height: clamp(24px, 2.5vw, 40px);
+}
+
+.game-page .custom-card .flip-button {
+    width: clamp(24px, 2.5vw, 40px);
+    height: clamp(24px, 2.5vw, 40px);
+}
+
+.game-page .custom-card .magnify-button {
+    width: clamp(24px, 2.5vw, 40px);
+    height: clamp(24px, 2.5vw, 40px);
+}
+
+@media (max-width: 768px) {
+    .game-page .custom-card .magnify-button{
+        margin: 3px;
+    }
+
+    .game-page .custom-card .flip-button{
+        margin: 3px;
+    }
 }

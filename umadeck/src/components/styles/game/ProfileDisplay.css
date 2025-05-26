@@ -32,3 +32,21 @@
     width: 500px;
     height: 500px;
 }
+
+@media (max-width: 768px) {
+    .profile-display {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        margin-left: 0rem;
+    }
+
+    .profile-display.player p {
+        position: relative;
+        bottom: 2rem;
+    }
+
+    .profile-photo{
+        width: 30px;
+        height: 30px;
+    }
+}
