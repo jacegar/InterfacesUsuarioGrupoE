@@ -18,7 +18,7 @@
 }
 
 .confirm-button, .cancel-button {
-    background-color: #0050a8;
+    background-color: #dc3545;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -29,15 +29,15 @@
 }
 
 .confirm-button:hover {
-    background-color: #0861c0;
+    background-color: #a71d2a;
 }
 
 .cancel-button {
-    background-color: #dc3545;
+    background-color: #0050a8;
 }
 
 .cancel-button:hover {
-    background-color: #a71d2a;
+    background-color: #0861c0;
 }
 
 body.dark-mode .confirmation-dialog {
