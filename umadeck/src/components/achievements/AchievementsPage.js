@@ -25,7 +25,7 @@ function AchievementsPage() {
         setAchievementData(updatedAchievements);
       })
       .catch((error) => console.error("Error cargando logros:", error));
-  });
+  }, []);
 
   const unlockedCount = achievementData.filter((a) => a.unlocked).length;
 

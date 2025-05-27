@@ -20,7 +20,7 @@ function MusicControl(){
             backgroundMusic.pause();
             backgroundMusic.currentTime = 0;
         };
-    });
+    }, []);
 
     const toggleMusic = () => {
         const backgroundMusic = backgroundMusicRef.current;

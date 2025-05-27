@@ -3,7 +3,7 @@ import Card from "../common/Card";
 import "../styles/game/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
-import {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
@@ -26,7 +26,7 @@ function PlayerSide(props){
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     
-    const handleAttack = useCallback(() => {
+    const handleAttack = () => {
         if (!canAttack) {
             console.warn("Ya has atacado en este turno.");
             return;
@@ -47,7 +47,7 @@ function PlayerSide(props){
                 setIsCardSelected(false);
             }, 500);
         }
-    }, [cards, canAttack, cardRef, onEnemyDamage, onEndTurn, setCanAttack, setShowMenu, setIsCardSelected]);
+    };
     
     useEffect(() => {
         if (points >= 3) {
@@ -63,7 +63,7 @@ function PlayerSide(props){
             
             return () => clearTimeout(autoAttackTimer);
         }
-    }, [isAutoMode, currentTurn, attackDelay, handleAttack]);
+    }, [isAutoMode, currentTurn, attackDelay]);
 
     useEffect(() => {
         if (currentTurn === 0) {

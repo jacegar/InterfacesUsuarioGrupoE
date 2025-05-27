@@ -31,7 +31,7 @@ function Card(props) {
         return () => {
             if (timerRef.current) clearTimeout(timerRef.current);
         };
-    });
+    }, []);
     
     const handleMouseDown = (event) => {
         if (showEnlarged || event.target.closest(".custom-card-footer")) return;

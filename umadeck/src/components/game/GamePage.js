@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import GameModel from '../../gamelogic/GameModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
@@ -15,7 +15,7 @@ function GamePage(props){
 
     const [playerCards, setPlayerCards] = useState(gameModel.getPlayerCards());
     const [enemyCards, setEnemyCards] = useState(gameModel.getEnemyCards());
-    const [playerCardsVersion] = useState(0);
+    const [playerCardsVersion, setPlayerCardsVersion] = useState(0);
     const [enemyCardsVersion, setEnemyCardsVersion] = useState(0);
     
     const [fastMode, setFastMode] = useState(false);
@@ -45,10 +45,10 @@ function GamePage(props){
         setPlayerCards(updatedCards);
     };
 
-    const audio = useMemo(() => new Audio("/assets/sounds/sound4.mp3"), []);
+    const audio = new Audio("/assets/sounds/sound4.mp3");
     audio.volume = 0.4;
 
-    const handlePlayerDamage = useCallback((damage) => {
+    const handlePlayerDamage = (damage) => {
         const updatedPlayerCards = [...playerCards];
         const activeCard = updatedPlayerCards[0];
     
@@ -68,7 +68,7 @@ function GamePage(props){
         }
     
         setPlayerCards(updatedPlayerCards);
-    }, [playerCards, audio]);
+    };
 
     const handleEnemyDamage = (damage) => {
         const updatedEnemyCards = [...enemyCards];
@@ -112,7 +112,7 @@ function GamePage(props){
 
             return () => clearTimeout(timer);
         }
-    }, [gameState.currentTurn, enemyCardRef, attackDelay, enemyCards, gameState, handlePlayerDamage]);
+    }, [gameState.currentTurn, enemyCardRef, attackDelay]);
 
     useEffect(() => {
         if (executedRef.current) return;
