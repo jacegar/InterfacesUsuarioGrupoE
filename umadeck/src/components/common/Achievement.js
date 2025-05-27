@@ -9,7 +9,6 @@ function Achievement({ id, title, progress, unlocked, date, img }) {
       <img src={img} alt={"Foto de " + title} className="achievement-image" />
       <h1 className="achievement-title">{title}</h1>
       
-      {/* Mostrar barra de progreso solo si no está desbloqueado */}
       {!unlocked && (
         <>
           <div className="achievement-progress-container">
@@ -22,7 +21,6 @@ function Achievement({ id, title, progress, unlocked, date, img }) {
         </>
       )}
       
-      {/* Mostrar fecha solo si está desbloqueado */}
       {unlocked && date && (
         <p className="achievement-date">Obtenido: {new Date(date).toLocaleDateString()}</p>
       )}

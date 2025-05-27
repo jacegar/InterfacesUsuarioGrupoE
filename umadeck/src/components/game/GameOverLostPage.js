@@ -7,10 +7,10 @@ function GameOverLostPage() {
 
     const audio = new Audio("/assets/sounds/sound3.mp3");
         audio.volume = 0.05;
-        audio.play(); // Reproducir el sonido
+        audio.play();
 
     const handleContinue = () => {
-        navigate('/'); // Redirige al menú principal
+        navigate('/');
     };
 
     return (

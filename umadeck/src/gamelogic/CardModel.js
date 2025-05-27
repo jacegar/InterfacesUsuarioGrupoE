@@ -3,8 +3,8 @@ import { showStyledAlert } from "../components/common/StyledAlert";
 
 class CardModel {
     constructor(id) {
-        this.id = id; // id of the card
-        const jsonData = cards.find((card) => card.id === id); // Find the card by id
+        this.id = id;
+        const jsonData = cards.find((card) => card.id === id);
         if (!jsonData) {
             showStyledAlert(`Card data for id ${id} not found.`);
             return;
@@ -13,7 +13,7 @@ class CardModel {
         this.abilityUsed = false;
         this.defense = 0;
         this.isDefending = false;
-        if (this.passiveType == "Defensa") {
+        if (this.passiveType === "Defensa") {
             this.defense = this.passiveQuantity;
         }
     }
@@ -23,7 +23,7 @@ class CardModel {
         this.id = data.id;
         this.name = data.name;
         this.health = data.health;
-        this.maxHealth = data.health; //salud maxima
+        this.maxHealth = data.health;
         this.imageUrl = data.imageUrl;
         this.attackName = data.attackName;
         this.attackDamage = data.attackDamage;
@@ -32,8 +32,6 @@ class CardModel {
         this.passiveType = data.passiveType;
         this.description = data.description;
     }
-
-    //Metodos de partida (aqui deberian implementarse metodos para ejecutar las pasivas, los ataques, etc en una partida)
 
     useAbility(targetCard) {
         if (this.abilityUsed) {
@@ -61,16 +59,16 @@ class CardModel {
                 break;
             case "Nada":
                 break;
+            default:
         }
-        this.abilityUsed = true; // Marca la habilidad como utilizada
+        this.abilityUsed = true;
     }
 
     resetDefense() {
-        this.isDefending = false; // Resetea la defensa al final del turno
+        this.isDefending = false;
         this.defense = 0;
     }
 
-    // Getters and Setters
     getId() {
         return this.id;
     }
@@ -125,15 +123,10 @@ class CardModel {
         return this.description;
     }
 
-    setHealth(health) {
-        this.health = health;
-    }
-
     static getAllCards() { 
         return cards.map(card => new CardModel(card.id));
     }
 
-    // Devuelve las cartas en el orden recomendado
     static getRecommendedCards() {
         const recommendationOrder = [2, 5, 4, 1, 3];
         return recommendationOrder.map(id => cards.find(card => card.id === id));

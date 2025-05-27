@@ -2,7 +2,7 @@ import "../styles/common/CardFooter.css";
 
 function CardFooter(props) {
     const handleClick = (e) => {
-        e.stopPropagation(); // Detener la propagación del evento, para que no se dispare el evento del padre al pulsar los iconos
+        e.stopPropagation();
     };
 
     return (

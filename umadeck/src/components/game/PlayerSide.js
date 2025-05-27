@@ -3,7 +3,7 @@ import Card from "../common/Card";
 import "../styles/game/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
@@ -19,57 +19,14 @@ function PlayerSide(props){
     const [showMenu, setShowMenu] = useState(false);
     const [cardRef, setCardRef] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
-    const [defense, setDefense] = useState(0);
     const [isAutoMode, setIsAutoMode] = useState(false);
-    const [exchangeMode, setExchangeMode] = useState(false); // Nuevo estado para el modo de intercambio
-    const [canAttack, setCanAttack] = useState(true); // Nuevo estado para controlar si se puede atacar
+    const [exchangeMode, setExchangeMode] = useState(false);
+    const [canAttack, setCanAttack] = useState(true);
     const player = new Player();
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     
-    useEffect(() => {
-        if (points >= 3) {
-            navigate('/game-over-won'); // Redirige a la pantalla de victoria
-        }
-    }, [points, navigate]);
-
-    useEffect(() => {
-        if (isAutoMode && currentTurn === 0) {
-            // Use the configurable attack delay
-            const autoAttackTimer = setTimeout(() => {
-                handleAttack();
-            }, attackDelay || 2000); // Default to 2000 if attackDelay is not provided
-            
-            // Clean up the timer if component unmounts or dependencies change
-            return () => clearTimeout(autoAttackTimer);
-        }
-    }, [isAutoMode, currentTurn, attackDelay]); // Add attackDelay as dependency
-
-    useEffect(() => {
-        if (currentTurn === 0) {
-            setCanAttack(true); // Permitir atacar al inicio del turno del jugador
-        }
-    }, [currentTurn]);
-
-    const handleCardClick = () => {
-        if (currentTurn !== 0) return; // Solo permite seleccionar cartas en tu turno
-        
-        if (isCardSelected) {
-            // Si ya está seleccionada, muestra/oculta el menú y deselecciona la carta
-            setIsCardSelected(false);
-            setShowMenu(!showMenu);
-        } else if (exchangeMode) { // Cancelar cambiar carta seleccionando la activa
-            setIsCardSelected(false);
-            setShowMenu(false);
-            setExchangeMode(false);
-        } else {
-            // Selecciona la carta y muestra el menú
-            setIsCardSelected(true);
-            setShowMenu(true);
-        }
-    };
-
-    const handleAttack = () => {
+    const handleAttack = useCallback(() => {
         if (!canAttack) {
             console.warn("Ya has atacado en este turno.");
             return;
@@ -79,27 +36,60 @@ function PlayerSide(props){
             console.warn("No hay cartas disponibles para atacar.");
             return;
         }
-        // Primero anima la carta
         if (cardRef) {
             cardRef.animateAttack();
-            setCanAttack(false); // Bloquear ataques adicionales en este turno
+            setCanAttack(false);
 
-            // Después de un pequeño retraso, aplica el daño
             setTimeout(() => {
-                // La carta enemiga activa recibe daño
                 onEnemyDamage(cards[0].getAttackDamage());
-                // Se termina el turno
                 onEndTurn();
-                // Se oculta el menú y se deselecciona la carta
                 setShowMenu(false);
                 setIsCardSelected(false);
-            }, 500); // Espera a que la animación esté a medio camino
+            }, 500);
+        }
+    }, [cards, canAttack, cardRef, onEnemyDamage, onEndTurn, setCanAttack, setShowMenu, setIsCardSelected]);
+    
+    useEffect(() => {
+        if (points >= 3) {
+            navigate('/game-over-won');
+        }
+    }, [points, navigate]);
+
+    useEffect(() => {
+        if (isAutoMode && currentTurn === 0) {
+            const autoAttackTimer = setTimeout(() => {
+                handleAttack();
+            }, attackDelay || 2000);
+            
+            return () => clearTimeout(autoAttackTimer);
+        }
+    }, [isAutoMode, currentTurn, attackDelay, handleAttack]);
+
+    useEffect(() => {
+        if (currentTurn === 0) {
+            setCanAttack(true);
+        }
+    }, [currentTurn]);
+
+    const handleCardClick = () => {
+        if (currentTurn !== 0) return;
+        
+        if (isCardSelected) {
+            setIsCardSelected(false);
+            setShowMenu(!showMenu);
+        } else if (exchangeMode) {
+            setIsCardSelected(false);
+            setShowMenu(false);
+            setExchangeMode(false);
+        } else {
+            setIsCardSelected(true);
+            setShowMenu(true);
         }
     };
 
     const handleAbility = () => {
         try {
-            const activeCard = localCards[0]; // La carta activa es la primera en el array
+            const activeCard = localCards[0];
             const targetEnemyCard = enemyCards[0];
     
             if (!activeCard.abilityUsed && !(activeCard.passiveType === "Cura" && activeCard.health === activeCard.maxHealth)) {
@@ -112,12 +102,10 @@ function PlayerSide(props){
                         setAbilityEffect({ type: activeCard.passiveName, target: "player" });
                     }
     
-                    // Manejo especial para la habilidad de defensa
                     if (activeCard.passiveType === "Defensa") {
                         if (!activeCard.isDefending) {
-                            // Solo aplica la defensa si no está activa
-                            activeCard.defense = activeCard.passiveQuantity; // Establece la defensa
-                            activeCard.isDefending = true; // Marca la carta como defendiendo
+                            activeCard.defense = activeCard.passiveQuantity;
+                            activeCard.isDefending = true;
                         } else {
                             console.warn("La defensa ya está activa y no se acumula.");
                         }
@@ -135,16 +123,13 @@ function PlayerSide(props){
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
                 }
     
-                // Espera a que el audio cargue completamente
                 sound.addEventListener("loadedmetadata", () => {
-                    const soundlength = sound.duration * 1000; // Duración del audio en milisegundos
+                    const soundlength = sound.duration * 1000;
     
-                    // Reproduce el sonido
                     sound.play().catch((error) => {
                         console.error("Error al reproducir el sonido:", error);
                     });
     
-                    // Oculta la imagen después de que termine el audio
                     setTimeout(() => {
                         setAbilityEffect(null);
                     }, soundlength);
@@ -153,15 +138,13 @@ function PlayerSide(props){
     
             activeCard.useAbility(targetEnemyCard);
 
-            // Verifica si la carta enemiga debe ser eliminada
             if (targetEnemyCard.getHealth() <= 0) {
                 const updatedEnemyCards = [...enemyCards];
-                updatedEnemyCards.shift(); // Elimina la carta enemiga activa
-                setEnemyCards(updatedEnemyCards); // Actualiza el estado
+                updatedEnemyCards.shift();
+                setEnemyCards(updatedEnemyCards);
             } else {
-                // Si la carta enemiga no es eliminada, actualiza su estado
                 const updatedEnemyCards = [...enemyCards];
-                setEnemyCards(updatedEnemyCards); // Actualiza el estado
+                setEnemyCards(updatedEnemyCards);
             }
     
             console.log("Habilidad usada:", activeCard.getPassiveName());
@@ -187,38 +170,33 @@ function PlayerSide(props){
         console.log(`Intercambiando carta activa con carta en posición ${index}`);
         const updatedCards = [...localCards];
         
-        // Guarda el estado de defensa antes del intercambio
         const activeCardDefending = updatedCards[0].isDefending;
         const activeCardDefenseValue = updatedCards[0].defense;
         
-        // Intercambia las cartas
         [updatedCards[0], updatedCards[index]] = [updatedCards[index], updatedCards[0]];
         
-        // Transfiere el estado de defensa si es necesario
         if (activeCardDefending) {
             updatedCards[0].isDefending = true;
             updatedCards[0].defense = activeCardDefenseValue;
             updatedCards[index].resetDefense();
         }
         
-        // Actualiza el estado
         setLocalCards(updatedCards);
         props.onPlayerCardsChange(updatedCards);
         
-        // Desactiva el modo de intercambio
         setExchangeMode(false);
     };
 
     const handleGiveUp = () => {
-        setShowConfirmation(true); // Muestra el cuadro de confirmación
+        setShowConfirmation(true);
     };
 
     const confirmGiveUp = () => {
-        navigate('/game-over-lost'); // Redirige a la página de "Has perdido"
+        navigate('/game-over-lost');
     };
 
     const cancelGiveUp = () => {
-        setShowConfirmation(false); // Oculta el cuadro de confirmación
+        setShowConfirmation(false);
     };
 
     const toggleAutoMode = () => {
@@ -226,7 +204,7 @@ function PlayerSide(props){
     };
 
     useEffect(() => {
-        setLocalCards(cards); // Sincroniza localCards con las cartas del padre
+        setLocalCards(cards);
     }, [cards]);
     
     return (
@@ -303,7 +281,7 @@ function PlayerSide(props){
                             attachRef={setCardRef}
                         />
                     ) : (
-                        <div className="card-placeholder main"></div> // Muestra un marcador si no hay carta
+                        <div className="card-placeholder main"></div>
                     )}
                     
                     {isCardSelected && showMenu && !exchangeMode && (

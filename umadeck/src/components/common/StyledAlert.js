@@ -17,5 +17,5 @@ export function showStyledAlert(message) {
 
         setTimeout(() => {
             alertDiv.remove();
-        }, 3000); // Remove the alert after 3 seconds
+        }, 3000);
     }

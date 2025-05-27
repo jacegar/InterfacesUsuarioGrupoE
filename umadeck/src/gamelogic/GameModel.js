@@ -3,7 +3,6 @@ import Player from "./Player.js";
 
 class GameModel{
     constructor(playerCards, enemyCards) {
-        // Nos aseguramos de que los arrays de cartas sean instancias de CardModel y no de Object
         this.playerCards = playerCards.map(card =>
             card instanceof CardModel ? card : new CardModel(card.id)
         );
@@ -11,18 +10,16 @@ class GameModel{
             card instanceof CardModel ? card : new CardModel(card.id)
         );
 
-        this.currentPlayerCard = playerCards[0]; // Current player card
-        this.currentEnemyCard = enemyCards[0]; // Current enemy card
-        this.turn = 1; //La partida empieza en el turno 1
+        this.currentPlayerCard = playerCards[0];
+        this.currentEnemyCard = enemyCards[0];
+        this.turn = 1;
 
-        //Podemos usar currentTurn = 2 para una partida acabada
         if(Math.random() < 0.5) {
-            this.currentTurn = 0; //turno del jugador
+            this.currentTurn = 0;
         }else{
-            this.currentTurn = 1; //turno del enemigo
+            this.currentTurn = 1;
         }
 
-        //Desbloqueamos las cartas del jugador
         this.player = new Player();
         this.playerCards.forEach(card => {
             if (!this.player.getUnlockedCards().includes(card.getId())) {
@@ -31,7 +28,6 @@ class GameModel{
         });
     }
 
-    //Getters
     getPlayerCards() {
         return this.playerCards;
     }

@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import HelpMenu from "../common/HelpMenu";
 import { showStyledAlert } from "../common/StyledAlert";
 
-//Desde esta pagina se deberia poder elegir las cartas para la nueva partida
 function NewGamePage() {
     const [selectedCards, setCards] = useState([]);
     const [loadedCards, setLoadedCards] = useState([]);
@@ -15,14 +14,13 @@ function NewGamePage() {
     const [usedRecommendation, setUsedRecommendation] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
-    const [touchStartX, setTouchStartX] = useState(null); // Track the starting X position of a touch
+    const [touchStartX, setTouchStartX] = useState(null);
     const [cardsToShow, setCardsToShow] = useState(5);
     const navigate = useNavigate();
 
     const generateRandomCards = () => {
         const allCards = CardModel.getAllCards();
         
-        // Shuffle the array
         for (let i = allCards.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             let temp = allCards[i];
@@ -53,7 +51,6 @@ function NewGamePage() {
 
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
-            // Cambia la cantidad de cartas mostradas según el ancho de pantalla
             if (window.innerWidth > 1200) {
                 setCardsToShow(5);
             } else if (window.innerWidth > 800) {
@@ -78,16 +75,15 @@ function NewGamePage() {
             );
             
             if (availableCards.length > 0) {
-                const recommendedCard = availableCards[0]; // Always recommend the first available card in the specified order
+                const recommendedCard = availableCards[0];
                 setRecommendedCardIndex(loadedCards.findIndex(card => card.id === recommendedCard.id));
                 setUsedRecommendation(true);
             } else {
-                setRecommendedCardIndex(null); // No cards available to recommend
+                setRecommendedCardIndex(null);
             }
         }
     }
 
-    //Usado en movil para marcar los botones del carousel, 0 -> no aplica, 1 -> izquierda, 2 -> derecha
     const cercaniaRecomendacion = () => {
         let cercania = 0;
         if (recommendedCardIndex !== null && currentIndex !== recommendedCardIndex) {
@@ -96,9 +92,9 @@ function NewGamePage() {
             const izquierda = (currentIndex - recommendedCardIndex + total) % total;
             
             if (izquierda < derecha) {
-                cercania = 1; // izquierda
+                cercania = 1;
             } else {
-                cercania = 2; // derecha
+                cercania = 2;
             }
         }
     
@@ -114,7 +110,7 @@ function NewGamePage() {
     };
 
     const handleTouchStart = (e) => {
-        setTouchStartX(e.touches[0].clientX); // Record the starting X position
+        setTouchStartX(e.touches[0].clientX);
     };
 
     const handleTouchMove = (e) => {
@@ -124,11 +120,11 @@ function NewGamePage() {
         const deltaX = touchStartX - touchEndX;
 
         if (deltaX > 50) {
-            handleNext(); // Swipe left to move to the next card
-            setTouchStartX(null); // Reset touch start
+            handleNext();
+            setTouchStartX(null);
         } else if (deltaX < -50) {
-            handlePrev(); // Swipe right to move to the previous card
-            setTouchStartX(null); // Reset touch start
+            handlePrev();
+            setTouchStartX(null);
         }
     };
 
@@ -142,8 +138,8 @@ function NewGamePage() {
             {isMobile ? (
                 <div
                     className="card-carousel"
-                    onTouchStart={handleTouchStart} // Desplazamiento táctil
-                    onTouchMove={handleTouchMove}  // Desplazamiento táctil
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
                 >
                     <button className={`carousel-button prev ${cercaniaRecomendacion() === 1 ? "recommended" : ""}`}
                             onClick={handlePrev}>←
@@ -175,7 +171,6 @@ function NewGamePage() {
                 </div>
             ) : (
                 <div className="card-carousel desktop">
-                    {/* Solo mostrar flechas si cardsToShow < 5 */}
                     {cardsToShow < 5 && (
                         <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
                     )}

@@ -9,10 +9,8 @@ function Header(){
     const dropdownRef = useRef(null);
     const location = useLocation();
     
-    // Check if we're on the main menu (home page)
     const isMainMenu = location.pathname === "/" || location.pathname === "";
 
-    // Close dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

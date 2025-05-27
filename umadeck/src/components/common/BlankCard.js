@@ -1,6 +1,5 @@
 import "../styles/common/BlankCard.css";
 
-//Carta vacia
 function BlankCard(){
     return(
         <div className="blank-card">

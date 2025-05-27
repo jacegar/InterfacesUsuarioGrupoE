@@ -10,14 +10,14 @@ function GameOverWonPage() {
 
     const audio = new Audio("/assets/sounds/sound2.mp3");
         audio.volume = 0.05;
-        audio.play(); // Reproducir el sonido
+        audio.play();
 
     const handleContinue = () => {
-        navigate('/'); // Redirige al menú principal
+        navigate('/');
     };
 
     useEffect(() => {
-        if (executedRef.current) return; // Evitar múltiples ejecuciones
+        if (executedRef.current) return;
         executedRef.current = true;
         const player = new Player();
         player.updateAchievementProgress('win1', 100);

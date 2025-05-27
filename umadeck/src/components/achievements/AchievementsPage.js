@@ -10,11 +10,9 @@ function AchievementsPage() {
   const playerAchievements = player.getAchievements();
 
   useEffect(() => {
-    // Cargar definiciones de logros desde el archivo JSON
     fetch("/assets/achievements/achievements.json")
       .then((res) => res.json())
       .then((data) => {
-        // Combinar datos del archivo con el progreso del jugador
         const updatedAchievements = data.map(achievement => {
           const playerProgress = playerAchievements[achievement.id] || { progress: 0, unlocked: false, date: null };
           return {
@@ -27,7 +25,7 @@ function AchievementsPage() {
         setAchievementData(updatedAchievements);
       })
       .catch((error) => console.error("Error cargando logros:", error));
-  }, []);
+  });
 
   const unlockedCount = achievementData.filter((a) => a.unlocked).length;
 

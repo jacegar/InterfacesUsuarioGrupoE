@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import GameModel from '../../gamelogic/GameModel';
 import EnemySide from './EnemySide';
 import PlayerSide from './PlayerSide';
@@ -11,20 +11,16 @@ function GamePage(props){
     const location = useLocation();
     const executedRef = React.useRef(false);
 
-    // Modelo de la partida
     const gameModel = new GameModel(location.state.playerCards, location.state.enemyCards);
 
-    // Estado de las cartas del jugador y del enemigo
     const [playerCards, setPlayerCards] = useState(gameModel.getPlayerCards());
     const [enemyCards, setEnemyCards] = useState(gameModel.getEnemyCards());
-    const [playerCardsVersion, setPlayerCardsVersion] = useState(0);
+    const [playerCardsVersion] = useState(0);
     const [enemyCardsVersion, setEnemyCardsVersion] = useState(0);
     
-    // New state for attack speed (2 seconds by default, 1 second when in fast mode)
     const [fastMode, setFastMode] = useState(false);
     const attackDelay = fastMode ? 1000 : 2000;
 
-    // Estado visible de la partida
     const [gameState, setGameState] = useState({
         startingTurn: gameModel.getCurrentTurn(),
         currentTurn: gameModel.getCurrentTurn(),
@@ -36,7 +32,6 @@ function GamePage(props){
     const [enemyCardRef, setEnemyCardRef] = useState(null);
 
     const useTurn = () => {
-        // Cambia el turno entre el jugador y el enemigo
         if (gameState.currentTurn === 0) {
             setGameState({
                 ...gameState,
@@ -50,57 +45,50 @@ function GamePage(props){
         setPlayerCards(updatedCards);
     };
 
-    const audio = new Audio("/assets/sounds/sound4.mp3");
+    const audio = useMemo(() => new Audio("/assets/sounds/sound4.mp3"), []);
     audio.volume = 0.4;
 
-    const handlePlayerDamage = (damage) => {
-        const updatedPlayerCards = [...playerCards]; // Copia las cartas locales
-        const activeCard = updatedPlayerCards[0]; // La carta activa es la primera
+    const handlePlayerDamage = useCallback((damage) => {
+        const updatedPlayerCards = [...playerCards];
+        const activeCard = updatedPlayerCards[0];
     
         if (activeCard.isDefending) {
-            // Reduce el daño en función del valor de defensa acumulado
             const reducedDamage = Math.max(0, damage - activeCard.defense);
             activeCard.setHealth(activeCard.getHealth() - reducedDamage);
             console.log(`Daño reducido: ${damage} -> ${reducedDamage}`);
         } else {
-            // Aplica el daño completo si no está defendiendo
             activeCard.setHealth(activeCard.getHealth() - damage);
         }
     
-        // Reinicia la defensa después de recibir daño
         activeCard.resetDefense();
     
-        // Si la salud de la carta llega a 0 o menos, elimínala
         if (activeCard.getHealth() <= 0) {
             audio.play();
-            updatedPlayerCards.shift(); // Elimina la carta activa
+            updatedPlayerCards.shift();
         }
     
-        // Actualiza las cartas locales y notifica al padre
         setPlayerCards(updatedPlayerCards);
-    };
+    }, [playerCards, audio]);
 
     const handleEnemyDamage = (damage) => {
         const updatedEnemyCards = [...enemyCards];
         updatedEnemyCards[0].setHealth(updatedEnemyCards[0].getHealth() - damage);
         
-        // Registrar el daño para los logros
         const player = new Player();
         player.recordDamage(damage);
         
         if (updatedEnemyCards[0].getHealth() <= 0) {
             audio.play();
-            updatedEnemyCards.shift(); // Elimina la carta si su salud es 0 o menos
+            updatedEnemyCards.shift();
         }
         setEnemyCards(updatedEnemyCards);
-        setEnemyCardsVersion(enemyCardsVersion + 1); // Forzar re-renderizado
+        setEnemyCardsVersion(enemyCardsVersion + 1);
         setGameState({
             ...gameState,
-            playerPoints: 3 - updatedEnemyCards.length, // Actualiza los puntos del jugador
+            playerPoints: 3 - updatedEnemyCards.length,
         });
     };
 
-    // Toggle function for the fast mode button
     const toggleFastMode = () => {
         setFastMode(!fastMode);
     };
@@ -108,15 +96,11 @@ function GamePage(props){
     useEffect(() => {
         if (gameState.currentTurn === 1) {
             const timer = setTimeout(() => {
-                // Anima la carta enemiga primero
                 if (enemyCardRef && enemyCards.length > 0) {
                     enemyCardRef.animateAttack();
 
-                    // Después aplica el daño
                     setTimeout(() => {
-                        // El enemigo ataca siempre con el delay configurado
                         handlePlayerDamage(enemyCards[0].getAttackDamage());
-                        // Usar una función en setGameState para asegurar el estado actual
                         setGameState({
                             ...gameState,
                             currentTurn: 0,
@@ -124,15 +108,14 @@ function GamePage(props){
                         });
                     }, 500);
                 }
-            }, attackDelay); // Use the configurable delay
+            }, attackDelay);
 
             return () => clearTimeout(timer);
         }
-    }, [gameState.currentTurn, enemyCardRef, attackDelay]); // Add attackDelay as dependency
+    }, [gameState.currentTurn, enemyCardRef, attackDelay, enemyCards, gameState, handlePlayerDamage]);
 
-    // Al iniciar una partida
     useEffect(() => {
-        if (executedRef.current) return; // Evitar múltiples ejecuciones
+        if (executedRef.current) return;
         executedRef.current = true;
         const player = new Player();
         player.resetCurrentGameDamage();

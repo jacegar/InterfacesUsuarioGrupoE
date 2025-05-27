@@ -12,7 +12,7 @@ function EnemySide(props){
 
     useEffect(() => {
         if (points >= 3) {
-            navigate('/game-over-lost'); // Redirige a la pantalla de derrota
+            navigate('/game-over-lost');
         }
     }, [points, navigate]);
 
