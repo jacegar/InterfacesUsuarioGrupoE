@@ -64,6 +64,14 @@
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
 }
 
+.music-controls:focus-within .volume-slider {
+    display: block;
+}
+
+.volume-slider:focus-visible {
+    outline: 2px solid #007bff;
+}
+
 @media (max-width: 768px) {
     .music-toggle{
         width: 30px;
