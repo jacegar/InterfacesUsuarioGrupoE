@@ -59,3 +59,9 @@ body.reading-mode .confirmation-dialog {
 body.reading-mode .confirmation-dialog p {
     color: #5e4b3c;
 }
+
+@media (max-width: 768px) {
+    .confirmation-dialog {
+        width: 70%;
+    }
+}
