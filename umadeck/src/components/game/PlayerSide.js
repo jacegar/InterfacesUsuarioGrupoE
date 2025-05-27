@@ -324,7 +324,7 @@ function PlayerSide(props){
             <div className="action-menu">
                 <button className="action-button"
                     onClick={toggleAutoMode}>
-                    {isAutoMode ? "Auto: ON" : "Auto: OFF"}
+                    {isAutoMode ? "Desactivar Auto" : "Auto"}
                 </button>
                 <button 
                     className={`speed-button ${fastMode ? 'active' : ''}`}
@@ -338,7 +338,7 @@ function PlayerSide(props){
                         setShowMenu(false);
                         setIsCardSelected(false);
                         onEndTurn();
-                    }} 
+                    }}
                     disabled={currentTurn !== 0}>
                     Terminar turno
                 </button>
