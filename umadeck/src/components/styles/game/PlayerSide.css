@@ -235,14 +235,8 @@
     .ability-effect {
         width: 60px;
         height: 60px;
-    }
-
-    .player-effect {
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .enemy-effect {
+        position: fixed;
+        top: 58%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
