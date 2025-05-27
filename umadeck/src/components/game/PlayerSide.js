@@ -322,7 +322,7 @@ function PlayerSide(props){
             </div>
 
             <div className="action-menu">
-                <button className={`action-button${isAutoMode ? ' disable-auto-mobile' : ''}`}
+                <button className="action-button"
                     onClick={toggleAutoMode}>
                     {isAutoMode ? "Auto: ON" : "Auto: OFF"}
                 </button>
