@@ -31,3 +31,11 @@
 .menu-option:not(:last-child) {
     border-bottom: 1px solid #444;
 }
+
+@media (max-width: 768px) {
+    .card-menu {
+        left: 82%;
+        width: 33%;
+        margin-bottom: 5%;
+    }
+}

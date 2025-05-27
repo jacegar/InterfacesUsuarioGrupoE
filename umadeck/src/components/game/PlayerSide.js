@@ -25,6 +25,7 @@ function PlayerSide(props){
     const player = new Player();
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
+    const [lastInteractionTime, setLastInteractionTime] = useState(0);
     
     const handleAttack = useCallback(() => {
         if (!canAttack) {
@@ -71,12 +72,24 @@ function PlayerSide(props){
         }
     }, [currentTurn]);
 
-    const handleCardClick = () => {
-        if (currentTurn !== 0) return;
+    const handleCardInteraction = (e) => {
+        if (e) e.preventDefault();
         
+        const now = Date.now();
+        if (now - lastInteractionTime < 300) {
+            console.log("Interaction too soon, ignoring", now - lastInteractionTime);
+            return;
+        }
+        setLastInteractionTime(now);
+        
+        if (currentTurn !== 0) {
+            console.log("Not player's turn");
+            return;
+        }
+
         if (isCardSelected) {
             setIsCardSelected(false);
-            setShowMenu(!showMenu);
+            setShowMenu(false);
         } else if (exchangeMode) {
             setIsCardSelected(false);
             setShowMenu(false);
@@ -269,7 +282,7 @@ function PlayerSide(props){
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
-                            handleCardClick();
+                            handleCardInteraction();
                         }
                     }}
                 >
@@ -277,7 +290,7 @@ function PlayerSide(props){
                         <Card 
                             cardModel={localCards[0]} 
                             isSelected={isCardSelected}
-                            onCardClick={handleCardClick}
+                            onCardClick={handleCardInteraction}
                             attachRef={setCardRef}
                         />
                     ) : (
