@@ -3,7 +3,7 @@ import Card from "../common/Card";
 import "../styles/game/PlayerSide.css";
 import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import CardMenu from "./CardMenu";
 import {useNavigate} from 'react-router-dom';
 import ConfirmationMenu from "../common/ConfirmationMenu";
@@ -26,7 +26,7 @@ function PlayerSide(props){
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     
-    const handleAttack = () => {
+    const handleAttack = useCallback(() => {
         if (!canAttack) {
             console.warn("Ya has atacado en este turno.");
             return;
@@ -47,7 +47,7 @@ function PlayerSide(props){
                 setIsCardSelected(false);
             }, 500);
         }
-    };
+    }, [canAttack, cards, cardRef, onEnemyDamage, onEndTurn]);
     
     useEffect(() => {
         if (points >= 3) {
@@ -63,7 +63,7 @@ function PlayerSide(props){
             
             return () => clearTimeout(autoAttackTimer);
         }
-    }, [isAutoMode, currentTurn, attackDelay]);
+    }, [isAutoMode, currentTurn, attackDelay, handleAttack]);
 
     useEffect(() => {
         if (currentTurn === 0) {
@@ -322,9 +322,9 @@ function PlayerSide(props){
             </div>
 
             <div className="action-menu">
-                <button className="action-button"
+                <button className={`action-button${isAutoMode ? ' disable-auto-mobile' : ''}`}
                     onClick={toggleAutoMode}>
-                    {isAutoMode ? "Desactivar Auto" : "Auto"}
+                    {isAutoMode ? "Auto: ON" : "Auto: OFF"}
                 </button>
                 <button 
                     className={`speed-button ${fastMode ? 'active' : ''}`}
