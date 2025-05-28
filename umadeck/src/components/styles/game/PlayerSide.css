@@ -143,9 +143,6 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    position: absolute;
-    right: -50px;
-    top: 26px;
     transition: all 0.3s ease;
 }
 

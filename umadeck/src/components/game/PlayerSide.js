@@ -335,7 +335,7 @@ function PlayerSide(props){
             </div>
                     
             <div className = "wrapper">
-                <div className="points-container">
+                <div className="points-container-player">
                     <PointsDisplay points={points}/>
                 </div>
 
