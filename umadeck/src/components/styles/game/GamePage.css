@@ -1,15 +1,9 @@
 .game-page {
     padding-top: 5px;
     padding-bottom: 5px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+    display: flex;
+    flex-direction: column;
 }
-
-.game-page .custom-card:hover{
-    cursor: default;
-}
-
 
 .game-page hr {
     width: 100%;
@@ -42,8 +36,6 @@
 .turn-section {
     flex: 0 0 auto;
     padding: 0;
-    grid-row: 2;
-    grid-column: 1 / -1;
 }
 
 .player-side, .enemy-side, .turn-section {
