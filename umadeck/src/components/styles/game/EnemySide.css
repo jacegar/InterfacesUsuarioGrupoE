@@ -1,22 +1,11 @@
-.enemy-side {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
-}
-
-.enemy-side .custom-card:hover{
-    cursor: default;
-}
-
 .enemy-cards {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 6rem;
-    margin-bottom: 0;
+    grid-row: 1;
+    grid-column: 2;
 }
 
 .card-placeholder {
@@ -27,9 +16,8 @@
 }
 
 .enemy-display{
-    position: absolute;
-    top: 0;
-    left: 0;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 .card-placeholder.main {
@@ -38,11 +26,10 @@
     visibility: hidden;
 }
 
-.enemy-side .points-container {
+.points-container-enemy {
     margin-right: 5rem;
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-row: 1;
+    grid-column: 3;
 }
 
 @media (max-width: 768px) {
