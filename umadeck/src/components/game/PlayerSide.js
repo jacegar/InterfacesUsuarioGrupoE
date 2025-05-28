@@ -333,7 +333,6 @@ function PlayerSide(props){
                 </div>
                 
             </div>
-<<<<<<< Updated upstream
 
             <div className="action-menu">
                 <button className="action-button"
@@ -364,40 +363,6 @@ function PlayerSide(props){
 
             <div className="points-container">
                 <PointsDisplay points={points}/>
-=======
-            
-            <div className = "wrapper">          
-                <div className="points-container-player">
-                    <PointsDisplay points={points}/>
-                </div>
-                
-                <div className="action-menu">
-                    <button className="action-button"
-                        onClick={toggleAutoMode}>
-                        {isAutoMode ? "Desactivar Auto" : "Auto"}
-                    </button>
-                    <button 
-                        className={`speed-button ${fastMode ? 'active' : ''}`}
-                        onClick={toggleFastMode}
-                        title={fastMode ? "Velocidad normal" : "Velocidad x2"}
-                    >
-                        {fastMode ? "2x" : "1x"}
-                    </button>
-                    <button className="action-button" 
-                        onClick={() => {
-                            setShowMenu(false);
-                            setIsCardSelected(false);
-                            onEndTurn();
-                        }}
-                        disabled={currentTurn !== 0}>
-                        Terminar turno
-                    </button>
-                    <button className="action-button give-up"
-                        onClick={handleGiveUp}>
-                        Rendirse
-                    </button>
-                </div>
->>>>>>> Stashed changes
             </div>
 
             {abilityEffect && (
