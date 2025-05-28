@@ -18,6 +18,8 @@
 .enemy-display{
     grid-row: 1;
     grid-column: 1;
+    justify-self: start;
+    align-self: flex-start;
 }
 
 .card-placeholder.main {
@@ -35,8 +37,8 @@
 @media (max-width: 768px) {
     .enemy-cards {
         gap: 0.9rem;
-        margin-right:-20px;
-        margin-left:20px;
+        grid-row: 2;
+        grid-column: 1 / -1;
     }
 
     .enemy-side .points-container {
@@ -46,12 +48,12 @@
         grid-column:3;
     }
 
-    .enemy-cards{
-        grid-row:2;
-        grid-column:2;
-    }
     .enemy-display{
-    grid-row: 1;
-    grid-column: 1;
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .points-container-enemy {
+        margin-right: 1rem;
     }
 }
