@@ -16,7 +16,7 @@ function GameOverLostPage() {
     return (
         <div className="game-over-lost-page">
             <h1>Has perdido</h1>
-            <button className="continue-button" onClick={handleContinue}>
+            <button className="continue-button-lost" onClick={handleContinue}>
                 Regresar al menú principal
             </button>
         </div>

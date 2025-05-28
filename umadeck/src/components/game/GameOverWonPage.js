@@ -27,7 +27,7 @@ function GameOverWonPage() {
     return (
         <div className="game-over-won-page">
             <h1>¡Has ganado!</h1>
-            <button className="continue-button" onClick={handleContinue}>
+            <button className="continue-button-won" onClick={handleContinue}>
                 Regresar al menú principal
             </button>
         </div>

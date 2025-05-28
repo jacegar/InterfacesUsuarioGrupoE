@@ -58,17 +58,13 @@
     text-align: center;
 }
 
-.action-button.give-up {
-    background-color: #dc3545; 
-    margin-top: 2.5rem;
-}
-
-.action-button.give-up:hover {
-    background-color: #a71d2a;
-}
-
 .action-button:hover {
     background-color: #0861c0;
+}
+
+.action-link {
+    margin-top: 2.5rem;
+        cursor:pointer;
 }
 
 .ability-effect {
