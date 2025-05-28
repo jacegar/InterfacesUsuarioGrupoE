@@ -333,38 +333,36 @@ function PlayerSide(props){
                 </div>
                 
             </div>
-                    
-            <div className = "wrapper">
-                <div className="points-container">
-                    <PointsDisplay points={points}/>
-                </div>
 
-                <div className="action-menu">
-                    <button className="action-button"
-                        onClick={toggleAutoMode}>
-                        {isAutoMode ? "Desactivar Auto" : "Auto"}
-                    </button>
-                    <button 
-                        className={`speed-button ${fastMode ? 'active' : ''}`}
-                        onClick={toggleFastMode}
-                        title={fastMode ? "Velocidad normal" : "Velocidad x2"}
-                    >
-                        {fastMode ? "2x" : "1x"}
-                    </button>
-                    <button className="action-button" 
-                        onClick={() => {
-                            setShowMenu(false);
-                            setIsCardSelected(false);
-                            onEndTurn();
-                        }}
-                        disabled={currentTurn !== 0}>
-                        Terminar turno
-                    </button>
-                    <a className="action-link"
-                        onClick={handleGiveUp}>
-                        Rendirse
-                    </a>
-                </div>
+            <div className="action-menu">
+                <button className="action-button"
+                    onClick={toggleAutoMode}>
+                    {isAutoMode ? "Desactivar Auto" : "Auto"}
+                </button>
+                <button 
+                    className={`speed-button ${fastMode ? 'active' : ''}`}
+                    onClick={toggleFastMode}
+                    title={fastMode ? "Velocidad normal" : "Velocidad x2"}
+                >
+                    {fastMode ? "2x" : "1x"}
+                </button>
+                <button className="action-button" 
+                    onClick={() => {
+                        setShowMenu(false);
+                        setIsCardSelected(false);
+                        onEndTurn();
+                    }}
+                    disabled={currentTurn !== 0}>
+                    Terminar turno
+                </button>
+                <a className="action-link"
+                    onClick={handleGiveUp}>
+                    Rendirse
+                </a>
+            </div>
+
+            <div className="points-container">
+                <PointsDisplay points={points}/>
             </div>
 
             {abilityEffect && (
