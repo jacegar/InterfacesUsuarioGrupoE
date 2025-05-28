@@ -334,10 +334,9 @@ function PlayerSide(props){
                 
             </div>
                     
-            <div className = "wrapper">
                 <div className="points-container-player">
                     <PointsDisplay points={points}/>
-                </div>
+                </div> 
 
                 <div className="action-menu">
                     <button className="action-button"
@@ -365,7 +364,6 @@ function PlayerSide(props){
                         Rendirse
                     </a>
                 </div>
-            </div>
 
             {abilityEffect && (
             <div

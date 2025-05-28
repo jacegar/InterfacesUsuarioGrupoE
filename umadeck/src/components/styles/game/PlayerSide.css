@@ -26,21 +26,15 @@
     grid-column: 1;
 }
 
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    grid-row: 3;
-    grid-column: 3;
-}
 
 .action-menu {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 0;
-    margin-left: 2.5rem;
+    padding:25px;
+    margin-left: -4rem;
+    grid-row:3;
+    grid-column:3;
 }
 
 .action-button {
@@ -120,6 +114,8 @@
 
 .points-container-player{
     margin-right: 5rem;
+    grid-row:3;
+    grid-column:3;
 }
 
 .help-menu-title {
@@ -171,6 +167,8 @@
 @media (max-width: 768px) {
     .player-cards {
         gap: 0.9rem;
+        margin-right:-20px;
+        margin-left:20px;
     }
 
     .action-menu {
@@ -183,9 +181,11 @@
         justify-content: center;
         align-items: center;
         margin: 5px auto;
-        margin-top: 1.5rem;
+        margin-top: rem;
         gap: 5px;
         padding: 0 5px;
+        grid-row:6;
+        grid-column:2;
     }
 
     .action-button {
@@ -216,10 +216,6 @@
         gap: 0.5rem;
     }
 
-    .player-side .points-container {
-        margin-right: 1rem;
-    }
-
     .ability-effect {
         width: 60px;
         height: 60px;
@@ -245,10 +241,19 @@
     }
 
     .player-cards{
-        margin-top: 4rem;
+        grid-row: 5;
+        grid-column: 2;
     }
 
+    .points-container-player {
+        grid-row:4;
+        grid-column:3;
+    }
     .player-display{
         gap: 0.5rem;
+        grid-row:4;
+        grid-column:1;
+        width:200px;
+        margin-right:-170px;
     }
 }

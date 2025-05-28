@@ -58,7 +58,16 @@
 }
 
 @media (max-width: 768px) {
+    .game-page {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, auto);
+}
     .turn-section {
         transform: scale(0.9);
+        grid-row:3;
+        grid-column:2;
     }
 }

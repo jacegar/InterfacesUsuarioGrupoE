@@ -93,3 +93,10 @@
     width: clamp(124px, 12.5vw, 200px);
     height: clamp(198px, 20vw, 320px);
 }
+
+@media (max-width: 768px) {
+.game-page .custom-card {
+    width: clamp(150px, 12.5vw, 200px);
+    height: clamp(230px, 20vw, 320px);
+}
+}
