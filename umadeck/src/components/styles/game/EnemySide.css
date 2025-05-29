@@ -8,8 +8,11 @@
     grid-column: 2;
 }
 
+.enemy-cards .custom-card:hover{
+    cursor: default;
+}
+
 .card-placeholder {
-    margin-top: 100; 
     width: 140px;
     height: 224px;
     visibility: hidden;

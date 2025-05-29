@@ -7,10 +7,6 @@
     gap: 1%;
 }
 
-.game-page .custom-card:hover{
-    cursor: default;
-}
-
 .game-page hr {
     width: 100%;
     margin: 5px 0;
@@ -19,10 +15,10 @@
 
 .turn-counter, .turn-indicator {
     text-align: center;
-    font-size: 1.3em;
-    margin: 2px 0;
+    font-size: 1.2em;
+    margin: 1.5px 0;
     font-weight: bold;
-    padding: 2px;
+    padding: 1.5px;
 }
 
 .turn-indicator.player-turn {

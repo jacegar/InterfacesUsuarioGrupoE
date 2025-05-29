@@ -244,7 +244,7 @@ function PlayerSide(props){
                             }
                             <p><strong>Funcionamiento básico:</strong></p>
                             <ul>
-                                <li>Pincha en una carta para atacar, usar habilidades o cambiarla.</li>
+                                <li>Pincha en tu carta principal para atacar, usar habilidades o cambiarla.</li>
                                 <li>Derrota las 3 cartas del enemigo para ganar.</li>
                             </ul>
                         </div>

@@ -238,6 +238,10 @@
         margin-left: 20px;
     }
 
+    .action-button.end-turn {
+        bottom: auto;
+    }
+
     .speed-button {
         position: relative;
         right: auto;
