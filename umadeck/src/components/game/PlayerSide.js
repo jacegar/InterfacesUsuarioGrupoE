@@ -13,6 +13,7 @@ import Player from "../../gamelogic/Player";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards, attackDelay, fastMode, toggleFastMode } = props;
+    
     const [abilityEffect, setAbilityEffect] = useState(null);
     const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
@@ -22,11 +23,15 @@ function PlayerSide(props){
     const [isAutoMode, setIsAutoMode] = useState(false);
     const [exchangeMode, setExchangeMode] = useState(false);
     const [canAttack, setCanAttack] = useState(true);
+
     const player = new Player();
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     const [lastInteractionTime, setLastInteractionTime] = useState(0);
     
+    const volume = props.volume;
+    const setVolume = props.setVolume;
+
     const handleAttack = useCallback(() => {
         if (!canAttack) {
             console.warn("Ya has atacado en este turno.");
@@ -52,7 +57,7 @@ function PlayerSide(props){
     
     useEffect(() => {
         if (points >= 3) {
-            navigate('/game-over-won');
+            navigate('/game-over-won', { state: {volume : volume} });
         }
     }, [points, navigate]);
 
@@ -126,7 +131,7 @@ function PlayerSide(props){
                 } else {
                     setAbilityEffect({ type: activeCard.passiveName, target: "enemy" });
                 }
-    
+                
                 let sound = null;
                 if (activeCard.passiveName === "Hey, listen!") {
                     sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
@@ -138,10 +143,12 @@ function PlayerSide(props){
     
                 sound.addEventListener("loadedmetadata", () => {
                     const soundlength = sound.duration * 1000;
-    
-                    sound.play().catch((error) => {
-                        console.error("Error al reproducir el sonido:", error);
-                    });
+                    
+                    if(volume > 0) {
+                        sound.play().catch((error) => {
+                            console.error("Error al reproducir el sonido:", error);
+                        });
+                    }
     
                     setTimeout(() => {
                         setAbilityEffect(null);
@@ -205,7 +212,7 @@ function PlayerSide(props){
     };
 
     const confirmGiveUp = () => {
-        navigate('/game-over-lost');
+        navigate('/game-over-lost', { state: {volume : volume} });
     };
 
     const cancelGiveUp = () => {
@@ -252,7 +259,7 @@ function PlayerSide(props){
                     hasSeenTutorial={tutorialSeen}
                     onTutorialSeen={() => setTutorialSeen(true)}
                 />
-                <MusicControl/>
+                <MusicControl volume = {volume} setVolume = {setVolume}/>
             </div>
 
             <div className="player-cards">
@@ -271,6 +278,7 @@ function PlayerSide(props){
                             cardModel={localCards[1]} 
                             onCardClick={() => exchangeMode ? handleDirectExchange(1) : {}}
                             isHighlighted={exchangeMode}
+                            volume={volume}
                         /> : 
                         <div className="card-placeholder"></div>
                     }
@@ -292,6 +300,7 @@ function PlayerSide(props){
                             isSelected={isCardSelected}
                             onCardClick={handleCardInteraction}
                             attachRef={setCardRef}
+                            volume={volume}
                         />
                     ) : (
                         <div className="card-placeholder main"></div>
@@ -327,6 +336,7 @@ function PlayerSide(props){
                             cardModel={localCards[2]} 
                             onCardClick={() => exchangeMode ? handleDirectExchange(2) : {}}
                             isHighlighted={exchangeMode}
+                            volume={volume}
                         /> : 
                         <div className="card-placeholder"></div>
                     }
