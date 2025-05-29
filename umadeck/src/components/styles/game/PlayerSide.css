@@ -79,29 +79,19 @@
 
 .action-link {
     margin-top: 2.5rem;
-        cursor:pointer;
+    cursor:pointer;
 }
 
 .ability-effect {
     position: absolute;
-    z-index: 50;
+    z-index: 5000;
     animation: fade-in-out 1s ease-in-out;
     width: 80px;
     height: 80px;
-}
-
-.player-effect {
-    top: 50%;
+    top: 80%;
     left: 45.5%;
     transform: translate(-100%, -50%);
 }
-
-.enemy-effect {
-    top: -20%;
-    left: 48.5%;
-    transform: translate(0, -50%);
-}
-
 
 @keyframes fade-in-out {
     0% {
