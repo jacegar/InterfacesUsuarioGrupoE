@@ -29,9 +29,12 @@
 }
 
 .points-container-enemy {
+    margin-top: 1.5rem;
     margin-right: 5rem;
     grid-row: 1;
     grid-column: 3;
+    justify-self: end;
+    align-self: flex-start;
 }
 
 @media (max-width: 768px) {

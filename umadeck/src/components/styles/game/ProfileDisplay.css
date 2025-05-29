@@ -7,7 +7,13 @@
 
 .profile-display.player p {
     position: relative;
-    bottom: 3rem;
+    bottom: 3.25rem;
+    left: 5%;
+}
+
+.profile-display.enemy p {
+    position: relative;
+    left: 5%;
 }
 
 .profile-display.player img {

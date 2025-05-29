@@ -339,7 +339,7 @@ function PlayerSide(props){
                 </div> 
 
                 <div className="action-menu">
-                    <button className="action-button"
+                    <button className="action-button auto"
                         onClick={toggleAutoMode}>
                         {isAutoMode ? "Desactivar Auto" : "Auto"}
                     </button>
@@ -350,7 +350,7 @@ function PlayerSide(props){
                     >
                         {fastMode ? "2x" : "1x"}
                     </button>
-                    <button className="action-button" 
+                    <button className="action-button end-turn" 
                         onClick={() => {
                             setShowMenu(false);
                             setIsCardSelected(false);
@@ -359,7 +359,7 @@ function PlayerSide(props){
                         disabled={currentTurn !== 0}>
                         Terminar turno
                     </button>
-                    <a className="action-link"
+                    <a className="action-link give-up"
                         onClick={handleGiveUp}>
                         Rendirse
                     </a>
