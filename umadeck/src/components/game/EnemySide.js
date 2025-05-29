@@ -12,7 +12,7 @@ function EnemySide(props){
 
     useEffect(() => {
         if (points >= 3) {
-            navigate('/game-over-lost');
+            navigate('/game-over-lost', { state: {volume : volume} });
         }
     }, [points, navigate]);
 
