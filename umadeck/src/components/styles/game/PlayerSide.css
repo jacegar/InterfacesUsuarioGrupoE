@@ -62,7 +62,7 @@
     border: none;
     color: #0050a8;
     text-decoration: underline;
-    font-size: inherit;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);;
     padding: 0;
     margin-top: 2.5rem;
     cursor: pointer;
@@ -240,11 +240,6 @@
         margin: 2px;
     }
 
-    .action-button.give-up {
-        margin-top: 2px;
-        margin-left: 20px;
-    }
-
     .action-button.end-turn {
         bottom: auto;
     }
@@ -303,9 +298,8 @@
     }
 
     .action-link.give-up {
-        margin-top: 2px;
+        margin-top: 2rem;
         margin-left: 20px;
-        font-size: 0.95rem;
     }
 }
 
