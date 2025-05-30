@@ -1,11 +1,22 @@
+.enemy-side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
+
+.enemy-side .custom-card:hover{
+    cursor: default;
+}
+
 .enemy-cards {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 6rem;
-    grid-row: 1;
-    grid-column: 2;
+    margin-bottom: 0;
 }
 
 .enemy-cards .custom-card:hover{
@@ -30,6 +41,7 @@
     height: 320px;
     visibility: hidden;
 }
+
 
 .points-container-enemy {
     margin-top: 1.5rem;
