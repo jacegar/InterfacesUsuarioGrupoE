@@ -17,7 +17,7 @@ function HelpMenu(props) {
 
     return (
         <>
-            <div>
+            <div className="help-button-container">
                 <button className="help-button" onClick={() => setShowHelp(!showHelp)}>
                     <img 
                         src="/assets/images/help-button.svg" 

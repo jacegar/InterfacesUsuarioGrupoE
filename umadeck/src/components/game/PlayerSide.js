@@ -236,11 +236,17 @@ function PlayerSide(props){
                     title={<span className="help-menu-title">Ayuda del Juego</span>}
                     text={
                         <div className="help-menu-text">
+                            <p><strong>Funcionamiento básico:</strong></p>
+                            <ul>
+                                <li>Pincha en tu carta principal durante tu turno para atacar, usar habilidades o cambiarla.</li>
+                                <li>Puedes atacar una vez por turno. Atacar con tu carta termina el turno.</li>
+                                <li>Cada habilidad solo se puede usar una vez por partida. Puedes usar varias habilidades por turno.</li>
+                                <li>Cambiar hace que otra carta pase a ser la principal. Siempre puedes cambiar cartas en tu turno.</li>
+                                <li>Derrota las 3 cartas del enemigo para ganar.</li>
+                            </ul>
                             {tutorialSeen &&
                              <>
                                 <p><strong>Botones disponibles:</strong></p><ul>
-                                    <li> <strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
-                                    <li> <strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
                                     <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
                                     <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
                                     <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
@@ -249,11 +255,6 @@ function PlayerSide(props){
                                 </ul>
                              </>
                             }
-                            <p><strong>Funcionamiento básico:</strong></p>
-                            <ul>
-                                <li>Pincha en tu carta principal para atacar, usar habilidades o cambiarla.</li>
-                                <li>Derrota las 3 cartas del enemigo para ganar.</li>
-                            </ul>
                         </div>
                     }
                     hasSeenTutorial={tutorialSeen}
