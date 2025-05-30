@@ -228,7 +228,7 @@ function PlayerSide(props){
     }, [cards]);
     
     return (
-        <div className="player-side"> 
+        <> 
             <div className="player-display">
                 <ProfileDisplay side={0}/>
                 <HelpMenu
@@ -392,7 +392,7 @@ function PlayerSide(props){
             {showConfirmation && (
                 <ConfirmationMenu onConfirm={confirmGiveUp} onCancel={cancelGiveUp} text={"¿Estás seguro de que quieres rendirte?"}/>
             )}
-        </div>
+        </>
     );
 }
 
