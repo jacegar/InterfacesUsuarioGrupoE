@@ -6,9 +6,9 @@ function ConfirmationMenu(props){
     return(
     <div className="confirmation-dialog">
                     <p>{text}</p>
-                    <a className="confirm-button" onClick={onConfirm}>
+                    <button className="confirm-button" onClick={onConfirm}>
                         Sí
-                    </a>
+                    </button>
                     <button className="cancel-button" onClick={onCancel}>
                         No
                     </button>

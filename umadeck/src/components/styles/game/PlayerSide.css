@@ -58,6 +58,23 @@
     grid-column: 1;
     position: relative;
     bottom: 30%;
+    background: none;
+    border: none;
+    color: #0050a8;
+    text-decoration: underline;
+    font-size: inherit;
+    padding: 0;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    width: auto;
+    box-shadow: none;
+    transition: color 0.2s;
+}
+
+.action-link.give-up:hover,
+.action-link.give-up:focus {
+    color: #0861c0;
+    text-decoration: underline;
 }
 
 .action-button {
@@ -284,4 +301,19 @@
         grid-column:1;
         width: 200px;
     }
+
+    .action-link.give-up {
+        margin-top: 2px;
+        margin-left: 20px;
+        font-size: 0.95rem;
+    }
+}
+
+body.dark-mode .action-link.give-up {
+    color: #56a2ed;
+}
+
+body.dark-mode .action-link.give-up:hover,
+body.dark-mode .action-link.give-up:focus {
+    color: #7cb2ec;
 }

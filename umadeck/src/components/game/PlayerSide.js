@@ -370,10 +370,12 @@ function PlayerSide(props){
                         disabled={currentTurn !== 0}>
                         Terminar turno
                     </button>
-                    <a className="action-link give-up"
-                        onClick={handleGiveUp}>
+                    <button
+                        className="action-link give-up"
+                        onClick={handleGiveUp}
+                    >
                         Rendirse
-                    </a>
+                    </button>
                 </div>
 
             {abilityEffect && (
