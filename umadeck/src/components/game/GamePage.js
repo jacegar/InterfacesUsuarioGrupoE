@@ -21,10 +21,6 @@ function GamePage(props){
     const [fastMode, setFastMode] = useState(false);
     const attackDelay = fastMode ? 1000 : 2000;
 
-    const [volume, setVolume] = useState(0);
-    const audio = new Audio("/assets/sounds/sound4.mp3");
-    audio.volume = volume > 0 ? 0.4 : 0;
-
     const [gameState, setGameState] = useState({
         startingTurn: gameModel.getCurrentTurn(),
         currentTurn: gameModel.getCurrentTurn(),
@@ -49,6 +45,9 @@ function GamePage(props){
         setPlayerCards(updatedCards);
     };
 
+    const audio = new Audio("/assets/sounds/sound4.mp3");
+    audio.volume = 0.4;
+
     const handlePlayerDamage = (damage) => {
         const updatedPlayerCards = [...playerCards];
         const activeCard = updatedPlayerCards[0];
@@ -64,9 +63,7 @@ function GamePage(props){
         activeCard.resetDefense();
     
         if (activeCard.getHealth() <= 0) {
-            if(volume > 0) {
-                audio.play();
-            }
+            audio.play();
             updatedPlayerCards.shift();
         }
     
@@ -81,9 +78,7 @@ function GamePage(props){
         player.recordDamage(damage);
         
         if (updatedEnemyCards[0].getHealth() <= 0) {
-            if(volume > 0){
-                audio.play();
-            }
+            audio.play();
             updatedEnemyCards.shift();
         }
         setEnemyCards(updatedEnemyCards);
@@ -135,7 +130,6 @@ function GamePage(props){
                 points={3 - playerCards.length}
                 attachCardRef={setEnemyCardRef}
                 version={enemyCardsVersion}
-                volume={volume}
             />
             <div className="turn-section">
                 <div className="turn-counter">
@@ -159,8 +153,6 @@ function GamePage(props){
                 attackDelay={attackDelay}
                 fastMode={fastMode}
                 toggleFastMode={toggleFastMode}
-                volume={volume}
-                setVolume={setVolume}
             />
         </main>
     );

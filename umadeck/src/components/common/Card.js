@@ -12,18 +12,13 @@ function Card(props) {
     const [isAttacking, setIsAttacking] = useState(false);
     const [showBack, setShowBack] = useState(false);
     const timerRef = useRef(null);
-    const volume = props.volume;
-
+    
     const animateAttack = () => {
         setIsAttacking(true);
         setTimeout(() => setIsAttacking(false), 700);
-        /*
         const audio = new Audio("/assets/sounds/sound1.mp3");
-        audio.volume = volume;
-        if(volume > 0){
-            audio.play();
-        }
-        */
+        audio.volume = 0.5;
+        audio.play();
     };
 
     useEffect(() => {
@@ -96,7 +91,7 @@ function Card(props) {
             {showOverlay && <div className="overlay active" onClick={handleOverlayClick}></div>}
             
             <div 
-                className={`custom-card ${isSelected ? " selected" : ""} ${isAttacking ? " attacking" : ""} ${isHighlighted ? " highlighted" : ""}`}
+                className={`custom-card${isSelected ? " selected" : ""}${isAttacking ? " attacking" : ""}${isHighlighted ? " highlighted" : ""}`}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}

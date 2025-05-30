@@ -13,7 +13,6 @@ import Player from "../../gamelogic/Player";
 
 function PlayerSide(props){
     const { cards, points, onEndTurn, currentTurn, onEnemyDamage, enemyCards, setEnemyCards, attackDelay, fastMode, toggleFastMode } = props;
-    
     const [abilityEffect, setAbilityEffect] = useState(null);
     const [localCards, setLocalCards] = useState(cards);
     const [isCardSelected, setIsCardSelected] = useState(false);
@@ -23,15 +22,11 @@ function PlayerSide(props){
     const [isAutoMode, setIsAutoMode] = useState(false);
     const [exchangeMode, setExchangeMode] = useState(false);
     const [canAttack, setCanAttack] = useState(true);
-
     const player = new Player();
     const [tutorialSeen, setTutorialSeen] = useState(player.hasSeenTutorial);
     const navigate = useNavigate();
     const [lastInteractionTime, setLastInteractionTime] = useState(0);
     
-    const volume = props.volume;
-    const setVolume = props.setVolume;
-
     const handleAttack = useCallback(() => {
         if (!canAttack) {
             console.warn("Ya has atacado en este turno.");
@@ -57,7 +52,7 @@ function PlayerSide(props){
     
     useEffect(() => {
         if (points >= 3) {
-            navigate('/game-over-won', { state: {volume : volume} });
+            navigate('/game-over-won');
         }
     }, [points, navigate]);
 
@@ -131,7 +126,7 @@ function PlayerSide(props){
                 } else {
                     setAbilityEffect({ type: activeCard.passiveName, target: "enemy" });
                 }
-                
+    
                 let sound = null;
                 if (activeCard.passiveName === "Hey, listen!") {
                     sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
@@ -143,12 +138,10 @@ function PlayerSide(props){
     
                 sound.addEventListener("loadedmetadata", () => {
                     const soundlength = sound.duration * 1000;
-                    
-                    if(volume > 0) {
-                        sound.play().catch((error) => {
-                            console.error("Error al reproducir el sonido:", error);
-                        });
-                    }
+    
+                    sound.play().catch((error) => {
+                        console.error("Error al reproducir el sonido:", error);
+                    });
     
                     setTimeout(() => {
                         setAbilityEffect(null);
@@ -212,7 +205,7 @@ function PlayerSide(props){
     };
 
     const confirmGiveUp = () => {
-        navigate('/game-over-lost', { state: {volume : volume} });
+        navigate('/game-over-lost');
     };
 
     const cancelGiveUp = () => {
@@ -236,17 +229,11 @@ function PlayerSide(props){
                     title={<span className="help-menu-title">Ayuda del Juego</span>}
                     text={
                         <div className="help-menu-text">
-                            <p><strong>Funcionamiento básico:</strong></p>
-                            <ul>
-                                <li>Pincha en tu carta principal durante tu turno para atacar, usar habilidades o cambiarla.</li>
-                                <li>Puedes atacar una vez por turno. Atacar con tu carta termina el turno.</li>
-                                <li>Cada habilidad solo se puede usar una vez por partida. Puedes usar varias habilidades por turno.</li>
-                                <li>Cambiar hace que otra carta pase a ser la principal. Siempre puedes cambiar cartas en tu turno.</li>
-                                <li>Derrota las 3 cartas del enemigo para ganar.</li>
-                            </ul>
                             {tutorialSeen &&
                              <>
                                 <p><strong>Botones disponibles:</strong></p><ul>
+                                    <li> <strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
+                                    <li> <strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
                                     <li> <strong>Auto:</strong> Activa el modo automático para que el juego ataque automáticamente.</li>
                                     <li> <strong>Terminar turno:</strong> Finaliza tu turno sin atacar.</li>
                                     <li> <strong>Rendirse:</strong> Abandona la partida actual.</li>
@@ -255,12 +242,17 @@ function PlayerSide(props){
                                 </ul>
                              </>
                             }
+                            <p><strong>Funcionamiento básico:</strong></p>
+                            <ul>
+                                <li>Pincha en una carta para atacar, usar habilidades o cambiarla.</li>
+                                <li>Derrota las 3 cartas del enemigo para ganar.</li>
+                            </ul>
                         </div>
                     }
                     hasSeenTutorial={tutorialSeen}
                     onTutorialSeen={() => setTutorialSeen(true)}
                 />
-                <MusicControl volume = {volume} setVolume = {setVolume}/>
+                <MusicControl/>
             </div>
 
             <div className="player-cards">
@@ -279,7 +271,6 @@ function PlayerSide(props){
                             cardModel={localCards[1]} 
                             onCardClick={() => exchangeMode ? handleDirectExchange(1) : {}}
                             isHighlighted={exchangeMode}
-                            volume={volume}
                         /> : 
                         <div className="card-placeholder"></div>
                     }
@@ -301,7 +292,6 @@ function PlayerSide(props){
                             isSelected={isCardSelected}
                             onCardClick={handleCardInteraction}
                             attachRef={setCardRef}
-                            volume={volume}
                         />
                     ) : (
                         <div className="card-placeholder main"></div>
@@ -337,44 +327,43 @@ function PlayerSide(props){
                             cardModel={localCards[2]} 
                             onCardClick={() => exchangeMode ? handleDirectExchange(2) : {}}
                             isHighlighted={exchangeMode}
-                            volume={volume}
                         /> : 
                         <div className="card-placeholder"></div>
                     }
                 </div>
                 
             </div>
-                    
-                <div className="points-container-player">
-                    <PointsDisplay points={points}/>
-                </div> 
 
-                <div className="action-menu">
-                    <button className="action-button auto"
-                        onClick={toggleAutoMode}>
-                        {isAutoMode ? "Desactivar Auto" : "Auto"}
-                    </button>
-                    <button 
-                        className={`speed-button ${fastMode ? 'active' : ''}`}
-                        onClick={toggleFastMode}
-                        title={fastMode ? "Velocidad normal" : "Velocidad x2"}
-                    >
-                        {fastMode ? "2x" : "1x"}
-                    </button>
-                    <button className="action-button end-turn" 
-                        onClick={() => {
-                            setShowMenu(false);
-                            setIsCardSelected(false);
-                            onEndTurn();
-                        }}
-                        disabled={currentTurn !== 0}>
-                        Terminar turno
-                    </button>
-                    <a className="action-link give-up"
-                        onClick={handleGiveUp}>
-                        Rendirse
-                    </a>
-                </div>
+            <div className="action-menu">
+                <button className="action-button"
+                    onClick={toggleAutoMode}>
+                    {isAutoMode ? "Desactivar Auto" : "Auto"}
+                </button>
+                <button 
+                    className={`speed-button ${fastMode ? 'active' : ''}`}
+                    onClick={toggleFastMode}
+                    title={fastMode ? "Velocidad normal" : "Velocidad x2"}
+                >
+                    {fastMode ? "2x" : "1x"}
+                </button>
+                <button className="action-button" 
+                    onClick={() => {
+                        setShowMenu(false);
+                        setIsCardSelected(false);
+                        onEndTurn();
+                    }}
+                    disabled={currentTurn !== 0}>
+                    Terminar turno
+                </button>
+                <a className="action-link"
+                    onClick={handleGiveUp}>
+                    Rendirse
+                </a>
+            </div>
+
+            <div className="points-container">
+                <PointsDisplay points={points}/>
+            </div>
 
             {abilityEffect && (
             <div

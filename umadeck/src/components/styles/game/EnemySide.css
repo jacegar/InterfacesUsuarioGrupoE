@@ -19,21 +19,17 @@
     margin-bottom: 0;
 }
 
-.enemy-cards .custom-card:hover{
-    cursor: default;
-}
-
 .card-placeholder {
+    margin-top: 100; 
     width: 140px;
     height: 224px;
     visibility: hidden;
 }
 
 .enemy-display{
-    grid-row: 1;
-    grid-column: 1;
-    justify-self: start;
-    align-self: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .card-placeholder.main {
@@ -42,36 +38,24 @@
     visibility: hidden;
 }
 
-
-.points-container-enemy {
-    margin-top: 1.5rem;
+.enemy-side .points-container {
     margin-right: 5rem;
-    grid-row: 1;
-    grid-column: 3;
-    justify-self: end;
-    align-self: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media (max-width: 768px) {
     .enemy-cards {
         gap: 0.9rem;
-        grid-row: 2;
-        grid-column: 1 / -1;
     }
 
     .enemy-side .points-container {
         margin-top: 0rem;
         margin-right: 1rem;
-        grid-row:1;
-        grid-column:3;
     }
 
-    .enemy-display{
-        grid-row: 1;
-        grid-column: 1;
-    }
-
-    .points-container-enemy {
-        margin-right: 1rem;
+    .enemy-cards{
+        margin-top: 3rem;
     }
 }

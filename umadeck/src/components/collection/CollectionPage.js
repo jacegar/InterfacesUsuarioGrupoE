@@ -31,8 +31,8 @@ function CollectionPage() {
                 <p><strong>Botones disponibles:</strong></p>
                 <ul>
                   <li><strong>Flecha atrás:</strong> Vuelve a la página anterior.</li>
-                  <li><strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener pulsada la carta.</li>
-                  <li><strong>Flecha semicircular:</strong> Gira la carta, lo que permite ver la descripción.</li>
+                  <li><strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
+                  <li><strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
                 </ul>
               </div>
             }

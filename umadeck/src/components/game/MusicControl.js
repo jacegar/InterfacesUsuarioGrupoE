@@ -1,13 +1,11 @@
 import "../styles/game/MusicControl.css";
 import { useState, useRef, useEffect } from "react";
 
-function MusicControl(props) {
+function MusicControl() {
     const backgroundMusicRef = useRef(new Audio("/assets/sounds/background.mp3"));
 
-    const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-    const volume = props.volume;
-    const setVolume = props.setVolume;
-
+    const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+    const [volume, setVolume] = useState(0.1);
     const sliderRef = useRef(null);
 
     useEffect(() => {

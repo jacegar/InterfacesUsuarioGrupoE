@@ -57,6 +57,16 @@ body.reading-mode .game-title {
   color: #5e4b3c;
 }
 
+body.reading-mode .menu-button {
+  background-color: #007bff;
+  color: white;
+}
+
+body.reading-mode .menu-button:hover, 
+body.reading-mode .menu-button.hovered {
+  background-color: #0056b3;
+}
+
 body.reading-mode .menu-button-small {
   background-color: #6c757d;
 }
