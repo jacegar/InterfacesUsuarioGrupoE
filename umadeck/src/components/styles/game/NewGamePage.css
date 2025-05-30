@@ -40,18 +40,6 @@
     margin-left: 20px;
 }
 
-body.dark-mode .newGamePage h2.especialh2 {
-    color: #eee;
-}
-
-body.reading-mode .newGamePage h1.especialh1 {
-    color: #5e4b3c;
-}
-
-body.reading-mode .newGamePage h2.especialh2 {
-    color: #5e4b3c;
-}
-
 .newGamePage .go-back-arrow {
     position: absolute;
     top: 20px;
@@ -325,4 +313,21 @@ body.reading-mode .newGamePage h2.especialh2 {
     .cardList li:hover {
         transform: none;
     }
+}
+
+
+body.dark-mode .newGamePage h2.especialh2 {
+    color: #eee;
+}
+
+body.reading-mode .newGamePage h1.especialh1 {
+    color: #5e4b3c;
+}
+
+body.reading-mode .newGamePage h2.especialh2 {
+    color: #5e4b3c;
+}
+
+body.dark-mode .newGamePage h1.especialh1 {
+    color: #4da8ff;;
 }
