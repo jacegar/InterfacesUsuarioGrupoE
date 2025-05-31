@@ -5,6 +5,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: 1%;
+    min-height: 100vh;
 }
 
 .game-page hr {
