@@ -199,7 +199,7 @@ function NewGamePage() {
                     {cardsToShow < 5 && (
                         <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
                     )}
-                    <ul className="cardList" style={{margin: 0}}>
+                    <ul className="cardList">
                         {loadedCards.length > 0 &&
                             [...Array(cardsToShow)].map((_, i) => {
                                 const offset = Math.floor(cardsToShow / 2);
