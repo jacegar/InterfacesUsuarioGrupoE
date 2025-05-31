@@ -67,3 +67,11 @@
         grid-column: 1 / -1;
     }
 }
+
+body.dark-mode .turn-indicator.player-turn {
+    color: #66b3ff;
+}
+
+body.dark-mode .turn-indicator.enemy-turn {
+    color: #ff8383;
+}

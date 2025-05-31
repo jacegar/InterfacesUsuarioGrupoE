@@ -65,19 +65,13 @@ function MusicControl(props) {
             role="group" 
             aria-label="Controles de música"
         >
-            <img
-                src={isMusicPlaying ? "/assets/images/image8.png" : "/assets/images/image9.png"}
-                alt="Toggle Music"
-                className="music-toggle"
-                onClick={toggleMusic}
-                tabIndex="0"
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleMusic();
-                    }
-                }}
-            />
+            <button className = "music-button" onClick={toggleMusic}>
+                <img
+                    src={isMusicPlaying ? "/assets/images/image8.png" : "/assets/images/image9.png"}
+                    alt="Botón de música"
+                    className="music-toggle"
+                />
+            </button>
             <input
                 ref={sliderRef}
                 type="range"
