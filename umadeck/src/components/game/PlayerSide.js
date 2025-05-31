@@ -136,7 +136,7 @@ function PlayerSide(props){
                 if (activeCard.passiveName === "Hey, listen!") {
                     sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
                 } else if (activeCard.passiveName === "¡Jamón!") {
-                    sound = new Audio(`/assets/sounds/sound4.mp3`);
+                    sound = new Audio(`/assets/sounds/sound1.mp3`);
                 } else {
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
                 }
