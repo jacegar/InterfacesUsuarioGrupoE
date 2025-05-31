@@ -11,7 +11,7 @@ body {
 
 /*Marco para elementos con el foco del tab*/
 *:focus-visible {
-  outline: 3px solid black;
+  outline: 3px solid #3895ec;
   outline-offset: 2px;
 }
 

@@ -203,7 +203,7 @@
 
 @media (max-width: 768px) {
     .player-cards {
-        gap: 0.9rem;
+        gap: clamp(0.4rem, 2.5vw, 0.9rem);
         grid-row: 5;
         grid-column: 1 / -1;
     }
