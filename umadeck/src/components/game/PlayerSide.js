@@ -273,6 +273,8 @@ function PlayerSide(props){
                             handleDirectExchange(1);
                         }
                     }}
+                    aria-label={localCards[1] && exchangeMode? `Carta de ${localCards[1].name} a la izquierda de la principal del jugador`: ""}
+                    role={localCards[1] && exchangeMode ? "button" : ""}
                 >
                     {localCards[1] ? 
                         <CardMini 
@@ -294,6 +296,8 @@ function PlayerSide(props){
                             handleCardInteraction();
                         }
                     }}
+                    aria-label={`${localCards[0] ? `Carta principal del jugador: ${localCards[0].name}` : "Carta principal del jugador no disponible"}`}
+                    role="button"
                 >
                     {localCards[0] ? (
                         <Card 
@@ -331,6 +335,8 @@ function PlayerSide(props){
                             handleDirectExchange(2);
                         }
                     }}
+                    aria-label={localCards[2] && exchangeMode? `Carta de ${localCards[2].name} a la derecha de la principal del jugador`: ""}
+                    role={localCards[2] && exchangeMode ? "button" : ""}
                 >
                     {localCards[2] ? 
                         <CardMini 

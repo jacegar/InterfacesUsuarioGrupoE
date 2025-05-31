@@ -216,6 +216,8 @@ function NewGamePage() {
                                                 selectCard(idx);
                                             }
                                         }}
+                                        role="button"
+                                        aria-label={`Carta de ${loadedCards[idx].name}, ${idx === recommendedCardIndex ? "recomendada" : ""}`}
                                     >
                                         {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                                         <Card
