@@ -50,13 +50,11 @@ function MainMenu(){
         }
     }, [screenReaderOn]);
 
-    // Sincroniza el estado del lector con localStorage
+    // Sincroniza el estado del lector con localStorage (por defecto desactivado)
     React.useEffect(() => {
-        const saved = localStorage.getItem('screenReaderOn');
-        if (saved === 'true') {
-            setScreenReaderOn(true);
-            if (window.enableScreenReader) window.enableScreenReader();
-        }
+        localStorage.setItem('screenReaderOn', 'false'); // Siempre desactivado al cargar
+        setScreenReaderOn(false);
+        if (window.disableScreenReader) window.disableScreenReader();
     }, []);
 
     React.useEffect(() => {

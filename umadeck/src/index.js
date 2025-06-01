@@ -63,4 +63,9 @@ if (typeof window !== 'undefined') {
   window.enableScreenReader = () => globalScreenReader(true);
   window.disableScreenReader = () => globalScreenReader(false);
   window.isScreenReaderActive = () => screenReaderActive;
+  // Desactiva el lector y borra el flag al cargar la app
+  window.disableScreenReader();
+  if (window.localStorage) {
+    window.localStorage.setItem('screenReaderOn', 'false');
+  }
 }
