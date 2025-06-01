@@ -7,42 +7,46 @@ function CardFooter(props) {
 
     return (
         <div className="custom-card-footer" onClick={handleClick}>
-            <button onClick={(e) => {
+            <button 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.handleMagnify();
+                }}
+                tabIndex="0"
+                aria-label="Ampliar carta"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
                         e.stopPropagation();
                         props.handleMagnify();
-                    }}
-                    tabIndex="0"
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            props.handleMagnify();
-                        }
-                    }}
-                    className="magnify-button">
+                    }
+                }}
+                className="magnify-button">
                 <img 
                     className="magnify-icon" 
                     src="/assets/images/image7.png" 
                     alt="Ampliar carta"  
                 />
             </button>
-            <button onClick={(e) => {
+            <button 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.handleFlip();
+                }}
+                tabIndex="0"
+                aria-label="Dar la vuelta a la carta"
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
                         e.stopPropagation();
                         props.handleFlip();
-                    }}
-                    tabIndex="0"
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            props.handleFlip();
-                        }
-                    }}
-                    className="flip-button">
+                    }
+                }}
+                className="flip-button">
                 <img 
                     className="flip-icon"
                     src="/assets/images/curved-arrow.svg" 
-                    alt="Da la vuelta a la carta"  
+                    alt="Dar la vuelta a la carta"  
                 />
             </button>
         </div>
