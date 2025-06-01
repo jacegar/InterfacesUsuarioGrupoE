@@ -33,7 +33,7 @@ function HelpMenu(props) {
                 >
                     <div className="help-box" onClick={(e) => e.stopPropagation()}>
                         <h2 className="help-title">{title}</h2>
-                        <p className="help-text">{text}</p>
+                        <div className="help-text">{text}</div>
                         <button 
                             className="help-close" 
                             onClick={handleCloseTutorial}
