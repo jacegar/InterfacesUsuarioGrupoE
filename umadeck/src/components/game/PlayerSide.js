@@ -263,7 +263,7 @@ function PlayerSide(props){
                 <MusicControl volume = {volume} setVolume = {setVolume}/>
             </div>
 
-            <div className="player-cards">
+            <div className="player-cards" role="region" aria-label="Cartas del jugador">
                 <div 
                     className="card-slot left"
                     tabIndex={localCards[1] && exchangeMode ? "0" : undefined}
@@ -273,8 +273,8 @@ function PlayerSide(props){
                             handleDirectExchange(1);
                         }
                     }}
-                    aria-label={localCards[1] && exchangeMode? `Carta de ${localCards[1].name} a la izquierda de la principal del jugador`: ""}
-                    role={localCards[1] && exchangeMode ? "button" : ""}
+                    aria-label={localCards[1] ? `Carta de ${localCards[1].name} a la izquierda de la principal`: ""}
+                    role={localCards[1] && exchangeMode? "button" : localCards[1] ? "article" : ""}
                 >
                     {localCards[1] ? 
                         <CardMini 
@@ -296,7 +296,7 @@ function PlayerSide(props){
                             handleCardInteraction();
                         }
                     }}
-                    aria-label={`${localCards[0] ? `Carta principal del jugador: ${localCards[0].name}` : "Carta principal del jugador no disponible"}`}
+                    aria-label={`${localCards[0] ? `Carta principal del jugador: ${localCards[0].name}` : ""}`}
                     role="button"
                 >
                     {localCards[0] ? (
@@ -335,8 +335,8 @@ function PlayerSide(props){
                             handleDirectExchange(2);
                         }
                     }}
-                    aria-label={localCards[2] && exchangeMode? `Carta de ${localCards[2].name} a la derecha de la principal del jugador`: ""}
-                    role={localCards[2] && exchangeMode ? "button" : ""}
+                    aria-label={localCards[2] && `Carta de ${localCards[2].name} a la derecha de la principal`}
+                    role={localCards[2] && exchangeMode? "button" : localCards[2] ? "article" : ""}
                 >
                     {localCards[2] ? 
                         <CardMini 

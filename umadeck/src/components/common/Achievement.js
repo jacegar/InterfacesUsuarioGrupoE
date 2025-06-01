@@ -5,7 +5,7 @@ function Achievement({ id, title, progress, unlocked, date, img }) {
   const actualProgress = parseInt(progress) || 0;
   
   return (
-    <div className={`achievement-card ${unlocked ? "unlocked" : "locked"}`}>
+    <article className={`achievement-card ${unlocked ? "unlocked" : "locked"}`}>
       <img src={img} alt={"Foto de " + title} className="achievement-image" />
       <h1 className="achievement-title">{title}</h1>
       
@@ -24,7 +24,7 @@ function Achievement({ id, title, progress, unlocked, date, img }) {
       {unlocked && date && (
         <p className="achievement-date">Obtenido: {new Date(date).toLocaleDateString()}</p>
       )}
-    </div>
+    </article>
   );
 }
 

@@ -37,7 +37,7 @@ function AchievementsPage() {
         <div className="achievement-count">{unlockedCount}/{achievementData.length}</div>
       </header>
 
-      <div className="achievements-grid">
+      <main className="achievements-grid">
         {achievementData.map((achievement) => (
           <Achievement
             key={achievement.id}
@@ -49,7 +49,7 @@ function AchievementsPage() {
             img={achievement.img}
           />
         ))}
-      </div>
+      </main>
     </div>
   );
 }

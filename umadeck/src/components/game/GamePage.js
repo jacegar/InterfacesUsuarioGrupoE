@@ -129,7 +129,7 @@ function GamePage(props){
     }, []);
 
     return (
-        <main className="game-page">
+        <div className="game-page">
             <EnemySide
                 cards={enemyCards}
                 points={3 - playerCards.length}
@@ -162,7 +162,7 @@ function GamePage(props){
                 volume={volume}
                 setVolume={setVolume}
             />
-        </main>
+        </div>
     );
 }
 

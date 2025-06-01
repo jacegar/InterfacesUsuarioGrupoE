@@ -163,6 +163,8 @@ function NewGamePage() {
                     className="card-carousel"
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
+                    role="region"
+                    aria-label="Carousel de cartas"
                 >
                     <button className={`carousel-button prev ${cercaniaRecomendacion() === 1 ? "recommended" : ""}`}
                             onClick={handlePrev}>←
@@ -197,7 +199,7 @@ function NewGamePage() {
                     {cardsToShow < 5 && (
                         <button className="carousel-button prev" onClick={handlePrev}>{"<"}</button>
                     )}
-                    <ul className="cardList">
+                    <ul className="cardList" role="region" aria-label="Lista de cartas disponibles">
                         {loadedCards.length > 0 &&
                             [...Array(cardsToShow)].map((_, i) => {
                                 const offset = Math.floor(cardsToShow / 2);
@@ -215,7 +217,7 @@ function NewGamePage() {
                                             }
                                         }}
                                         role="button"
-                                        aria-label={`Carta de ${loadedCards[idx].name}, ${idx === recommendedCardIndex ? "recomendada" : ""}`}
+                                        aria-label={`Carta de ${loadedCards[idx].name} ${idx === recommendedCardIndex ? " ,recomendada" : ""}`}
                                     >
                                         {idx === recommendedCardIndex && <div className="recommended-label">Recomendada</div>}
                                         <Card

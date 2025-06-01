@@ -41,11 +41,11 @@ function CollectionPage() {
         </div>
         <div className="card-count">{unlockedCount}/{allCards.length}</div>
       </header>
-      <div className="cards-grid">
+      <main className="cards-grid">
         {allCards.map((card) => {
           const isUnlocked = unlockedCards.includes(card.id);
           return (
-            <div key={card.id} onClick={!isUnlocked ? handleLockedCardClick : undefined}>
+            <div key={card.id} onClick={!isUnlocked ? handleLockedCardClick : undefined} role="article" aria-label={isUnlocked ? `Carta de ${card.name}` : `Carta bloqueada`}>
               {isUnlocked ? (
                 <Card cardModel={card} />
               ) : (
@@ -54,7 +54,7 @@ function CollectionPage() {
             </div>
           );
         })}
-      </div>
+      </main>
     </div>
   );
 }
