@@ -131,7 +131,7 @@ function PlayerSide(props){
                 if (activeCard.passiveName === "Hey, listen!") {
                     sound = new Audio(`/assets/sounds/${"heylisten"}.mp3`);
                 } else if (activeCard.passiveName === "¡Jamón!") {
-                    sound = new Audio(`/assets/sounds/sound4.mp3`);
+                    sound = new Audio(`/assets/sounds/sound1.mp3`);
                 } else {
                     sound = new Audio(`/assets/sounds/${activeCard.passiveName}.mp3`);
                 }
@@ -221,7 +221,7 @@ function PlayerSide(props){
     }, [cards]);
     
     return (
-        <div className="player-side"> 
+        <> 
             <div className="player-display">
                 <ProfileDisplay side={0}/>
                 <HelpMenu
@@ -265,6 +265,8 @@ function PlayerSide(props){
                             handleDirectExchange(1);
                         }
                     }}
+                    aria-label={localCards[1] && exchangeMode? `Carta de ${localCards[1].name} a la izquierda de la principal del jugador`: ""}
+                    role={localCards[1] && exchangeMode ? "button" : ""}
                 >
                     {localCards[1] ? 
                         <CardMini 
@@ -285,6 +287,8 @@ function PlayerSide(props){
                             handleCardInteraction();
                         }
                     }}
+                    aria-label={`${localCards[0] ? `Carta principal del jugador: ${localCards[0].name}` : "Carta principal del jugador no disponible"}`}
+                    role="button"
                 >
                     {localCards[0] ? (
                         <Card 
@@ -321,6 +325,8 @@ function PlayerSide(props){
                             handleDirectExchange(2);
                         }
                     }}
+                    aria-label={localCards[2] && exchangeMode? `Carta de ${localCards[2].name} a la derecha de la principal del jugador`: ""}
+                    role={localCards[2] && exchangeMode ? "button" : ""}
                 >
                     {localCards[2] ? 
                         <CardMini 
@@ -334,36 +340,34 @@ function PlayerSide(props){
                 
             </div>
 
-            <div className="action-menu">
-                <button className="action-button"
-                    onClick={toggleAutoMode}>
-                    {isAutoMode ? "Desactivar Auto" : "Auto"}
-                </button>
-                <button 
-                    className={`speed-button ${fastMode ? 'active' : ''}`}
-                    onClick={toggleFastMode}
-                    title={fastMode ? "Velocidad normal" : "Velocidad x2"}
-                >
-                    {fastMode ? "2x" : "1x"}
-                </button>
-                <button className="action-button" 
-                    onClick={() => {
-                        setShowMenu(false);
-                        setIsCardSelected(false);
-                        onEndTurn();
-                    }}
-                    disabled={currentTurn !== 0}>
-                    Terminar turno
-                </button>
-                <a className="action-link"
-                    onClick={handleGiveUp}>
-                    Rendirse
-                </a>
-            </div>
-
-            <div className="points-container">
-                <PointsDisplay points={points}/>
-            </div>
+                <div className="action-menu">
+                    <button className="action-button auto"
+                        onClick={toggleAutoMode}>
+                        {isAutoMode ? "Desactivar Auto" : "Auto"}
+                    </button>
+                    <button 
+                        className={`speed-button ${fastMode ? 'active' : ''}`}
+                        onClick={toggleFastMode}
+                        title={fastMode ? "Velocidad normal" : "Velocidad x2"}
+                    >
+                        {fastMode ? "2x" : "1x"}
+                    </button>
+                    <button className="action-button end-turn" 
+                        onClick={() => {
+                            setShowMenu(false);
+                            setIsCardSelected(false);
+                            onEndTurn();
+                        }}
+                        disabled={currentTurn !== 0}>
+                        Terminar turno
+                    </button>
+                    <button
+                        className="action-link give-up"
+                        onClick={handleGiveUp}
+                    >
+                        Rendirse
+                    </button>
+                </div>
 
             {abilityEffect && (
             <div
@@ -381,7 +385,7 @@ function PlayerSide(props){
             {showConfirmation && (
                 <ConfirmationMenu onConfirm={confirmGiveUp} onCancel={cancelGiveUp} text={"¿Estás seguro de que quieres rendirte?"}/>
             )}
-        </div>
+        </>
     );
 }
 

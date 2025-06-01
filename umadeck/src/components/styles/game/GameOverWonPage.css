@@ -16,7 +16,7 @@
 }
 
 .continue-button-won {
-    background-color: #1da63d;
+    background-color: #0050a8;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -26,5 +26,5 @@
 }
 
 .continue-button-won:hover {
-    background-color: #218838;
+    background-color: #0861c0;
 }

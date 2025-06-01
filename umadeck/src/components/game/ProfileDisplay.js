@@ -16,19 +16,13 @@ function ProfileDisplay(props) {
     return (
         <>
             <div className={"profile-display " + (side === 0 ? "player" : "enemy")}>
-                <img 
-                    src="/assets/images/image6.png" 
-                    alt="Foto de perfil del jugador" 
-                    onClick={handleImageClick}
-                    className="profile-photo"
-                    tabIndex="0"
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            handleImageClick();
-                        }
-                    }}
-                ></img>
+                <button className="profile-button" onClick={handleImageClick}>
+                    <img 
+                        src="/assets/images/image6.png" 
+                        alt="Foto de perfil del jugador" 
+                        className="profile-photo"
+                    />
+                </button>
                 <p>{username}</p>
             </div>
             {isEnlarged && (

@@ -1,22 +1,15 @@
-.enemy-side {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
-}
-
-.enemy-side .custom-card:hover{
-    cursor: default;
-}
-
 .enemy-cards {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 6rem;
-    margin-bottom: 0;
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.enemy-cards .custom-card:hover{
+    cursor: default;
 }
 
 .card-placeholder {
@@ -38,7 +31,8 @@
     visibility: hidden;
 }
 
-.enemy-side .points-container {
+.points-container-enemy {
+    margin-top: 1.5rem;
     margin-right: 5rem;
     position: absolute;
     top: 0;
@@ -47,7 +41,9 @@
 
 @media (max-width: 768px) {
     .enemy-cards {
-        gap: 0.9rem;
+        gap: clamp(0.1rem, 2.5vw, 0.9rem);
+        grid-row: 2;
+        grid-column: 1 / -1;
     }
 
     .enemy-side .points-container {

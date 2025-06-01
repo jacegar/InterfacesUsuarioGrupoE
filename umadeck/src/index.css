@@ -5,8 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: auto; /* Permitir desplazamiento horizontal cuando sea necesario */
-  overflow-y: auto; /* Permitir desplazamiento vertical cuando sea necesario */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/*Marco para elementos con el foco del tab*/
+*:focus-visible {
+  outline: 3px solid #3895ec;
+  outline-offset: 2px;
+}
+
+body.dark-mode *:focus-visible {
+  outline-color: #4da8ff; /* Lighter blue for dark mode focus */
 }
 
 /* Dark mode styles */
