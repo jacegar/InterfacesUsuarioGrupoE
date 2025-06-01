@@ -102,3 +102,7 @@
 .card-enlarged-clone .magnify-icon{
     left: 0;
 }
+
+.game-page .card-enlarged-clone:hover {
+    cursor: auto;
+}
