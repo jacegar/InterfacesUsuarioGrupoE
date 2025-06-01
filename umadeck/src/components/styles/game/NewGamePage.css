@@ -11,7 +11,7 @@
 }
 
 .newGamePage h1.especialh1 {
-    color: #007bff;
+    color: #0050a8;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
@@ -22,24 +22,24 @@
     font-size: clamp(1.8rem, 3.3vw, 4rem);
 }
 
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-container .help-button-container{
+    margin-left: 30px;
+}
+
+
 .newGamePage h2.especialh2 {
     text-align: center;
     color: #333;
     margin-bottom: 1rem;
     font-size: clamp(1.7rem, 2.5vw, 3.5rem);
     font-weight: bold;
-}
-
-body.dark-mode .newGamePage h2.especialh2 {
-    color: #eee;
-}
-
-body.reading-mode .newGamePage h1.especialh1 {
-    color: #5e4b3c;
-}
-
-body.reading-mode .newGamePage h2.especialh2 {
-    color: #5e4b3c;
 }
 
 .newGamePage .go-back-arrow {
@@ -144,13 +144,12 @@ body.reading-mode .newGamePage h2.especialh2 {
     align-items: center;
 }
 
-.contenedor-del-boton {
+.contenedor-botones {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 5px;
 }
 
 .recommendation-button {
@@ -240,6 +239,14 @@ body.reading-mode .newGamePage h2.especialh2 {
 }
 
 @media (max-width: 768px) {
+    .title-container{
+        margin-top: 20px;
+    }
+
+    .title-container .help-button-container {
+        margin-left: 0px;
+    }
+
     .cardList {
         gap: 3.5rem;
     }
@@ -308,4 +315,21 @@ body.reading-mode .newGamePage h2.especialh2 {
     .cardList li:hover {
         transform: none;
     }
+}
+
+
+body.dark-mode .newGamePage h2.especialh2 {
+    color: #eee;
+}
+
+body.reading-mode .newGamePage h1.especialh1 {
+    color: #5e4b3c;
+}
+
+body.reading-mode .newGamePage h2.especialh2 {
+    color: #5e4b3c;
+}
+
+body.dark-mode .newGamePage h1.especialh1 {
+    color: #4da8ff;;
 }

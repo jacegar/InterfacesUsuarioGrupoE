@@ -7,12 +7,12 @@ import PointsDisplay from "./PointsDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 
 function EnemySide(props){
-    const { cards, points, attachCardRef } = props;
+    const { cards, points, attachCardRef, volume } = props;
     const navigate = useNavigate();
 
     useEffect(() => {
         if (points >= 3) {
-            navigate('/game-over-lost');
+            navigate('/game-over-lost', {state : {volume : volume}});
         }
     }, [points, navigate]);
 
@@ -26,7 +26,7 @@ function EnemySide(props){
             <div className="enemy-cards">
                 <div className="card-slot left">
                     {cards[1] ? 
-                        <CardMini cardModel={cards[1]} onCardClick={() => {}}/> : 
+                        <CardMini cardModel={cards[1]} onCardClick={() => {}} volume={volume}/> : 
                         <div className="card-placeholder"></div>
                     }
                 </div>
@@ -37,6 +37,7 @@ function EnemySide(props){
                             cardModel={cards[0]} 
                             onCardClick={() => {}}
                             attachRef={attachCardRef}
+                            volume={volume}
                         /> : 
                         <div className="card-placeholder main"></div>
                     }
@@ -44,7 +45,7 @@ function EnemySide(props){
                 
                 <div className="card-slot right">
                     {cards[2] ? 
-                        <CardMini cardModel={cards[2]} onCardClick={() => {}}/> : 
+                        <CardMini cardModel={cards[2]} onCardClick={() => {}} volume={volume}/> : 
                         <div className="card-placeholder"></div>
                     }
                 </div>

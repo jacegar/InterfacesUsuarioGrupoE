@@ -132,7 +132,30 @@ function NewGamePage() {
         <div className="newGamePage">
             <header>
                 <GoBackArrow />
-                <h1 className="especialh1">Elige las cartas del equipo:</h1>
+                <div className="title-container">
+                    <h1 className="especialh1">Elige las cartas del equipo</h1>
+                    <HelpMenu
+                        className="help-menu"
+                        title={<span className="help-menu-title">Ayuda del Juego</span>}
+                        text={
+                            <div className="help-menu-text">
+                                <p><strong>Funcionamiento básico:</strong></p>
+                                <ul>
+                                    <li> Pincha en una carta para seleccionarla o deseleccionarla.</li>                                        <li> Conforma tu equipo con 3 cartas.</li>
+                                    <li> Usa las recomendaciones si no sabes qué elegir.</li>
+                                </ul>
+                                <p><strong>Botones disponibles:</strong></p>
+                                <ul>
+                                    <li><strong>Flecha atrás:</strong> Vuelve a la página anterior.</li>
+                                    <li><strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener pulsada la carta.</li>
+                                    <li><strong>Flecha semicircular:</strong> Gira la carta, lo que permite ver la descripción.</li>                                            <li><strong>Iniciar Partida:</strong> Comienza la partida con las 3 cartas seleccionadas.</li>
+                                    <li><strong>Recomendación:</strong> Recomienda una carta poderosa. </li>
+                                </ul>
+                            </div>
+                        }
+                        hasSeenTutorial={true}
+                    />
+                </div>
                 <h2 className="especialh2">{selectedCards.length} de 3</h2>
             </header>
             {isMobile ? (
@@ -211,44 +234,16 @@ function NewGamePage() {
                 </div>
             )}
             
-            <div>
+            <div className = "contenedor-botones">
+                <button className="recommendation-button" onClick={obtenerRecomendacion}>
+                    Recomendación
+                </button>
                 <button className="startGameButton" disabled={selectedCards.length !== 3}
                     onClick={() => navigate("/game", { state: {playerCards: selectedCards, enemyCards: generateRandomCards().slice(0, 3)}})}
                 >
                     Iniciar partida
                 </button>
             </div>
-
-            <div className="contenedor-del-boton">
-                <button className="recommendation-button" onClick={obtenerRecomendacion}>
-                    Recomendación
-                </button>
-                
-                <HelpMenu
-                    className="help-menu"
-                    title={<span className="help-menu-title">Ayuda del Juego</span>}
-                    text={
-                        <div className="help-menu-text">
-                            <p><strong>Botones disponibles:</strong></p>
-                            <ul>
-                                <li><strong>Flecha atrás:</strong> Vuelve a la página anterior.</li>
-                                <li><strong>Lupa:</strong> Pone en grande la carta. Tambien se pone en grande al mantener encima de la carta.</li>
-                                <li><strong>Flecha semicircular:</strong> Da la vuelta a la carta.</li>
-                                <li><strong>Iniciar Partida:</strong> Comienza la partida con las 3 cartas seleccionadas.</li>
-                                <li><strong>Recomendación:</strong> Recomienda una carta poderosa. </li>
-                            </ul>
-                            <p><strong>Funcionamiento básico:</strong></p>
-                            <ul>
-                                <li> Pincha en una carta para seleccionarla o deseleccionarla.</li>
-                                <li> Conforma tu equipo con 3 cartas.</li>
-                                <li> Usa las recomendaciones si no sabes qué elegir.</li>
-                            </ul>
-                        </div>
-                    }
-                    hasSeenTutorial={true}
-                />
-            </div>
-
         </div>
     );
 }

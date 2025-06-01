@@ -16,7 +16,7 @@ body {
 }
 
 body.dark-mode *:focus-visible {
-  outline-color: #4da8ff; /* Lighter blue for dark mode focus */
+  outline-color: #4da8ff;
 }
 
 /* Dark mode styles */

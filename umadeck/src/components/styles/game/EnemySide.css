@@ -13,16 +13,16 @@
 }
 
 .card-placeholder {
-    margin-top: 100; 
     width: 140px;
     height: 224px;
     visibility: hidden;
 }
 
 .enemy-display{
-    position: absolute;
-    top: 0;
-    left: 0;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+    align-self: flex-start;
 }
 
 .card-placeholder.main {
@@ -34,9 +34,10 @@
 .points-container-enemy {
     margin-top: 1.5rem;
     margin-right: 5rem;
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    align-self: flex-start;
 }
 
 @media (max-width: 768px) {
@@ -46,12 +47,8 @@
         grid-column: 1 / -1;
     }
 
-    .enemy-side .points-container {
-        margin-top: 0rem;
+    .points-container-enemy {
+        margin-top: 0.5rem;
         margin-right: 1rem;
-    }
-
-    .enemy-cards{
-        margin-top: 3rem;
     }
 }
