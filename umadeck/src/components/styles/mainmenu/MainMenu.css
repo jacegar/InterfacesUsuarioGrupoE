@@ -88,6 +88,11 @@
     .menu-link {
         width: min(90%, 280px);
     }
+
+    .menu-button-small {
+        padding: 0.7rem, 0.9rem;
+        font-size: 1rem
+    }
 }
 
 @media (max-width: 480px) {
