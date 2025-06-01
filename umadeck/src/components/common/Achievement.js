@@ -1,7 +1,6 @@
 import "../styles/common/Achievement.css";
 
 function Achievement({ id, title, progress, unlocked, date, img }) {
-  // Asegurarnos de que progress es un número
   const actualProgress = parseInt(progress) || 0;
   
   return (
