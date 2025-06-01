@@ -31,7 +31,7 @@ function EnemySide(props){
                     }
                 </div>
 
-                <div className="main-card-container" role="article" aria-label={cards[0].name ? `Carta principal enemiga de ${cards[0].name}` : ""}>
+                <div className="main-card-container" role="article" aria-label={cards[0] ? `Carta principal enemiga de ${cards[0].name}` : ""}>
                     {cards[0] ? 
                         <Card 
                             cardModel={cards[0]} 
