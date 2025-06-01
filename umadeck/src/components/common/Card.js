@@ -18,13 +18,6 @@ function Card(props) {
     const animateAttack = () => {
         setIsAttacking(true);
         setTimeout(() => setIsAttacking(false), 700);
-        /*
-        const audio = new Audio("/assets/sounds/sound1.mp3");
-        audio.volume = volume;
-        if(volume > 0){
-            audio.play();
-        }
-        */
     };
 
     useEffect(() => {
