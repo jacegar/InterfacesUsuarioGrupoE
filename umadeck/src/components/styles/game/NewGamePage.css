@@ -239,6 +239,10 @@
 }
 
 @media (max-width: 768px) {
+    .newGamePage {
+        min-height: 0vh;
+    }
+
     .title-container{
         margin-top: 20px;
     }

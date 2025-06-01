@@ -61,6 +61,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(6, auto);
+        min-height: 0vh;
     }
 
     .turn-section {

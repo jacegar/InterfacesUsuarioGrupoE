@@ -23,13 +23,12 @@ img {
     height: auto;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     .start-page-container {
         max-width: 100vw;
+        min-height: 0vh;
     }
-}
 
-@media (max-width: 768px) {
     body {
         font-size: 15px;
     }
