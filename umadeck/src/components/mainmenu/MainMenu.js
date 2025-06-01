@@ -4,7 +4,10 @@ import React from "react";
 
 function MainMenu(){
     const navigate = useNavigate();
-    const [screenReaderOn, setScreenReaderOn] = React.useState(false);
+    // Inicializa el estado leyendo localStorage solo una vez
+    const [screenReaderOn, setScreenReaderOn] = React.useState(() => {
+        return localStorage.getItem('screenReaderOn') === 'true';
+    });
 
     // Función para leer el aria-label o el texto del botón
     function speakElement(element) {
@@ -50,13 +53,12 @@ function MainMenu(){
         }
     }, [screenReaderOn]);
 
-    // Sincroniza el estado del lector con localStorage (por defecto desactivado)
-    React.useEffect(() => {
-        localStorage.setItem('screenReaderOn', 'false'); // Siempre desactivado al cargar
-        setScreenReaderOn(false);
-        if (window.disableScreenReader) window.disableScreenReader();
-    }, []);
+    // Devuelve el estado real del lector de pantalla según la sesión
+    function getScreenReaderStateFromSession() {
+        return localStorage.getItem('screenReaderOn') === 'true';
+    }
 
+    // Solo guarda el estado en localStorage cuando cambia screenReaderOn
     React.useEffect(() => {
         localStorage.setItem('screenReaderOn', screenReaderOn ? 'true' : 'false');
     }, [screenReaderOn]);
@@ -91,22 +93,26 @@ function MainMenu(){
                         </button>
                     </div>
                     <div className="menu-link-small">
-                        <button className="menu-button-small" onClick={() => {
-                            if ('speechSynthesis' in window) {
-                                if (screenReaderOn) {
-                                    window.speechSynthesis.cancel();
-                                    if (window.disableScreenReader) window.disableScreenReader();
-                                    setScreenReaderOn(false);
+                        <button
+                            className="menu-button-small"
+                            onClick={() => {
+                                if ('speechSynthesis' in window) {
+                                    if (screenReaderOn) {
+                                        window.speechSynthesis.cancel();
+                                        window.disableScreenReader && window.disableScreenReader();
+                                        setScreenReaderOn(false);
+                                    } else {
+                                        window.enableScreenReader && window.enableScreenReader();
+                                        setScreenReaderOn(true);
+                                        const utter = new window.SpeechSynthesisUtterance('Lector de pantalla activado. Usa tabulador o el ratón para navegar y el lector leerá los elementos seleccionados o enfocados.');
+                                        window.speechSynthesis.speak(utter);
+                                    }
                                 } else {
-                                    if (window.enableScreenReader) window.enableScreenReader();
-                                    setScreenReaderOn(true);
-                                    const utter = new window.SpeechSynthesisUtterance('Lector de pantalla activado. Usa tabulador o el ratón para navegar y el lector leerá los elementos seleccionados o enfocados.');
-                                    window.speechSynthesis.speak(utter);
+                                    alert('El lector de pantalla no está soportado en este navegador.');
                                 }
-                            } else {
-                                alert('El lector de pantalla no está soportado en este navegador.');
-                            }
-                        }} aria-label={screenReaderOn ? "Desactivar lector de pantalla" : "Activar lector de pantalla"}>
+                            }}
+                            aria-label={screenReaderOn ? "Desactivar lector de pantalla" : "Activar lector de pantalla"}
+                        >
                             {screenReaderOn ? "Desactivar lector de pantalla" : "Activar lector de pantalla"}
                         </button>
                     </div>

@@ -14,9 +14,6 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
 // Lector de pantalla global para toda la app
@@ -26,7 +23,7 @@ let screenReaderHandlers = null;
 function globalScreenReader(toggle = true) {
   if (!('speechSynthesis' in window)) return;
   if (!toggle && screenReaderActive) {
-    // Desactivar
+
     if (screenReaderHandlers) {
       document.body.removeEventListener('focusin', screenReaderHandlers.focus, true);
       document.body.removeEventListener('mouseenter', screenReaderHandlers.mouse, true);
@@ -36,7 +33,7 @@ function globalScreenReader(toggle = true) {
     window.speechSynthesis.cancel();
     return;
   }
-  if (screenReaderActive) return; // Ya está activo
+  if (screenReaderActive) return;
   function speakElement(element) {
     let text = element.getAttribute && element.getAttribute('aria-label');
     if (!text && element.alt) text = element.alt;
@@ -60,12 +57,20 @@ function globalScreenReader(toggle = true) {
 }
 
 if (typeof window !== 'undefined') {
-  window.enableScreenReader = () => globalScreenReader(true);
-  window.disableScreenReader = () => globalScreenReader(false);
+  window.enableScreenReader = () => {
+    globalScreenReader(true);
+    if (window.localStorage) {
+      window.localStorage.setItem('screenReaderOn', 'true');
+    }
+  };
+  window.disableScreenReader = () => {
+    globalScreenReader(false);
+    if (window.localStorage) {
+      window.localStorage.setItem('screenReaderOn', 'false');
+    }
+  };
   window.isScreenReaderActive = () => screenReaderActive;
-  // Desactiva el lector y borra el flag al cargar la app
-  window.disableScreenReader();
-  if (window.localStorage) {
-    window.localStorage.setItem('screenReaderOn', 'false');
+  if (window.localStorage && window.localStorage.getItem('screenReaderOn') === 'true') {
+    window.enableScreenReader();
   }
 }
