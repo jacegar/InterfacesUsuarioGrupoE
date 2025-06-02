@@ -22,7 +22,7 @@ let screenReaderHandlers = null;
 
 function speakElement(element) {
     if (!('speechSynthesis' in window)) return;
-    
+
     let text = element.getAttribute && element.getAttribute('aria-label');
     if (!text && element.alt) text = element.alt;
     if (!text && element.innerText) text = element.innerText;
@@ -33,10 +33,9 @@ function speakElement(element) {
         if (img && img.alt) text = img.alt;
     }
 
+    // Solo leer si hay texto relevante
     if (text) {
         window.speechSynthesis.cancel();
-
-        // Esperar un poco antes de hablar para evitar problemas de sincronización
         setTimeout(() => {
             if (!window.speechSynthesis.speaking) {
                 window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(text));
@@ -46,13 +45,47 @@ function speakElement(element) {
 }
 
 function focusHandler(e) { speakElement(e.target); }
-function mouseHandler(e) { speakElement(e.target); }
+
+// Lista de etiquetas que el lector debe leer
+const ATOMIC_TAGS = [
+    'BUTTON', 'A', 'INPUT', 'TEXTAREA', 'IMG',
+    'P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6',
+    'LI', 'LABEL', 'SPAN', 'SELECT', 'OPTION'
+];
+
+// Devuelve true si el elemento se debe leer o tiene aria-label
+function isScreenReaderElement(element) {
+    let result = false;
+
+    if (element) {
+        const tag = element.tagName;
+        if (ATOMIC_TAGS.includes(tag)) {
+            result = true;
+        } else if (element.getAttribute && element.getAttribute('aria-label')) {
+            result = true;
+        }
+    }
+
+    return result;
+}
+
+function mouseOverHandler(e) {
+    if (isScreenReaderElement(e.target)) {
+        speakElement(e.target);
+    }
+}
+
+// Cancela la lectura cuando el mouse sale del elemento
+function mouseLeaveHandler(e) {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
 
 function enableScreenReader() {
     if (!('speechSynthesis' in window) || screenReaderActive) return;
         document.body.addEventListener('focusin', focusHandler, true);
-        document.body.addEventListener('mouseenter', mouseHandler, true);
-        screenReaderHandlers = { focus: focusHandler, mouse: mouseHandler };
+        document.body.addEventListener('mouseover', mouseOverHandler, true);
+        document.body.addEventListener('mouseleave', mouseLeaveHandler, true);
+        screenReaderHandlers = { focus: focusHandler, over: mouseOverHandler, leave: mouseLeaveHandler };
         screenReaderActive = true;
 }
 
@@ -60,7 +93,8 @@ function disableScreenReader() {
     if (!screenReaderActive) return;
     if (screenReaderHandlers) {
         document.body.removeEventListener('focusin', screenReaderHandlers.focus, true);
-        document.body.removeEventListener('mouseenter', screenReaderHandlers.mouse, true);
+        document.body.removeEventListener('mouseover', screenReaderHandlers.over, true);
+        document.body.removeEventListener('mouseleave', screenReaderHandlers.leave, true);
         screenReaderHandlers = null;
     }
 

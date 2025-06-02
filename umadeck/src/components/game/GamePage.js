@@ -139,11 +139,11 @@ function GamePage(props){
             />
             <div className="turn-section">
                 <div className="turn-counter">
-                    Turno: {gameState.turn}
+                    <span>Turno: {gameState.turn}</span>
                 </div>
                 <hr />
                 <div className={`turn-indicator ${gameState.currentTurn === 0 ? "player-turn" : "enemy-turn"}`}>
-                    {gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}
+                    <span>{gameState.currentTurn === 0 ? "Tu turno" : "Turno del rival"}</span>
                 </div>
             </div>
             <PlayerSide

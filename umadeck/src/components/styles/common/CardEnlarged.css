@@ -106,3 +106,7 @@
 .game-page .card-enlarged-clone:hover {
     cursor: auto;
 }
+
+.newGamePage .card-enlarged-clone:hover {
+    cursor: auto;
+}
