@@ -26,7 +26,6 @@ function speakElement(element) {
     let text = element.getAttribute && element.getAttribute('aria-label');
     if (!text && element.alt) text = element.alt;
     if (!text && element.innerText) text = element.innerText;
-    if (!text && element.textContent) text = element.textContent;
 
     // Para leer botones y enlaces con imágenes
     if (!text) {
