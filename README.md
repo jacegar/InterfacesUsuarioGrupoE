@@ -10,3 +10,9 @@ Integrantes y roles: <br/>
 
 Descripción del proyecto: <br/>
 Nuestro proyecto consiste en un rpg entre cartas (parecido a TCG Pocket) entre dos jugadores, en el que antes del combate se ofrece una selección de cartas a cada jugador con las que formarán sus mazos. Las cartas tendrían una temática variada, pudiendo ir desde un mago genérico a algún personaje famoso (por ejemplo Dwayne Johnson). El combate acaba cuando todas las cartas de un jugador son debilitadas.
+
+Setup y despliegue:
+-Clonar el repositorio en local
+-Ejecutar en la terminal, dentro del directorio, "cd umadeck"
+-Ejecutar en la terminal "npm install" y "npm start"
+-Deberia abrirse la aplicación en localhost:3000
