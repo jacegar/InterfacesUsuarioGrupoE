@@ -20,57 +20,66 @@ reportWebVitals();
 let screenReaderActive = false;
 let screenReaderHandlers = null;
 
-function globalScreenReader(toggle = true) {
-  if (!('speechSynthesis' in window)) return;
-  if (!toggle && screenReaderActive) {
-
-    if (screenReaderHandlers) {
-      document.body.removeEventListener('focusin', screenReaderHandlers.focus, true);
-      document.body.removeEventListener('mouseenter', screenReaderHandlers.mouse, true);
-      screenReaderHandlers = null;
-    }
-    screenReaderActive = false;
-    window.speechSynthesis.cancel();
-    return;
-  }
-  if (screenReaderActive) return;
-  function speakElement(element) {
+function speakElement(element) {
+    if (!('speechSynthesis' in window)) return;
+    
     let text = element.getAttribute && element.getAttribute('aria-label');
     if (!text && element.alt) text = element.alt;
     if (!text && element.innerText) text = element.innerText;
     if (!text && element.textContent) text = element.textContent;
-    if (text) {
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(text));
+
+    // Para leer botones y enlaces con imágenes
+    if (!text) {
+        const img = element.querySelector && element.querySelector('img[alt]');
+        if (img && img.alt) text = img.alt;
     }
-  }
-  function focusHandler(e) {
-    speakElement(e.target);
-  }
-  function mouseHandler(e) {
-    speakElement(e.target);
-  }
-  document.body.addEventListener('focusin', focusHandler, true);
-  document.body.addEventListener('mouseenter', mouseHandler, true);
-  screenReaderHandlers = { focus: focusHandler, mouse: mouseHandler };
-  screenReaderActive = true;
+
+    if (text) {
+        window.speechSynthesis.cancel();
+
+        // Esperar un poco antes de hablar para evitar problemas de sincronización
+        setTimeout(() => {
+            if (!window.speechSynthesis.speaking) {
+                window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(text));
+            }
+        }, 100);
+    }
+}
+
+function focusHandler(e) { speakElement(e.target); }
+function mouseHandler(e) { speakElement(e.target); }
+
+function enableScreenReader() {
+    if (!('speechSynthesis' in window) || screenReaderActive) return;
+        document.body.addEventListener('focusin', focusHandler, true);
+        document.body.addEventListener('mouseenter', mouseHandler, true);
+        screenReaderHandlers = { focus: focusHandler, mouse: mouseHandler };
+        screenReaderActive = true;
+}
+
+function disableScreenReader() {
+    if (!screenReaderActive) return;
+    if (screenReaderHandlers) {
+        document.body.removeEventListener('focusin', screenReaderHandlers.focus, true);
+        document.body.removeEventListener('mouseenter', screenReaderHandlers.mouse, true);
+        screenReaderHandlers = null;
+    }
+
+    screenReaderActive = false;
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
+
+function isScreenReaderActive() {
+    return screenReaderActive;
 }
 
 if (typeof window !== 'undefined') {
-  window.enableScreenReader = () => {
-    globalScreenReader(true);
-    if (window.localStorage) {
-      window.localStorage.setItem('screenReaderOn', 'true');
+    window.enableScreenReader = enableScreenReader;
+    window.disableScreenReader = disableScreenReader;
+    window.isScreenReaderActive = isScreenReaderActive;
+    
+    // Activa el lector si estaba activo en la sesión anterior
+    if (window.localStorage && window.localStorage.getItem('screenReaderOn') === 'true') {
+        window.enableScreenReader();
     }
-  };
-  window.disableScreenReader = () => {
-    globalScreenReader(false);
-    if (window.localStorage) {
-      window.localStorage.setItem('screenReaderOn', 'false');
-    }
-  };
-  window.isScreenReaderActive = () => screenReaderActive;
-  if (window.localStorage && window.localStorage.getItem('screenReaderOn') === 'true') {
-    window.enableScreenReader();
-  }
 }

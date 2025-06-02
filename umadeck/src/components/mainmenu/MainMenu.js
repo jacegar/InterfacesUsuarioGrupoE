@@ -1,66 +1,31 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../styles/mainmenu/MainMenu.css";
 import React from "react";
 
-function MainMenu(){
+function MainMenu() {
     const navigate = useNavigate();
-    // Inicializa el estado leyendo localStorage solo una vez
-    const [screenReaderOn, setScreenReaderOn] = React.useState(() => {
+    // Lee el estado inicial del lector de pantalla desde localStorage
+    const [screenReaderOn, setScreenReaderOn] = useState(() => {
         return localStorage.getItem('screenReaderOn') === 'true';
     });
 
-    // Función para leer el aria-label o el texto del botón
-    function speakElement(element) {
-        if ('speechSynthesis' in window) {
-            let text = element.getAttribute('aria-label') || element.innerText || element.textContent;
-            if (text) {
-                const utter = new window.SpeechSynthesisUtterance(text);
-                window.speechSynthesis.cancel(); // Para evitar solapamientos
+    // Sincroniza el estado con localStorage y activa/desactiva el lector global
+    useEffect(() => {
+        localStorage.setItem('screenReaderOn', screenReaderOn ? 'true' : 'false');
+        if (screenReaderOn) {
+            window.enableScreenReader && window.enableScreenReader();
+            
+            //Mensaje de bienvenida cuando se activa
+            if (window.speechSynthesis && window.speechSynthesis.speaking === false) {
+                const utter = new window.SpeechSynthesisUtterance(
+                    'Lector de pantalla activado. Usa tabulador o el ratón para navegar y el lector leerá los elementos seleccionados o enfocados.'
+                );
                 window.speechSynthesis.speak(utter);
             }
+        } else {
+            window.disableScreenReader && window.disableScreenReader();
         }
-    }
-
-    // Efecto para añadir listeners a los botones del menú
-    React.useEffect(() => {
-        const menu = document.querySelector('.main-menu');
-        if (!menu) return;
-        function handleEvent(e) {
-            if (screenReaderOn) {
-                speakElement(e.target);
-            }
-        }
-        const buttons = menu.querySelectorAll('button');
-        buttons.forEach(btn => {
-            btn.addEventListener('focus', handleEvent);
-            btn.addEventListener('mouseenter', handleEvent);
-        });
-        return () => {
-            buttons.forEach(btn => {
-                btn.removeEventListener('focus', handleEvent);
-                btn.removeEventListener('mouseenter', handleEvent);
-            });
-        };
-    }, [screenReaderOn]);
-
-    React.useEffect(() => {
-        // Apaga el lector si el estado cambia a off
-        if (!screenReaderOn && window.isScreenReaderActive && window.isScreenReaderActive()) {
-            window.speechSynthesis.cancel();
-            setTimeout(() => {
-                window.disableScreenReader && window.disableScreenReader();
-            }, 100); // Espera a que termine de hablar
-        }
-    }, [screenReaderOn]);
-
-    // Devuelve el estado real del lector de pantalla según la sesión
-    function getScreenReaderStateFromSession() {
-        return localStorage.getItem('screenReaderOn') === 'true';
-    }
-
-    // Solo guarda el estado en localStorage cuando cambia screenReaderOn
-    React.useEffect(() => {
-        localStorage.setItem('screenReaderOn', screenReaderOn ? 'true' : 'false');
     }, [screenReaderOn]);
 
     return (
@@ -83,38 +48,30 @@ function MainMenu(){
                 </div>
                 <div className="small-buttons-container">
                     <div className="menu-link-small">
-                        <button className="menu-button-small" onClick={() => navigate("/privacy")}>
-                            Privacidad
-                        </button>
-                    </div>
-                    <div className="menu-link-small">
-                        <button className="menu-button-small" onClick={() => navigate("/conditions")}>
-                            Condiciones
-                        </button>
-                    </div>
-                    <div className="menu-link-small">
                         <button
                             className="menu-button-small"
                             onClick={() => {
-                                if ('speechSynthesis' in window) {
-                                    if (screenReaderOn) {
-                                        window.speechSynthesis.cancel();
-                                        window.disableScreenReader && window.disableScreenReader();
-                                        setScreenReaderOn(false);
-                                    } else {
-                                        window.enableScreenReader && window.enableScreenReader();
-                                        setScreenReaderOn(true);
-                                        const utter = new window.SpeechSynthesisUtterance('Lector de pantalla activado. Usa tabulador o el ratón para navegar y el lector leerá los elementos seleccionados o enfocados.');
-                                        window.speechSynthesis.speak(utter);
-                                    }
-                                } else {
-                                    alert('El lector de pantalla no está soportado en este navegador.');
+                                if (!('speechSynthesis' in window)) {
+                                    alert("Tu navegador no soporta el lector de pantalla automático.");
+                                    return;
                                 }
+                                setScreenReaderOn(on => !on);
                             }}
-                            aria-label={screenReaderOn ? "Desactivar lector de pantalla" : "Activar lector de pantalla"}
                         >
                             {screenReaderOn ? "Desactivar lector de pantalla" : "Activar lector de pantalla"}
                         </button>
+                    </div>
+                    <div className="button-wrapper">
+                        <div className="menu-link-small">
+                            <button className="menu-button-small" onClick={() => navigate("/privacy")}>
+                                Privacidad
+                            </button>
+                        </div>
+                        <div className="menu-link-small">
+                            <button className="menu-button-small" onClick={() => navigate("/conditions")}>
+                                Condiciones
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
