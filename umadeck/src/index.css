@@ -32,14 +32,6 @@ body.dark-mode .game-title {
   color: #4da8ff;
 }
 
-body.dark-mode .menu-button {
-  background-color: #1a6cbf;
-}
-
-body.dark-mode .menu-button:hover, body.dark-mode .menu-button.hovered {
-  background-color: #135399;
-}
-
 body.dark-mode .menu-button-small {
   background-color: #555;
 }
@@ -60,16 +52,6 @@ body.reading-mode .main-header {
 
 body.reading-mode .game-title {
   color: #5e4b3c;
-}
-
-body.reading-mode .menu-button {
-  background-color: #007bff;
-  color: white;
-}
-
-body.reading-mode .menu-button:hover, 
-body.reading-mode .menu-button.hovered {
-  background-color: #0056b3;
 }
 
 body.reading-mode .menu-button-small {
